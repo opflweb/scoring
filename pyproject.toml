@@ -1,0 +1,22 @@
+[project]
+name = "opfl-autoscorer"
+version = "1.0.0"
+description = "Automated fantasy football scoring for OPFL using nflreadpy"
+requires-python = ">=3.10"
+dependencies = [
+    "nflreadpy>=0.1.5",
+    "polars>=1.0.0",
+    "openpyxl>=3.1.0",
+    "thefuzz>=0.22.0",
+]
+
+[project.scripts]
+opfl-score = "autoscorer:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["opfl*"]

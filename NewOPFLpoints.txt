@@ -1,0 +1,70 @@
+OPFL Scoring
+
+6 points for TDs and TD passes, 2 points for a 2 pt. conversion. Points cannot be less than zero. Special teams TDs count as TDs for the individual player.
+
+Passing:
+200 yards = 2 pts.
+1 point for every 50 yards passing thereafter.  
+(Below 200 yards means no points).
+Minus 1 pt. for each INT.
+Minus 3 pts. for each INT returned for TD.
+Minus 1 pt. for every fumble lost
+Minus 3 pts. for every fumble lost returned for TD.
+
+Rushing/Receiving:
+75 yards = 2 pts.
+1 point for every 25 yards rushing/receiving thereafter.
+(Below 75 yards each category 0 no points).
+Minus 1 pt. for every fumble lost, interceptions thrown.
+Minus 3 pts total for every fumble lost, interceptions thrown, returned for TD.
+
+Alternate Combined Rushing/Receiving Yards Bonus:
+For RBs/WRs: 100 combined rushing/receiving yards = 2 pts, plus 1 bonus point for every 25 combined yards thereafter. No point ceiling.
+For TEs: 75 combined rushing/receiving yards = 2 pts, plus 1 bonus point for every 25 combined yards thereafter. No point ceiling.
+
+NOTE: This is alternate, not additional, scoring for these positions. Player gets whichever bonus yields more points in any game.
+
+TE Scoring:
+50 yards = 2 pts.
+1 bonus pt. for every 25 yards rushing/receiving thereafter.
+(Below 50 yards means no points).
+Minus 1 pt. for every fumble lost, interceptions thrown.
+Minus 3 pts. for every fumble lost, interceptions thrown, returned for TD.
+
+Kicker scoring:
+PAT = 1 pt.  
+Up to 29 yard FG = 1 pt.
+30-39 yard FG = 2 pts.
+40-49 yard FG = 3 pts.
+50+ yard FG = 4 pts.
+Missed/blocked FG = minus 2 pts.
+Missed/blocked PAT = minus 1 pt.
+
+Defense: 
+ 
+Interception = 2 pts.
+Fumble recovery = 2 pts.
+Safety = 2 pts. 
+Blocked punt or FG = 2 pts.
+Blocked PAT = 1 pt.
+Touchdown = 4 pts.
+Sack = 1 pt.
+
+Points Allowed:
+Shutout = 8 pts.
+2-9 points yielded = 6 pts.
+10-13 points = 4 pts.
+14-17 points = 2 pts.
+
+28-31 points yielded = Minus 2 pts.
+32-35 points = Minus 4 pts.
+36 + points = Minus 6 pts.
+
+* TDs count on INTs, fumble recoveries, and blocked punts or placekicks but not on punt/kickoff returns.
+
+HC
+4 points for a home favorite win (using ESPN spread).
+5 points for a home underdog win.
+6 points for a road favorite win.
+7 points for a road underdog win.
+

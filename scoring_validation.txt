@@ -1,0 +1,150 @@
+Validating 12 weeks from OPFL Scoring 2025.xlsx
+============================================================
+
+W1 (Week 1):
+
+  Checked 108 players: 108 matched (100.0%)
+  [OK] All scores match!
+
+W2 (Week 2):
+
+  Checked 108 players: 108 matched (100.0%)
+  [OK] All scores match!
+
+W3 (Week 3):
+
+  Checked 108 players: 106 matched (98.1%)
+
+  [!] Score Mismatches (1):
+  --------------------------------------------------------------------------------
+  Pos  Player                         Matched                Excel    Calc    Diff
+  --------------------------------------------------------------------------------
+  DF   Kansas City (KC)                                       12.0    13.0    -1.0
+        └─ points_allowed: 6, interceptions: 4, sacks: 2, blocked_pats: 1
+
+
+  [X] Players Not Found in Stats (1):
+  ----------------------------------------------------------------------
+  Pos  Player                           Excel Note                
+  ----------------------------------------------------------------------
+  WR   CeeDee Lamb (DAL)                  0.0 (bye/injured/no stats)
+
+
+W4 (Week 4):
+
+  Checked 108 players: 108 matched (100.0%)
+  [OK] All scores match!
+
+W5 (Week 5):
+
+  Checked 108 players: 103 matched (95.4%)
+
+  [X] Players Not Found in Stats (5):
+  ----------------------------------------------------------------------
+  Pos  Player                           Excel Note                
+  ----------------------------------------------------------------------
+  QB   Brock Purdy (SF)                   0.0 (bye/injured/no stats)
+  WR   DK Metcalf (PIT)                   0.0 (bye/injured/no stats)
+  RB   Chuba Hubbard (CAR)                0.0 (bye/injured/no stats)
+  K    Tyler Bass (BUF)                   0.0 (bye/injured/no stats)
+  WR   Malik Nabers (NYG)                 0.0 (bye/injured/no stats)
+
+
+W6 (Week 6):
+
+  Checked 108 players: 106 matched (98.1%)
+
+  [X] Players Not Found in Stats (2):
+  ----------------------------------------------------------------------
+  Pos  Player                           Excel Note                
+  ----------------------------------------------------------------------
+  K    Brandon McManus (GB)               0.0 (bye/injured/no stats)
+  TE   Dalton Kincaid (BUF)               0.0 (bye/injured/no stats)
+
+
+W7 (Week 7):
+
+  Checked 108 players: 105 matched (97.2%)
+
+  [X] Players Not Found in Stats (3):
+  ----------------------------------------------------------------------
+  Pos  Player                           Excel Note                
+  ----------------------------------------------------------------------
+  K    Tyler Loop (BAL)                   0.0 (bye/injured/no stats)
+  K    Brandon McManus (GB)               0.0 (bye/injured/no stats)
+  WR   Calvin Ridley (TEN)                0.0 (bye/injured/no stats)
+
+
+W8 (Week 8):
+
+  Checked 105 players: 99 matched (94.3%)
+
+  [X] Players Not Found in Stats (6):
+  ----------------------------------------------------------------------
+  Pos  Player                           Excel Note                
+  ----------------------------------------------------------------------
+  WR   Nico Collins (HOU)                 0.0 (bye/injured/no stats)
+  RB   Kenneth Walker III (SEA)           0.0 (bye/injured/no stats)
+  TE   Mike Gesicki (CIN)                 0.0 (bye/injured/no stats)
+  QB   Joe Burrow (CIN)                   0.0 (bye/injured/no stats)
+  WR   Drake London (ATL)                 0.0 (bye/injured/no stats)
+  K    Jake Moody (SF)                    0.0 (bye/injured/no stats)
+
+
+W9 (Week 9):
+
+  Checked 108 players: 107 matched (99.1%)
+
+  [X] Players Not Found in Stats (1):
+  ----------------------------------------------------------------------
+  Pos  Player                           Excel Note                
+  ----------------------------------------------------------------------
+  TE   Jake Tonges (SF)                   0.0 (bye/injured/no stats)
+
+
+W10 (Week 10):
+
+  Checked 108 players: 104 matched (96.3%)
+
+  [X] Players Not Found in Stats (4):
+  ----------------------------------------------------------------------
+  Pos  Player                           Excel Note                
+  ----------------------------------------------------------------------
+  K    Graham Gano (NYG)                  0.0 (bye/injured/no stats)
+  RB   Tony Pollard (TEN)                 0.0 (bye/injured/no stats)
+  WR   Travis Hunter (JAX)                0.0 (bye/injured/no stats)
+  K    Joshua Karty (LA)                  0.0 (bye/injured/no stats)
+
+
+W11 (Week 11):
+
+  Checked 108 players: 107 matched (99.1%)
+
+  [X] Players Not Found in Stats (1):
+  ----------------------------------------------------------------------
+  Pos  Player                           Excel Note                
+  ----------------------------------------------------------------------
+  K    Joshua Karty (LA)                  0.0 (bye/injured/no stats)
+
+
+W12 (Week 12):
+
+  Checked 108 players: 106 matched (98.1%)
+
+  [X] Players Not Found in Stats (2):
+  ----------------------------------------------------------------------
+  Pos  Player                           Excel Note                
+  ----------------------------------------------------------------------
+  WR   Jaylen Waddle (MIA)                0.0 (bye/injured/no stats)
+  WR   Brian Thomas Jr. (JAX)             0.0 (bye/injured/no stats)
+
+
+============================================================
+SUMMARY
+============================================================
+Total players checked: 1293
+Total matched: 1267 (98.0%)
+Total mismatches: 1
+Total not found: 25
+
+Results written to: scoring_validation.txt
