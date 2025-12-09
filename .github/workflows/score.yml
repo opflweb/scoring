@@ -1,0 +1,147 @@
+name: QPFL Autoscorer
+
+on:
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      week:
+        description: 'NFL Week number'
+        required: false
+        type: number
+      use_json:
+        description: 'Use JSON data source instead of Excel'
+        required: false
+        type: boolean
+        default: false
+  
+  # Trigger when lineups are updated (via API)
+  push:
+    paths:
+      - 'data/lineups/**'
+  
+  # Scheduled runs - 30 minutes after nflverse data updates
+  # Only runs during NFL season months (Jan, Feb, Sep-Dec)
+  schedule:
+    # Daily at 9:30 UTC / 5:30 AM ET (data updates at 9:00 UTC)
+    - cron: '30 9 * 1,2,9-12 *'
+    # TNF: 6:00 AM UTC / 1:00 AM ET Friday (data updates at 5:30 UTC)
+    - cron: '0 6 * 1,2,9-12 5'
+    # Sunday early window: 10:30 PM UTC / 5:30 PM ET (data updates at 22:00 UTC)
+    - cron: '30 22 * 1,2,9-12 0'
+    # Sunday late window: 0:35 UTC / 7:35 PM ET Monday (data updates at 0:05 UTC)
+    - cron: '35 0 * 1,2,9-12 1'
+    # SNF: 6:00 AM UTC / 1:00 AM ET Monday (data updates at 5:30 UTC)
+    - cron: '0 6 * 1,2,9-12 1'
+    # MNF: 6:00 AM UTC / 1:00 AM ET Tuesday (data updates at 5:30 UTC)
+    - cron: '0 6 * 1,2,9-12 2'
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    
+    steps:
+      - name: Trigger Time Check
+        id: check_window
+        run: |
+          # Always run for scheduled triggers (crons are set to specific times)
+          # Always run for manual dispatch
+          echo "in_window=true" >> $GITHUB_OUTPUT
+          export TZ='America/New_York'
+          echo "Trigger: ${{ github.event_name }}, Current ET: $(date)"
+      
+      - name: Checkout repository
+        if: steps.check_window.outputs.in_window == 'true'
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        if: steps.check_window.outputs.in_window == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        if: steps.check_window.outputs.in_window == 'true'
+        run: |
+          python -m pip install --upgrade pip
+          pip install nflreadpy polars openpyxl pandas python-docx
+      
+      - name: Determine current NFL week
+        if: steps.check_window.outputs.in_window == 'true'
+        id: week
+        run: |
+          WEEK="${{ github.event.inputs.week }}"
+          if [ -z "$WEEK" ]; then
+            # Calculate current NFL week based on date
+            # 2025 season starts Sept 4, 2025
+            WEEK=$(python -c "
+          from datetime import datetime, timedelta
+          import nflreadpy as nfl
+          
+          # Get current week from schedule
+          schedule = nfl.load_schedules(seasons=2025)
+          today = datetime.now().strftime('%Y-%m-%d')
+          
+          # Find games happening today or most recent
+          current_week = 1
+          for week in range(1, 19):
+              week_games = schedule.filter(schedule['week'] == week)
+              if week_games.height > 0:
+                  game_dates = week_games['gameday'].to_list()
+                  if any(d >= today for d in game_dates):
+                      current_week = week
+                      break
+                  current_week = week
+          
+          print(current_week)
+          ")
+          fi
+          echo "week=$WEEK" >> $GITHUB_OUTPUT
+          echo "Scoring NFL Week: $WEEK"
+      
+      - name: Run autoscorer
+        if: steps.check_window.outputs.in_window == 'true'
+        run: |
+          WEEK=${{ steps.week.outputs.week }}
+          python autoscorer.py --week $WEEK --sheet "Week $WEEK" --update
+      
+      - name: Export scores for web
+        if: steps.check_window.outputs.in_window == 'true'
+        run: |
+          # Use JSON mode if triggered by lineup push or explicitly requested
+          if [[ "${{ github.event_name }}" == "push" ]] || [[ "${{ github.event.inputs.use_json }}" == "true" ]]; then
+            python scripts/export_for_web.py --json
+          else
+            python scripts/export_for_web.py
+          fi
+      
+      - name: Commit updated scores
+        if: steps.check_window.outputs.in_window == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add "2025 Scores.xlsx" web/data.json web/images/ data/
+          git diff --staged --quiet || git commit -m "Update scores for Week ${{ steps.week.outputs.week }} - $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
+      
+      - name: Setup Pages
+        if: steps.check_window.outputs.in_window == 'true'
+        uses: actions/configure-pages@v4
+      
+      - name: Upload Pages artifact
+        if: steps.check_window.outputs.in_window == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./web
+      
+      - name: Deploy to GitHub Pages
+        if: steps.check_window.outputs.in_window == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4
+
