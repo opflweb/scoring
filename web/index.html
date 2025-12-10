@@ -666,6 +666,22 @@
         .roster-table .total-row td { border-bottom: none; }
         .roster-table .total-row .week-score { color: var(--accent-primary); }
 
+        .roster-table .season-total {
+            background: rgba(30, 144, 255, 0.1);
+            font-weight: 600;
+            color: var(--accent-tertiary) !important;
+        }
+
+        .roster-table th.total-col {
+            background: rgba(30, 144, 255, 0.15);
+            color: var(--accent-primary);
+        }
+
+        .roster-table .total-row .season-total {
+            background: rgba(30, 144, 255, 0.2);
+            color: var(--accent-primary) !important;
+        }
+
         /* Taxi Squad Section */
         .taxi-section {
             margin-top: 2rem;
@@ -1790,9 +1806,12 @@
                 const playersInPos = Object.values(rosterByPlayer).filter(p => p.position === pos);
                 if (playersInPos.length === 0) return;
 
-                tableRows += `<tr class="position-group"><td colspan="${weekNums.length + 2}">${pos}</td></tr>`;
+                tableRows += `<tr class="position-group"><td colspan="${weekNums.length + 3}">${pos}</td></tr>`;
                 
                 playersInPos.forEach(player => {
+                    // Calculate season total for this player (all weeks, regardless of starter status)
+                    const seasonTotal = Object.values(player.weeks).reduce((sum, w) => sum + (w.score || 0), 0);
+                    
                     tableRows += `
                         <tr>
                             <td><span class="player-name">${player.name}</span></td>
@@ -1803,6 +1822,7 @@
                                 const cls = weekData.starter ? 'starter' : 'bench';
                                 return `<td class="week-score ${cls}">${weekData.score}</td>`;
                             }).join('')}
+                            <td class="week-score season-total">${seasonTotal}</td>
                         </tr>
                     `;
                 });
@@ -1814,11 +1834,13 @@
                 const teamData = weekData?.teams?.find(t => t.abbrev === currentTeam);
                 return teamData?.total_score || 0;
             });
+            const seasonGrandTotal = totals.reduce((sum, t) => sum + t, 0);
 
             tableRows += `
                 <tr class="total-row">
                     <td colspan="2"><strong>TOTAL</strong></td>
                     ${totals.map(t => `<td class="week-score">${t}</td>`).join('')}
+                    <td class="week-score season-total">${seasonGrandTotal}</td>
                 </tr>
             `;
             
@@ -1889,6 +1911,7 @@
                                 <th>Player</th>
                                 <th>Team</th>
                                 ${weekNums.map(w => `<th class="week-col">W${w}</th>`).join('')}
+                                <th class="week-col total-col">Total</th>
                             </tr>
                         </thead>
                         <tbody>
