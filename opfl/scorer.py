@@ -118,26 +118,40 @@ class OPFLScorer:
         
         return result
     
-    def score_fantasy_team(self, team: FantasyTeam) -> Dict[str, List[PlayerScore]]:
-        """Score all started players on a fantasy team."""
+    def score_fantasy_team(self, team: FantasyTeam, starters_only: bool = False) -> Dict[str, List[PlayerScore]]:
+        """Score players on a fantasy team.
+        
+        Args:
+            team: The fantasy team to score
+            starters_only: If True, only score started players. If False, score all players.
+        """
         results = {}
         
         for position, players in team.players.items():
             results[position] = []
             
             for player_name, nfl_team, is_started in players:
-                if is_started:
-                    score = self.score_player(player_name, nfl_team, position)
-                    results[position].append(score)
+                if starters_only and not is_started:
+                    continue
+                score = self.score_player(player_name, nfl_team, position)
+                score.is_starter = is_started
+                results[position].append(score)
         
         return results
     
     @staticmethod
-    def calculate_team_total(scores: Dict[str, List[PlayerScore]]) -> float:
-        """Calculate total score for a fantasy team."""
+    def calculate_team_total(scores: Dict[str, List[PlayerScore]], starters_only: bool = True) -> float:
+        """Calculate total score for a fantasy team.
+        
+        Args:
+            scores: Dict mapping position to list of PlayerScore objects
+            starters_only: If True, only count starters. If False, count all players.
+        """
         total = 0.0
         for position_scores in scores.values():
             for score in position_scores:
+                if starters_only and not score.is_starter:
+                    continue
                 total += score.total_points
         return total
 
@@ -184,17 +198,18 @@ def score_week(
             for position, player_scores in scores.items():
                 for ps in player_scores:
                     status = "✓" if ps.found_in_stats else "✗"
+                    starter_marker = "*" if ps.is_starter else " "
                     matched = f" -> {ps.matched_name}" if ps.matched_name and ps.matched_name != ps.name else ""
-                    print(f"  {position} {ps.name} ({ps.team}){matched}: {ps.total_points:.1f} pts {status}")
+                    print(f"  {starter_marker} {position} {ps.name} ({ps.team}){matched}: {ps.total_points:.1f} pts {status}")
                     if ps.breakdown:
                         for key, val in ps.breakdown.items():
                             if key != 'floor_applied':
-                                print(f"      {key}: {val}")
+                                print(f"        {key}: {val}")
                             else:
-                                print(f"      (floor applied - points capped at 0)")
+                                print(f"        (floor applied - points capped at 0)")
                     if ps.data_notes:
                         for note in ps.data_notes:
-                            print(f"      ⚠️  {note}")
+                            print(f"        ⚠️  {note}")
             
             print(f"\n  TOTAL: {total:.1f} points")
         
