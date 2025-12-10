@@ -1,5 +1,5 @@
 {
-  "updated_at": "2025-12-10T01:31:39.883352Z",
+  "updated_at": "2025-12-10T18:01:09.886173Z",
   "season": 2025,
   "current_week": 15,
   "weeks": [
@@ -147,13 +147,6 @@
             {
               "name": "Ben Johnson",
               "nfl_team": "CHI",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "55.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -306,13 +299,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": false
-            },
-            {
-              "name": "18.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 18.0,
@@ -462,13 +448,6 @@
               "position": "HC",
               "score": 4,
               "starter": false
-            },
-            {
-              "name": "36.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 36.0,
@@ -615,13 +594,6 @@
             {
               "name": "Kevin Stefanski",
               "nfl_team": "CLE",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "70.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -774,20 +746,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": false
-            },
-            {
-              "name": "52.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 52.0,
@@ -936,13 +894,6 @@
               "nfl_team": "TB",
               "position": "HC",
               "score": 5,
-              "starter": false
-            },
-            {
-              "name": "51.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -1093,13 +1044,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "31.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 31.0,
@@ -1248,13 +1192,6 @@
               "nfl_team": "LAC",
               "position": "HC",
               "score": 6,
-              "starter": false
-            },
-            {
-              "name": "16.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -1405,20 +1342,6 @@
               "position": "HC",
               "score": 4,
               "starter": false
-            },
-            {
-              "name": "41.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 41.0,
@@ -1568,13 +1491,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "52.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 52.0,
@@ -1724,13 +1640,6 @@
               "position": "HC",
               "score": 5,
               "starter": true
-            },
-            {
-              "name": "45.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 45.0,
@@ -1877,13 +1786,6 @@
             {
               "name": "Brian Schottenheimer",
               "nfl_team": "DAL",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "42.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -2042,13 +1944,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": false
-            },
-            {
-              "name": "51.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 51.0,
@@ -2195,13 +2090,6 @@
             {
               "name": "DeMeco Ryans",
               "nfl_team": "HOU",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "66.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -2354,13 +2242,6 @@
               "position": "HC",
               "score": 6,
               "starter": false
-            },
-            {
-              "name": "56.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 56.0,
@@ -2507,13 +2388,6 @@
             {
               "name": "Kevin Stefanski",
               "nfl_team": "CLE",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "43.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -2666,20 +2540,6 @@
               "position": "HC",
               "score": 7,
               "starter": false
-            },
-            {
-              "name": "44.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 44.0,
@@ -2829,13 +2689,6 @@
               "position": "HC",
               "score": 7,
               "starter": true
-            },
-            {
-              "name": "44.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 44.0,
@@ -2984,13 +2837,6 @@
               "nfl_team": "SEA",
               "position": "HC",
               "score": 7,
-              "starter": false
-            },
-            {
-              "name": "37.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -3141,13 +2987,6 @@
               "position": "HC",
               "score": 5,
               "starter": false
-            },
-            {
-              "name": "59.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 59.0,
@@ -3294,20 +3133,6 @@
             {
               "name": "Liam Coen",
               "nfl_team": "JAX",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "24.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -3460,13 +3285,6 @@
               "position": "HC",
               "score": 7,
               "starter": false
-            },
-            {
-              "name": "54.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 54.0,
@@ -3613,13 +3431,6 @@
             {
               "name": "Kevin O'Connell",
               "nfl_team": "MIN",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "54.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -3772,13 +3583,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "58.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 58.0,
@@ -3934,13 +3738,6 @@
               "position": "HC",
               "score": 6,
               "starter": true
-            },
-            {
-              "name": "45.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 45.0,
@@ -4090,13 +3887,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "35.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 35.0,
@@ -4246,13 +4036,6 @@
               "position": "HC",
               "score": 5,
               "starter": true
-            },
-            {
-              "name": "42.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 42.0,
@@ -4402,13 +4185,6 @@
               "position": "HC",
               "score": 6,
               "starter": false
-            },
-            {
-              "name": "44.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 44.0,
@@ -4555,20 +4331,6 @@
             {
               "name": "Mike Vrabel",
               "nfl_team": "NE",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "63.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -4721,13 +4483,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "33.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 33.0,
@@ -4876,13 +4631,6 @@
               "nfl_team": "SEA",
               "position": "HC",
               "score": 4,
-              "starter": false
-            },
-            {
-              "name": "34.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -5033,13 +4781,6 @@
               "position": "HC",
               "score": 4,
               "starter": false
-            },
-            {
-              "name": "44.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 44.0,
@@ -5189,20 +4930,6 @@
               "position": "HC",
               "score": 4,
               "starter": false
-            },
-            {
-              "name": "49.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 49.0,
@@ -5349,13 +5076,6 @@
             {
               "name": "Raheem Morris",
               "nfl_team": "ATL",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "82.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -5508,13 +5228,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "46.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 46.0,
@@ -5664,13 +5377,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "30.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 30.0,
@@ -5826,13 +5532,6 @@
               "position": "HC",
               "score": 7,
               "starter": false
-            },
-            {
-              "name": "71.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 71.0,
@@ -5981,13 +5680,6 @@
               "nfl_team": "HOU",
               "position": "HC",
               "score": 4,
-              "starter": false
-            },
-            {
-              "name": "58.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -6138,13 +5830,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "42.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 42.0,
@@ -6291,13 +5976,6 @@
             {
               "name": "Kevin Stefanski",
               "nfl_team": "CLE",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "56.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -6450,20 +6128,6 @@
               "position": "HC",
               "score": 4,
               "starter": false
-            },
-            {
-              "name": "63.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 63.0,
@@ -6613,13 +6277,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "31.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 31.0,
@@ -6768,13 +6425,6 @@
               "nfl_team": "SEA",
               "position": "HC",
               "score": 5,
-              "starter": false
-            },
-            {
-              "name": "35.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -6925,13 +6575,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "21.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 21.0,
@@ -7080,20 +6723,6 @@
               "nfl_team": "JAX",
               "position": "HC",
               "score": 7,
-              "starter": false
-            },
-            {
-              "name": "65.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -7244,13 +6873,6 @@
               "position": "HC",
               "score": 4,
               "starter": false
-            },
-            {
-              "name": "36.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 36.0,
@@ -7400,13 +7022,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "48.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 48.0,
@@ -7553,13 +7168,6 @@
             {
               "name": "Brian Schottenheimer",
               "nfl_team": "DAL",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "66.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -7718,13 +7326,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": false
-            },
-            {
-              "name": "20.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 20.0,
@@ -7873,13 +7474,6 @@
               "nfl_team": "HOU",
               "position": "HC",
               "score": 5,
-              "starter": false
-            },
-            {
-              "name": "39.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -8030,13 +7624,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "84.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 84.0,
@@ -8183,13 +7770,6 @@
             {
               "name": "Kevin Stefanski",
               "nfl_team": "CLE",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "68.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -8342,20 +7922,6 @@
               "position": "HC",
               "score": 7,
               "starter": false
-            },
-            {
-              "name": "36.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 36.0,
@@ -8505,13 +8071,6 @@
               "position": "HC",
               "score": 7,
               "starter": true
-            },
-            {
-              "name": "56.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 56.0,
@@ -8661,13 +8220,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "33.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 33.0,
@@ -8817,13 +8369,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "49.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 49.0,
@@ -8973,20 +8518,6 @@
               "position": "HC",
               "score": 6,
               "starter": false
-            },
-            {
-              "name": "54.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 54.0,
@@ -9133,13 +8664,6 @@
             {
               "name": "Raheem Morris",
               "nfl_team": "ATL",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "57.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -9292,13 +8816,6 @@
               "position": "HC",
               "score": 5,
               "starter": true
-            },
-            {
-              "name": "40.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 40.0,
@@ -9448,13 +8965,6 @@
               "position": "HC",
               "score": 7,
               "starter": true
-            },
-            {
-              "name": "69.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 69.0,
@@ -9610,13 +9120,6 @@
               "position": "HC",
               "score": 7,
               "starter": false
-            },
-            {
-              "name": "47.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 47.0,
@@ -9763,13 +9266,6 @@
             {
               "name": "DeMeco Ryans",
               "nfl_team": "HOU",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "63.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -9922,13 +9418,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "58.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 58.0,
@@ -10075,13 +9564,6 @@
             {
               "name": "Kevin Stefanski",
               "nfl_team": "CLE",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "62.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -10234,20 +9716,6 @@
               "position": "HC",
               "score": 5,
               "starter": false
-            },
-            {
-              "name": "21.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 21.0,
@@ -10396,13 +9864,6 @@
               "nfl_team": "TB",
               "position": "HC",
               "score": 4,
-              "starter": false
-            },
-            {
-              "name": "46.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -10553,13 +10014,6 @@
               "position": "HC",
               "score": 5,
               "starter": false
-            },
-            {
-              "name": "28.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 28.0,
@@ -10709,13 +10163,6 @@
               "position": "HC",
               "score": 5,
               "starter": false
-            },
-            {
-              "name": "45.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 45.0,
@@ -10862,20 +10309,6 @@
             {
               "name": "Liam Coen",
               "nfl_team": "JAX",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "46.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -11028,13 +10461,6 @@
               "position": "HC",
               "score": 6,
               "starter": false
-            },
-            {
-              "name": "58.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 58.0,
@@ -11181,13 +10607,6 @@
             {
               "name": "Kevin O'Connell",
               "nfl_team": "MIN",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "49.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -11340,13 +10759,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "39.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 39.0,
@@ -11502,13 +10914,6 @@
               "position": "HC",
               "score": 4,
               "starter": false
-            },
-            {
-              "name": "56.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 56.0,
@@ -11655,13 +11060,6 @@
             {
               "name": "DeMeco Ryans",
               "nfl_team": "HOU",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "71.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -11814,13 +11212,6 @@
               "position": "HC",
               "score": 7,
               "starter": true
-            },
-            {
-              "name": "71.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 71.0,
@@ -11969,13 +11360,6 @@
               "nfl_team": "CLE",
               "position": "HC",
               "score": 4,
-              "starter": false
-            },
-            {
-              "name": "60.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -12126,20 +11510,6 @@
               "position": "HC",
               "score": 5,
               "starter": true
-            },
-            {
-              "name": "51.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 51.0,
@@ -12286,13 +11656,6 @@
             {
               "name": "Todd Bowles",
               "nfl_team": "TB",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "70.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -12445,13 +11808,6 @@
               "position": "HC",
               "score": 4,
               "starter": false
-            },
-            {
-              "name": "41.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 41.0,
@@ -12598,13 +11954,6 @@
             {
               "name": "Jim Harbaugh",
               "nfl_team": "LAC",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "53.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -12757,20 +12106,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": false
-            },
-            {
-              "name": "30.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 30.0,
@@ -12920,13 +12255,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "51.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 51.0,
@@ -13076,13 +12404,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "67.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 67.0,
@@ -13232,13 +12553,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "44.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 44.0,
@@ -13394,13 +12708,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "17.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 17.0,
@@ -13550,13 +12857,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "56.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 56.0,
@@ -13706,13 +13006,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "43.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 43.0,
@@ -13859,13 +13152,6 @@
             {
               "name": "Kevin Stefanski",
               "nfl_team": "CLE",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "46.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -14018,20 +13304,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "51.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 51.0,
@@ -14181,13 +13453,6 @@
               "position": "HC",
               "score": 5,
               "starter": true
-            },
-            {
-              "name": "37.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 37.0,
@@ -14334,13 +13599,6 @@
             {
               "name": "Mike Macdonald",
               "nfl_team": "SEA",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "45.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -14493,13 +13751,6 @@
               "position": "HC",
               "score": 4,
               "starter": false
-            },
-            {
-              "name": "33.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 33.0,
@@ -14646,20 +13897,6 @@
             {
               "name": "Liam Coen",
               "nfl_team": "JAX",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "31.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -14812,13 +14049,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": false
-            },
-            {
-              "name": "81.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 81.0,
@@ -14965,13 +14195,6 @@
             {
               "name": "Kevin O'Connell",
               "nfl_team": "MIN",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "71.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -15124,13 +14347,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "71.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 71.0,
@@ -15286,13 +14502,6 @@
               "position": "HC",
               "score": 5,
               "starter": false
-            },
-            {
-              "name": "50.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 50.0,
@@ -15439,13 +14648,6 @@
             {
               "name": "DeMeco Ryans",
               "nfl_team": "HOU",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "22.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -15598,13 +14800,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": false
-            },
-            {
-              "name": "38.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 38.0,
@@ -15751,13 +14946,6 @@
             {
               "name": "Kevin Stefanski",
               "nfl_team": "CLE",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "54.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -15910,20 +15098,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "46.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 46.0,
@@ -16070,13 +15244,6 @@
             {
               "name": "Todd Bowles",
               "nfl_team": "TB",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "54.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -16229,13 +15396,6 @@
               "position": "HC",
               "score": 5,
               "starter": false
-            },
-            {
-              "name": "28.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 28.0,
@@ -16385,13 +15545,6 @@
               "position": "HC",
               "score": 5,
               "starter": true
-            },
-            {
-              "name": "51.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 51.0,
@@ -16541,20 +15694,6 @@
               "position": "HC",
               "score": 5,
               "starter": true
-            },
-            {
-              "name": "88.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 88.0,
@@ -16704,13 +15843,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "47.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 47.0,
@@ -16859,13 +15991,6 @@
               "nfl_team": "MIN",
               "position": "HC",
               "score": 7,
-              "starter": false
-            },
-            {
-              "name": "26.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -17016,13 +16141,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "39.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 39.0,
@@ -17178,13 +16296,6 @@
               "position": "HC",
               "score": 4,
               "starter": false
-            },
-            {
-              "name": "71.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 71.0,
@@ -17333,13 +16444,6 @@
               "nfl_team": "HOU",
               "position": "HC",
               "score": 6,
-              "starter": false
-            },
-            {
-              "name": "56.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -17490,13 +16594,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "38.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 38.0,
@@ -17643,13 +16740,6 @@
             {
               "name": "Kevin Stefanski",
               "nfl_team": "CLE",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "39.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -17802,20 +16892,6 @@
               "position": "HC",
               "score": 7,
               "starter": false
-            },
-            {
-              "name": "59.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 59.0,
@@ -17962,13 +17038,6 @@
             {
               "name": "Todd Bowles",
               "nfl_team": "TB",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "63.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -18121,13 +17190,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "36.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 36.0,
@@ -18277,13 +17339,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "46.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 46.0,
@@ -18433,20 +17488,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "28.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 28.0,
@@ -18593,13 +17634,6 @@
             {
               "name": "Raheem Morris",
               "nfl_team": "ATL",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "68.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -18752,13 +17786,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "21.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 21.0,
@@ -18905,13 +17932,6 @@
             {
               "name": "Brian Schottenheimer",
               "nfl_team": "DAL",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "45.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -19070,13 +18090,6 @@
               "position": "HC",
               "score": 7,
               "starter": true
-            },
-            {
-              "name": "33.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 33.0,
@@ -19226,13 +18239,6 @@
               "position": "HC",
               "score": 5,
               "starter": true
-            },
-            {
-              "name": "38.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 38.0,
@@ -19379,13 +18385,6 @@
             {
               "name": "Shane Steichen",
               "nfl_team": "IND",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "57.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -19538,13 +18537,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": false
-            },
-            {
-              "name": "41.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 41.0,
@@ -19694,20 +18686,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "57.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 57.0,
@@ -19854,13 +18832,6 @@
             {
               "name": "Todd Bowles",
               "nfl_team": "TB",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "32.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -20013,13 +18984,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": false
-            },
-            {
-              "name": "48.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 48.0,
@@ -20166,13 +19130,6 @@
             {
               "name": "Jim Harbaugh",
               "nfl_team": "LAC",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "63.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -20325,20 +19282,6 @@
               "position": "HC",
               "score": 6,
               "starter": false
-            },
-            {
-              "name": "45.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 45.0,
@@ -20485,13 +19428,6 @@
             {
               "name": "Raheem Morris",
               "nfl_team": "ATL",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "53.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -20644,13 +19580,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "38.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 38.0,
@@ -20800,13 +19729,6 @@
               "position": "HC",
               "score": 5,
               "starter": true
-            },
-            {
-              "name": "25.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 25.0,
@@ -20962,13 +19884,6 @@
               "position": "HC",
               "score": 4,
               "starter": false
-            },
-            {
-              "name": "41.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 41.0,
@@ -21118,13 +20033,6 @@
               "position": "HC",
               "score": 6,
               "starter": true
-            },
-            {
-              "name": "61.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 61.0,
@@ -21271,13 +20179,6 @@
             {
               "name": "Shane Steichen",
               "nfl_team": "IND",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "42.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -21430,13 +20331,6 @@
               "position": "HC",
               "score": 7,
               "starter": false
-            },
-            {
-              "name": "35.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 35.0,
@@ -21586,20 +20480,6 @@
               "position": "HC",
               "score": 5,
               "starter": true
-            },
-            {
-              "name": "36.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 36.0,
@@ -21746,13 +20626,6 @@
             {
               "name": "Todd Bowles",
               "nfl_team": "TB",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "59.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -21905,13 +20778,6 @@
               "position": "HC",
               "score": 5,
               "starter": true
-            },
-            {
-              "name": "60.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 60.0,
@@ -22058,13 +20924,6 @@
             {
               "name": "Jim Harbaugh",
               "nfl_team": "LAC",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "52.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -22217,20 +21076,6 @@
               "position": "HC",
               "score": 5,
               "starter": false
-            },
-            {
-              "name": "53.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 53.0,
@@ -22379,13 +21224,6 @@
               "nfl_team": "ATL",
               "position": "HC",
               "score": 7,
-              "starter": false
-            },
-            {
-              "name": "51.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -22536,13 +21374,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "34.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 34.0,
@@ -22692,13 +21523,6 @@
               "position": "HC",
               "score": 6,
               "starter": true
-            },
-            {
-              "name": "44.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 44.0,
@@ -22854,13 +21678,6 @@
               "position": "HC",
               "score": 7,
               "starter": false
-            },
-            {
-              "name": "56.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 56.0,
@@ -23010,13 +21827,6 @@
               "position": "HC",
               "score": 7,
               "starter": false
-            },
-            {
-              "name": "25.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 25.0,
@@ -23163,13 +21973,6 @@
             {
               "name": "Shane Steichen",
               "nfl_team": "IND",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "47.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -23322,13 +22125,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": false
-            },
-            {
-              "name": "34.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 34.0,
@@ -23478,20 +22274,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "35.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 35.0,
@@ -23641,13 +22423,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "75.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 75.0,
@@ -23797,13 +22572,6 @@
               "position": "HC",
               "score": 4,
               "starter": true
-            },
-            {
-              "name": "50.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 50.0,
@@ -23952,13 +22720,6 @@
               "nfl_team": "LAC",
               "position": "HC",
               "score": 4,
-              "starter": false
-            },
-            {
-              "name": "47.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],
@@ -24109,20 +22870,6 @@
               "position": "HC",
               "score": 5,
               "starter": true
-            },
-            {
-              "name": "74.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 74.0,
@@ -24272,13 +23019,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": true
-            },
-            {
-              "name": "30.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 30.0,
@@ -24425,13 +23165,6 @@
             {
               "name": "Kevin O'Connell",
               "nfl_team": "MIN",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
-            },
-            {
-              "name": "52.0",
-              "nfl_team": "",
               "position": "HC",
               "score": 0.0,
               "starter": false
@@ -24584,13 +23317,6 @@
               "position": "HC",
               "score": 6,
               "starter": true
-            },
-            {
-              "name": "33.0",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 33.0,
@@ -25342,13 +24068,6 @@
               "position": "HC",
               "score": 0.0,
               "starter": false
-            },
-            {
-              "name": "325-1289 (J)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
-              "starter": false
             }
           ],
           "total_score": 52.0,
@@ -25944,13 +24663,6 @@
               "nfl_team": "JAX",
               "position": "HC",
               "score": 6,
-              "starter": false
-            },
-            {
-              "name": "421-1634 (W)",
-              "nfl_team": "",
-              "position": "HC",
-              "score": 0.0,
               "starter": false
             }
           ],

@@ -81,11 +81,30 @@ def is_valid_player_name(name, position):
     """Check if a player name is valid (not just a number or empty)."""
     if not name:
         return False
-    # For HC position, filter out numeric entries (jersey numbers etc.)
+    
+    # Filter out numeric entries (scores, jersey numbers, etc.)
+    # These can appear as integers, floats, or string representations thereof
+    try:
+        float(name)
+        # If we get here, the name is purely numeric - not a valid player/coach name
+        return False
+    except (ValueError, TypeError):
+        pass
+    
+    # Filter out phone numbers (patterns like "325-1289" or "325-1289 (J)")
+    import re
+    if re.match(r'^\d{3}-\d{4}', name):
+        return False
+    
+    # For HC position, do additional validation
     if position == 'HC':
-        # If the name is just digits, it's not a valid coach name
-        if name.isdigit():
+        # Head coach names should contain letters
+        if not any(c.isalpha() for c in name):
             return False
+        # Name should start with a letter (coach names don't start with numbers)
+        if not name[0].isalpha():
+            return False
+    
     return True
 
 
