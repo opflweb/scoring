@@ -4,6 +4,7 @@
 import json
 import re
 import os
+import sys
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
@@ -11,6 +12,11 @@ from typing import Any
 
 import nflreadpy as nfl
 import openpyxl
+
+# Add project root to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from opfl import OPFLScorer, parse_roster_from_excel
 
 OWNER_TO_CODE = {
     'KIRK/DAVID': 'K/D',
@@ -111,7 +117,68 @@ def extract_team_name(header_value):
     return str(header_value).strip(), ""
 
 
-def export_week(ws, week_num):
+def export_week(ws, week_num, excel_path, season=2025):
+    """Export a week's data, using autoscorer to calculate ALL player scores."""
+    teams_data = []
+    
+    # Use autoscorer to get scores for ALL players (starters and bench)
+    sheet_name = f"W{week_num}"
+    try:
+        fantasy_teams = parse_roster_from_excel(excel_path, sheet_name)
+        scorer = OPFLScorer(season, week_num)
+        
+        for team in fantasy_teams:
+            team_name = team.name
+            abbrev = OWNER_TO_CODE.get(team_name, team_name[:3].upper())
+            roster = []
+            total_score = 0.0
+            
+            # Score ALL players on the team
+            scores = scorer.score_fantasy_team(team, starters_only=False)
+            
+            for position, player_scores in scores.items():
+                for ps in player_scores:
+                    if is_valid_player_name(ps.name, position):
+                        roster.append({
+                            'name': ps.name,
+                            'nfl_team': ps.team,
+                            'position': position,
+                            'score': round(ps.total_points, 1),
+                            'starter': ps.is_starter,
+                        })
+                        # Only starters count toward team total
+                        if ps.is_starter:
+                            total_score += ps.total_points
+            
+            if roster:
+                teams_data.append({
+                    'name': team_name,
+                    'owner': team_name,
+                    'abbrev': abbrev,
+                    'roster': roster,
+                    'total_score': round(total_score, 1),
+                })
+        
+        print(f"  Week {week_num}: Scored {len(teams_data)} teams with autoscorer")
+        
+    except Exception as e:
+        print(f"  Week {week_num}: Autoscorer failed ({e}), falling back to Excel scores")
+        # Fallback to reading from Excel if autoscorer fails
+        teams_data = export_week_from_excel(ws, week_num)
+    
+    sorted_by_score = sorted(teams_data, key=lambda t: t['total_score'], reverse=True)
+    for rank, team in enumerate(sorted_by_score, 1):
+        team['score_rank'] = rank
+    
+    return {
+        'week': week_num,
+        'teams': teams_data,
+        'has_scores': any(t['total_score'] > 0 for t in teams_data),
+    }
+
+
+def export_week_from_excel(ws, week_num):
+    """Fallback: Export week data from Excel only (no backup scores)."""
     teams_data = []
     blocks = [(1, 1, 38), (39, 39, 80)]
     
@@ -160,15 +227,7 @@ def export_week(ws, week_num):
                     'total_score': round(total_score, 1),
                 })
     
-    sorted_by_score = sorted(teams_data, key=lambda t: t['total_score'], reverse=True)
-    for rank, team in enumerate(sorted_by_score, 1):
-        team['score_rank'] = rank
-    
-    return {
-        'week': week_num,
-        'teams': teams_data,
-        'has_scores': any(t['total_score'] > 0 for t in teams_data),
-    }
+    return teams_data
 
 
 def get_current_nfl_week():
@@ -300,8 +359,9 @@ def export_all_weeks(excel_path):
             week_sheets.append((int(match.group(1)), sheet_name))
     week_sheets.sort(key=lambda x: x[0])
     
+    print("Scoring all weeks with autoscorer (this may take a moment)...")
     for week_num, sheet_name in week_sheets:
-        weeks.append(export_week(wb[sheet_name], week_num))
+        weeks.append(export_week(wb[sheet_name], week_num, excel_path))
     
     current_nfl_week = get_current_nfl_week()
     print(f"Current NFL week: {current_nfl_week}, standings include weeks 1-{current_nfl_week - 1}")
