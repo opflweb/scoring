@@ -107,6 +107,161 @@
             flex-wrap: wrap;
         }
 
+        /* Schedule Page */
+        .schedule-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .schedule-week {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .schedule-week:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(30, 144, 255, 0.15);
+        }
+
+        .schedule-week.current {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 20px rgba(30, 144, 255, 0.25);
+        }
+
+        .schedule-week-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            background: var(--bg-hover);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .schedule-week-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            color: var(--accent-primary);
+        }
+
+        .schedule-week.current .schedule-week-title {
+            color: var(--accent-gold);
+        }
+
+        .schedule-week-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            text-transform: uppercase;
+        }
+
+        .schedule-week-badge.complete {
+            background: rgba(0, 221, 119, 0.15);
+            color: var(--win);
+        }
+
+        .schedule-week-badge.current {
+            background: rgba(255, 215, 0, 0.15);
+            color: var(--accent-gold);
+        }
+
+        .schedule-week-badge.upcoming {
+            background: rgba(136, 153, 187, 0.15);
+            color: var(--text-muted);
+        }
+
+        .schedule-matchups {
+            padding: 0.75rem;
+        }
+
+        .schedule-matchup {
+            display: flex;
+            align-items: center;
+            padding: 0.6rem 0.5rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s ease;
+        }
+
+        .schedule-matchup:hover {
+            background: var(--bg-hover);
+        }
+
+        .schedule-matchup + .schedule-matchup {
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .schedule-team {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .schedule-team.away {
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        .schedule-team-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .schedule-team.winner .schedule-team-name {
+            color: var(--win);
+            font-weight: 600;
+        }
+
+        .schedule-team.loser .schedule-team-name {
+            color: var(--text-muted);
+        }
+
+        .schedule-score-box {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0 1rem;
+            min-width: 90px;
+            justify-content: center;
+        }
+
+        .schedule-score {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 600;
+            min-width: 32px;
+            text-align: center;
+        }
+
+        .schedule-score.winning {
+            color: var(--win);
+        }
+
+        .schedule-score.losing {
+            color: var(--text-muted);
+        }
+
+        .schedule-vs {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .schedule-no-score {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
         .nav-btn {
             padding: 0.5rem 1.5rem;
             font-family: 'Outfit', sans-serif;
@@ -858,6 +1013,9 @@
             .team-selector { gap: 0.25rem; }
             .team-btn { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
             .banners-grid { grid-template-columns: 1fr; }
+            .schedule-grid { grid-template-columns: 1fr; }
+            .schedule-team-name { font-size: 0.8rem; }
+            .schedule-score-box { min-width: 70px; padding: 0 0.5rem; }
         }
     </style>
 </head>
@@ -871,6 +1029,7 @@
 
         <nav>
             <button class="nav-btn active" data-section="matchups">Matchups</button>
+            <button class="nav-btn" data-section="schedule">Schedule</button>
             <button class="nav-btn" data-section="standings">Standings</button>
             <button class="nav-btn" data-section="teams">Teams</button>
             <button class="nav-btn" data-section="rules">Rules</button>
@@ -888,6 +1047,19 @@
                         Loading...
         </div>
         </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section id="schedule" class="section">
+                <div class="schedule-container">
+                    <h2 class="section-title">2025 SEASON SCHEDULE</h2>
+                    <div class="schedule-grid" id="schedule-container">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            Loading schedule...
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Standings Section -->
@@ -1226,7 +1398,9 @@
             try {
                 const response = await fetch('data.json');
                 data = await response.json();
-                currentWeek = data.current_week || 1;
+                // Default to the most recent week that has data
+                const availableWeeks = (data.weeks || []).map(w => w.week);
+                currentWeek = availableWeeks.length > 0 ? Math.max(...availableWeeks) : 1;
                 initApp();
             } catch (error) {
                 console.error('Error loading data:', error);
@@ -1255,6 +1429,7 @@
             
             renderWeekSelector();
             renderMatchups();
+            renderSchedule();
             renderStandings();
             renderTeamSelector();
             renderHistory();
@@ -1281,6 +1456,111 @@
                     renderMatchups();
                 });
             });
+        }
+
+        function renderSchedule() {
+            const container = document.getElementById('schedule-container');
+            const currentWeekNum = data.current_week || 1;
+            const weeks = data.weeks || [];
+            
+            // Create lookup for week data
+            const weekDataMap = {};
+            weeks.forEach(w => {
+                weekDataMap[w.week] = w;
+            });
+
+            // Build schedule for all 15 weeks
+            let html = '';
+            for (let weekNum = 1; weekNum <= 15; weekNum++) {
+                const schedule = SCHEDULE[weekNum];
+                const weekData = weekDataMap[weekNum];
+                const isCurrent = weekNum === currentWeekNum;
+                const isComplete = weekNum < currentWeekNum;
+                const isUpcoming = weekNum > currentWeekNum;
+                
+                // Get team data for this week
+                const teamsByAbbrev = {};
+                if (weekData?.teams) {
+                    weekData.teams.forEach(t => {
+                        teamsByAbbrev[t.abbrev] = t;
+                    });
+                }
+
+                // Determine badge
+                let badgeClass = 'upcoming';
+                let badgeText = 'Upcoming';
+                if (isCurrent) {
+                    badgeClass = 'current';
+                    badgeText = 'Current';
+                } else if (isComplete) {
+                    badgeClass = 'complete';
+                    badgeText = 'Complete';
+                }
+
+                // Build matchups HTML
+                const matchupsHtml = schedule.map(([num1, num2]) => {
+                    const abbrev1 = TEAM_NUMBER_MAP[num1];
+                    const abbrev2 = TEAM_NUMBER_MAP[num2];
+                    const team1 = teamsByAbbrev[abbrev1];
+                    const team2 = teamsByAbbrev[abbrev2];
+                    
+                    const hasScores = team1 && team2 && (team1.total_score > 0 || team2.total_score > 0);
+                    const score1 = team1?.total_score || 0;
+                    const score2 = team2?.total_score || 0;
+                    const team1Winning = score1 > score2;
+                    const team2Winning = score2 > score1;
+                    
+                    // Get team names from standings if not in week data
+                    const team1Name = team1?.name || data.standings?.find(s => s.abbrev === abbrev1)?.name || abbrev1;
+                    const team2Name = team2?.name || data.standings?.find(s => s.abbrev === abbrev2)?.name || abbrev2;
+
+                    if (hasScores || isComplete) {
+                        return `
+                            <div class="schedule-matchup">
+                                <div class="schedule-team ${team1Winning ? 'winner' : team2Winning ? 'loser' : ''}">
+                                    <span class="schedule-team-name">${team1Name}</span>
+                                </div>
+                                <div class="schedule-score-box">
+                                    <span class="schedule-score ${team1Winning ? 'winning' : ''}">${score1}</span>
+                                    <span class="schedule-vs">-</span>
+                                    <span class="schedule-score ${team2Winning ? 'winning' : ''}">${score2}</span>
+                                </div>
+                                <div class="schedule-team away ${team2Winning ? 'winner' : team1Winning ? 'loser' : ''}">
+                                    <span class="schedule-team-name">${team2Name}</span>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        return `
+                            <div class="schedule-matchup">
+                                <div class="schedule-team">
+                                    <span class="schedule-team-name">${team1Name}</span>
+                                </div>
+                                <div class="schedule-score-box">
+                                    <span class="schedule-no-score">vs</span>
+                                </div>
+                                <div class="schedule-team away">
+                                    <span class="schedule-team-name">${team2Name}</span>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }).join('');
+
+                html += `
+                    <div class="schedule-week ${isCurrent ? 'current' : ''}">
+                        <div class="schedule-week-header">
+                            <span class="schedule-week-title">Week ${weekNum}</span>
+                            <span class="schedule-week-badge ${badgeClass}">${badgeText}</span>
+                        </div>
+                        <div class="schedule-matchups">
+                            ${matchupsHtml}
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
         }
 
         function renderMatchups() {
