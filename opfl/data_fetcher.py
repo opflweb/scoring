@@ -27,12 +27,16 @@ def normalize_name(name: str) -> str:
     Normalize a player name for matching.
     
     Removes suffixes, converts to lowercase, and removes extra whitespace.
+    Also removes unclosed parentheses that can break regex matching.
     """
     # Remove common suffixes
     name = re.sub(r'\s+(Sr\.?|Jr\.?|II|III|IV|V)$', '', name.strip(), flags=re.IGNORECASE)
     # Remove periods and extra whitespace
     name = re.sub(r'\.', '', name)
     name = re.sub(r'\s+', ' ', name)
+    # Remove unclosed parentheses (e.g., "Tank Bigsby (JAX" without closing paren)
+    # This can happen with malformed Excel data
+    name = re.sub(r'\s*\([^)]*$', '', name)
     return name.lower().strip()
 
 
@@ -199,9 +203,9 @@ class NFLDataFetcher:
             self._player_name_cache[cache_key] = result.get('player_display_name')
             return result
         
-        # Try contains match (also remove periods)
+        # Try contains match (also remove periods) - use literal=True to avoid regex issues
         matches = team_stats.filter(
-            pl.col('player_display_name').str.to_lowercase().str.replace_all(r'\.', '').str.contains(clean_name)
+            pl.col('player_display_name').str.to_lowercase().str.replace_all(r'\.', '').str.contains(clean_name, literal=True)
         )
         if matches.height > 0:
             result = matches.row(0, named=True)
@@ -213,7 +217,7 @@ class NFLDataFetcher:
         if len(name_parts) >= 2:
             last_name = name_parts[-1].lower()
             matches = team_stats.filter(
-                pl.col('player_display_name').str.to_lowercase().str.replace_all(r'\.', '').str.contains(last_name)
+                pl.col('player_display_name').str.to_lowercase().str.replace_all(r'\.', '').str.contains(last_name, literal=True)
             )
             if matches.height == 1:
                 result = matches.row(0, named=True)

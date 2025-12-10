@@ -33,6 +33,33 @@ TEAM_COLUMNS = [4, 7, 10, 13, 16, 19]
 POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DF', 'HC']
 TRADE_DEADLINE_WEEK = 12
 
+# 2025 OPFL Schedule - Team numbers mapped to abbreviations
+# (1) Kemp/A/M, (2) Danny/Joey, (3) Steve L., (4) Kirk/David, (5) Kevin, (6) Eric/Jeff
+# (7) Wes/Bill, (8) Andrew, (9) Jarrett/Matt, (10) Adam, (11) John, (12) Greg/Griffin
+TEAM_NUMBER_MAP = {
+    1: 'KAM', 2: 'D/J', 3: 'STL', 4: 'K/D', 5: 'KEV', 6: 'E/J',
+    7: 'W/B', 8: 'AND', 9: 'J/M', 10: 'ADA', 11: 'JOH', 12: 'G/G'
+}
+
+# Schedule: dict of week -> list of matchups (team1_num, team2_num)
+SCHEDULE = {
+    1:  [[1,2], [3,4], [5,6], [7,8], [9,10], [11,12]],
+    2:  [[1,3], [2,4], [5,7], [6,8], [9,11], [10,12]],
+    3:  [[1,4], [2,5], [3,6], [7,10], [8,11], [9,12]],
+    4:  [[1,5], [2,6], [3,7], [4,9], [8,12], [10,11]],
+    5:  [[1,6], [2,7], [3,12], [4,10], [5,11], [8,9]],
+    6:  [[1,7], [2,8], [3,9], [4,12], [5,10], [6,11]],
+    7:  [[1,8], [2,9], [3,10], [4,11], [5,12], [6,7]],
+    8:  [[1,9], [2,10], [3,11], [4,6], [5,8], [7,12]],
+    9:  [[1,10], [2,11], [3,8], [4,5], [7,9], [6,12]],
+    10: [[1,11], [2,12], [3,5], [4,7], [6,9], [8,10]],
+    11: [[1,12], [2,3], [4,8], [5,9], [6,10], [7,11]],
+    12: [[1,2], [3,4], [5,6], [7,8], [9,10], [11,12]],
+    13: [[1,3], [2,4], [5,7], [6,8], [9,11], [10,12]],
+    14: [[1,4], [2,5], [3,6], [7,10], [8,11], [9,12]],
+    15: [[1,5], [2,6], [3,7], [4,9], [8,12], [10,11]]
+}
+
 
 def parse_player_name(cell_value):
     if not cell_value:
@@ -42,6 +69,18 @@ def parse_player_name(cell_value):
     if match:
         return match.group(1).strip(), match.group(2).upper()
     return cell_value, ""
+
+
+def is_valid_player_name(name, position):
+    """Check if a player name is valid (not just a number or empty)."""
+    if not name:
+        return False
+    # For HC position, filter out numeric entries (jersey numbers etc.)
+    if position == 'HC':
+        # If the name is just digits, it's not a valid coach name
+        if name.isdigit():
+            return False
+    return True
 
 
 def find_position_rows(ws, start_row, end_row):
@@ -101,7 +140,7 @@ def export_week(ws, week_num):
                         is_starter = star_cell.value == '*'
                         score = float(score_cell.value) if score_cell.value else 0.0
                         
-                        if player_name:
+                        if player_name and is_valid_player_name(player_name, position):
                             roster.append({
                                 'name': player_name,
                                 'nfl_team': nfl_team,
@@ -236,20 +275,17 @@ def format_picks_for_output(picks):
     return formatted
 
 
-def extract_banners(docx_path, output_dir):
-    os.makedirs(output_dir, exist_ok=True)
-    images = []
-    try:
-        with zipfile.ZipFile(docx_path, 'r') as z:
-            for name in z.namelist():
-                if name.startswith('word/media/'):
-                    img_name = name.split('/')[-1]
-                    with open(os.path.join(output_dir, img_name), 'wb') as f:
-                        f.write(z.read(name))
-                    images.append(img_name)
-    except Exception as e:
-        print(f"Warning: Could not extract banners: {e}")
-    return sorted(images)
+def get_existing_banners(banners_dir):
+    """Get list of banner images from directory, sorted by year descending."""
+    if not os.path.exists(banners_dir):
+        return []
+    images = [f for f in os.listdir(banners_dir) if f.endswith('.png')]
+    def get_year(filename):
+        try:
+            return int(filename.replace('.png', ''))
+        except ValueError:
+            return 0
+    return sorted(images, key=get_year, reverse=True)
 
 
 def export_all_weeks(excel_path):
@@ -274,8 +310,13 @@ def export_all_weeks(excel_path):
         if not week_data.get('has_scores', False) or week_data['week'] >= current_nfl_week:
             continue
         
+        week_num = week_data['week']
+        
+        # Build team score lookup for this week
+        team_scores = {}
         for team in week_data['teams']:
             abbrev = team['abbrev']
+            team_scores[abbrev] = team['total_score']
             if abbrev not in standings:
                 standings[abbrev] = {
                     'name': team['name'],
@@ -291,6 +332,45 @@ def export_all_weeks(excel_path):
                 }
             standings[abbrev]['points_for'] += team['total_score']
         
+        # Calculate wins/losses/ties based on schedule matchups
+        if week_num in SCHEDULE:
+            for team1_num, team2_num in SCHEDULE[week_num]:
+                abbrev1 = TEAM_NUMBER_MAP.get(team1_num)
+                abbrev2 = TEAM_NUMBER_MAP.get(team2_num)
+                
+                if abbrev1 in team_scores and abbrev2 in team_scores:
+                    score1 = team_scores[abbrev1]
+                    score2 = team_scores[abbrev2]
+                    
+                    # Update points against
+                    if abbrev1 in standings:
+                        standings[abbrev1]['points_against'] += score2
+                    if abbrev2 in standings:
+                        standings[abbrev2]['points_against'] += score1
+                    
+                    # Determine win/loss/tie
+                    if score1 > score2:
+                        if abbrev1 in standings:
+                            standings[abbrev1]['wins'] += 1
+                            standings[abbrev1]['rank_points'] += 1
+                        if abbrev2 in standings:
+                            standings[abbrev2]['losses'] += 1
+                    elif score2 > score1:
+                        if abbrev2 in standings:
+                            standings[abbrev2]['wins'] += 1
+                            standings[abbrev2]['rank_points'] += 1
+                        if abbrev1 in standings:
+                            standings[abbrev1]['losses'] += 1
+                    else:
+                        # Tie
+                        if abbrev1 in standings:
+                            standings[abbrev1]['ties'] += 1
+                            standings[abbrev1]['rank_points'] += 0.5
+                        if abbrev2 in standings:
+                            standings[abbrev2]['ties'] += 1
+                            standings[abbrev2]['rank_points'] += 0.5
+        
+        # Calculate top 6 scoring bonus (0.5 points each)
         teams_by_score = sorted(week_data['teams'], key=lambda x: x['total_score'], reverse=True)
         current_rank = 1
         i = 0
@@ -360,10 +440,10 @@ def main():
         print('Parsing draft picks...')
         data['draft_picks'] = parse_draft_picks(str(draft_picks_path))
     
-    banner_docx = project_dir / 'OPFL Banner Room.docx'
-    if banner_docx.exists():
-        print('Extracting banners...')
-        data['banners'] = extract_banners(str(banner_docx), str(project_dir / 'web' / 'images' / 'banners'))
+    banners_dir = project_dir / 'web' / 'images' / 'banners'
+    if banners_dir.exists():
+        print('Loading banners...')
+        data['banners'] = get_existing_banners(str(banners_dir))
     
     with open(output_path, 'w') as f:
         json.dump(data, f, indent=2)
