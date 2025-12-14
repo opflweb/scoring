@@ -109,7 +109,7 @@ jobs:
         if: steps.check_window.outputs.in_window == 'true'
         run: |
           WEEK=${{ steps.week.outputs.week }}
-          python autoscorer.py --week $WEEK --sheet "Week $WEEK" --update
+          python autoscorer.py --week $WEEK --sheet "W$WEEK" --update
       
       - name: Export scores for web
         if: steps.check_window.outputs.in_window == 'true'
