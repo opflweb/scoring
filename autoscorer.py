@@ -17,7 +17,7 @@ def main():
     parser = argparse.ArgumentParser(description="OPFL Fantasy Football Autoscorer")
     parser.add_argument(
         "--excel", "-e",
-        default="OPFL Scoring 2025.xlsx",
+        default="Griff OPFL Scoring 2025.xlsx",
         help="Path to the Excel file with rosters",
     )
     parser.add_argument(
