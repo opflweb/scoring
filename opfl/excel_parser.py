@@ -279,9 +279,6 @@ def update_excel_scores(
                 continue
             
             for player_name, nfl_team, is_started in player_list:
-                if not is_started:
-                    continue
-                
                 player_score = None
                 for ps in scores[position]:
                     if ps.name == player_name:

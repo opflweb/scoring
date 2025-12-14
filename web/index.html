@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oakland Perennial Football League</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* OPFL Blue color scheme - inspired by the championship banners */
+            --bg-deep: #0a0e14;
+            --bg-card: #0f1520;
+            --bg-hover: #151d2a;
+            --accent-primary: #1e90ff;
+            --accent-secondary: #ff4444;
+            --accent-tertiary: #5cb3ff;
+            --accent-gold: #ffd700;
+            --text-primary: #ffffff;
+            --text-secondary: #8899bb;
+            --text-muted: #556688;
+            --border: #1e2a3a;
+            --win: #00dd77;
+            --loss: #ff3366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(ellipse at 20% 20%, rgba(30, 144, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(92, 179, 255, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 0.2em;
+            color: var(--accent-primary);
+            text-align: center;
+            text-shadow: 0 0 60px rgba(30, 144, 255, 0.4);
+        }
+
+        .logo span {
+            color: var(--text-secondary);
+            font-size: 0.45em;
+            letter-spacing: 0.08em;
+        }
+
+        .season-badge {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.25rem 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            background: rgba(30, 144, 255, 0.1);
+        }
+
+        .updated {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Schedule Page */
+        .schedule-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .schedule-week {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .schedule-week:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(30, 144, 255, 0.15);
+        }
+
+        .schedule-week.current {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 20px rgba(30, 144, 255, 0.25);
+        }
+
+        .schedule-week-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            background: var(--bg-hover);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .schedule-week-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            color: var(--accent-primary);
+        }
+
+        .schedule-week.current .schedule-week-title {
+            color: var(--accent-gold);
+        }
+
+        .schedule-week-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            text-transform: uppercase;
+        }
+
+        .schedule-week-badge.complete {
+            background: rgba(0, 221, 119, 0.15);
+            color: var(--win);
+        }
+
+        .schedule-week-badge.current {
+            background: rgba(255, 215, 0, 0.15);
+            color: var(--accent-gold);
+        }
+
+        .schedule-week-badge.upcoming {
+            background: rgba(136, 153, 187, 0.15);
+            color: var(--text-muted);
+        }
+
+        .schedule-matchups {
+            padding: 0.75rem;
+        }
+
+        .schedule-matchup {
+            display: flex;
+            align-items: center;
+            padding: 0.6rem 0.5rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s ease;
+        }
+
+        .schedule-matchup:hover {
+            background: var(--bg-hover);
+        }
+
+        .schedule-matchup + .schedule-matchup {
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .schedule-team {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .schedule-team.away {
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        .schedule-team-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .schedule-team.winner .schedule-team-name {
+            color: var(--win);
+            font-weight: 600;
+        }
+
+        .schedule-team.loser .schedule-team-name {
+            color: var(--text-muted);
+        }
+
+        .schedule-score-box {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0 1rem;
+            min-width: 90px;
+            justify-content: center;
+        }
+
+        .schedule-score {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 600;
+            min-width: 32px;
+            text-align: center;
+        }
+
+        .schedule-score.winning {
+            color: var(--win);
+        }
+
+        .schedule-score.losing {
+            color: var(--text-muted);
+        }
+
+        .schedule-vs {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .schedule-no-score {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .nav-btn {
+            padding: 0.5rem 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+            border-color: var(--accent-primary);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, rgba(30, 144, 255, 0.25), rgba(92, 179, 255, 0.15));
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .week-selector {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .week-btn {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .week-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent-tertiary);
+            color: var(--text-primary);
+        }
+
+        .week-btn.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: var(--bg-deep);
+            font-weight: 600;
+        }
+
+        .week-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+        }
+
+        .section { display: none; }
+        .section.active { display: block; }
+
+        /* Matchups */
+        .matchups {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .matchup-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .matchup-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(30, 144, 255, 0.15);
+        }
+
+        .matchup-header {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 1.5rem;
+            gap: 1rem;
+        }
+
+        .team {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .team.right { text-align: right; }
+
+        .team-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .team-owner {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .vs-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .score-display {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .score {
+            font-size: 1.8rem;
+            font-weight: 600;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .score.winning { color: var(--win); }
+        .score.losing { color: var(--text-muted); }
+        .score-divider { color: var(--text-muted); font-size: 1.2rem; }
+
+        .expand-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-hover);
+            border: none;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .expand-btn:hover {
+            background: var(--bg-card);
+            color: var(--accent-tertiary);
+        }
+
+        .roster-panel {
+            display: none;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .roster-panel.expanded { display: block; }
+
+        .roster-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .roster-column h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .player-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .player-row.bench { opacity: 0.4; }
+
+        .player-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .position-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 0.15rem 0.35rem;
+            background: var(--bg-deep);
+            border-radius: 0.25rem;
+            color: var(--text-muted);
+        }
+
+        .player-name { font-size: 0.9rem; }
+        .player-team { font-size: 0.75rem; color: var(--text-muted); }
+
+        .player-score {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Standings */
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .standings-table th {
+            text-align: left;
+            padding: 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-hover);
+        }
+
+        .standings-table th.num { text-align: right; }
+
+        .standings-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .standings-table td.num {
+            text-align: right;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .standings-table tr:hover { background: var(--bg-hover); }
+
+        .rank {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .rank.playoffs { color: var(--accent-primary); }
+        .rank.toilet-bowl { color: var(--accent-secondary); }
+        .record { color: var(--text-secondary); }
+        .rank-points { color: var(--accent-primary); font-weight: 600; }
+        .top-half { color: var(--accent-tertiary); }
+        .points-for { color: var(--text-secondary); }
+        .points-against { color: var(--text-muted); }
+
+        .team-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-left: 0.5rem;
+        }
+
+        .playoff-label {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.25rem;
+            margin-left: 0.5rem;
+            font-weight: 600;
+        }
+
+        .playoff-label.playoffs {
+            background: rgba(30, 144, 255, 0.2);
+            color: var(--accent-primary);
+        }
+
+        .playoff-label.toilet {
+            background: rgba(255, 68, 68, 0.15);
+            color: var(--accent-secondary);
+        }
+
+        /* Team Selector */
+        .team-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .team-btn {
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .team-btn:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+            border-color: var(--accent-primary);
+        }
+
+        .team-btn.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: var(--bg-deep);
+            font-weight: 600;
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .team-header h2 {
+            font-size: 2rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-header .owner {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .roster-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .roster-table th,
+        .roster-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .roster-table th {
+            background: var(--bg-hover);
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .roster-table th.week-col {
+            text-align: center;
+            min-width: 50px;
+        }
+
+        .roster-table td.week-score {
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .roster-table td.week-score.starter {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .roster-table td.week-score.bench { color: var(--text-muted); }
+        .roster-table .player-name { font-weight: 500; }
+        .roster-table .player-team { color: var(--text-secondary); font-size: 0.85rem; }
+
+        .roster-table .position-group {
+            background: var(--bg-deep);
+            font-weight: 700;
+            color: var(--accent-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .roster-table .total-row {
+            background: var(--bg-hover);
+            font-weight: 700;
+        }
+
+        .roster-table .total-row td { border-bottom: none; }
+        .roster-table .total-row .week-score { color: var(--accent-primary); }
+
+        .roster-table .season-total {
+            background: rgba(30, 144, 255, 0.1);
+            font-weight: 600;
+            color: var(--accent-tertiary) !important;
+        }
+
+        .roster-table th.total-col {
+            background: rgba(30, 144, 255, 0.15);
+            color: var(--accent-primary);
+        }
+
+        .roster-table .total-row .season-total {
+            background: rgba(30, 144, 255, 0.2);
+            color: var(--accent-primary) !important;
+        }
+
+        /* Taxi Squad Section */
+        .taxi-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+        }
+
+        .taxi-section h3 {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .taxi-section h3::before {
+            content: '🚕';
+        }
+
+        .taxi-empty {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Banners Section */
+        .banners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .banner-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .banner-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(30, 144, 255, 0.2);
+        }
+
+        .banner-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .banner-year {
+            text-align: center;
+            padding: 0.75rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            background: var(--bg-hover);
+            letter-spacing: 0.1em;
+        }
+
+        /* Draft Picks Section */
+        .draft-picks-section {
+            margin-top: 2rem;
+        }
+
+        .draft-picks-section h3 {
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+                font-size: 1.5rem;
+        }
+
+        .picks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1rem;
+            }
+
+        .picks-season {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1rem;
+        }
+
+        .picks-season-header {
+            font-weight: 700;
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .picks-draft-type {
+            margin-bottom: 0.75rem;
+        }
+
+        .picks-type-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .picks-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+
+        .pick-item {
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .pick-item.own {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .pick-item.acquired {
+            background: rgba(30, 144, 255, 0.2);
+            color: var(--accent-primary);
+            border: 1px solid var(--accent-primary);
+        }
+
+        .pick-from {
+            color: var(--accent-tertiary);
+            font-size: 0.75rem;
+        }
+
+        /* Rules Section */
+        .rules-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.1em;
+            color: var(--accent-primary);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .rule-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .rule-card h3 {
+            color: var(--accent-tertiary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .rule-card ul {
+            list-style: none;
+        }
+
+        .rule-card li {
+            padding: 0.4rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .rule-card li:last-child {
+            border-bottom: none;
+        }
+
+        .rule-card li strong {
+            color: var(--text-primary);
+        }
+
+        .rule-note {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background: rgba(30, 144, 255, 0.1);
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--accent-tertiary);
+        }
+
+        /* History Section */
+        .history-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .history-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .history-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .history-tab {
+            padding: 0.75rem 2rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .history-tab:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+            border-color: var(--accent-primary);
+        }
+
+        .history-tab.active {
+            background: linear-gradient(135deg, rgba(30, 144, 255, 0.25), rgba(92, 179, 255, 0.15));
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .history-content {
+            overflow-x: auto;
+        }
+
+        .history-content.hidden {
+            display: none;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .history-table th {
+            text-align: left;
+            padding: 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-hover);
+        }
+
+        .history-table th.num {
+            text-align: center;
+        }
+
+        .history-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        .history-table td.num {
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .history-table tr:hover {
+            background: var(--bg-hover);
+        }
+
+        .history-table .champion {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .history-table .year-cell {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .history-table .score-cell {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+        }
+
+        .history-table .jamboree-cell {
+            color: var(--accent-tertiary);
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-muted);
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .logo { font-size: 2.5rem; }
+            .matchup-header {
+                grid-template-columns: 1fr;
+            text-align: center;
+        }
+            .team, .team.right { text-align: center; }
+            .roster-grid { grid-template-columns: 1fr; }
+            .standings-table { font-size: 0.85rem; }
+            .team-selector { gap: 0.25rem; }
+            .team-btn { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
+            .banners-grid { grid-template-columns: 1fr; }
+            .schedule-grid { grid-template-columns: 1fr; }
+            .schedule-team-name { font-size: 0.8rem; }
+            .schedule-score-box { min-width: 70px; padding: 0 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Oakland Perennial Football League</div>
+            <div class="season-badge">2025 SEASON</div>
+            <div class="updated" id="updated-time"></div>
+        </header>
+
+        <nav>
+            <button class="nav-btn active" data-section="matchups">Matchups</button>
+            <button class="nav-btn" data-section="schedule">Schedule</button>
+            <button class="nav-btn" data-section="standings">Standings</button>
+            <button class="nav-btn" data-section="teams">Teams</button>
+            <button class="nav-btn" data-section="rules">Rules</button>
+            <button class="nav-btn" data-section="history">History</button>
+            <button class="nav-btn" data-section="banners">Banner Room</button>
+        </nav>
+
+        <main>
+            <!-- Matchups Section -->
+            <section id="matchups" class="section active">
+            <div class="week-selector" id="week-selector"></div>
+                <div class="matchups" id="matchups-container">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading...
+        </div>
+        </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section id="schedule" class="section">
+                <div class="schedule-container">
+                    <h2 class="section-title">2025 SEASON SCHEDULE</h2>
+                    <div class="schedule-grid" id="schedule-container">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            Loading schedule...
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Standings Section -->
+            <section id="standings" class="section">
+                <div id="standings-container">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading...
+        </div>
+        </div>
+            </section>
+
+            <!-- Teams Section -->
+            <section id="teams" class="section">
+                <div class="team-selector" id="team-selector"></div>
+                <div id="team-roster-container"></div>
+            </section>
+
+            <!-- Rules Section -->
+            <section id="rules" class="section">
+                <div class="rules-container">
+                    <h2 class="section-title">2025 OPFL Scoring and Rules</h2>
+                    
+                    <div class="rules-grid">
+                        <div class="rule-card">
+                            <h3>General Scoring</h3>
+                            <ul>
+                                <li><strong>Touchdown:</strong> 6 pts</li>
+                                <li><strong>TD Pass:</strong> 6 pts</li>
+                                <li><strong>2-Point Conversion:</strong> 2 pts</li>
+                                <li>No player or defense score can be less than zero</li>
+                                <li>Individual player TDs on special teams, fumble recoveries count</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Passing</h3>
+                            <ul>
+                                <li><strong>200+ yards:</strong> 2 pts</li>
+                                <li><strong>Each 50 yards after 200:</strong> +1 pt (no ceiling)</li>
+                                <li>Below 200 yards: No points</li>
+                                <li><strong>Interception:</strong> -1 pt</li>
+                                <li><strong>INT returned for TD:</strong> -3 pts</li>
+                                <li><strong>Fumble lost:</strong> -1 pt</li>
+                                <li><strong>Fumble lost returned for TD:</strong> -3 pts</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Rushing/Receiving (RB/WR)</h3>
+                            <ul>
+                                <li><strong>75+ yards (each):</strong> 2 pts</li>
+                                <li><strong>Each 25 yards after 75:</strong> +1 pt (no ceiling)</li>
+                                <li>Below 75 yards: No points</li>
+                                <li><strong>Fumble lost / INT thrown:</strong> -1 pt</li>
+                                <li><strong>Turnover returned for TD:</strong> -3 pts</li>
+                            </ul>
+                            <div class="rule-note">
+                                <strong>Alternate Combined:</strong> 100 combined rush/rec yards = 2 pts, +1 per 25 yards after. Whichever yields more points.
+                            </div>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Tight End Scoring</h3>
+                            <ul>
+                                <li><strong>50+ yards:</strong> 2 pts</li>
+                                <li><strong>Each 25 yards after 50:</strong> +1 pt (no ceiling)</li>
+                                <li>Below 50 yards: No points</li>
+                                <li><strong>Fumble lost / INT thrown:</strong> -1 pt</li>
+                                <li><strong>Turnover returned for TD:</strong> -3 pts</li>
+                            </ul>
+                            <div class="rule-note">
+                                <strong>Alternate Combined:</strong> 75 combined rush/rec yards = 2 pts, +1 per 25 yards after.
+                            </div>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Kicker</h3>
+                            <ul>
+                                <li><strong>PAT:</strong> 1 pt</li>
+                                <li><strong>FG 0-29 yards:</strong> 1 pt</li>
+                                <li><strong>FG 30-39 yards:</strong> 2 pts</li>
+                                <li><strong>FG 40-49 yards:</strong> 3 pts</li>
+                                <li><strong>FG 50+ yards:</strong> 4 pts</li>
+                                <li><strong>Missed/blocked FG:</strong> -2 pts</li>
+                                <li><strong>Missed/blocked PAT:</strong> -1 pt</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Defense</h3>
+                            <ul>
+                                <li><strong>Interception:</strong> 2 pts</li>
+                                <li><strong>Fumble recovery:</strong> 2 pts</li>
+                                <li><strong>Safety:</strong> 2 pts</li>
+                                <li><strong>Blocked punt/FG:</strong> 2 pts</li>
+                                <li><strong>Blocked PAT:</strong> 1 pt</li>
+                                <li><strong>Defensive TD:</strong> 4 pts*</li>
+                                <li><strong>Sack:</strong> 1 pt</li>
+                            </ul>
+                            <div class="rule-note">* TDs count on INTs, fumble recoveries, blocked punts/kicks - not on returns.</div>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Points Allowed (Defense)</h3>
+                            <ul>
+                                <li><strong>Shutout (0 pts):</strong> 8 pts</li>
+                                <li><strong>2-9 points:</strong> 6 pts</li>
+                                <li><strong>10-13 points:</strong> 4 pts</li>
+                                <li><strong>14-17 points:</strong> 2 pts</li>
+                                <li><strong>18-27 points:</strong> 0 pts</li>
+                                <li><strong>28-31 points:</strong> -2 pts</li>
+                                <li><strong>32-35 points:</strong> -4 pts</li>
+                                <li><strong>36+ points:</strong> -6 pts</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Head Coach</h3>
+                            <ul>
+                                <li><strong>Win:</strong> 4 pts</li>
+                                <li><strong>Road Win:</strong> 5 pts</li>
+                                <li><strong>Underdog Win:</strong> +2 bonus pts (based on Vegas line at kickoff)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h2 class="section-title" style="margin-top: 3rem;">League Rules</h2>
+                    
+                    <div class="rules-grid">
+                        <div class="rule-card">
+                            <h3>Fees & Payouts</h3>
+                            <ul>
+                                <li><strong>Entry Fee:</strong> $250</li>
+                                <li><strong>1st Place:</strong> $1,500</li>
+                                <li><strong>2nd Place:</strong> $700</li>
+                                <li><strong>3rd Place:</strong> $350</li>
+                                <li><strong>4th Place:</strong> $250</li>
+                                <li><strong>Jamboree Winner:</strong> $200</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Preseason Draft</h3>
+                            <ul>
+                                <li>3 taxi rounds</li>
+                                <li>Cut to 2 taxi slots by kickoff week 3</li>
+                                <li>Cut to 1 final taxi/DP slot by kickoff week 4</li>
+                                <li>Auto-cut rule: Latest selected player is auto-cut if no announcement</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Waiver Draft</h3>
+                            <ul>
+                                <li>3 taxi rounds ahead of week 9</li>
+                                <li>Cut to 2 taxi slots before kickoff week 10</li>
+                                <li>Cut to 1 final taxi/DP slot by kickoff week 11</li>
+                                <li>Week 11 is also the formal trade deadline</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Trade Rules</h3>
+                            <ul>
+                                <li><strong>Trade Back Rule:</strong> Any trade back must include a waiting period of 1.5 seasons</li>
+                                <li><strong>Eric Hughes Rule:</strong> Remaining picks for which an owner plans to pass cannot be traded</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Roster Expansion (Future)</h3>
+                            <ul>
+                                <li><strong>2026:</strong> WR rosters expand from 4 to 5 (lineup remains 2 WR)</li>
+                                <li><strong>2027:</strong> Additional RB/WR/TE flex position added to roster and lineup</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- History Section -->
+            <section id="history" class="section">
+                <div class="history-container">
+                    <h2 class="section-title">OPFL Championship History</h2>
+                    <p class="history-subtitle">37 Seasons of Oakland Bowl Glory (1988-2024)</p>
+                    
+                    <div class="history-tabs">
+                        <button class="history-tab active" data-tab="championships">Championships</button>
+                        <button class="history-tab" data-tab="records">All-Time Records</button>
+                    </div>
+                    
+                    <div class="history-content" id="championships-tab">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Champion</th>
+                                    <th>Runner-Up</th>
+                                    <th>3rd</th>
+                                    <th>4th</th>
+                                    <th>Oakland Bowl</th>
+                                    <th>Jamboree</th>
+                                </tr>
+                            </thead>
+                            <tbody id="championships-body"></tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="history-content hidden" id="records-tab">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Owner</th>
+                                    <th class="num">1st</th>
+                                    <th class="num">2nd</th>
+                                    <th class="num">3rd</th>
+                                    <th class="num">4th</th>
+                                    <th class="num">Playoffs</th>
+                                    <th class="num">% Playoffs</th>
+                                </tr>
+                            </thead>
+                            <tbody id="records-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Banner Room Section -->
+            <section id="banners" class="section">
+                <div class="banners-grid" id="banners-container">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading banners...
+        </div>
+                    </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        let data = null;
+        let currentWeek = 1;
+        let currentTeam = null;
+
+        // 2025 OPFL Schedule - Team numbers mapped to abbreviations
+        // (1) Kemp/A/M, (2) Danny/Joey, (3) Steve L., (4) Kirk/David, (5) Kevin, (6) Eric/Jeff
+        // (7) Wes/Bill, (8) Andrew, (9) Jarrett/Matt, (10) Adam, (11) John, (12) Greg/Griffin
+        const TEAM_NUMBER_MAP = {
+            1: 'KAM', 2: 'D/J', 3: 'STL', 4: 'K/D', 5: 'KEV', 6: 'E/J',
+            7: 'W/B', 8: 'AND', 9: 'J/M', 10: 'ADA', 11: 'JOH', 12: 'G/G'
+        };
+
+        // Schedule: array of matchups per week (team1 vs team2)
+        const SCHEDULE = {
+            1:  [[1,2], [3,4], [5,6], [7,8], [9,10], [11,12]],
+            2:  [[1,3], [2,4], [5,7], [6,8], [9,11], [10,12]],
+            3:  [[1,4], [2,5], [3,6], [7,10], [8,11], [9,12]],
+            4:  [[1,5], [2,6], [3,7], [4,9], [8,12], [10,11]],
+            5:  [[1,6], [2,7], [3,12], [4,10], [5,11], [8,9]],
+            6:  [[1,7], [2,8], [3,9], [4,12], [5,10], [6,11]],
+            7:  [[1,8], [2,9], [3,10], [4,11], [5,12], [6,7]],
+            8:  [[1,9], [2,10], [3,11], [4,6], [5,8], [7,12]],
+            9:  [[1,10], [2,11], [3,8], [4,5], [7,9], [6,12]],
+            10: [[1,11], [2,12], [3,5], [4,7], [6,9], [8,10]],
+            11: [[1,12], [2,3], [4,8], [5,9], [6,10], [7,11]],
+            12: [[1,2], [3,4], [5,6], [7,8], [9,10], [11,12]],
+            13: [[1,3], [2,4], [5,7], [6,8], [9,11], [10,12]],
+            14: [[1,4], [2,5], [3,6], [7,10], [8,11], [9,12]],
+            15: [[1,5], [2,6], [3,7], [4,9], [8,12], [10,11]]
+        };
+
+        // Historical championship data
+        const CHAMPIONSHIPS = [
+            { year: 2024, first: "Kemp/A/M", second: "Wes", third: "John", fourth: "Jarrett/Matt", score: "88-57", jamboree: "Steve L. (157)" },
+            { year: 2023, first: "Kemp/A/M", second: "Greg/Griffin", third: "Jarrett/Matt", fourth: "Kevin", score: "43-31", jamboree: "John (120)" },
+            { year: 2022, first: "Jarrett/Matt & Wes", second: "Jarrett/Matt & Wes", third: "John & Kemp/A/M", fourth: "John & Kemp/A/M", score: "53-45", jamboree: "Kirk/David (122)", comment: "Historic tie declared" },
+            { year: 2021, first: "Kemp/A/M", second: "Greg/Griffin", third: "Kevin", fourth: "Eric/Jeff", score: "41-40", jamboree: "Wes/Bill (149)" },
+            { year: 2020, first: "Kemp/A/M", second: "Jarrett/Matt", third: "Kirk/David", fourth: "Steve M.", score: "67-57", jamboree: "Kevin (125)" },
+            { year: 2019, first: "Andrew", second: "Kirk/David", third: "Jarrett/Matt", fourth: "Steve L.", score: "76-61", jamboree: "Adam (141)" },
+            { year: 2018, first: "Adam", second: "Jarrett/Matt", third: "Steve L.", fourth: "Kirk/David", score: "63-35", jamboree: "Steve M. (117)" },
+            { year: 2017, first: "Kirk/David", second: "Steve L./Wes", third: "Greg/Griffin", fourth: "Andrew", score: "52-51", jamboree: "Eric/Jeff (115)" },
+            { year: 2016, first: "Kemp/A/M", second: "Steve L.", third: "Steve/Wes", fourth: "Eric/Jeff", score: "61-33", jamboree: "Bill/Jill (115)" },
+            { year: 2015, first: "Steve L.", second: "Adam", third: "Greg/Griffin", fourth: "Kirk/David", score: "65-32", jamboree: "Jarrett (126)" },
+            { year: 2014, first: "Steve L.", second: "Kirk/David", third: "Steve/Wes", fourth: "John", score: "57-31", jamboree: "Greg/Griffin (111)" },
+            { year: 2013, first: "Jarrett", second: "Steve L.", third: "Adam", fourth: "Steve/Wes", score: "48-42", jamboree: "Greg (124)" },
+            { year: 2012, first: "Kevin", second: "Kirk/David", third: "John", fourth: "Steve/Wes", score: "67-62", jamboree: "Adam (147)" },
+            { year: 2011, first: "Bill/Jill", second: "Kirk/David", third: "Greg", fourth: "Steve L.", score: "89-48", jamboree: "Kevin (124)" },
+            { year: 2010, first: "Kirk/David", second: "John", third: "Steve L.", fourth: "Kevin", score: "62-43", jamboree: "Jarrett (145)" },
+            { year: 2009, first: "Steve L.", second: "Bill", third: "Greg", fourth: "John", score: "57-57*", jamboree: "Jarrett (129)", comment: "Won on better record" },
+            { year: 2008, first: "Steve L.", second: "Greg", third: "John", fourth: "Jarrett", score: "67-28", jamboree: "Eric S. (109)" },
+            { year: 2007, first: "Eric S.", second: "Kevin", third: "Mike", fourth: "Kirk", score: "55-23", jamboree: "Jarrett (121)" },
+            { year: 2006, first: "Kirk", second: "John", third: "Kevin", fourth: "Jarrett", score: "52-52*", jamboree: "Kemp (147)", comment: "Won on better record" },
+            { year: 2005, first: "Jarrett", second: "Eric/Bret/Joe", third: "Kirk", fourth: "Steve/Wes", score: "48-34", jamboree: "Eric S. (132)" },
+            { year: 2004, first: "Kreg", second: "John", third: "Adam/Nick/Bill", fourth: "Steve L.", score: "69-57", jamboree: "Eric H. (165)" },
+            { year: 2003, first: "Kirk", second: "Steve/Wes", third: "John", fourth: "Steve L.", score: "55-46", jamboree: "Jarrett (139)" },
+            { year: 2002, first: "Adam/Nick", second: "Greg", third: "Eric S.", fourth: "John", score: "28-28*", jamboree: "Kemp/Rams (115)", comment: "Won on better record" },
+            { year: 2001, first: "Kemp/Rams", second: "John", third: "Kirk", fourth: "Steve L.", score: "65-59", jamboree: "" },
+            { year: 2000, first: "John", second: "Steve/J", third: "Kemp/Rams", fourth: "Steve L.", score: "84-55", jamboree: "" },
+            { year: 1999, first: "Eric S.", second: "Steve L.", third: "Steve/J", fourth: "Kemp/Rams", score: "86-51", jamboree: "" },
+            { year: 1998, first: "Eric S.", second: "John", third: "Steve L.", fourth: "Eric H.", score: "47-41", jamboree: "" },
+            { year: 1997, first: "Kemp", second: "Bill", third: "Chris", fourth: "Kreg/J", score: "27-24", jamboree: "" },
+            { year: 1996, first: "Steve/J", second: "Eric S.", third: "John", fourth: "Chris", score: "39-16", jamboree: "" },
+            { year: 1995, first: "Chris", second: "Steve L.", third: "Kemp", fourth: "John", score: "67-36", jamboree: "" },
+            { year: 1994, first: "Bill", second: "John", third: "Eric H.", fourth: "Steve L.", score: "68-47", jamboree: "" },
+            { year: 1993, first: "Bill", second: "Steve L.", third: "John", fourth: "Eric H.", score: "67-41", jamboree: "" },
+            { year: 1992, first: "Steve L.", second: "Steve M.", third: "Kirk", fourth: "Bill", score: "38-35", jamboree: "" },
+            { year: 1991, first: "Steve M.", second: "John", third: "Chris", fourth: "Nan/Kemp", score: "74-17", jamboree: "" },
+            { year: 1990, first: "Bill", second: "Chris", third: "Kreg", fourth: "John", score: "25-22", jamboree: "" },
+            { year: 1989, first: "Chris", second: "Eric H.", third: "Eric S.", fourth: "Nan/Kemp", score: "66-42", jamboree: "" },
+            { year: 1988, first: "Bill", second: "Steve M.", third: "Eric H.", fourth: "Kreg", score: "45-34", jamboree: "" }
+        ];
+
+        // All-time records
+        const ALL_TIME_RECORDS = [
+            { owner: "Kemp", first: 7, second: 0, third: 2.5, fourth: 3.5 },
+            { owner: "Steve L.", first: 5, second: 6, third: 3, fourth: 7 },
+            { owner: "Bill/Wes", first: 5, second: 2, third: 0, fourth: 1 },
+            { owner: "Kirk/David", first: 4, second: 4, third: 4, fourth: 3 },
+            { owner: "Eric S.", first: 3, second: 1, third: 2, fourth: 2 },
+            { owner: "Jarrett/Matt", first: 2.5, second: 2.5, third: 2, fourth: 3 },
+            { owner: "Chris", first: 2, second: 1, third: 2, fourth: 1 },
+            { owner: "Steve M.", first: 2, second: 4, third: 3, fourth: 4 },
+            { owner: "Adam", first: 2, second: 1, third: 2, fourth: 0 },
+            { owner: "John", first: 1, second: 7, third: 6.5, fourth: 5.5 },
+            { owner: "Kevin", first: 1, second: 1, third: 2, fourth: 2 },
+            { owner: "Kreg", first: 1, second: 0, third: 1, fourth: 2 },
+            { owner: "Andrew", first: 1, second: 0, third: 0, fourth: 1 },
+            { owner: "Wes", first: 0.5, second: 1.5, third: 0, fourth: 0 },
+            { owner: "Greg/Griffin", first: 0, second: 4, third: 4, fourth: 0 },
+            { owner: "Eric H.", first: 0, second: 2, third: 2, fourth: 2 }
+        ];
+
+        // Load data
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                data = await response.json();
+                // Default to the most recent week that has data
+                const availableWeeks = (data.weeks || []).map(w => w.week);
+                currentWeek = availableWeeks.length > 0 ? Math.max(...availableWeeks) : 1;
+                initApp();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('matchups-container').innerHTML = 
+                    '<div class="loading">Error loading data. Please refresh.</div>';
+            }
+        }
+
+        function initApp() {
+            // Update timestamp
+            if (data.updated_at) {
+                const date = new Date(data.updated_at);
+                document.getElementById('updated-time').textContent = 
+                    `Updated: ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+            }
+
+            // Navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                    btn.classList.add('active');
+                    document.getElementById(btn.dataset.section).classList.add('active');
+                });
+            });
+            
+            renderWeekSelector();
+            renderMatchups();
+            renderSchedule();
+            renderStandings();
+            renderTeamSelector();
+            renderHistory();
+            renderBanners();
+        }
+
+        function renderWeekSelector() {
+            const container = document.getElementById('week-selector');
+            const weeks = data.weeks || [];
+            
+            container.innerHTML = `
+                <span class="week-label">WEEK</span>
+                ${weeks.map(w => `
+                    <button class="week-btn ${w.week === currentWeek ? 'active' : ''}" 
+                            data-week="${w.week}">${w.week}</button>
+                `).join('')}
+            `;
+
+            container.querySelectorAll('.week-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentWeek = parseInt(btn.dataset.week);
+                    container.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderMatchups();
+                });
+            });
+        }
+
+        function renderSchedule() {
+            const container = document.getElementById('schedule-container');
+            const currentWeekNum = data.current_week || 1;
+            const weeks = data.weeks || [];
+            
+            // Create lookup for week data
+            const weekDataMap = {};
+            weeks.forEach(w => {
+                weekDataMap[w.week] = w;
+            });
+
+            // Build schedule for all 15 weeks
+            let html = '';
+            for (let weekNum = 1; weekNum <= 15; weekNum++) {
+                const schedule = SCHEDULE[weekNum];
+                const weekData = weekDataMap[weekNum];
+                const isCurrent = weekNum === currentWeekNum;
+                const isComplete = weekNum < currentWeekNum;
+                const isUpcoming = weekNum > currentWeekNum;
+                
+                // Get team data for this week
+                const teamsByAbbrev = {};
+                if (weekData?.teams) {
+                    weekData.teams.forEach(t => {
+                        teamsByAbbrev[t.abbrev] = t;
+                    });
+                }
+
+                // Determine badge
+                let badgeClass = 'upcoming';
+                let badgeText = 'Upcoming';
+                if (isCurrent) {
+                    badgeClass = 'current';
+                    badgeText = 'Current';
+                } else if (isComplete) {
+                    badgeClass = 'complete';
+                    badgeText = 'Complete';
+                }
+
+                // Build matchups HTML
+                const matchupsHtml = schedule.map(([num1, num2]) => {
+                    const abbrev1 = TEAM_NUMBER_MAP[num1];
+                    const abbrev2 = TEAM_NUMBER_MAP[num2];
+                    const team1 = teamsByAbbrev[abbrev1];
+                    const team2 = teamsByAbbrev[abbrev2];
+                    
+                    const hasScores = team1 && team2 && (team1.total_score > 0 || team2.total_score > 0);
+                    const score1 = team1?.total_score || 0;
+                    const score2 = team2?.total_score || 0;
+                    const team1Winning = score1 > score2;
+                    const team2Winning = score2 > score1;
+                    
+                    // Get team names from standings if not in week data
+                    const team1Name = team1?.name || data.standings?.find(s => s.abbrev === abbrev1)?.name || abbrev1;
+                    const team2Name = team2?.name || data.standings?.find(s => s.abbrev === abbrev2)?.name || abbrev2;
+
+                    if (hasScores || isComplete) {
+                        return `
+                            <div class="schedule-matchup">
+                                <div class="schedule-team ${team1Winning ? 'winner' : team2Winning ? 'loser' : ''}">
+                                    <span class="schedule-team-name">${team1Name}</span>
+                                </div>
+                                <div class="schedule-score-box">
+                                    <span class="schedule-score ${team1Winning ? 'winning' : ''}">${score1}</span>
+                                    <span class="schedule-vs">-</span>
+                                    <span class="schedule-score ${team2Winning ? 'winning' : ''}">${score2}</span>
+                                </div>
+                                <div class="schedule-team away ${team2Winning ? 'winner' : team1Winning ? 'loser' : ''}">
+                                    <span class="schedule-team-name">${team2Name}</span>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        return `
+                            <div class="schedule-matchup">
+                                <div class="schedule-team">
+                                    <span class="schedule-team-name">${team1Name}</span>
+                                </div>
+                                <div class="schedule-score-box">
+                                    <span class="schedule-no-score">vs</span>
+                                </div>
+                                <div class="schedule-team away">
+                                    <span class="schedule-team-name">${team2Name}</span>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }).join('');
+
+                html += `
+                    <div class="schedule-week ${isCurrent ? 'current' : ''}">
+                        <div class="schedule-week-header">
+                            <span class="schedule-week-title">Week ${weekNum}</span>
+                            <span class="schedule-week-badge ${badgeClass}">${badgeText}</span>
+                        </div>
+                        <div class="schedule-matchups">
+                            ${matchupsHtml}
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        function renderMatchups() {
+            const container = document.getElementById('matchups-container');
+            const weekData = data.weeks?.find(w => w.week === currentWeek);
+            const schedule = SCHEDULE[currentWeek];
+            
+            if (!weekData || !weekData.teams || !schedule) {
+                container.innerHTML = '<div class="loading">No matchup data for this week</div>';
+                return;
+            }
+
+            // Create a lookup map for team data by abbreviation
+            const teamsByAbbrev = {};
+            weekData.teams.forEach(t => {
+                teamsByAbbrev[t.abbrev] = t;
+            });
+
+            // Build matchups from schedule
+            const matchups = schedule.map(([num1, num2]) => {
+                const abbrev1 = TEAM_NUMBER_MAP[num1];
+                const abbrev2 = TEAM_NUMBER_MAP[num2];
+                return {
+                    team1: teamsByAbbrev[abbrev1],
+                    team2: teamsByAbbrev[abbrev2]
+                };
+            }).filter(m => m.team1 && m.team2);
+
+            container.innerHTML = matchups.map((matchup, idx) => {
+                const t1 = matchup.team1;
+                const t2 = matchup.team2;
+                const t1Winning = t1.total_score > t2.total_score;
+                const t2Winning = t2.total_score > t1.total_score;
+
+                return `
+                    <div class="matchup-card">
+                        <div class="matchup-header">
+                            <div class="team">
+                                <div class="team-name">${t1.name}</div>
+                                <div class="team-owner">${t1.owner}</div>
+                            </div>
+                            <div class="vs-container">
+                                <div class="score-display">
+                                    <span class="score ${t1Winning ? 'winning' : t2Winning ? 'losing' : ''}">${t1.total_score}</span>
+                                    <span class="score-divider">-</span>
+                                    <span class="score ${t2Winning ? 'winning' : t1Winning ? 'losing' : ''}">${t2.total_score}</span>
+                                </div>
+                            </div>
+                            <div class="team right">
+                                <div class="team-name">${t2.name}</div>
+                                <div class="team-owner">${t2.owner}</div>
+                            </div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleRoster(${idx})">View Rosters</button>
+                        <div class="roster-panel" id="roster-${idx}">
+                            <div class="roster-grid">
+                                <div class="roster-column">
+                                    <h4>${t1.name}</h4>
+                                    ${renderRosterList(t1.roster)}
+                                </div>
+                                <div class="roster-column">
+                                    <h4>${t2.name}</h4>
+                                    ${renderRosterList(t2.roster)}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderRosterList(roster) {
+            if (!roster) return '<div class="player-row">No roster data</div>';
+            
+            const starters = roster.filter(p => p.starter);
+            const bench = roster.filter(p => !p.starter);
+            
+            return [...starters, ...bench].map(p => `
+                <div class="player-row ${p.starter ? '' : 'bench'}">
+                    <div class="player-info">
+                        <span class="position-tag">${p.position}</span>
+                        <span class="player-name">${p.name}</span>
+                        <span class="player-team">${p.nfl_team}</span>
+                    </div>
+                    <span class="player-score">${p.score || 0}</span>
+                </div>
+            `).join('');
+        }
+
+        function toggleRoster(idx) {
+            const panel = document.getElementById(`roster-${idx}`);
+            panel.classList.toggle('expanded');
+        }
+
+        function renderStandings() {
+            const container = document.getElementById('standings-container');
+            let standings = data.standings || [];
+
+            if (standings.length === 0) {
+                container.innerHTML = '<div class="loading">No standings data yet</div>';
+                return;
+            }
+
+            // Sort standings by: 1) rank_points (wins + top6), 2) wins, 3) points_for
+            standings = [...standings].sort((a, b) => {
+                // First by rank_points (descending)
+                const rpDiff = (b.rank_points || 0) - (a.rank_points || 0);
+                if (rpDiff !== 0) return rpDiff;
+                // Then by wins (descending)
+                const winsDiff = (b.wins || 0) - (a.wins || 0);
+                if (winsDiff !== 0) return winsDiff;
+                // Then by points_for (descending)
+                return (b.points_for || 0) - (a.points_for || 0);
+            });
+
+            container.innerHTML = `
+                <table class="standings-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team</th>
+                            <th class="num">Pts</th>
+                            <th class="num">W-L-T</th>
+                            <th class="num">Top 6</th>
+                            <th class="num">PF</th>
+                            <th class="num">PA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${standings.map((team, idx) => {
+                            const rank = idx + 1;
+                            const isPlayoff = rank <= 4;
+                            const isToilet = rank >= standings.length - 1;
+                            const record = `${team.wins || 0}-${team.losses || 0}-${team.ties || 0}`;
+                
+                            return `
+                                <tr>
+                                    <td>
+                                        <span class="rank ${isPlayoff ? 'playoffs' : isToilet ? 'toilet-bowl' : ''}">${rank}</span>
+                                    </td>
+                                    <td>
+                                        <span class="team-name">${team.name}</span>
+                                        <span class="team-code">${team.abbrev}</span>
+                                        ${isPlayoff ? '<span class="playoff-label playoffs">PLAYOFF</span>' : ''}
+                                        ${isToilet ? '<span class="playoff-label toilet">TOILET</span>' : ''}
+                                    </td>
+                                    <td class="num rank-points">${team.rank_points?.toFixed(1) || 0}</td>
+                                    <td class="num record">${record}</td>
+                                    <td class="num top-half">${team.top_half || 0}</td>
+                                    <td class="num points-for">${team.points_for?.toFixed(1) || 0}</td>
+                                    <td class="num points-against">${team.points_against?.toFixed(1) || 0}</td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function renderTeamSelector() {
+            const container = document.getElementById('team-selector');
+            const teams = data.standings || [];
+
+            if (teams.length === 0) return;
+
+            container.innerHTML = teams.map(team => `
+                <button class="team-btn" data-abbrev="${team.abbrev}">${team.name}</button>
+            `).join('');
+            
+            container.querySelectorAll('.team-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    container.querySelectorAll('.team-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentTeam = btn.dataset.abbrev;
+                    renderTeamPage();
+                });
+            });
+            
+            // Select first team by default
+            if (teams.length > 0) {
+                currentTeam = teams[0].abbrev;
+                container.querySelector('.team-btn').classList.add('active');
+                renderTeamPage();
+            }
+        }
+
+        function renderTeamPage() {
+            const container = document.getElementById('team-roster-container');
+            const teamInfo = data.standings?.find(t => t.abbrev === currentTeam);
+            
+            if (!teamInfo) {
+                container.innerHTML = '<div class="loading">Select a team</div>';
+                return;
+            }
+
+            // Get roster across all weeks
+            const weeks = data.weeks || [];
+            const rosterByPlayer = {};
+
+            weeks.forEach(week => {
+                const teamData = week.teams?.find(t => t.abbrev === currentTeam);
+                if (teamData?.roster) {
+                teamData.roster.forEach(player => {
+                    const key = `${player.position}-${player.name}`;
+                        if (!rosterByPlayer[key]) {
+                            rosterByPlayer[key] = {
+                            name: player.name,
+                            nfl_team: player.nfl_team,
+                            position: player.position,
+                            weeks: {}
+                            };
+                    }
+                        rosterByPlayer[key].weeks[week.week] = {
+                            score: player.score || 0,
+                        starter: player.starter
+                    };
+                });
+                }
+            });
+            
+            // Group by position
+            const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DF', 'HC'];
+            const weekNums = weeks.map(w => w.week).sort((a, b) => a - b);
+            
+            let tableRows = '';
+            positions.forEach(pos => {
+                const playersInPos = Object.values(rosterByPlayer).filter(p => p.position === pos);
+                if (playersInPos.length === 0) return;
+
+                tableRows += `<tr class="position-group"><td colspan="${weekNums.length + 3}">${pos}</td></tr>`;
+                
+                playersInPos.forEach(player => {
+                    // Calculate season total for this player (all weeks, regardless of starter status)
+                    const seasonTotal = Object.values(player.weeks).reduce((sum, w) => sum + (w.score || 0), 0);
+                    
+                    tableRows += `
+                        <tr>
+                            <td><span class="player-name">${player.name}</span></td>
+                            <td><span class="player-team">${player.nfl_team}</span></td>
+                            ${weekNums.map(w => {
+                                const weekData = player.weeks[w];
+                                if (!weekData) return '<td class="week-score">-</td>';
+                                const cls = weekData.starter ? 'starter' : 'bench';
+                                return `<td class="week-score ${cls}">${weekData.score}</td>`;
+                            }).join('')}
+                            <td class="week-score season-total">${seasonTotal}</td>
+                        </tr>
+                    `;
+                });
+            });
+            
+            // Calculate totals
+            const totals = weekNums.map(w => {
+                const weekData = weeks.find(wk => wk.week === w);
+                const teamData = weekData?.teams?.find(t => t.abbrev === currentTeam);
+                return teamData?.total_score || 0;
+            });
+            const seasonGrandTotal = totals.reduce((sum, t) => sum + t, 0);
+
+            tableRows += `
+                <tr class="total-row">
+                    <td colspan="2"><strong>TOTAL</strong></td>
+                    ${totals.map(t => `<td class="week-score">${t}</td>`).join('')}
+                    <td class="week-score season-total">${seasonGrandTotal}</td>
+                </tr>
+            `;
+            
+            // Taxi Squad section
+            const taxiSquad = data.taxi_squads?.[currentTeam] || [];
+            let taxiHtml = `
+                <div class="taxi-section">
+                    <h3>Taxi Squad (${taxiSquad.length}/3)</h3>
+                    ${taxiSquad.length === 0 
+                        ? '<div class="taxi-empty">No players on taxi squad</div>'
+                        : taxiSquad.map(p => `
+                            <div class="player-row">
+                                <div class="player-info">
+                                    <span class="position-tag">${p.position}</span>
+                                    <span class="player-name">${p.name}</span>
+                                    <span class="player-team">${p.nfl_team}</span>
+                                    </div>
+                            </div>
+                        `).join('')
+                    }
+                        </div>
+                    `;
+            
+            // Draft Picks section
+            let picksHtml = '';
+            if (data.draft_picks && data.draft_picks[currentTeam]) {
+                const teamPicks = data.draft_picks[currentTeam];
+                const seasons = Object.keys(teamPicks).sort();
+                
+                picksHtml = `
+                    <div class="draft-picks-section">
+                        <h3>Future Draft Picks</h3>
+                        <div class="picks-grid">
+                            ${seasons.map(season => `
+                                <div class="picks-season">
+                                    <div class="picks-season-header">${season}</div>
+                                    ${Object.entries(teamPicks[season]).map(([draftType, picks]) => {
+                                        if (!picks || picks.length === 0) return '';
+                                        const typeLabel = draftType.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase());
+                                        return `
+                                            <div class="picks-draft-type">
+                                                <div class="picks-type-label">${typeLabel}</div>
+                                                <div class="picks-list">
+                                                    ${picks.map(p => {
+                                                        const fromLabel = p.own ? '' : ` <span class="pick-from">(${p.from})</span>`;
+                                                        return `<span class="pick-item ${p.own ? 'own' : 'acquired'}">R${p.round}${fromLabel}</span>`;
+                                                    }).join('')}
+                                                </div>
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = `
+                <div class="team-header">
+                    <h2>${teamInfo.name}</h2>
+                    <div class="owner">${teamInfo.owner}</div>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="roster-table">
+                        <thead>
+                            <tr>
+                                <th>Player</th>
+                                <th>Team</th>
+                                ${weekNums.map(w => `<th class="week-col">W${w}</th>`).join('')}
+                                <th class="week-col total-col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${tableRows}
+                        </tbody>
+                    </table>
+                </div>
+                ${taxiHtml}
+                ${picksHtml}
+            `;
+        }
+
+        function renderHistory() {
+            // Render championships table
+            const champBody = document.getElementById('championships-body');
+            champBody.innerHTML = CHAMPIONSHIPS.map(c => `
+                <tr>
+                    <td class="year-cell">${c.year}</td>
+                    <td class="champion">${c.first}</td>
+                    <td>${c.second}</td>
+                    <td>${c.third}</td>
+                    <td>${c.fourth}</td>
+                    <td class="score-cell">${c.score}</td>
+                    <td class="jamboree-cell">${c.jamboree || '-'}</td>
+                </tr>
+            `).join('');
+
+            // Render all-time records
+            const recordsBody = document.getElementById('records-body');
+            recordsBody.innerHTML = ALL_TIME_RECORDS.map(r => {
+                const playoffs = r.first + r.second + r.third + r.fourth;
+                // Approximate seasons (based on data)
+                const seasons = getSeasonsForOwner(r.owner);
+                const pct = seasons > 0 ? ((playoffs / seasons) * 100).toFixed(1) : 'N/A';
+                return `
+                    <tr>
+                        <td><strong>${r.owner}</strong></td>
+                        <td class="num champion">${r.first}</td>
+                        <td class="num">${r.second}</td>
+                        <td class="num">${r.third}</td>
+                        <td class="num">${r.fourth}</td>
+                        <td class="num">${playoffs}</td>
+                        <td class="num">${pct}%</td>
+                    </tr>
+                `;
+            }).join('');
+
+            // Tab switching
+            document.querySelectorAll('.history-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.history-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.history-content').forEach(c => c.classList.add('hidden'));
+                    tab.classList.add('active');
+                    document.getElementById(`${tab.dataset.tab}-tab`).classList.remove('hidden');
+                });
+            });
+        }
+
+        // Helper function to estimate seasons for playoff percentage
+        function getSeasonsForOwner(owner) {
+            const seasonMap = {
+                'Kemp': 37, 'Steve L.': 37, 'Bill/Wes': 26, 'Kirk/David': 35,
+                'Eric S.': 21, 'Jarrett/Matt': 23, 'Chris': 12, 'Steve M.': 27,
+                'Adam': 23, 'John': 37, 'Kevin': 16, 'Kreg': 17,
+                'Andrew': 16, 'Wes': 6, 'Greg/Griffin': 23, 'Eric H.': 17
+            };
+            return seasonMap[owner] || 0;
+        }
+
+        function renderBanners() {
+            const container = document.getElementById('banners-container');
+            const bannerImages = data.banners || [];
+            
+            if (bannerImages.length === 0) {
+                container.innerHTML = '<div class="loading">No banners available</div>';
+                return;
+            }
+            
+            // Banners are sorted by year descending (most recent first)
+            // Filename format: 2024.png, 2023.png, etc.
+            container.innerHTML = bannerImages.map(img => {
+                const year = img.replace('.png', '');
+                return `
+                    <div class="banner-item">
+                        <img src="images/banners/${img}" alt="OPFL ${year} Champion" loading="lazy">
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Initialize
+                    loadData();
+    </script>
+</body>
+</html>

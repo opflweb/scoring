@@ -15,6 +15,7 @@ class PlayerScore:
     found_in_stats: bool = False
     data_notes: List[str] = field(default_factory=list)  # Flags for data discrepancies
     matched_name: str = ""  # The name that was actually matched in stats (for fuzzy matches)
+    is_starter: bool = True  # Whether this player is a starter
 
 
 @dataclass

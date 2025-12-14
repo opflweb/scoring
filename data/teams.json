@@ -1,0 +1,16 @@
+{
+  "teams": [
+    {"abbrev": "K/D", "name": "KIRK/DAVID", "owner": "KIRK/DAVID", "owner_key": "kirk_david"},
+    {"abbrev": "STL", "name": "STEVE L.", "owner": "STEVE L.", "owner_key": "steve_l"},
+    {"abbrev": "JOH", "name": "JOHN", "owner": "JOHN", "owner_key": "john"},
+    {"abbrev": "KEV", "name": "KEVIN", "owner": "KEVIN", "owner_key": "kevin"},
+    {"abbrev": "D/J", "name": "DANNY/JOEY", "owner": "DANNY/JOEY", "owner_key": "danny_joey"},
+    {"abbrev": "G/G", "name": "GREG/GRIFFIN", "owner": "GREG/GRIFFIN", "owner_key": "greg_griffin"},
+    {"abbrev": "E/J", "name": "ERIC/JEFF", "owner": "ERIC/JEFF", "owner_key": "eric_jeff"},
+    {"abbrev": "AND", "name": "ANDREW", "owner": "ANDREW", "owner_key": "andrew"},
+    {"abbrev": "W/B", "name": "WES/BILL", "owner": "WES/BILL", "owner_key": "wes_bill"},
+    {"abbrev": "KAM", "name": "KEMP/A/M", "owner": "KEMP/A/M", "owner_key": "kemp_a_m"},
+    {"abbrev": "J/M", "name": "JARRETT/MATT", "owner": "JARRETT/MATT", "owner_key": "jarrett_matt"},
+    {"abbrev": "ADA", "name": "ADAM", "owner": "ADAM", "owner_key": "adam"}
+  ]
+}
