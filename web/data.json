@@ -1,5 +1,5 @@
 {
-  "updated_at": "2025-12-15T02:33:56.894000Z",
+  "updated_at": "2025-12-15T06:18:24.827909Z",
   "season": 2025,
   "current_week": 15,
   "weeks": [
@@ -25236,7 +25236,7 @@
               "name": "Will Reichard",
               "nfl_team": "MIN",
               "position": "K",
-              "score": 0.0,
+              "score": 9.0,
               "starter": true
             },
             {
@@ -25268,7 +25268,7 @@
               "starter": true
             }
           ],
-          "total_score": 69.0,
+          "total_score": 78.0,
           "score_rank": 1
         },
         {
@@ -25378,7 +25378,7 @@
               "name": "Brandon Aubrey",
               "nfl_team": "DAL",
               "position": "K",
-              "score": 0.0,
+              "score": 7.0,
               "starter": true
             },
             {
@@ -25417,8 +25417,8 @@
               "starter": true
             }
           ],
-          "total_score": 38.0,
-          "score_rank": 9
+          "total_score": 45.0,
+          "score_rank": 7
         },
         {
           "name": "JOHN",
@@ -25443,7 +25443,7 @@
               "name": "Dak Prescott",
               "nfl_team": "DAL",
               "position": "QB",
-              "score": 0.0,
+              "score": 3.0,
               "starter": true
             },
             {
@@ -25566,8 +25566,8 @@
               "starter": false
             }
           ],
-          "total_score": 60.0,
-          "score_rank": 4
+          "total_score": 63.0,
+          "score_rank": 3
         },
         {
           "name": "KEVIN",
@@ -25716,7 +25716,7 @@
             }
           ],
           "total_score": 37.0,
-          "score_rank": 10
+          "score_rank": 11
         },
         {
           "name": "DANNY/JOEY",
@@ -25804,7 +25804,7 @@
               "name": "TJ Hockenson",
               "nfl_team": "MIN",
               "position": "TE",
-              "score": 0.0,
+              "score": 2.0,
               "starter": false
             },
             {
@@ -26014,7 +26014,7 @@
             }
           ],
           "total_score": 42.0,
-          "score_rank": 8
+          "score_rank": 10
         },
         {
           "name": "ERIC/JEFF",
@@ -26067,7 +26067,7 @@
               "name": "Javonte Williams",
               "nfl_team": "DAL",
               "position": "RB",
-              "score": 0.0,
+              "score": 8.0,
               "starter": true
             },
             {
@@ -26162,8 +26162,8 @@
               "starter": false
             }
           ],
-          "total_score": 37.0,
-          "score_rank": 11
+          "total_score": 45.0,
+          "score_rank": 8
         },
         {
           "name": "ANDREW",
@@ -26181,7 +26181,7 @@
               "name": "JJ McCarthy",
               "nfl_team": "MIN",
               "position": "QB",
-              "score": 0.0,
+              "score": 20.0,
               "starter": false
             },
             {
@@ -26293,7 +26293,7 @@
               "name": "Minnesota",
               "nfl_team": "MIN",
               "position": "DF",
-              "score": 0.0,
+              "score": 2.0,
               "starter": false
             },
             {
@@ -26312,7 +26312,7 @@
             }
           ],
           "total_score": 63.0,
-          "score_rank": 3
+          "score_rank": 4
         },
         {
           "name": "WES/BILL",
@@ -26610,7 +26610,7 @@
             }
           ],
           "total_score": 45.0,
-          "score_rank": 7
+          "score_rank": 9
         },
         {
           "name": "JARRETT/MATT",
@@ -26677,7 +26677,7 @@
               "name": "CeeDee Lamb",
               "nfl_team": "DAL",
               "position": "WR",
-              "score": 0.0,
+              "score": 3.0,
               "starter": true
             },
             {
@@ -26754,11 +26754,11 @@
               "name": "Kevin O'Connell",
               "nfl_team": "MIN",
               "position": "HC",
-              "score": 0.0,
+              "score": 7,
               "starter": false
             }
           ],
-          "total_score": 26.0,
+          "total_score": 29.0,
           "score_rank": 12
         },
         {
