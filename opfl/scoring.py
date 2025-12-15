@@ -12,7 +12,7 @@ def score_qb(stats: dict, turnover_tds: dict = None) -> Tuple[float, Dict[str, f
         - Passing yards: 200 yards = 2 pts, +1 pt per 50 yards thereafter (below 200 = 0)
         - Rushing yards: 75 yards = 2 pts, +1 pt per 25 yards thereafter (RB/WR rules)
         - Receiving yards: 75 yards = 2 pts, +1 pt per 25 yards thereafter
-        - Touchdowns (pass/rush/rec): 6 pts each
+        - Touchdowns (pass/rush/rec/fumble recovery): 6 pts each
         - 2pt conversions: 2 pts each
         - Interceptions: -1 pt each
         - Interceptions returned for TD: -3 pts additional each
@@ -46,10 +46,13 @@ def score_qb(stats: dict, turnover_tds: dict = None) -> Tuple[float, Dict[str, f
         points += receiving_pts
     
     # Touchdowns (6 points each)
+    # Includes passing, rushing, receiving, and fumble recovery TDs
+    # Per OPFL rules: "Special teams TDs count as TDs for the individual player"
     total_tds = (
         (stats.get('passing_tds', 0) or 0) +
         (stats.get('rushing_tds', 0) or 0) +
-        (stats.get('receiving_tds', 0) or 0)
+        (stats.get('receiving_tds', 0) or 0) +
+        (stats.get('fumble_recovery_tds', 0) or 0)
     )
     if total_tds:
         td_pts = 6 * total_tds
@@ -120,7 +123,7 @@ def score_rb_wr(stats: dict, turnover_tds: dict = None) -> Tuple[float, Dict[str
             - Player gets whichever method yields more points
         
         Other:
-            - Touchdowns (pass/rush/rec): 6 pts each
+            - Touchdowns (pass/rush/rec/fumble recovery): 6 pts each
             - 2pt conversions: 2 pts each
             - Fumbles lost / INTs thrown: -1 pt each
             - Turnovers returned for TD: -3 pts additional each
@@ -170,10 +173,13 @@ def score_rb_wr(stats: dict, turnover_tds: dict = None) -> Tuple[float, Dict[str
         points += passing_pts
     
     # Touchdowns (6 points each)
+    # Includes passing, rushing, receiving, and fumble recovery TDs
+    # Per OPFL rules: "Special teams TDs count as TDs for the individual player"
     total_tds = (
         (stats.get('passing_tds', 0) or 0) +
         (stats.get('rushing_tds', 0) or 0) +
-        (stats.get('receiving_tds', 0) or 0)
+        (stats.get('receiving_tds', 0) or 0) +
+        (stats.get('fumble_recovery_tds', 0) or 0)
     )
     if total_tds:
         td_pts = 6 * total_tds
@@ -244,7 +250,7 @@ def score_te(stats: dict, turnover_tds: dict = None) -> Tuple[float, Dict[str, f
             - Player gets whichever method yields more points
         
         Other:
-            - Touchdowns (pass/rush/rec): 6 pts each
+            - Touchdowns (pass/rush/rec/fumble recovery): 6 pts each
             - 2pt conversions: 2 pts each
             - Fumbles lost / INTs thrown: -1 pt each
             - Turnovers returned for TD: -3 pts additional each
@@ -294,10 +300,13 @@ def score_te(stats: dict, turnover_tds: dict = None) -> Tuple[float, Dict[str, f
         points += passing_pts
     
     # Touchdowns (6 points each)
+    # Includes passing, rushing, receiving, and fumble recovery TDs
+    # Per OPFL rules: "Special teams TDs count as TDs for the individual player"
     total_tds = (
         (stats.get('passing_tds', 0) or 0) +
         (stats.get('rushing_tds', 0) or 0) +
-        (stats.get('receiving_tds', 0) or 0)
+        (stats.get('receiving_tds', 0) or 0) +
+        (stats.get('fumble_recovery_tds', 0) or 0)
     )
     if total_tds:
         td_pts = 6 * total_tds
