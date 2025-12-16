@@ -1015,6 +1015,258 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Playoff Bracket Styles */
+        .playoff-section {
+            margin-bottom: 3rem;
+        }
+
+        .playoff-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .playoff-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.1em;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .playoff-header .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .playoff-bracket {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .bracket-round {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .bracket-finals {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .bracket-game {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        .bracket-game.championship {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .bracket-game.third-place {
+            opacity: 0.85;
+        }
+
+        .bracket-game-header {
+            padding: 0.5rem 1rem;
+            background: var(--bg-hover);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .bracket-game.championship .bracket-game-header {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--accent-gold);
+        }
+
+        .bracket-team {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .bracket-team:last-child {
+            border-bottom: none;
+        }
+
+        .bracket-team.winner {
+            background: rgba(0, 221, 119, 0.1);
+        }
+
+        .bracket-team.winner .bracket-team-name {
+            color: var(--win);
+            font-weight: 600;
+        }
+
+        .bracket-team.loser .bracket-team-name {
+            color: var(--text-muted);
+        }
+
+        .bracket-team-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bracket-seed {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-primary);
+            background: rgba(30, 144, 255, 0.15);
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.25rem;
+        }
+
+        .bracket-team-name {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .bracket-score {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            min-width: 40px;
+            text-align: right;
+        }
+
+        .bracket-team.winner .bracket-score {
+            color: var(--win);
+        }
+
+        .bracket-tbd {
+            padding: 0.75rem 1rem;
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* Jamboree Styles */
+        .jamboree-section {
+            margin-top: 3rem;
+        }
+
+        .jamboree-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .jamboree-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 0.1em;
+            color: var(--accent-tertiary);
+            margin-bottom: 0.5rem;
+        }
+
+        .jamboree-header .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .jamboree-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .jamboree-table th {
+            text-align: left;
+            padding: 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-hover);
+        }
+
+        .jamboree-table th.num {
+            text-align: right;
+        }
+
+        .jamboree-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .jamboree-table td.num {
+            text-align: right;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .jamboree-table tr:hover {
+            background: var(--bg-hover);
+        }
+
+        .jamboree-table tr.winner {
+            background: rgba(92, 179, 255, 0.1);
+        }
+
+        .jamboree-table tr.winner td:first-child {
+            color: var(--accent-tertiary);
+            font-weight: 600;
+        }
+
+        .jamboree-table .total-col {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .jamboree-rank {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .jamboree-winner-badge {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.25rem;
+            margin-left: 0.5rem;
+            background: rgba(92, 179, 255, 0.2);
+            color: var(--accent-tertiary);
+            font-weight: 600;
+        }
+
+        /* Schedule Playoff Week Styles */
+        .schedule-week.playoff {
+            border-color: var(--accent-gold);
+        }
+
+        .schedule-week.playoff .schedule-week-title {
+            color: var(--accent-gold);
+        }
+
+        .schedule-week-badge.playoff {
+            background: rgba(255, 215, 0, 0.15);
+            color: var(--accent-gold);
+        }
+
+        .schedule-playoff-label {
+            font-size: 0.7rem;
+            color: var(--accent-gold);
+            margin-left: 0.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .container { padding: 1rem; }
@@ -1032,6 +1284,13 @@
             .schedule-grid { grid-template-columns: 1fr; }
             .schedule-team-name { font-size: 0.8rem; }
             .schedule-score-box { min-width: 70px; padding: 0 0.5rem; }
+            .playoff-bracket {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .bracket-finals {
+                order: -1;
+            }
         }
     </style>
 </head>
@@ -1056,19 +1315,40 @@
         <main>
             <!-- Matchups Section -->
             <section id="matchups" class="section active">
-            <div class="week-selector" id="week-selector"></div>
+                <div class="week-selector" id="week-selector"></div>
+                
+                <!-- Playoff Bracket (shown for weeks 16-17) -->
+                <div id="playoff-container" style="display: none;">
+                    <div class="playoff-section">
+                        <div class="playoff-header">
+                            <h2>🏆 OPFL PLAYOFFS</h2>
+                            <div class="subtitle">Top 4 seeds compete for the Oakland Bowl</div>
+                        </div>
+                        <div class="playoff-bracket" id="playoff-bracket"></div>
+                    </div>
+                    
+                    <div class="jamboree-section">
+                        <div class="jamboree-header">
+                            <h2>🎪 THE JAMBOREE</h2>
+                            <div class="subtitle">Seeds 5-12 compete for glory — highest combined score over Weeks 16-17 wins!</div>
+                        </div>
+                        <div id="jamboree-standings"></div>
+                    </div>
+                </div>
+                
+                <!-- Regular matchups -->
                 <div class="matchups" id="matchups-container">
                     <div class="loading">
                         <div class="loading-spinner"></div>
                         Loading...
-        </div>
-        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Schedule Section -->
             <section id="schedule" class="section">
                 <div class="schedule-container">
-                    <h2 class="section-title">2025 SEASON SCHEDULE</h2>
+                    <h2 class="section-title">2025 SEASON SCHEDULE & PLAYOFFS</h2>
                     <div class="schedule-grid" id="schedule-container">
                         <div class="loading">
                             <div class="loading-spinner"></div>
@@ -1455,14 +1735,36 @@
         function renderWeekSelector() {
             const container = document.getElementById('week-selector');
             const weeks = data.weeks || [];
+            const regularSeasonWeeks = data.regular_season_weeks || 15;
             
-            container.innerHTML = `
-                <span class="week-label">WEEK</span>
-                ${weeks.map(w => `
-                    <button class="week-btn ${w.week === currentWeek ? 'active' : ''}" 
-                            data-week="${w.week}">${w.week}</button>
-                `).join('')}
-            `;
+            // Separate regular season and playoff weeks
+            const regSeasonWeeks = weeks.filter(w => w.week <= regularSeasonWeeks);
+            const playoffWeeks = weeks.filter(w => w.week > regularSeasonWeeks);
+            
+            let html = `<span class="week-label">WEEK</span>`;
+            
+            // Regular season weeks
+            html += regSeasonWeeks.map(w => `
+                <button class="week-btn ${w.week === currentWeek ? 'active' : ''}" 
+                        data-week="${w.week}">${w.week}</button>
+            `).join('');
+            
+            // Add playoff weeks if they exist or if we're past regular season
+            if (playoffWeeks.length > 0 || data.current_week > regularSeasonWeeks) {
+                html += `<span class="week-label" style="margin-left: 1rem;">PLAYOFFS</span>`;
+                
+                // Week 16
+                const week16 = playoffWeeks.find(w => w.week === 16);
+                html += `<button class="week-btn ${currentWeek === 16 ? 'active' : ''}" 
+                        data-week="16" style="background: rgba(255, 215, 0, 0.1); border-color: var(--accent-gold);">16</button>`;
+                
+                // Week 17
+                const week17 = playoffWeeks.find(w => w.week === 17);
+                html += `<button class="week-btn ${currentWeek === 17 ? 'active' : ''}" 
+                        data-week="17" style="background: rgba(255, 215, 0, 0.1); border-color: var(--accent-gold);">17</button>`;
+            }
+            
+            container.innerHTML = html;
 
             container.querySelectorAll('.week-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -1478,6 +1780,8 @@
             const container = document.getElementById('schedule-container');
             const currentWeekNum = data.current_week || 1;
             const weeks = data.weeks || [];
+            const regularSeasonWeeks = data.regular_season_weeks || 15;
+            const playoffs = data.playoffs;
             
             // Create lookup for week data
             const weekDataMap = {};
@@ -1485,9 +1789,9 @@
                 weekDataMap[w.week] = w;
             });
 
-            // Build schedule for all 15 weeks
+            // Build schedule for regular season (weeks 1-15)
             let html = '';
-            for (let weekNum = 1; weekNum <= 15; weekNum++) {
+            for (let weekNum = 1; weekNum <= regularSeasonWeeks; weekNum++) {
                 const schedule = SCHEDULE[weekNum];
                 const weekData = weekDataMap[weekNum];
                 const isCurrent = weekNum === currentWeekNum;
@@ -1575,12 +1879,204 @@
                     </div>
                 `;
             }
+            
+            // Add playoff weeks (16-17) if we have playoff data or are past week 15
+            if (playoffs || currentWeekNum > regularSeasonWeeks) {
+                html += renderPlayoffScheduleWeeks(playoffs, weekDataMap, currentWeekNum);
+            }
 
             container.innerHTML = html;
+        }
+        
+        function renderPlayoffScheduleWeeks(playoffs, weekDataMap, currentWeekNum) {
+            const standings = data.standings || [];
+            const getTeamName = (abbrev) => {
+                if (!abbrev) return 'TBD';
+                const team = standings.find(s => s.abbrev === abbrev);
+                return team ? team.name : abbrev;
+            };
+            
+            let html = '';
+            
+            // Week 16 - Semifinals
+            const sf1 = playoffs?.week_16?.semifinal_1 || {};
+            const sf2 = playoffs?.week_16?.semifinal_2 || {};
+            const jamboreeTeams = playoffs?.jamboree_teams || [];
+            const week16Data = weekDataMap[16];
+            
+            const isCurrent16 = currentWeekNum === 16;
+            const isComplete16 = currentWeekNum > 16;
+            let badge16Class = 'upcoming';
+            let badge16Text = 'Upcoming';
+            if (isCurrent16) { badge16Class = 'current'; badge16Text = 'Current'; }
+            else if (isComplete16) { badge16Class = 'complete'; badge16Text = 'Complete'; }
+            
+            // Build semifinal matchups
+            const renderPlayoffMatchup = (game, label) => {
+                if (!game.higher_seed && !game.lower_seed) {
+                    return `
+                        <div class="schedule-matchup">
+                            <div class="schedule-team"><span class="schedule-team-name">TBD</span></div>
+                            <div class="schedule-score-box"><span class="schedule-no-score">vs</span></div>
+                            <div class="schedule-team away"><span class="schedule-team-name">TBD</span></div>
+                        </div>
+                    `;
+                }
+                const team1Name = getTeamName(game.higher_seed);
+                const team2Name = getTeamName(game.lower_seed);
+                const score1 = game.higher_score || 0;
+                const score2 = game.lower_score || 0;
+                const hasScores = score1 > 0 || score2 > 0;
+                const team1Winning = score1 > score2;
+                const team2Winning = score2 > score1;
+                
+                if (hasScores || isComplete16) {
+                    return `
+                        <div class="schedule-matchup">
+                            <div class="schedule-team ${team1Winning ? 'winner' : team2Winning ? 'loser' : ''}">
+                                <span class="schedule-team-name">${team1Name}</span>
+                                <span class="schedule-playoff-label">${label}</span>
+                            </div>
+                            <div class="schedule-score-box">
+                                <span class="schedule-score ${team1Winning ? 'winning' : ''}">${score1}</span>
+                                <span class="schedule-vs">-</span>
+                                <span class="schedule-score ${team2Winning ? 'winning' : ''}">${score2}</span>
+                            </div>
+                            <div class="schedule-team away ${team2Winning ? 'winner' : team1Winning ? 'loser' : ''}">
+                                <span class="schedule-team-name">${team2Name}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                return `
+                    <div class="schedule-matchup">
+                        <div class="schedule-team">
+                            <span class="schedule-team-name">${team1Name}</span>
+                            <span class="schedule-playoff-label">${label}</span>
+                        </div>
+                        <div class="schedule-score-box"><span class="schedule-no-score">vs</span></div>
+                        <div class="schedule-team away"><span class="schedule-team-name">${team2Name}</span></div>
+                    </div>
+                `;
+            };
+            
+            html += `
+                <div class="schedule-week playoff ${isCurrent16 ? 'current' : ''}">
+                    <div class="schedule-week-header">
+                        <span class="schedule-week-title">Week 16 - Playoffs</span>
+                        <span class="schedule-week-badge ${badge16Class}">${badge16Text}</span>
+                    </div>
+                    <div class="schedule-matchups">
+                        ${renderPlayoffMatchup(sf1, '(1) vs (4)')}
+                        ${renderPlayoffMatchup(sf2, '(2) vs (3)')}
+                        <div class="schedule-matchup" style="opacity: 0.7; border-top: 1px dashed var(--border); margin-top: 0.5rem; padding-top: 0.5rem;">
+                            <div class="schedule-team"><span class="schedule-team-name" style="color: var(--accent-tertiary);">🎪 Jamboree: Seeds 5-12</span></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Week 17 - Finals
+            const champ = playoffs?.week_17?.championship || {};
+            const third = playoffs?.week_17?.third_place || {};
+            
+            const isCurrent17 = currentWeekNum === 17;
+            const isComplete17 = currentWeekNum > 17;
+            let badge17Class = 'upcoming';
+            let badge17Text = 'Upcoming';
+            if (isCurrent17) { badge17Class = 'current'; badge17Text = 'Current'; }
+            else if (isComplete17) { badge17Class = 'complete'; badge17Text = 'Complete'; }
+            
+            const renderFinalMatchup = (game, label, isChampionship = false) => {
+                if (!game.team1 && !game.team2) {
+                    return `
+                        <div class="schedule-matchup">
+                            <div class="schedule-team"><span class="schedule-team-name">TBD</span></div>
+                            <div class="schedule-score-box"><span class="schedule-no-score">vs</span></div>
+                            <div class="schedule-team away"><span class="schedule-team-name">TBD</span></div>
+                        </div>
+                    `;
+                }
+                const team1Name = getTeamName(game.team1);
+                const team2Name = getTeamName(game.team2);
+                const score1 = game.score1 || 0;
+                const score2 = game.score2 || 0;
+                const hasScores = score1 > 0 || score2 > 0;
+                const team1Winning = score1 > score2;
+                const team2Winning = score2 > score1;
+                
+                const labelStyle = isChampionship ? 'color: var(--accent-gold);' : '';
+                
+                if (hasScores || isComplete17) {
+                    return `
+                        <div class="schedule-matchup">
+                            <div class="schedule-team ${team1Winning ? 'winner' : team2Winning ? 'loser' : ''}">
+                                <span class="schedule-team-name">${team1Name}</span>
+                                <span class="schedule-playoff-label" style="${labelStyle}">${label}</span>
+                            </div>
+                            <div class="schedule-score-box">
+                                <span class="schedule-score ${team1Winning ? 'winning' : ''}">${score1}</span>
+                                <span class="schedule-vs">-</span>
+                                <span class="schedule-score ${team2Winning ? 'winning' : ''}">${score2}</span>
+                            </div>
+                            <div class="schedule-team away ${team2Winning ? 'winner' : team1Winning ? 'loser' : ''}">
+                                <span class="schedule-team-name">${team2Name}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                return `
+                    <div class="schedule-matchup">
+                        <div class="schedule-team">
+                            <span class="schedule-team-name">${team1Name}</span>
+                            <span class="schedule-playoff-label" style="${labelStyle}">${label}</span>
+                        </div>
+                        <div class="schedule-score-box"><span class="schedule-no-score">vs</span></div>
+                        <div class="schedule-team away"><span class="schedule-team-name">${team2Name}</span></div>
+                    </div>
+                `;
+            };
+            
+            html += `
+                <div class="schedule-week playoff ${isCurrent17 ? 'current' : ''}">
+                    <div class="schedule-week-header">
+                        <span class="schedule-week-title">Week 17 - Finals</span>
+                        <span class="schedule-week-badge ${badge17Class}">${badge17Text}</span>
+                    </div>
+                    <div class="schedule-matchups">
+                        ${renderFinalMatchup(champ, '🏆 Oakland Bowl', true)}
+                        ${renderFinalMatchup(third, '3rd Place')}
+                        <div class="schedule-matchup" style="opacity: 0.7; border-top: 1px dashed var(--border); margin-top: 0.5rem; padding-top: 0.5rem;">
+                            <div class="schedule-team"><span class="schedule-team-name" style="color: var(--accent-tertiary);">🎪 Jamboree continues</span></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return html;
         }
 
         function renderMatchups() {
             const container = document.getElementById('matchups-container');
+            const playoffContainer = document.getElementById('playoff-container');
+            const regularSeasonWeeks = data.regular_season_weeks || 15;
+            
+            // Check if this is a playoff week
+            const isPlayoffWeek = currentWeek > regularSeasonWeeks;
+            
+            if (isPlayoffWeek) {
+                // Show playoff bracket and Jamboree
+                playoffContainer.style.display = 'block';
+                container.style.display = 'none';
+                renderPlayoffBracket();
+                renderJamboree();
+                return;
+            }
+            
+            // Regular season - hide playoff container
+            playoffContainer.style.display = 'none';
+            container.style.display = 'block';
+            
             const weekData = data.weeks?.find(w => w.week === currentWeek);
             const schedule = SCHEDULE[currentWeek];
             
@@ -1669,6 +2165,155 @@
         function toggleRoster(idx) {
             const panel = document.getElementById(`roster-${idx}`);
             panel.classList.toggle('expanded');
+        }
+
+        function renderPlayoffBracket() {
+            const playoffs = data.playoffs;
+            if (!playoffs) {
+                document.getElementById('playoff-bracket').innerHTML = '<div class="loading">Playoff seeding not yet determined</div>';
+                return;
+            }
+            
+            const standings = data.standings || [];
+            const getTeamName = (abbrev) => {
+                const team = standings.find(s => s.abbrev === abbrev);
+                return team ? team.name : abbrev;
+            };
+            
+            const seeds = playoffs.seeds || {};
+            const sf1 = playoffs.week_16?.semifinal_1 || {};
+            const sf2 = playoffs.week_16?.semifinal_2 || {};
+            const champ = playoffs.week_17?.championship || {};
+            const third = playoffs.week_17?.third_place || {};
+            
+            const renderBracketTeam = (abbrev, score, isWinner, isLoser, showSeed = true) => {
+                if (!abbrev) {
+                    return `<div class="bracket-tbd">TBD</div>`;
+                }
+                const seed = seeds[abbrev] || '?';
+                const winClass = isWinner ? 'winner' : (isLoser ? 'loser' : '');
+                return `
+                    <div class="bracket-team ${winClass}">
+                        <div class="bracket-team-info">
+                            ${showSeed ? `<span class="bracket-seed">${seed}</span>` : ''}
+                            <span class="bracket-team-name">${getTeamName(abbrev)}</span>
+                        </div>
+                        <span class="bracket-score">${score || 0}</span>
+                    </div>
+                `;
+            };
+            
+            const html = `
+                <!-- Left: Semifinals -->
+                <div class="bracket-round">
+                    <div class="bracket-game">
+                        <div class="bracket-game-header">Semifinal 1 • Week 16</div>
+                        ${renderBracketTeam(sf1.higher_seed, sf1.higher_score, sf1.winner === sf1.higher_seed, sf1.loser === sf1.higher_seed)}
+                        ${renderBracketTeam(sf1.lower_seed, sf1.lower_score, sf1.winner === sf1.lower_seed, sf1.loser === sf1.lower_seed)}
+                    </div>
+                    <div class="bracket-game">
+                        <div class="bracket-game-header">Semifinal 2 • Week 16</div>
+                        ${renderBracketTeam(sf2.higher_seed, sf2.higher_score, sf2.winner === sf2.higher_seed, sf2.loser === sf2.higher_seed)}
+                        ${renderBracketTeam(sf2.lower_seed, sf2.lower_score, sf2.winner === sf2.lower_seed, sf2.loser === sf2.lower_seed)}
+                    </div>
+                </div>
+                
+                <!-- Center: Finals -->
+                <div class="bracket-finals">
+                    <div class="bracket-game championship">
+                        <div class="bracket-game-header">🏆 Oakland Bowl • Week 17</div>
+                        ${renderBracketTeam(champ.team1, champ.score1, champ.winner === champ.team1, champ.loser === champ.team1, false)}
+                        ${renderBracketTeam(champ.team2, champ.score2, champ.winner === champ.team2, champ.loser === champ.team2, false)}
+                    </div>
+                    <div class="bracket-game third-place">
+                        <div class="bracket-game-header">3rd Place Game • Week 17</div>
+                        ${renderBracketTeam(third.team1, third.score1, third.winner === third.team1, third.loser === third.team1, false)}
+                        ${renderBracketTeam(third.team2, third.score2, third.winner === third.team2, third.loser === third.team2, false)}
+                    </div>
+                </div>
+                
+                <!-- Right: Results summary -->
+                <div class="bracket-round">
+                    <div class="bracket-game">
+                        <div class="bracket-game-header">Final Standings</div>
+                        <div class="bracket-team ${champ.winner ? 'winner' : ''}">
+                            <div class="bracket-team-info">
+                                <span class="bracket-seed">1st</span>
+                                <span class="bracket-team-name">${champ.winner ? getTeamName(champ.winner) : 'TBD'}</span>
+                            </div>
+                        </div>
+                        <div class="bracket-team ${champ.loser ? 'loser' : ''}">
+                            <div class="bracket-team-info">
+                                <span class="bracket-seed">2nd</span>
+                                <span class="bracket-team-name">${champ.loser ? getTeamName(champ.loser) : 'TBD'}</span>
+                            </div>
+                        </div>
+                        <div class="bracket-team ${third.winner ? '' : ''}">
+                            <div class="bracket-team-info">
+                                <span class="bracket-seed">3rd</span>
+                                <span class="bracket-team-name">${third.winner ? getTeamName(third.winner) : 'TBD'}</span>
+                            </div>
+                        </div>
+                        <div class="bracket-team ${third.loser ? 'loser' : ''}">
+                            <div class="bracket-team-info">
+                                <span class="bracket-seed">4th</span>
+                                <span class="bracket-team-name">${third.loser ? getTeamName(third.loser) : 'TBD'}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('playoff-bracket').innerHTML = html;
+        }
+
+        function renderJamboree() {
+            const playoffs = data.playoffs;
+            const container = document.getElementById('jamboree-standings');
+            
+            if (!playoffs || !playoffs.jamboree || !playoffs.jamboree.standings) {
+                container.innerHTML = '<div class="loading">Jamboree standings will appear once playoffs begin</div>';
+                return;
+            }
+            
+            const standings = playoffs.jamboree.standings;
+            const winner = playoffs.jamboree.winner;
+            
+            if (standings.length === 0) {
+                container.innerHTML = '<div class="loading">No Jamboree teams</div>';
+                return;
+            }
+            
+            container.innerHTML = `
+                <table class="jamboree-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team</th>
+                            <th class="num">Week 16</th>
+                            <th class="num">Week 17</th>
+                            <th class="num">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${standings.map((team, idx) => {
+                            const isWinner = winner && team.abbrev === winner;
+                            return `
+                                <tr class="${isWinner ? 'winner' : ''}">
+                                    <td><span class="jamboree-rank">${idx + 1}</span></td>
+                                    <td>
+                                        ${team.name}
+                                        ${isWinner ? '<span class="jamboree-winner-badge">CHAMPION</span>' : ''}
+                                    </td>
+                                    <td class="num">${team.week_16_score}</td>
+                                    <td class="num">${team.week_17_score}</td>
+                                    <td class="num total-col">${team.total}</td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
         }
 
         function renderStandings() {

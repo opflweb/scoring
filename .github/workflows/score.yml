@@ -8,11 +8,6 @@ on:
         description: 'NFL Week number'
         required: false
         type: number
-      use_json:
-        description: 'Use JSON data source instead of Excel'
-        required: false
-        type: boolean
-        default: false
   
   # Trigger when lineups are updated (via API)
   push:
@@ -70,7 +65,7 @@ jobs:
         if: steps.check_window.outputs.in_window == 'true'
         run: |
           python -m pip install --upgrade pip
-          pip install nflreadpy polars openpyxl pandas python-docx
+          pip install nflreadpy polars openpyxl thefuzz python-Levenshtein
       
       - name: Determine current NFL week
         if: steps.check_window.outputs.in_window == 'true'
@@ -114,12 +109,7 @@ jobs:
       - name: Export scores for web
         if: steps.check_window.outputs.in_window == 'true'
         run: |
-          # Use JSON mode if triggered by lineup push or explicitly requested
-          if [[ "${{ github.event_name }}" == "push" ]] || [[ "${{ github.event.inputs.use_json }}" == "true" ]]; then
-            python scripts/export_for_web.py --json
-          else
-            python scripts/export_for_web.py
-          fi
+          python scripts/export_for_web.py
       
       - name: Commit updated scores
         if: steps.check_window.outputs.in_window == 'true'

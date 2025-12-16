@@ -38,6 +38,8 @@ ALL_TEAMS = list(OWNER_TO_CODE.values())
 TEAM_COLUMNS = [4, 7, 10, 13, 16, 19]
 POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DF', 'HC']
 TRADE_DEADLINE_WEEK = 12
+REGULAR_SEASON_WEEKS = 15
+PLAYOFF_WEEKS = [16, 17]
 
 # 2025 OPFL Schedule - Team numbers mapped to abbreviations
 # (1) Kemp/A/M, (2) Danny/Joey, (3) Steve L., (4) Kirk/David, (5) Kevin, (6) Eric/Jeff
@@ -473,12 +475,22 @@ def export_all_weeks(excel_path):
     
     wb.close()
     
+    current_nfl_week = get_current_nfl_week()
+    sorted_standings = sorted(standings.values(), key=lambda x: (x['rank_points'], x['points_for']), reverse=True)
+    
+    # Compute playoff data if regular season is complete
+    playoffs = None
+    if current_nfl_week > REGULAR_SEASON_WEEKS and len(sorted_standings) >= 4:
+        playoffs = compute_playoff_data(weeks, sorted_standings, current_nfl_week)
+    
     return {
         'updated_at': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
         'season': 2025,
-        'current_week': get_current_nfl_week(),
+        'current_week': current_nfl_week,
+        'regular_season_weeks': REGULAR_SEASON_WEEKS,
         'weeks': weeks,
-        'standings': sorted(standings.values(), key=lambda x: (x['rank_points'], x['points_for']), reverse=True),
+        'standings': sorted_standings,
+        'playoffs': playoffs,
         'game_times': get_game_times(2025),
         'trade_deadline_week': TRADE_DEADLINE_WEEK,
         'taxi_squads': {team: [] for team in ALL_TEAMS},
@@ -491,6 +503,182 @@ def load_pending_trades():
         with open(path) as f:
             return json.load(f).get('trades', [])
     return []
+
+
+def compute_playoff_data(weeks_data, standings, current_nfl_week):
+    """
+    Compute playoff bracket and Jamboree data.
+    
+    Playoffs:
+    - Week 16: Semifinals (1 vs 4, 2 vs 3)
+    - Week 17: Oakland Bowl (winners), 3rd place game (losers)
+    
+    Jamboree:
+    - All non-playoff teams (seeds 5-12)
+    - Winner is whoever scores most total points over weeks 16-17
+    """
+    # Get final regular season standings (after week 15)
+    if not standings or len(standings) < 4:
+        return None
+    
+    # Playoff teams are top 4 seeds
+    playoff_teams = [s['abbrev'] for s in standings[:4]]
+    jamboree_teams = [s['abbrev'] for s in standings[4:]]
+    
+    # Create week lookup
+    week_data_map = {w['week']: w for w in weeks_data}
+    
+    # Initialize playoff structure
+    playoffs = {
+        'playoff_teams': playoff_teams,
+        'jamboree_teams': jamboree_teams,
+        'seeds': {standings[i]['abbrev']: i + 1 for i in range(len(standings))},
+        'week_16': {
+            'semifinal_1': {  # 1 vs 4
+                'higher_seed': standings[0]['abbrev'],
+                'lower_seed': standings[3]['abbrev'],
+                'higher_score': 0,
+                'lower_score': 0,
+                'winner': None,
+                'loser': None,
+            },
+            'semifinal_2': {  # 2 vs 3
+                'higher_seed': standings[1]['abbrev'],
+                'lower_seed': standings[2]['abbrev'],
+                'higher_score': 0,
+                'lower_score': 0,
+                'winner': None,
+                'loser': None,
+            },
+        },
+        'week_17': {
+            'championship': {  # Oakland Bowl
+                'team1': None,
+                'team2': None,
+                'score1': 0,
+                'score2': 0,
+                'winner': None,
+                'loser': None,
+            },
+            'third_place': {
+                'team1': None,
+                'team2': None,
+                'score1': 0,
+                'score2': 0,
+                'winner': None,
+                'loser': None,
+            },
+        },
+        'jamboree': {
+            'standings': [],  # List of {abbrev, name, week_16_score, week_17_score, total}
+            'winner': None,
+        },
+    }
+    
+    # Get week 16 scores
+    week_16_data = week_data_map.get(16)
+    if week_16_data and week_16_data.get('teams'):
+        team_scores_16 = {t['abbrev']: t['total_score'] for t in week_16_data['teams']}
+        
+        # Update semifinal 1 (1 vs 4)
+        sf1 = playoffs['week_16']['semifinal_1']
+        sf1['higher_score'] = team_scores_16.get(sf1['higher_seed'], 0)
+        sf1['lower_score'] = team_scores_16.get(sf1['lower_seed'], 0)
+        if sf1['higher_score'] > 0 or sf1['lower_score'] > 0:
+            if sf1['higher_score'] >= sf1['lower_score']:
+                sf1['winner'] = sf1['higher_seed']
+                sf1['loser'] = sf1['lower_seed']
+            else:
+                sf1['winner'] = sf1['lower_seed']
+                sf1['loser'] = sf1['higher_seed']
+        
+        # Update semifinal 2 (2 vs 3)
+        sf2 = playoffs['week_16']['semifinal_2']
+        sf2['higher_score'] = team_scores_16.get(sf2['higher_seed'], 0)
+        sf2['lower_score'] = team_scores_16.get(sf2['lower_seed'], 0)
+        if sf2['higher_score'] > 0 or sf2['lower_score'] > 0:
+            if sf2['higher_score'] >= sf2['lower_score']:
+                sf2['winner'] = sf2['higher_seed']
+                sf2['loser'] = sf2['lower_seed']
+            else:
+                sf2['winner'] = sf2['lower_seed']
+                sf2['loser'] = sf2['higher_seed']
+        
+        # Set up week 17 matchups based on week 16 results
+        if sf1['winner'] and sf2['winner']:
+            playoffs['week_17']['championship']['team1'] = sf1['winner']
+            playoffs['week_17']['championship']['team2'] = sf2['winner']
+            playoffs['week_17']['third_place']['team1'] = sf1['loser']
+            playoffs['week_17']['third_place']['team2'] = sf2['loser']
+    
+    # Get week 17 scores
+    week_17_data = week_data_map.get(17)
+    if week_17_data and week_17_data.get('teams'):
+        team_scores_17 = {t['abbrev']: t['total_score'] for t in week_17_data['teams']}
+        
+        # Update championship (Oakland Bowl)
+        champ = playoffs['week_17']['championship']
+        if champ['team1'] and champ['team2']:
+            champ['score1'] = team_scores_17.get(champ['team1'], 0)
+            champ['score2'] = team_scores_17.get(champ['team2'], 0)
+            if champ['score1'] > 0 or champ['score2'] > 0:
+                if champ['score1'] >= champ['score2']:
+                    champ['winner'] = champ['team1']
+                    champ['loser'] = champ['team2']
+                else:
+                    champ['winner'] = champ['team2']
+                    champ['loser'] = champ['team1']
+        
+        # Update third place game
+        third = playoffs['week_17']['third_place']
+        if third['team1'] and third['team2']:
+            third['score1'] = team_scores_17.get(third['team1'], 0)
+            third['score2'] = team_scores_17.get(third['team2'], 0)
+            if third['score1'] > 0 or third['score2'] > 0:
+                if third['score1'] >= third['score2']:
+                    third['winner'] = third['team1']
+                    third['loser'] = third['team2']
+                else:
+                    third['winner'] = third['team2']
+                    third['loser'] = third['team1']
+    
+    # Compute Jamboree standings (combined scores for weeks 16-17)
+    jamboree_standings = []
+    for abbrev in jamboree_teams:
+        team_info = next((s for s in standings if s['abbrev'] == abbrev), None)
+        if not team_info:
+            continue
+        
+        week_16_score = 0
+        week_17_score = 0
+        
+        if week_16_data and week_16_data.get('teams'):
+            team_16 = next((t for t in week_16_data['teams'] if t['abbrev'] == abbrev), None)
+            if team_16:
+                week_16_score = team_16.get('total_score', 0)
+        
+        if week_17_data and week_17_data.get('teams'):
+            team_17 = next((t for t in week_17_data['teams'] if t['abbrev'] == abbrev), None)
+            if team_17:
+                week_17_score = team_17.get('total_score', 0)
+        
+        jamboree_standings.append({
+            'abbrev': abbrev,
+            'name': team_info['name'],
+            'week_16_score': round(week_16_score, 1),
+            'week_17_score': round(week_17_score, 1),
+            'total': round(week_16_score + week_17_score, 1),
+        })
+    
+    # Sort by total score descending
+    jamboree_standings.sort(key=lambda x: x['total'], reverse=True)
+    playoffs['jamboree']['standings'] = jamboree_standings
+    
+    # Determine Jamboree winner if week 17 is complete
+    if jamboree_standings and current_nfl_week > 17:
+        playoffs['jamboree']['winner'] = jamboree_standings[0]['abbrev']
+    
+    return playoffs
 
 
 def main():
