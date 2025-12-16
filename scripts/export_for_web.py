@@ -478,7 +478,7 @@ def export_all_weeks(excel_path):
     current_nfl_week = get_current_nfl_week()
     sorted_standings = sorted(standings.values(), key=lambda x: (x['rank_points'], x['points_for']), reverse=True)
     
-    # Compute playoff data if regular season is complete
+    # Compute playoff data after regular season is complete (week 15 finished)
     playoffs = None
     if current_nfl_week > REGULAR_SEASON_WEEKS and len(sorted_standings) >= 4:
         playoffs = compute_playoff_data(weeks, sorted_standings, current_nfl_week)

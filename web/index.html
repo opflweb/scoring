@@ -1749,17 +1749,15 @@
                         data-week="${w.week}">${w.week}</button>
             `).join('');
             
-            // Add playoff weeks if they exist or if we're past regular season
-            if (playoffWeeks.length > 0 || data.current_week > regularSeasonWeeks) {
+            // Show playoff weeks after regular season is complete
+            if (data.playoffs || playoffWeeks.length > 0) {
                 html += `<span class="week-label" style="margin-left: 1rem;">PLAYOFFS</span>`;
                 
                 // Week 16
-                const week16 = playoffWeeks.find(w => w.week === 16);
                 html += `<button class="week-btn ${currentWeek === 16 ? 'active' : ''}" 
                         data-week="16" style="background: rgba(255, 215, 0, 0.1); border-color: var(--accent-gold);">16</button>`;
                 
                 // Week 17
-                const week17 = playoffWeeks.find(w => w.week === 17);
                 html += `<button class="week-btn ${currentWeek === 17 ? 'active' : ''}" 
                         data-week="17" style="background: rgba(255, 215, 0, 0.1); border-color: var(--accent-gold);">17</button>`;
             }
@@ -1880,8 +1878,8 @@
                 `;
             }
             
-            // Add playoff weeks (16-17) if we have playoff data or are past week 15
-            if (playoffs || currentWeekNum > regularSeasonWeeks) {
+            // Add playoff weeks (16-17) - show projected matchups from current standings
+            if (playoffs) {
                 html += renderPlayoffScheduleWeeks(playoffs, weekDataMap, currentWeekNum);
             }
 
@@ -1890,6 +1888,7 @@
         
         function renderPlayoffScheduleWeeks(playoffs, weekDataMap, currentWeekNum) {
             const standings = data.standings || [];
+            
             const getTeamName = (abbrev) => {
                 if (!abbrev) return 'TBD';
                 const team = standings.find(s => s.abbrev === abbrev);
@@ -1963,7 +1962,7 @@
             html += `
                 <div class="schedule-week playoff ${isCurrent16 ? 'current' : ''}">
                     <div class="schedule-week-header">
-                        <span class="schedule-week-title">Week 16 - Playoffs</span>
+                        <span class="schedule-week-title">Week 16 - Semifinals</span>
                         <span class="schedule-week-badge ${badge16Class}">${badge16Text}</span>
                     </div>
                     <div class="schedule-matchups">
@@ -2175,6 +2174,7 @@
             }
             
             const standings = data.standings || [];
+            
             const getTeamName = (abbrev) => {
                 const team = standings.find(s => s.abbrev === abbrev);
                 return team ? team.name : abbrev;
