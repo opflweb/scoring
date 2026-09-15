@@ -6,6 +6,7 @@ import json
 import os
 import re
 import sys
+from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -337,6 +338,7 @@ def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False)
     completed = [w for w in weeks if w.get('final')]
     standings = build_standings(completed, schedule)
     standings_through = max((w['week'] for w in completed), default=0)
+    team_stats = calculate_team_stats(completed, schedule, standings)
 
     # Playoffs only exist once the regular season is in the books.
     playoffs = None
@@ -354,6 +356,7 @@ def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False)
         'standings': standings,
         'standings_through_week': standings_through,
         'standings_in_progress': not is_final,
+        'team_stats': team_stats,
         'playoffs': playoffs,
         'game_times': build_game_times(schedule_rows),
         'trade_deadline_week': TRADE_DEADLINE_WEEK,
@@ -449,6 +452,269 @@ def build_standings(weeks, schedule):
         key=lambda x: (x['rank_points'], x['points_for']),
         reverse=True,
     )
+
+
+def calculate_lineup_efficiency(team):
+    """Compare a team's submitted starters with its best legal lineup at the
+    same slot counts - "points left on the table" from a suboptimal start.
+
+    Ported from the sibling QPFL site's scripts/export_for_web.py. Unlike that
+    version this doesn't filter a `taxi` flag: OPFL's roster entries never
+    include taxi-squad players, since parse_roster_from_excel stops at the
+    `TS` block rather than reading into it.
+    """
+    roster = team.get('roster', [])
+    if not isinstance(roster, list):
+        return None
+
+    slot_counts = defaultdict(int)
+    players_by_position = defaultdict(list)
+    actual_points = 0.0
+
+    for player in roster:
+        score = player.get('score')
+        if not isinstance(score, (int, float)):
+            continue
+        position = player.get('position', '')
+        players_by_position[position].append(score)
+        if player.get('starter'):
+            slot_counts[position] += 1
+            actual_points += score
+
+    if not slot_counts:
+        return None
+
+    optimal_points = 0.0
+    for position, count in slot_counts.items():
+        scores = sorted(players_by_position[position], reverse=True)
+        optimal_points += sum(scores[:count])
+
+    if optimal_points <= 0:
+        return None
+
+    return {
+        'actual_points': round(actual_points, 1),
+        'optimal_points': round(optimal_points, 1),
+        'points_left_on_table': round(max(0.0, optimal_points - actual_points), 1),
+    }
+
+
+def _add_lineup_efficiency(stats, team):
+    efficiency = calculate_lineup_efficiency(team)
+    if not efficiency:
+        return
+    stats['lineup_actual_points'] += efficiency['actual_points']
+    stats['lineup_optimal_points'] += efficiency['optimal_points']
+    stats['points_left_on_table'] += efficiency['points_left_on_table']
+    stats['lineup_weeks'] += 1
+
+
+def calculate_team_stats(weeks, schedule, standings):
+    """Per-team season stats: PPG, margins, weekly ranks, streaks, best/worst
+    week, lineup efficiency, and the OPR power ranking.
+
+    Ported from the sibling QPFL site's scripts/export_for_web.py. That
+    version reads week.matchups[].team1/team2; OPFL's weeks are flatter
+    (week['teams'] + the top-level `schedule` dict for pairings, matching how
+    build_standings() already reads them above), so pairings are looked up
+    the same way rather than duplicated onto every week.
+
+    Args:
+        weeks: Archived weeks (opfl.week_archive shape - 'week', 'teams', 'final')
+        schedule: {week_str: [[abbrev1, abbrev2], ...]}
+        standings: Output of build_standings() - the authoritative W/L/T/PF/PA
+
+    Returns:
+        Dict keyed by team abbrev.
+    """
+    import statistics
+
+    team_stats = {}
+    for standing in standings:
+        abbrev = standing['abbrev']
+        team_stats[abbrev] = {
+            'abbrev': abbrev,
+            'name': standing.get('name', abbrev),
+            'points_for': [],
+            'points_against': [],
+            'margins': [],
+            'weekly_ranks': [],
+            'week_numbers': [],
+            'wins': 0,
+            'losses': 0,
+            'ties': 0,
+            'streak': {'type': None, 'count': 0},
+            'current_streak': [],
+            'lineup_actual_points': 0.0,
+            'lineup_optimal_points': 0.0,
+            'points_left_on_table': 0.0,
+            'lineup_weeks': 0,
+        }
+
+    if not standings:
+        return {}
+
+    # Regular-season length from the standings W+L+T, so a partial season
+    # (or a future change to REGULAR_SEASON_WEEKS) doesn't need a matching
+    # code change here. Standings only ever include completed weeks, so this
+    # is 0 before anything finishes - fall back to the configured length.
+    s0 = standings[0]
+    reg_season_weeks = (s0.get('wins') or 0) + (s0.get('losses') or 0) + (s0.get('ties') or 0)
+    if reg_season_weeks == 0:
+        reg_season_weeks = REGULAR_SEASON_WEEKS
+
+    regular_weeks = [
+        w for w in weeks if w.get('final') and (w.get('week') or 0) <= reg_season_weeks
+    ]
+
+    for week_data in regular_weeks:
+        week_num = week_data['week']
+        pairings = schedule.get(str(week_num), [])
+        teams_by_abbrev = {t['abbrev']: t for t in week_data['teams']}
+
+        weekly_scores = sorted(
+            ((t['abbrev'], t['total_score']) for t in week_data['teams']),
+            key=lambda x: x[1],
+            reverse=True,
+        )
+        rank_map = {abbrev: rank + 1 for rank, (abbrev, _) in enumerate(weekly_scores)}
+
+        for abbrev1, abbrev2 in pairings:
+            t1 = teams_by_abbrev.get(abbrev1)
+            t2 = teams_by_abbrev.get(abbrev2)
+            if not t1 or not t2:
+                continue
+            s1, s2 = t1['total_score'], t2['total_score']
+
+            for abbrev, team, score, opp_score in ((abbrev1, t1, s1, s2), (abbrev2, t2, s2, s1)):
+                if abbrev not in team_stats:
+                    continue
+                stats = team_stats[abbrev]
+                stats['points_for'].append(score)
+                stats['points_against'].append(opp_score)
+                stats['week_numbers'].append(week_num)
+                margin = score - opp_score
+                stats['margins'].append(margin)
+                if abbrev in rank_map:
+                    stats['weekly_ranks'].append(rank_map[abbrev])
+
+                if margin > 0:
+                    stats['wins'] += 1
+                    stats['current_streak'].append('W')
+                elif margin < 0:
+                    stats['losses'] += 1
+                    stats['current_streak'].append('L')
+                else:
+                    stats['ties'] += 1
+                    stats['current_streak'].append('T')
+                _add_lineup_efficiency(stats, team)
+
+    # Standings are the authoritative W/L/T/PF/PA (they may reflect manual
+    # corrections); override the values accumulated from raw matchups.
+    standings_by_abbrev = {s['abbrev']: s for s in standings}
+
+    for abbrev, stats in team_stats.items():
+        pf = stats['points_for']
+        pa = stats['points_against']
+        margins = stats['margins']
+        ranks = stats['weekly_ranks']
+        week_numbers = stats['week_numbers']
+
+        games_played = len(pf)
+        if games_played == 0:
+            continue
+
+        std = standings_by_abbrev.get(abbrev, {})
+        stats['wins'] = std.get('wins', stats['wins'])
+        stats['losses'] = std.get('losses', stats['losses'])
+        stats['ties'] = std.get('ties', stats['ties'])
+        stats['total_points_for'] = std.get('points_for', sum(pf))
+        stats['total_points_against'] = std.get('points_against', sum(pa))
+        stats['point_differential'] = round(
+            stats['total_points_for'] - stats['total_points_against'], 1
+        )
+
+        std_games = stats['wins'] + stats['losses'] + stats['ties']
+        denom = std_games if std_games > 0 else games_played
+        stats['ppg'] = round(stats['total_points_for'] / denom, 2)
+        stats['ppg_against'] = round(stats['total_points_against'] / denom, 2)
+        stats['avg_margin'] = round(sum(margins) / games_played, 2)
+        stats['avg_rank'] = round(sum(ranks) / len(ranks), 2) if ranks else 0
+
+        stats['std_dev'] = round(statistics.stdev(pf), 2) if len(pf) > 1 else 0
+
+        best_idx = pf.index(max(pf))
+        worst_idx = pf.index(min(pf))
+        stats['best_week'] = pf[best_idx]
+        stats['worst_week'] = pf[worst_idx]
+        stats['best_week_num'] = week_numbers[best_idx]
+        stats['worst_week_num'] = week_numbers[worst_idx]
+
+        stats['largest_win'] = round(max(margins), 1) if margins else 0
+        stats['largest_loss'] = round(min(margins), 1) if margins else 0
+
+        total_games = stats['wins'] + stats['losses'] + stats['ties']
+        stats['win_pct'] = (
+            round((stats['wins'] + 0.5 * stats['ties']) / total_games, 3) if total_games > 0 else 0
+        )
+
+        streak = stats['current_streak']
+        if streak:
+            last_result = streak[-1]
+            streak_count = 0
+            for result in reversed(streak):
+                if result == last_result:
+                    streak_count += 1
+                else:
+                    break
+            stats['streak'] = {'type': last_result, 'count': streak_count}
+
+        stats['games_above_500'] = stats['wins'] - stats['losses']
+
+        stats['record'] = f'{stats["wins"]}-{stats["losses"]}'
+        if stats['ties'] > 0:
+            stats['record'] += f'-{stats["ties"]}'
+
+        # OPR ("Oberon Power Ranking"): a single-number blend of scoring
+        # volume, consistency (best + worst week), and win rate.
+        avg_points = stats['ppg']
+        high_score = stats['best_week']
+        low_score = stats['worst_week']
+        win_pct_100 = stats['win_pct'] * 100
+        stats['opr'] = round(
+            (5 * avg_points + 2 * (high_score + low_score) + 3 * win_pct_100) / 10, 2
+        )
+
+        optimal_points = stats['lineup_optimal_points']
+        if optimal_points > 0:
+            stats['owner_success_rate'] = round(
+                stats['lineup_actual_points'] / optimal_points * 100, 1
+            )
+            stats['points_left_on_table_pct'] = round(
+                stats['points_left_on_table'] / optimal_points * 100, 1
+            )
+        else:
+            stats['owner_success_rate'] = None
+            stats['points_left_on_table_pct'] = None
+
+        del stats['points_for']
+        del stats['points_against']
+        del stats['margins']
+        del stats['weekly_ranks']
+        del stats['week_numbers']
+        del stats['current_streak']
+
+    opr_values = [s['opr'] for s in team_stats.values() if 'opr' in s]
+    league_avg_opr = sum(opr_values) / len(opr_values) if opr_values else 1
+
+    for stats in team_stats.values():
+        if 'opr' in stats:
+            stats['adjusted_opr'] = (
+                round(stats['opr'] / league_avg_opr, 3) if league_avg_opr > 0 else 0
+            )
+            stats['league_avg_opr'] = round(league_avg_opr, 2)
+
+    return team_stats
 
 
 def load_pending_trades():

@@ -27,6 +27,7 @@ REQUIRED_TOP_LEVEL_KEYS = {
     'standings',
     'standings_through_week',
     'standings_in_progress',
+    'team_stats',
     'playoffs',
     'game_times',
     'trade_deadline_week',
@@ -152,3 +153,9 @@ def test_every_scheduled_week_has_matching_week_data(data):
     exported = {w['week'] for w in data['weeks']}
     scheduled = {int(w) for w in data['schedule']}
     assert scheduled <= exported, f'scheduled but not exported: {scheduled - exported}'
+
+
+def test_team_stats_only_covers_teams_that_appear_in_standings(data):
+    """team_stats is empty until a week is final (same rule as standings);
+    once populated it should never invent a team standings doesn't have."""
+    assert set(data['team_stats']) <= {s['abbrev'] for s in data['standings']}

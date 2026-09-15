@@ -736,6 +736,80 @@
             `;
         }
 
+        // Expected wins / luck rating: ported from the sibling QPFL site's
+        // computeExpectedWins. Each week a team earns the fraction of the rest
+        // of the field it outscored (0..1), so xWins is on the same scale as
+        // actual wins (one matchup per week). "Luck" is actual wins minus
+        // expected wins - a team that keeps winning close games it "should"
+        // lose on points shows positive luck.
+        function computeExpectedWins() {
+            const result = {};
+            for (const week of data.weeks || []) {
+                // An in-progress week's scores are still moving and standings
+                // don't count it either - skip it here for the same reason.
+                if (!week.final) continue;
+
+                const teams = week.teams || [];
+                const n = teams.length;
+                if (n < 2) continue;
+
+                for (const team of teams) {
+                    if (!result[team.abbrev]) result[team.abbrev] = { xWins: 0, xLosses: 0 };
+                    let beats = 0, ties = 0;
+                    for (const other of teams) {
+                        if (other.abbrev === team.abbrev) continue;
+                        if (team.total_score > other.total_score) beats++;
+                        else if (team.total_score === other.total_score) ties++;
+                    }
+                    const opponents = n - 1;
+                    // One game per week: the fraction of the field beaten.
+                    const expected = (beats + ties * 0.5) / opponents;
+                    result[team.abbrev].xWins += expected;
+                    result[team.abbrev].xLosses += 1 - expected;
+                }
+            }
+            return result;
+        }
+
+        // Remaining strength of schedule: average PPG of each team's
+        // not-yet-played regular-season opponents. Ported from the sibling
+        // QPFL site's computeRemainingSOS, adapted to OPFL's schedule shape
+        // (data.schedule is {"1": [[abbrev, abbrev], ...]}, not a list of
+        // week objects with nested team1/team2).
+        function computeRemainingSOS(standings) {
+            const schedule = data.schedule || {};
+            const completedThrough = data.standings_through_week || 0;
+            const regularSeasonWeeks = data.regular_season_weeks || 15;
+
+            const teamPpg = {};
+            for (const team of standings) {
+                const games = (team.wins || 0) + (team.losses || 0) + (team.ties || 0);
+                teamPpg[team.abbrev] = games ? (team.points_for || 0) / games : null;
+            }
+
+            const remaining = {};
+            for (const [weekStr, pairings] of Object.entries(schedule)) {
+                const week = parseInt(weekStr, 10);
+                if (week > regularSeasonWeeks || week <= completedThrough) continue;
+                for (const [a1, a2] of pairings) {
+                    if (!remaining[a1]) remaining[a1] = [];
+                    if (!remaining[a2]) remaining[a2] = [];
+                    remaining[a1].push(a2);
+                    remaining[a2].push(a1);
+                }
+            }
+
+            if (Object.keys(remaining).length === 0) return null;
+
+            const result = {};
+            for (const [abbrev, opponents] of Object.entries(remaining)) {
+                if (!opponents.length) continue;
+                const ppgs = opponents.map(opp => teamPpg[opp]).filter(v => v != null);
+                if (ppgs.length) result[abbrev] = ppgs.reduce((s, v) => s + v, 0) / ppgs.length;
+            }
+            return Object.keys(result).length ? result : null;
+        }
+
         function renderStandings() {
             const container = document.getElementById('standings-container');
             let standings = data.standings || [];
@@ -762,6 +836,9 @@
                 ? `<div class="standings-note">Through Week ${through}${data.standings_in_progress ? ' &middot; week in progress' : ''}</div>`
                 : '';
 
+            const expectedWins = computeExpectedWins();
+            const sos = computeRemainingSOS(standings);
+
             container.innerHTML = note + `
                 <table class="standings-table">
                     <thead>
@@ -773,6 +850,9 @@
                             <th class="num">Top 6</th>
                             <th class="num">PF</th>
                             <th class="num">PA</th>
+                            <th class="num">xW-xL</th>
+                            <th class="num">Luck</th>
+                            ${sos ? '<th class="num">Rem. SOS</th>' : ''}
                         </tr>
                     </thead>
                     <tbody>
@@ -781,7 +861,20 @@
                             const isPlayoff = rank <= 4;
                             const isToilet = rank >= standings.length - 1;
                             const record = `${team.wins || 0}-${team.losses || 0}-${team.ties || 0}`;
-                
+
+                            const xw = expectedWins[team.abbrev];
+                            let xwCell = '<td class="num xwl">—</td><td class="num luck">—</td>';
+                            if (xw) {
+                                const luck = (team.wins || 0) - xw.xWins;
+                                const luckStr = (luck >= 0 ? '+' : '') + luck.toFixed(1);
+                                const luckClass = luck > 0.5 ? 'luck-pos' : (luck < -0.5 ? 'luck-neg' : '');
+                                xwCell = `<td class="num xwl">${xw.xWins.toFixed(1)}-${xw.xLosses.toFixed(1)}</td>` +
+                                         `<td class="num luck ${luckClass}">${luckStr}</td>`;
+                            }
+                            const sosValue = sos && sos[team.abbrev] != null
+                                ? `<td class="num sos">${sos[team.abbrev].toFixed(1)}</td>`
+                                : (sos ? '<td class="num sos">—</td>' : '');
+
                             return `
                                 <tr>
                                     <td>
@@ -798,6 +891,8 @@
                                     <td class="num top-half">${team.top_half || 0}</td>
                                     <td class="num points-for">${team.points_for?.toFixed(1) || 0}</td>
                                     <td class="num points-against">${team.points_against?.toFixed(1) || 0}</td>
+                                    ${xwCell}
+                                    ${sosValue}
                                 </tr>
                             `;
                         }).join('')}

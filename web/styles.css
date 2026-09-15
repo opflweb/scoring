@@ -529,6 +529,11 @@
         .top-half { color: var(--accent-tertiary); }
         .points-for { color: var(--text-secondary); }
         .points-against { color: var(--text-muted); }
+        .xwl { color: var(--text-secondary); }
+        .luck { color: var(--text-muted); }
+        .luck.luck-pos { color: var(--win); }
+        .luck.luck-neg { color: var(--loss); }
+        .sos { color: var(--text-muted); }
 
         .team-code {
             font-family: 'JetBrains Mono', monospace;
