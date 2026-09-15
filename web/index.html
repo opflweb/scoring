@@ -287,6 +287,14 @@
             color: var(--accent-primary);
         }
 
+        .standings-note {
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
         .week-selector {
             display: flex;
             justify-content: center;
@@ -1298,7 +1306,7 @@
     <div class="container">
         <header>
             <div class="logo">Oakland Perennial Football League</div>
-            <div class="season-badge">2025 SEASON</div>
+            <div class="season-badge" id="season-badge">2026 SEASON</div>
             <div class="updated" id="updated-time"></div>
         </header>
 
@@ -1348,7 +1356,7 @@
             <!-- Schedule Section -->
             <section id="schedule" class="section">
                 <div class="schedule-container">
-                    <h2 class="section-title">2025 SEASON SCHEDULE & PLAYOFFS</h2>
+                    <h2 class="section-title" id="schedule-title">2026 SEASON SCHEDULE &amp; PLAYOFFS</h2>
                     <div class="schedule-grid" id="schedule-container">
                         <div class="loading">
                             <div class="loading-spinner"></div>
@@ -1377,7 +1385,7 @@
             <!-- Rules Section -->
             <section id="rules" class="section">
                 <div class="rules-container">
-                    <h2 class="section-title">2025 OPFL Scoring and Rules</h2>
+                    <h2 class="section-title" id="rules-title">2026 OPFL Scoring and Rules</h2>
                     
                     <div class="rules-grid">
                         <div class="rule-card">
@@ -1601,32 +1609,28 @@
         let currentWeek = 1;
         let currentTeam = null;
 
-        // 2025 OPFL Schedule - Team numbers mapped to abbreviations
-        // (1) Kemp/A/M, (2) Danny/Joey, (3) Steve L., (4) Kirk/David, (5) Kevin, (6) Eric/Jeff
-        // (7) Wes/Bill, (8) Andrew, (9) Jarrett/Matt, (10) Adam, (11) John, (12) Greg/Griffin
-        const TEAM_NUMBER_MAP = {
-            1: 'KAM', 2: 'D/J', 3: 'STL', 4: 'K/D', 5: 'KEV', 6: 'E/J',
-            7: 'W/B', 8: 'AND', 9: 'J/M', 10: 'ADA', 11: 'JOH', 12: 'G/G'
+        // Team numbers used by the printed OPFL schedule. Overridden by
+        // data.team_number_map when the export provides one.
+        const DEFAULT_TEAM_NUMBER_MAP = {
+            1: 'AND', 2: 'JOH', 3: 'W/B', 4: 'STL', 5: 'G/G', 6: 'J/M',
+            7: 'KEV', 8: 'KAM', 9: 'K/D', 10: 'E/J', 11: 'ADA', 12: 'D/J'
         };
 
-        // Schedule: array of matchups per week (team1 vs team2)
-        const SCHEDULE = {
-            1:  [[1,2], [3,4], [5,6], [7,8], [9,10], [11,12]],
-            2:  [[1,3], [2,4], [5,7], [6,8], [9,11], [10,12]],
-            3:  [[1,4], [2,5], [3,6], [7,10], [8,11], [9,12]],
-            4:  [[1,5], [2,6], [3,7], [4,9], [8,12], [10,11]],
-            5:  [[1,6], [2,7], [3,12], [4,10], [5,11], [8,9]],
-            6:  [[1,7], [2,8], [3,9], [4,12], [5,10], [6,11]],
-            7:  [[1,8], [2,9], [3,10], [4,11], [5,12], [6,7]],
-            8:  [[1,9], [2,10], [3,11], [4,6], [5,8], [7,12]],
-            9:  [[1,10], [2,11], [3,8], [4,5], [7,9], [6,12]],
-            10: [[1,11], [2,12], [3,5], [4,7], [6,9], [8,10]],
-            11: [[1,12], [2,3], [4,8], [5,9], [6,10], [7,11]],
-            12: [[1,2], [3,4], [5,6], [7,8], [9,10], [11,12]],
-            13: [[1,3], [2,4], [5,7], [6,8], [9,11], [10,12]],
-            14: [[1,4], [2,5], [3,6], [7,10], [8,11], [9,12]],
-            15: [[1,5], [2,6], [3,7], [4,9], [8,12], [10,11]]
-        };
+        function teamNumberMap() {
+            return data?.team_number_map || DEFAULT_TEAM_NUMBER_MAP;
+        }
+
+        // Weekly pairings come straight from the workbook (data.schedule maps
+        // a week number to a list of [abbrev, abbrev] pairs). Weeks that have
+        // not been published yet simply return null.
+        function getWeekMatchups(weekNum) {
+            const schedule = data?.schedule || {};
+            const pairs = schedule[String(weekNum)] || schedule[weekNum];
+            if (!pairs || !pairs.length) return null;
+
+            const numberMap = teamNumberMap();
+            return pairs.map(pair => pair.map(entry => numberMap[entry] || numberMap[String(entry)] || entry));
+        }
 
         // Historical championship data
         const CHAMPIONSHIPS = [
@@ -1706,6 +1710,13 @@
         }
 
         function initApp() {
+            // Season labels
+            if (data.season) {
+                document.getElementById('season-badge').textContent = `${data.season} SEASON`;
+                document.getElementById('schedule-title').textContent = `${data.season} SEASON SCHEDULE & PLAYOFFS`;
+                document.getElementById('rules-title').textContent = `${data.season} OPFL Scoring and Rules`;
+            }
+
             // Update timestamp
             if (data.updated_at) {
                 const date = new Date(data.updated_at);
@@ -1790,7 +1801,7 @@
             // Build schedule for regular season (weeks 1-15)
             let html = '';
             for (let weekNum = 1; weekNum <= regularSeasonWeeks; weekNum++) {
-                const schedule = SCHEDULE[weekNum];
+                const schedule = getWeekMatchups(weekNum);
                 const weekData = weekDataMap[weekNum];
                 const isCurrent = weekNum === currentWeekNum;
                 const isComplete = weekNum < currentWeekNum;
@@ -1815,10 +1826,27 @@
                     badgeText = 'Complete';
                 }
 
+                // Weeks whose pairings have not been published yet are shown
+                // as a placeholder rather than skipped entirely.
+                if (!schedule) {
+                    html += `
+                        <div class="schedule-week ${isCurrent ? 'current' : ''}">
+                            <div class="schedule-week-header">
+                                <span class="schedule-week-title">Week ${weekNum}</span>
+                                <span class="schedule-week-badge upcoming">Not yet set</span>
+                            </div>
+                            <div class="schedule-matchups">
+                                <div class="schedule-matchup">
+                                    <span class="schedule-no-score">Matchups not posted yet</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    continue;
+                }
+
                 // Build matchups HTML
-                const matchupsHtml = schedule.map(([num1, num2]) => {
-                    const abbrev1 = TEAM_NUMBER_MAP[num1];
-                    const abbrev2 = TEAM_NUMBER_MAP[num2];
+                const matchupsHtml = schedule.map(([abbrev1, abbrev2]) => {
                     const team1 = teamsByAbbrev[abbrev1];
                     const team2 = teamsByAbbrev[abbrev2];
                     
@@ -2077,7 +2105,7 @@
             container.style.display = 'block';
             
             const weekData = data.weeks?.find(w => w.week === currentWeek);
-            const schedule = SCHEDULE[currentWeek];
+            const schedule = getWeekMatchups(currentWeek);
             
             if (!weekData || !weekData.teams || !schedule) {
                 container.innerHTML = '<div class="loading">No matchup data for this week</div>';
@@ -2091,9 +2119,7 @@
             });
 
             // Build matchups from schedule
-            const matchups = schedule.map(([num1, num2]) => {
-                const abbrev1 = TEAM_NUMBER_MAP[num1];
-                const abbrev2 = TEAM_NUMBER_MAP[num2];
+            const matchups = schedule.map(([abbrev1, abbrev2]) => {
                 return {
                     team1: teamsByAbbrev[abbrev1],
                     team2: teamsByAbbrev[abbrev2]
@@ -2337,7 +2363,12 @@
                 return (b.points_for || 0) - (a.points_for || 0);
             });
 
-            container.innerHTML = `
+            const through = data.standings_through_week || 0;
+            const note = through
+                ? `<div class="standings-note">Through Week ${through}${data.standings_in_progress ? ' &middot; week in progress' : ''}</div>`
+                : '';
+
+            container.innerHTML = note + `
                 <table class="standings-table">
                     <thead>
                         <tr>

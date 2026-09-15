@@ -1,4 +1,4 @@
-name: QPFL Autoscorer
+name: OPFL Autoscorer
 
 on:
   # Manual trigger
@@ -8,11 +8,6 @@ on:
         description: 'NFL Week number'
         required: false
         type: number
-  
-  # Trigger when lineups are updated (via API)
-  push:
-    paths:
-      - 'data/lineups/**'
   
   # Scheduled runs - 30 minutes after nflverse data updates
   # Only runs during NFL season months (Jan, Feb, Sep-Dec)
@@ -74,13 +69,12 @@ jobs:
           WEEK="${{ github.event.inputs.week }}"
           if [ -z "$WEEK" ]; then
             # Calculate current NFL week based on date
-            # 2025 season starts Sept 4, 2025
             WEEK=$(python -c "
           from datetime import datetime, timedelta
           import nflreadpy as nfl
           
           # Get current week from schedule
-          schedule = nfl.load_schedules(seasons=2025)
+          schedule = nfl.load_schedules(seasons=2026)
           today = datetime.now().strftime('%Y-%m-%d')
           
           # Find games happening today or most recent
@@ -100,23 +94,18 @@ jobs:
           echo "week=$WEEK" >> $GITHUB_OUTPUT
           echo "Scoring NFL Week: $WEEK"
       
-      - name: Run autoscorer
-        if: steps.check_window.outputs.in_window == 'true'
-        run: |
-          WEEK=${{ steps.week.outputs.week }}
-          python autoscorer.py --excel "Griff OPFL Scoring 2025.xlsx" --week $WEEK --update
-      
       - name: Export scores for web
         if: steps.check_window.outputs.in_window == 'true'
         run: |
-          python scripts/export_for_web.py
+          WEEK=${{ steps.week.outputs.week }}
+          python scripts/export_for_web.py --excel "OPFL Scoring 2026.xlsx" --week $WEEK --season 2026
       
       - name: Commit updated scores
         if: steps.check_window.outputs.in_window == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add "Griff OPFL Scoring 2025.xlsx" web/data.json web/images/ data/
+          git add web/data.json web/images/ data/
           git diff --staged --quiet || git commit -m "Update scores for Week ${{ steps.week.outputs.week }} - $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push
       

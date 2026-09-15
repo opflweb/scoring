@@ -18,38 +18,57 @@ pip install -e .
 
 ### Basic Usage
 
-Score the current week with detailed output:
+The 2026 workbook (`OPFL Scoring 2026.xlsx`) keeps the **official rosters** on the
+`Rosters` tab and each week's **head-to-head lineups and pairings** on the
+`Matchups` tab. That is the default mode:
 
 ```bash
-python autoscorer.py --excel "OPFL Scoring 2025.xlsx" --sheet "W12" --season 2025 --week 12
+python autoscorer.py --week 1
 ```
 
 ### Command Line Options
 
 | Option | Short | Default | Description |
 |--------|-------|---------|-------------|
-| `--excel` | `-e` | `OPFL Scoring 2025.xlsx` | Path to the Excel file with rosters |
-| `--sheet` | `-s` | `W12` | Sheet name to score (W1, W2, etc.) |
-| `--season` | `-y` | `2025` | NFL season year |
-| `--week` | `-w` | `12` | Week number to score |
-| `--update` | `-u` | - | Update Excel file with calculated scores |
-| `--quiet` | `-q` | - | Suppress detailed output, show only standings |
+| `--excel` | `-e` | `OPFL Scoring 2026.xlsx` | Path to the Excel workbook |
+| `--week` | `-w` | `1` | Week number to score |
+| `--season` | `-y` | `2026` | NFL season year |
+| `--sheet` | `-s` | - | Score a legacy per-week sheet (W1, W2, ...) instead |
+| `--rosters-sheet` | - | `Rosters` | Name of the official rosters sheet |
+| `--matchups-sheet` | - | `Matchups` | Name of the weekly matchups sheet |
+| `--update` | `-u` | - | Write scores back to Excel (legacy W-sheets only) |
+| `--quiet` | `-q` | - | Suppress per-player output |
 
 ### Examples
 
 ```bash
-# Score Week 12 with full breakdown
-python autoscorer.py --sheet W12 --week 12
+# Score week 1 with a full per-player breakdown
+python autoscorer.py --week 1
 
-# Score a different week
-python autoscorer.py --sheet W10 --week 10
+# Just the matchup results and standings
+python autoscorer.py --week 1 --quiet
 
-# Quick standings only
-python autoscorer.py --quiet
-
-# Score and save results back to Excel
-python autoscorer.py --update
+# Score a week from the old 2025 workbook format
+python autoscorer.py --excel "Griff OPFL Scoring 2025.xlsx" --sheet W12 --week 12 --season 2025
 ```
+
+### Publishing to the website
+
+`scripts/export_for_web.py` scores the week and writes `web/data.json`, which is
+what the site reads:
+
+```bash
+python scripts/export_for_web.py                       # current NFL week
+python scripts/export_for_web.py --week 1 --season 2026
+```
+
+The export publishes each team's full roster (starters and bench points), the
+week's matchups as read from the workbook, standings, taxi squads, and draft picks.
+
+> **The 2026 workbook is formula-driven and is never written to.** The `Matchups`
+> tab pulls names and totals from the `Scoring` tab, which pulls each team's
+> starred players from `Rosters`. openpyxl cannot evaluate formulas, so saving the
+> file would strip every cached value. Scores are published to `web/data.json` only.
 
 ### Validating Scores
 
@@ -168,15 +187,33 @@ RB TreVeyon Henderson (NE) -> Tre'Veon Henderson: 6.0 pts ✓
 
 ## Excel File Format
 
-The autoscorer reads rosters from the OPFL Excel file format:
+### 2026 workbook
 
-- **Teams** are arranged horizontally in columns
-- **Each team** occupies 3 columns: Points | Star (*) | Player Name
-- **Position labels** (QB, RB, WR, TE, K, DF, HC) are in column A
-- **Started players** are indicated by a `*` in the star column
-- **Player format**: `Player Name (Team)` (e.g., "Patrick Mahomes (KC)")
-- **Defense format**: Just team name (e.g., "Baltimore", "Denver")
-- **Weekly sheets** are named W1, W2, W3, etc.
+**`Rosters` tab** - the official rosters, two blocks of six teams (headers on
+rows 1 and 39):
+
+- Each team occupies 3 columns: Points | Star (`*`) | Player Name
+- Position labels (QB, RB, WR, TE, K, DF, HC) are in column A
+- A `*` in the star column marks a starter
+- Player format: `Player Name (Team)`, e.g. `Patrick Mahomes (KC)`
+- Defense format: just the team name, e.g. `Baltimore`, `Denver`
+- A `PH` block (phone numbers) and `TS` block (taxi squad, written as
+  `RB Aaron Jones`) follow each roster and are not part of the lineup
+
+**`Matchups` tab** - the week's six head-to-head games, stacked vertically:
+
+- Each block starts with the two owner names in columns A and D
+- The nine following rows are the starting lineup in
+  QB / RB / RB / WR / WR / TE / K / DF / HC order
+- The `Key` column maps schedule team numbers to owners
+
+Owner names are spelled inconsistently across tabs (`LAM`, `Steve L`, `SL` are
+all the same franchise); `opfl/constants.py:resolve_team_code` normalizes them.
+
+### Legacy 2025 workbook
+
+Per-week sheets named `W1`, `W2`, ... using the same roster block layout. Score
+these with `--sheet W12`.
 
 ## Output
 
