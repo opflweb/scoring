@@ -131,6 +131,7 @@
             renderMatchups();
             renderSchedule();
             renderStandings();
+            renderStatsLeaders();
             renderTeamSelector();
             renderHistory();
             renderBanners();
@@ -803,6 +804,157 @@
                     </tbody>
                 </table>
             `;
+        }
+
+        // Points Leaders
+        //
+        // Ported from the sibling QPFL site's getStatsLeaders/renderStatsLeaders.
+        // OPFL's weeks[] is flatter than QPFL's (week.teams[] rather than
+        // week.matchups[].team1/team2), which simplifies the aggregation loop;
+        // everything else - the composite key, the per-position grouping, the
+        // "top 5 unless a position is expanded" UI - carries over unchanged.
+        const STATS_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DF', 'HC'];
+        const STATS_POSITION_NAMES = {
+            QB: 'Quarterbacks',
+            RB: 'Running Backs',
+            WR: 'Wide Receivers',
+            TE: 'Tight Ends',
+            K: 'Kickers',
+            DF: 'Defenses',
+            HC: 'Head Coaches',
+        };
+
+        let currentStatsPosition = 'ALL';
+        let _statsLeadersCache = { dataRef: null, value: null };
+
+        function getStatsLeaders() {
+            if (!data) return {};
+
+            // Memoized: leaders depend only on the current data object, and
+            // recomputing means re-walking every week's every roster.
+            if (_statsLeadersCache.dataRef === data) {
+                return _statsLeadersCache.value;
+            }
+
+            // key: "name|nflTeam|position" -> aggregate. Position is part of the
+            // key (not just name+team) because a head coach and a defense can
+            // share an NFL team abbreviation.
+            const playerStats = {};
+
+            for (const week of data.weeks || []) {
+                // An in-progress week's scores are still moving; counting it
+                // would make the leaderboard jump around mid-Sunday.
+                if (week.final === false) continue;
+
+                for (const team of week.teams || []) {
+                    for (const player of team.roster || []) {
+                        if (!player.name || !player.position) continue;
+
+                        const key = `${player.name}|${player.nfl_team || ''}|${player.position}`;
+                        if (!playerStats[key]) {
+                            playerStats[key] = {
+                                name: player.name,
+                                nfl_team: player.nfl_team || '',
+                                position: player.position,
+                                fantasy_team: team.abbrev,
+                                total_points: 0,
+                                weeks_played: 0,
+                            };
+                        }
+
+                        playerStats[key].fantasy_team = team.abbrev;
+                        if (player.score !== undefined && player.score !== null) {
+                            playerStats[key].total_points += player.score;
+                            if (player.score !== 0) {
+                                playerStats[key].weeks_played++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            const byPosition = {};
+            for (const player of Object.values(playerStats)) {
+                if (!byPosition[player.position]) byPosition[player.position] = [];
+                byPosition[player.position].push(player);
+            }
+            for (const pos of Object.keys(byPosition)) {
+                byPosition[pos].sort((a, b) => b.total_points - a.total_points);
+            }
+
+            _statsLeadersCache = { dataRef: data, value: byPosition };
+            return byPosition;
+        }
+
+        function renderStatsLeaders() {
+            const leaders = getStatsLeaders();
+
+            const selector = document.getElementById('stats-position-selector');
+            selector.innerHTML = `
+                <button class="stats-pos-btn ${currentStatsPosition === 'ALL' ? 'active' : ''}"
+                        role="tab" aria-selected="${currentStatsPosition === 'ALL'}" data-pos="ALL">All</button>
+                ${STATS_POSITIONS.map(pos => `
+                    <button class="stats-pos-btn ${currentStatsPosition === pos ? 'active' : ''}"
+                            role="tab" aria-selected="${currentStatsPosition === pos}" data-pos="${pos}">${pos}</button>
+                `).join('')}
+            `;
+
+            selector.querySelectorAll('.stats-pos-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentStatsPosition = btn.dataset.pos;
+                    renderStatsLeaders();
+                });
+            });
+
+            const container = document.getElementById('stats-leaders-container');
+            const positionsToShow = currentStatsPosition === 'ALL' ? STATS_POSITIONS : [currentStatsPosition];
+            container.classList.toggle('single-position', currentStatsPosition !== 'ALL');
+
+            const anyLeaders = positionsToShow.some(pos => (leaders[pos] || []).length > 0);
+            if (!anyLeaders) {
+                container.innerHTML = '<div class="loading">No completed weeks yet</div>';
+                return;
+            }
+
+            container.innerHTML = positionsToShow.map(pos => {
+                const posLeaders = currentStatsPosition === 'ALL'
+                    ? (leaders[pos] || []).slice(0, 5)
+                    : (leaders[pos] || []);
+                if (posLeaders.length === 0) return '';
+
+                return `
+                    <div class="stats-position-card">
+                        <div class="stats-position-header">${STATS_POSITION_NAMES[pos] || pos}</div>
+                        ${posLeaders.map((player, idx) => {
+                            const rank = idx + 1;
+                            const rankClass = rank <= 3 ? `rank-${rank}` : '';
+                            return `
+                                <div class="stats-leader-row ${rankClass}">
+                                    <div class="stats-rank">${rank}</div>
+                                    <div class="stats-player-info">
+                                        <span class="stats-player-name">${player.name}</span>
+                                        <div class="stats-player-meta">
+                                            <span class="stats-nfl-team">${player.nfl_team}</span>
+                                            <span class="stats-fantasy-team">• ${player.fantasy_team}</span>
+                                        </div>
+                                    </div>
+                                    <div class="stats-points">${player.total_points.toFixed(1)}</div>
+                                </div>
+                            `;
+                        }).join('')}
+                        ${currentStatsPosition === 'ALL' && (leaders[pos] || []).length > 5 ? `
+                            <button class="stats-view-all" data-pos="${pos}">View all ${STATS_POSITION_NAMES[pos]}</button>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+
+            container.querySelectorAll('.stats-view-all').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentStatsPosition = btn.dataset.pos;
+                    renderStatsLeaders();
+                });
+            });
         }
 
         function renderTeamSelector() {
