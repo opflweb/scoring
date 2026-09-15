@@ -114,10 +114,31 @@ def test_team_total_equals_the_sum_of_its_starters(data):
 
 
 def test_standings_cover_every_team_with_the_expected_fields(data):
+    """Standings are empty until a week's NFL games are all final, then they
+    cover the whole league. A partial league is a bug either way."""
+    if not data['standings']:
+        assert data['standings_through_week'] == 0
+        return
+
     assert {s['abbrev'] for s in data['standings']} == set(ALL_TEAM_CODES)
     for standing in data['standings']:
         missing = REQUIRED_STANDINGS_KEYS - set(standing)
         assert not missing, f'{standing.get("abbrev")} missing {missing}'
+
+
+def test_standings_only_count_completed_weeks(data):
+    """The week-1-scored-before-Monday-night bug: an unfinished week must not
+    post W/L records."""
+    final_weeks = [w['week'] for w in data['weeks'] if w.get('final')]
+    assert data['standings_through_week'] == max(final_weeks, default=0)
+
+    games_played = sum(s['wins'] + s['losses'] + s['ties'] for s in data['standings'])
+    assert games_played == len(final_weeks) * len(ALL_TEAM_CODES)
+
+
+def test_every_week_declares_whether_it_is_final(data):
+    for week in data['weeks']:
+        assert isinstance(week.get('final'), bool), f'week {week["week"]} has no final flag'
 
 
 def test_schedule_pairs_reference_real_teams_and_nobody_plays_twice(data):

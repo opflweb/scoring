@@ -27,6 +27,8 @@ on:
 
 env:
   PYTHON_VERSION: '3.11'
+  SEASON: '2026'
+  WORKBOOK: 'OPFL Scoring 2026.xlsx'
 
 jobs:
   score:
@@ -68,38 +70,23 @@ jobs:
         run: |
           WEEK="${{ github.event.inputs.week }}"
           if [ -z "$WEEK" ]; then
-            # Calculate current NFL week based on date
-            WEEK=$(python -c "
-          from datetime import datetime, timedelta
-          import nflreadpy as nfl
-          
-          # Get current week from schedule
-          schedule = nfl.load_schedules(seasons=2026)
-          today = datetime.now().strftime('%Y-%m-%d')
-          
-          # Find games happening today or most recent
-          current_week = 1
-          for week in range(1, 19):
-              week_games = schedule.filter(schedule['week'] == week)
-              if week_games.height > 0:
-                  game_dates = week_games['gameday'].to_list()
-                  if any(d >= today for d in game_dates):
-                      current_week = week
-                      break
-                  current_week = week
-          
-          print(current_week)
-          ")
+            WEEK=$(python scripts/nfl_week.py --season ${{ env.SEASON }})
           fi
           echo "week=$WEEK" >> $GITHUB_OUTPUT
           echo "Scoring NFL Week: $WEEK"
-      
+
       - name: Export scores for web
         if: steps.check_window.outputs.in_window == 'true'
         run: |
           WEEK=${{ steps.week.outputs.week }}
-          python scripts/export_for_web.py --excel "OPFL Scoring 2026.xlsx" --week $WEEK --season 2026
+          python scripts/export_for_web.py --excel "${{ env.WORKBOOK }}" --week $WEEK --season ${{ env.SEASON }}
       
+      - name: Validate exported data
+        if: steps.check_window.outputs.in_window == 'true'
+        run: |
+          pip install pytest
+          pytest tests/test_export_shape.py -q
+
       - name: Commit updated scores
         if: steps.check_window.outputs.in_window == 'true'
         run: |

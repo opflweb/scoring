@@ -17,6 +17,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from opfl import OPFLScorer, build_matchup_week, parse_taxi_squads
 from opfl.constants import ALL_TEAM_CODES, CODE_TO_OWNER, resolve_team_code
+from opfl.week_archive import load_all_weeks, save_week
+from opfl.week_status import week_games_are_final
 
 ALL_TEAMS = ALL_TEAM_CODES
 TEAM_COLUMNS = [4, 7, 10, 13, 16, 19]
@@ -192,32 +194,35 @@ def get_current_nfl_week():
     return nfl.get_current_week()
 
 
-def get_game_times(season=SEASON):
+def load_schedule_rows(season=SEASON):
+    """Fetch the season's NFL schedule once; both week-finality and kickoff
+    times read from it, and it is the slowest call in the export."""
     try:
-        schedule = nfl.load_schedules(seasons=season)
-        game_times = {}
-        for week in range(1, 19):
-            week_games = schedule.filter(schedule['week'] == week)
-            if week_games.height == 0:
-                continue
-            game_times[week] = {}
-            for row in week_games.iter_rows(named=True):
-                game_date = row.get('gameday', '')
-                game_time = row.get('gametime', '')
-                if game_date and game_time:
-                    try:
-                        dt = datetime.strptime(f'{game_date} {game_time}', '%Y-%m-%d %H:%M')
-                        kickoff_iso = dt.strftime('%Y-%m-%dT%H:%M:00-05:00')
-                        if row.get('home_team'):
-                            game_times[week][row['home_team']] = kickoff_iso
-                        if row.get('away_team'):
-                            game_times[week][row['away_team']] = kickoff_iso
-                    except (ValueError, TypeError):
-                        pass
-        return game_times
+        return list(nfl.load_schedules(seasons=season).iter_rows(named=True))
     except Exception as e:
-        print(f'Warning: Could not load game times: {e}')
-        return {}
+        print(f'Warning: could not load the {season} schedule: {e}')
+        return []
+
+
+def build_game_times(schedule_rows):
+    """Map week -> NFL team -> kickoff, for the frontend's lineup-lock display."""
+    game_times = {}
+    for row in schedule_rows:
+        week = row.get('week')
+        game_date = row.get('gameday', '')
+        game_time = row.get('gametime', '')
+        if not week or not game_date or not game_time:
+            continue
+        try:
+            dt = datetime.strptime(f'{game_date} {game_time}', '%Y-%m-%d %H:%M')
+        except (ValueError, TypeError):
+            continue
+        kickoff_iso = dt.strftime('%Y-%m-%dT%H:%M:00-05:00')
+        slot = game_times.setdefault(week, {})
+        for side in ('home_team', 'away_team'):
+            if row.get(side):
+                slot[row[side]] = kickoff_iso
+    return game_times
 
 
 def parse_draft_picks(excel_path):
@@ -295,25 +300,43 @@ def get_existing_banners(banners_dir):
     return sorted(images, key=get_year, reverse=True)
 
 
-def export_season(excel_path, week_num=None, season=SEASON):
+def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False):
     """Build the full data.json payload for the season."""
+    schedule_rows = load_schedule_rows(season)
     current_nfl_week = get_current_nfl_week()
     week_num = week_num or current_nfl_week
 
     print(f'Scoring week {week_num} from the {MATCHUPS_SHEET} tab...')
     week_data, pairings = export_matchup_week(excel_path, week_num, season)
 
-    weeks = [week_data]
-    schedule = {str(week_num): pairings}
+    # A week only counts once every NFL game in it has a final result. Mid-week,
+    # a matchup where one manager's Thursday starter has played and the other's
+    # have not is an unfinished game, not a result.
+    is_final = week_games_are_final(schedule_rows, week_num, season)
+    week_data['final'] = is_final
 
-    standings = build_standings(weeks, schedule)
+    # Archive eagerly: the Matchups tab is overwritten each week, so a week not
+    # captured before then is only recoverable from its W-sheet.
+    written = save_week(season, week_num, week_data, pairings, is_final, force=force_rescore)
+    state = 'final' if is_final else 'in progress'
+    print(f'  Week {week_num} is {state}' + ('' if written else ' (already archived as final)'))
+
+    # The archive is the season; the live week we just scored overrides its own
+    # entry so an in-progress week still shows current scores.
+    weeks, schedule = load_all_weeks(season)
+    weeks = [w for w in weeks if w['week'] != week_num] + [week_data]
+    weeks.sort(key=lambda w: w['week'])
+    schedule[str(week_num)] = pairings
+
+    # Standings only count completed weeks.
+    completed = [w for w in weeks if w.get('final')]
+    standings = build_standings(completed, schedule)
+    standings_through = max((w['week'] for w in completed), default=0)
 
     # Playoffs only exist once the regular season is in the books.
     playoffs = None
     if current_nfl_week > REGULAR_SEASON_WEEKS and len(standings) >= 4:
         playoffs = compute_playoff_data(weeks, standings, current_nfl_week)
-
-    scored_weeks = [w['week'] for w in weeks if w.get('has_scores')]
 
     return {
         'updated_at': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
@@ -324,10 +347,10 @@ def export_season(excel_path, week_num=None, season=SEASON):
         'schedule': schedule,
         'team_number_map': {str(k): v for k, v in TEAM_NUMBER_MAP.items()},
         'standings': standings,
-        'standings_through_week': max(scored_weeks) if scored_weeks else 0,
-        'standings_in_progress': bool(scored_weeks) and max(scored_weeks) >= current_nfl_week,
+        'standings_through_week': standings_through,
+        'standings_in_progress': not is_final,
         'playoffs': playoffs,
-        'game_times': get_game_times(season),
+        'game_times': build_game_times(schedule_rows),
         'trade_deadline_week': TRADE_DEADLINE_WEEK,
         'taxi_squads': parse_taxi_squads(excel_path, ROSTERS_SHEET),
     }
@@ -620,6 +643,11 @@ def main():
         help='Week the Matchups tab represents (defaults to the current NFL week)',
     )
     parser.add_argument('--season', '-y', type=int, default=SEASON, help='NFL season year')
+    parser.add_argument(
+        '--force-rescore',
+        action='store_true',
+        help='Rescore and overwrite a week already archived as final',
+    )
     args = parser.parse_args()
 
     project_dir = Path(__file__).parent.parent
@@ -651,7 +679,12 @@ def main():
 
     print(f'Exporting {excel_path} to {output_path}...')
 
-    data = export_season(str(excel_path), week_num=args.week, season=args.season)
+    data = export_season(
+        str(excel_path),
+        week_num=args.week,
+        season=args.season,
+        force_rescore=args.force_rescore,
+    )
     data['pending_trades'] = load_pending_trades()
 
     draft_picks_path = project_dir / 'OPFL Draft & Future Traded Picks.xlsx'

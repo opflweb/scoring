@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-14T23:43:08.772737Z",
+  "updated_at": "2026-09-15T00:40:53.524700Z",
   "season": 2026,
   "current_week": 1,
   "regular_season_weeks": 15,
@@ -1880,7 +1880,8 @@
           "score_rank": 7
         }
       ],
-      "has_scores": true
+      "has_scores": true,
+      "final": false
     }
   ],
   "schedule": {
@@ -1925,153 +1926,8 @@
     "11": "ADA",
     "12": "D/J"
   },
-  "standings": [
-    {
-      "name": "KEMP/A/M",
-      "owner": "KEMP/A/M",
-      "abbrev": "KAM",
-      "rank_points": 1.5,
-      "wins": 1,
-      "losses": 0,
-      "ties": 0,
-      "top_half": 1,
-      "points_for": 80.0,
-      "points_against": 70.0
-    },
-    {
-      "name": "DANNY/JOEY",
-      "owner": "DANNY/JOEY",
-      "abbrev": "D/J",
-      "rank_points": 1.5,
-      "wins": 1,
-      "losses": 0,
-      "ties": 0,
-      "top_half": 1,
-      "points_for": 65.0,
-      "points_against": 56.0
-    },
-    {
-      "name": "KEVIN",
-      "owner": "KEVIN",
-      "abbrev": "KEV",
-      "rank_points": 1.5,
-      "wins": 1,
-      "losses": 0,
-      "ties": 0,
-      "top_half": 1,
-      "points_for": 55.0,
-      "points_against": 53.0
-    },
-    {
-      "name": "ANDREW",
-      "owner": "ANDREW",
-      "abbrev": "AND",
-      "rank_points": 1.25,
-      "wins": 1,
-      "losses": 0,
-      "ties": 0,
-      "top_half": 1,
-      "points_for": 53.0,
-      "points_against": 32.0
-    },
-    {
-      "name": "ERIC/JEFF",
-      "owner": "ERIC/JEFF",
-      "abbrev": "E/J",
-      "rank_points": 1.0,
-      "wins": 1,
-      "losses": 0,
-      "ties": 0,
-      "top_half": 0,
-      "points_for": 51.0,
-      "points_against": 34.0
-    },
-    {
-      "name": "KIRK/DAVID",
-      "owner": "KIRK/DAVID",
-      "abbrev": "K/D",
-      "rank_points": 1.0,
-      "wins": 1,
-      "losses": 0,
-      "ties": 0,
-      "top_half": 0,
-      "points_for": 44.0,
-      "points_against": 37.0
-    },
-    {
-      "name": "JOHN",
-      "owner": "JOHN",
-      "abbrev": "JOH",
-      "rank_points": 0.5,
-      "wins": 0,
-      "losses": 1,
-      "ties": 0,
-      "top_half": 1,
-      "points_for": 70.0,
-      "points_against": 80.0
-    },
-    {
-      "name": "STEVE L.",
-      "owner": "STEVE L.",
-      "abbrev": "STL",
-      "rank_points": 0.5,
-      "wins": 0,
-      "losses": 1,
-      "ties": 0,
-      "top_half": 1,
-      "points_for": 56.0,
-      "points_against": 65.0
-    },
-    {
-      "name": "ADAM",
-      "owner": "ADAM",
-      "abbrev": "ADA",
-      "rank_points": 0.25,
-      "wins": 0,
-      "losses": 1,
-      "ties": 0,
-      "top_half": 1,
-      "points_for": 53.0,
-      "points_against": 55.0
-    },
-    {
-      "name": "JARRETT/MATT",
-      "owner": "JARRETT/MATT",
-      "abbrev": "J/M",
-      "rank_points": 0.0,
-      "wins": 0,
-      "losses": 1,
-      "ties": 0,
-      "top_half": 0,
-      "points_for": 37.0,
-      "points_against": 44.0
-    },
-    {
-      "name": "GREG/GRIFFIN",
-      "owner": "GREG/GRIFFIN",
-      "abbrev": "G/G",
-      "rank_points": 0.0,
-      "wins": 0,
-      "losses": 1,
-      "ties": 0,
-      "top_half": 0,
-      "points_for": 34.0,
-      "points_against": 51.0
-    },
-    {
-      "name": "WES/BILL",
-      "owner": "WES/BILL",
-      "abbrev": "W/B",
-      "rank_points": 0.0,
-      "wins": 0,
-      "losses": 1,
-      "ties": 0,
-      "top_half": 0,
-      "points_for": 32.0,
-      "points_against": 53.0
-    }
-  ],
-  "standings_through_week": 1,
+  "standings": [],
+  "standings_through_week": 0,
   "standings_in_progress": true,
   "playoffs": null,
   "game_times": {
