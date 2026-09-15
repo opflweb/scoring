@@ -21,7 +21,7 @@ from export_hall_of_fame import generate_hall_of_fame
 from opfl import OPFLScorer, build_matchup_week, parse_taxi_squads
 from opfl.config import get_config
 from opfl.constants import ALL_TEAM_CODES, CODE_TO_OWNER, resolve_team_code
-from opfl.week_archive import load_all_weeks, save_week
+from opfl.week_archive import load_all_weeks, load_week, save_week
 from opfl.week_status import week_games_are_final
 
 # Single source of truth for these is data/league_config.json - a season
@@ -308,11 +308,64 @@ def get_existing_banners(banners_dir):
     return sorted(images, key=get_year, reverse=True)
 
 
+def resolve_matchups_week(excel_path, requested_week, season, data_dir=None):
+    """Detect when the workbook hasn't caught up to nflreadpy's current week yet.
+
+    The Matchups tab carries no explicit week marker, so when no --week is
+    given we default to nfl.get_current_week() - a calendar-based guess, not
+    a read of the workbook. That guess can outrun the commissioner: nflreadpy
+    advances the moment the calendar crosses into the next week, which can be
+    a day or more before the Matchups tab is actually updated. Scoring
+    requested_week against a tab that still shows requested_week - 1's
+    lineups would silently score every player under the wrong week's NFL
+    stats.
+
+    Compares the tab's current starters against the previously archived
+    week; if they're identical, the workbook hasn't been rolled over and this
+    is still that prior week.
+    """
+    if requested_week <= 1:
+        return requested_week
+
+    teams_by_code, _ = build_matchup_week(
+        excel_path, rosters_sheet=ROSTERS_SHEET, matchups_sheet=MATCHUPS_SHEET
+    )
+    current_starters = {
+        code: sorted(
+            name
+            for players in team.players.values()
+            for name, _nfl_team, started in players
+            if started
+        )
+        for code, team in teams_by_code.items()
+    }
+
+    load_week_kwargs = {'data_dir': data_dir} if data_dir is not None else {}
+    previous = load_week(season, requested_week - 1, **load_week_kwargs)
+    if not previous:
+        return requested_week
+
+    previous_starters = {
+        t['abbrev']: sorted(p['name'] for p in t['roster'] if p['starter'])
+        for t in previous['teams']
+    }
+
+    if current_starters == previous_starters:
+        print(
+            f"  Matchups tab still shows week {requested_week - 1}'s lineups "
+            f'(nflreadpy says week {requested_week}) - scoring week {requested_week - 1} again'
+        )
+        return requested_week - 1
+    return requested_week
+
+
 def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False):
     """Build the full data.json payload for the season."""
     schedule_rows = load_schedule_rows(season)
     current_nfl_week = get_current_nfl_week()
-    week_num = week_num or current_nfl_week
+
+    if week_num is None:
+        week_num = resolve_matchups_week(excel_path, current_nfl_week, season)
 
     print(f'Scoring week {week_num} from the {MATCHUPS_SHEET} tab...')
     week_data, pairings = export_matchup_week(excel_path, week_num, season)

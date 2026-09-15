@@ -131,6 +131,7 @@
             renderMatchups();
             renderSchedule();
             renderStandings();
+            renderPlayoffOdds();
             renderStatsLeaders();
             renderTeamSelector();
             renderHistory();
@@ -808,6 +809,182 @@
                 if (ppgs.length) result[abbrev] = ppgs.reduce((s, v) => s + v, 0) / ppgs.length;
             }
             return Object.keys(result).length ? result : null;
+        }
+
+        // Playoff odds: Monte Carlo simulation of the remaining regular
+        // season, adapted from the sibling QPFL site's simulatePlayoffOdds.
+        // Two simplifications versus that version: team scoring distributions
+        // come straight from team_stats' ppg/std_dev (Phase 5 already computed
+        // them) rather than being re-derived from raw weeks here, and this
+        // only reports playoff-berth odds - no mathematical clinch/elimination
+        // tracking, which QPFL needs for its toilet-bowl bracket and OPFL's
+        // simpler top-4 bracket doesn't.
+        const PLAYOFF_TRIALS = 2000;
+        const PLAYOFF_SLOTS = 4;
+        const PLAYOFF_MEAN_PRIOR_GAMES = 3;
+
+        function createSeededRandom(seed) {
+            let state = seed >>> 0;
+            return () => {
+                state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+                return state / 4294967296;
+            };
+        }
+
+        function gaussianSample(mean, std, random = Math.random) {
+            // Box-Muller. std is clamped to a small positive number to avoid 0-variance.
+            const s = Math.max(std, 1);
+            let u = 0, v = 0;
+            while (u === 0) u = random();
+            while (v === 0) v = random();
+            const z = Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+            return mean + z * s;
+        }
+
+        function getRemainingRegularSeasonMatchups() {
+            const regularSeasonWeeks = data.regular_season_weeks || 15;
+            const completedThrough = data.standings_through_week || 0;
+            const schedule = data.schedule || {};
+
+            const out = [];
+            for (const [weekStr, pairings] of Object.entries(schedule)) {
+                const week = parseInt(weekStr, 10);
+                if (week > regularSeasonWeeks || week <= completedThrough) continue;
+                for (const [team1, team2] of pairings) {
+                    out.push({ week, team1, team2 });
+                }
+            }
+            return out;
+        }
+
+        function simulatePlayoffOdds() {
+            const standings = data.standings || [];
+            if (standings.length === 0) return null;
+
+            const remaining = getRemainingRegularSeasonMatchups();
+            if (remaining.length === 0) return null;
+
+            const teamStats = data.team_stats || {};
+            const allPpg = standings
+                .map(t => teamStats[t.abbrev]?.ppg)
+                .filter(v => typeof v === 'number');
+            const leagueMean = allPpg.length ? allPpg.reduce((s, v) => s + v, 0) / allPpg.length : 50;
+            const allStd = standings
+                .map(t => teamStats[t.abbrev]?.std_dev)
+                .filter(v => typeof v === 'number');
+            const leagueStd = allStd.length ? allStd.reduce((s, v) => s + v, 0) / allStd.length : 15;
+
+            // Shrink each team's mean toward the league average, weighted as if
+            // the league mean were three extra prior games - so a hot or cold
+            // week 1 doesn't dominate the whole rest-of-season forecast.
+            const teamMean = {};
+            for (const t of standings) {
+                const stats = teamStats[t.abbrev];
+                const games = (t.wins || 0) + (t.losses || 0) + (t.ties || 0);
+                teamMean[t.abbrev] = (typeof stats?.ppg === 'number' && games > 0)
+                    ? (stats.ppg * games + leagueMean * PLAYOFF_MEAN_PRIOR_GAMES) / (games + PLAYOFF_MEAN_PRIOR_GAMES)
+                    : leagueMean;
+            }
+
+            const weeksRemaining = {};
+            for (const m of remaining) {
+                if (!weeksRemaining[m.week]) weeksRemaining[m.week] = [];
+                weeksRemaining[m.week].push(m);
+            }
+            const remainingWeekNums = Object.keys(weeksRemaining).map(Number).sort((a, b) => a - b);
+
+            const initialRP = {}, initialPF = {}, teamLabel = {};
+            for (const t of standings) {
+                initialRP[t.abbrev] = t.rank_points || 0;
+                initialPF[t.abbrev] = t.points_for || 0;
+                teamLabel[t.abbrev] = t.name || t.abbrev;
+            }
+
+            const playoffCount = {};
+            for (const t of standings) playoffCount[t.abbrev] = 0;
+
+            const random = createSeededRandom(Number(data.season || 1) * 1009 + 17);
+
+            for (let trial = 0; trial < PLAYOFF_TRIALS; trial++) {
+                const rp = { ...initialRP };
+                const pf = { ...initialPF };
+
+                for (const wk of remainingWeekNums) {
+                    const matchups = weeksRemaining[wk];
+                    const weekScores = {};
+                    const teamsThisWeek = new Set();
+                    for (const m of matchups) {
+                        teamsThisWeek.add(m.team1);
+                        teamsThisWeek.add(m.team2);
+                    }
+                    for (const abbrev of teamsThisWeek) {
+                        weekScores[abbrev] = gaussianSample(teamMean[abbrev] ?? leagueMean, leagueStd, random);
+                        pf[abbrev] = (pf[abbrev] || 0) + weekScores[abbrev];
+                    }
+                    for (const m of matchups) {
+                        const s1 = weekScores[m.team1];
+                        const s2 = weekScores[m.team2];
+                        if (s1 > s2) rp[m.team1] += 1;
+                        else if (s2 > s1) rp[m.team2] += 1;
+                        else { rp[m.team1] += 0.5; rp[m.team2] += 0.5; }
+                    }
+                    // Top-6 scoring bonus, matching build_standings' rule.
+                    // Exact score ties are effectively impossible with continuous
+                    // samples, so this skips the real rule's tie-splitting.
+                    const sortedThisWeek = Array.from(teamsThisWeek).sort((a, b) => weekScores[b] - weekScores[a]);
+                    const topHalfCount = Math.min(6, sortedThisWeek.length);
+                    for (let i = 0; i < topHalfCount; i++) rp[sortedThisWeek[i]] += 0.5;
+                }
+
+                // Final order follows the real tiebreak: rank_points, then points_for.
+                const finalOrder = standings.map(t => t.abbrev).sort((a, b) => {
+                    if (rp[b] !== rp[a]) return rp[b] - rp[a];
+                    return pf[b] - pf[a];
+                });
+                for (let i = 0; i < PLAYOFF_SLOTS && i < finalOrder.length; i++) {
+                    playoffCount[finalOrder[i]] += 1;
+                }
+            }
+
+            const byTeam = {};
+            for (const t of standings) {
+                byTeam[t.abbrev] = {
+                    name: teamLabel[t.abbrev],
+                    odds: playoffCount[t.abbrev] / PLAYOFF_TRIALS,
+                };
+            }
+            return { byTeam, weeksRemaining: remainingWeekNums.length };
+        }
+
+        function renderPlayoffOdds() {
+            const card = document.getElementById('playoff-odds-card');
+            if (!card) return;
+
+            const sim = simulatePlayoffOdds();
+            if (!sim) {
+                card.style.display = 'none';
+                return;
+            }
+
+            const teams = Object.values(sim.byTeam).sort((a, b) => b.odds - a.odds);
+            card.style.display = '';
+            card.innerHTML = `
+                <div class="stats-position-card">
+                    <div class="stats-position-header">
+                        Playoff Odds
+                        <span class="playoff-odds-meta">${sim.weeksRemaining} week${sim.weeksRemaining === 1 ? '' : 's'} remaining &middot; ${PLAYOFF_TRIALS.toLocaleString()} simulations</span>
+                    </div>
+                    ${teams.map(t => `
+                        <div class="playoff-odds-row">
+                            <span class="playoff-odds-name">${t.name}</span>
+                            <div class="playoff-odds-bar-track">
+                                <div class="playoff-odds-bar" style="width: ${(t.odds * 100).toFixed(1)}%"></div>
+                            </div>
+                            <span class="playoff-odds-pct">${(t.odds * 100).toFixed(0)}%</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
         }
 
         function renderStandings() {
