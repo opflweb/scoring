@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-15T01:02:35.876114Z",
+  "updated_at": "2026-09-15T01:09:35.050996Z",
   "season": 2026,
   "current_week": 1,
   "regular_season_weeks": 15,
@@ -1931,6 +1931,825 @@
   "standings_in_progress": true,
   "team_stats": {},
   "playoffs": null,
+  "hall_of_fame": {
+    "seasons": [
+      2025,
+      2026
+    ],
+    "completed_through": {
+      "2025": 17,
+      "2026": 0
+    },
+    "player_records": {
+      "most_points": [
+        "Trevor Lawrence (AND) - 40.0 (Week 15, 2025)",
+        "Josh Allen (D/J) - 38.0 (Week 11, 2025)",
+        "Jared Goff (ADA) - 34.0 (Week 2, 2025)",
+        "Drake Maye (KAM) - 33.0 (Championship Week, 2025)",
+        "Brock Purdy (K/D) - 32.0 (Semifinals, 2025)"
+      ],
+      "most_points_non_qb": [
+        "Derrick Henry (KAM) - 31.0 (Championship Week, 2025)",
+        "Jonathan Taylor (KAM) - 27.0 (Week 10, 2025)",
+        "Jahmyr Gibbs (STL) - 26.0 (Week 12, 2025)",
+        "Seattle (G/G) - 26.0 (Week 13, 2025)",
+        "Kyle Pitts (ADA) - 24.0 (Week 15, 2025)"
+      ],
+      "least_points_offensive": [
+        "RB RJ Harvey (K/D) - 0.0 (Week 1, 2025)",
+        "RB Jahmyr Gibbs (STL) - 0.0 (Week 1, 2025)",
+        "RB Isaiah Pacheco (STL) - 0.0 (Week 1, 2025)",
+        "WR Jameson Williams (STL) - 0.0 (Week 1, 2025)",
+        "WR Tet McMillan (STL) - 0.0 (Week 1, 2025)"
+      ],
+      "least_points_kicker": [
+        "K Ka'imi Fairbairn (J/M) - 0.0 (Week 3, 2025)",
+        "K Tyler Loop (D/J) - 0.0 (Week 5, 2025)",
+        "K Tyler Bass (G/G) - 0.0 (Week 5, 2025)",
+        "K Brandon McManus (G/G) - 0.0 (Week 6, 2025)",
+        "K Evan McPherson (E/J) - 0.0 (Week 6, 2025)"
+      ]
+    },
+    "team_records": {
+      "most_points": [
+        "KEMP/A/M (KAM) - 93.0 (Championship Week, 2025)",
+        "KIRK/DAVID (K/D) - 92.0 (Week 15, 2025)",
+        "WES/BILL (W/B) - 88.0 (Week 9, 2025)",
+        "ADAM (ADA) - 86.0 (Semifinals, 2025)",
+        "JOHN (JOH) - 84.0 (Week 5, 2025)"
+      ],
+      "least_points": [
+        "ANDREW (AND) - 16.0 (Week 1, 2025)",
+        "KIRK/DAVID (K/D) - 17.0 (Week 8, 2025)",
+        "STEVE L. (STL) - 18.0 (Week 1, 2025)",
+        "KIRK/DAVID (K/D) - 20.0 (Week 5, 2025)",
+        "ANDREW (AND) - 21.0 (Week 4, 2025)"
+      ],
+      "largest_margin": [
+        "KIRK/DAVID (K/D) over JARRETT/MATT (J/M) - by 63.0 (Week 15, 2025)",
+        "WES/BILL (W/B) over JARRETT/MATT (J/M) - by 62.0 (Week 9, 2025)",
+        "ADAM (ADA) over KIRK/DAVID (K/D) - by 49.0 (Week 5, 2025)",
+        "KIRK/DAVID (K/D) over WES/BILL (W/B) - by 43.0 (Week 10, 2025)",
+        "GREG/GRIFFIN (G/G) over ADAM (ADA) - by 42.0 (Week 13, 2025)"
+      ]
+    },
+    "fun_stats": [
+      {
+        "title": "Highest Scoring Week (League Total)",
+        "records": [
+          "679.0 points (Week 15, 2025)",
+          "665.0 points (Week 7, 2025)",
+          "633.0 points (Semifinals, 2025)"
+        ]
+      },
+      {
+        "title": "Lowest Scoring Week (League Total)",
+        "records": [
+          "509.0 points (Week 1, 2025)",
+          "530.0 points (Week 11, 2025)",
+          "543.0 points (Week 9, 2025)"
+        ]
+      },
+      {
+        "title": "Closest Games",
+        "records": [
+          "DANNY/JOEY (D/J) over KEMP/A/M (KAM) - margin 0.0 (Week 1, 2025)",
+          "STEVE L. (STL) over ERIC/JEFF (E/J) - margin 1.0 (Week 3, 2025)",
+          "KIRK/DAVID (K/D) over GREG/GRIFFIN (G/G) - margin 1.0 (Week 6, 2025)",
+          "ANDREW (AND) over ADAM (ADA) - margin 1.0 (Week 10, 2025)",
+          "WES/BILL (W/B) over ANDREW (AND) - margin 1.0 (Week 12, 2025)"
+        ]
+      }
+    ],
+    "head_to_head": [
+      {
+        "team1": "D/J",
+        "team2": "KAM",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 1,
+        "team1_pf": 88.0,
+        "team2_pf": 103.0,
+        "games": 2,
+        "leader": "KAM"
+      },
+      {
+        "team1": "K/D",
+        "team2": "STL",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 96.0,
+        "team2_pf": 79.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "E/J",
+        "team2": "KEV",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 91.0,
+        "team2_pf": 105.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "AND",
+        "team2": "W/B",
+        "team1_wins": 0,
+        "team2_wins": 2,
+        "ties": 0,
+        "team1_pf": 68.0,
+        "team2_pf": 94.0,
+        "games": 2,
+        "leader": "W/B"
+      },
+      {
+        "team1": "ADA",
+        "team2": "J/M",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 86.0,
+        "team2_pf": 79.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "G/G",
+        "team2": "JOH",
+        "team1_wins": 2,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 110.0,
+        "team2_pf": 78.0,
+        "games": 2,
+        "leader": "G/G"
+      },
+      {
+        "team1": "KAM",
+        "team2": "STL",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 84.0,
+        "team2_pf": 91.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "D/J",
+        "team2": "K/D",
+        "team1_wins": 0,
+        "team2_wins": 2,
+        "ties": 0,
+        "team1_pf": 79.0,
+        "team2_pf": 107.0,
+        "games": 2,
+        "leader": "K/D"
+      },
+      {
+        "team1": "KEV",
+        "team2": "W/B",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 77.0,
+        "team2_pf": 98.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "AND",
+        "team2": "E/J",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 106.0,
+        "team2_pf": 87.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "J/M",
+        "team2": "JOH",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 106.0,
+        "team2_pf": 103.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "ADA",
+        "team2": "G/G",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 91.0,
+        "team2_pf": 119.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "K/D",
+        "team2": "KAM",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 115.0,
+        "team2_pf": 119.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "D/J",
+        "team2": "KEV",
+        "team1_wins": 2,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 116.0,
+        "team2_pf": 93.0,
+        "games": 2,
+        "leader": "D/J"
+      },
+      {
+        "team1": "E/J",
+        "team2": "STL",
+        "team1_wins": 0,
+        "team2_wins": 2,
+        "ties": 0,
+        "team1_pf": 62.0,
+        "team2_pf": 104.0,
+        "games": 2,
+        "leader": "STL"
+      },
+      {
+        "team1": "ADA",
+        "team2": "W/B",
+        "team1_wins": 0,
+        "team2_wins": 2,
+        "ties": 0,
+        "team1_pf": 52.0,
+        "team2_pf": 109.0,
+        "games": 2,
+        "leader": "W/B"
+      },
+      {
+        "team1": "AND",
+        "team2": "JOH",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 80.0,
+        "team2_pf": 95.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "G/G",
+        "team2": "J/M",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 86.0,
+        "team2_pf": 84.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "KAM",
+        "team2": "KEV",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 89.0,
+        "team2_pf": 106.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "D/J",
+        "team2": "E/J",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 118.0,
+        "team2_pf": 94.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "STL",
+        "team2": "W/B",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 117.0,
+        "team2_pf": 111.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "J/M",
+        "team2": "K/D",
+        "team1_wins": 0,
+        "team2_wins": 2,
+        "ties": 0,
+        "team1_pf": 77.0,
+        "team2_pf": 163.0,
+        "games": 2,
+        "leader": "K/D"
+      },
+      {
+        "team1": "AND",
+        "team2": "G/G",
+        "team1_wins": 1,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 84.0,
+        "team2_pf": 73.0,
+        "games": 2,
+        "leader": null
+      },
+      {
+        "team1": "ADA",
+        "team2": "JOH",
+        "team1_wins": 2,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 134.0,
+        "team2_pf": 105.0,
+        "games": 2,
+        "leader": "ADA"
+      },
+      {
+        "team1": "E/J",
+        "team2": "KAM",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 33.0,
+        "team2_pf": 57.0,
+        "games": 1,
+        "leader": "KAM"
+      },
+      {
+        "team1": "D/J",
+        "team2": "W/B",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 36.0,
+        "team2_pf": 54.0,
+        "games": 1,
+        "leader": "W/B"
+      },
+      {
+        "team1": "G/G",
+        "team2": "STL",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 56.0,
+        "team2_pf": 39.0,
+        "games": 1,
+        "leader": "G/G"
+      },
+      {
+        "team1": "ADA",
+        "team2": "K/D",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 69.0,
+        "team2_pf": 20.0,
+        "games": 1,
+        "leader": "ADA"
+      },
+      {
+        "team1": "JOH",
+        "team2": "KEV",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 84.0,
+        "team2_pf": 68.0,
+        "games": 1,
+        "leader": "JOH"
+      },
+      {
+        "team1": "AND",
+        "team2": "J/M",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 49.0,
+        "team2_pf": 40.0,
+        "games": 1,
+        "leader": "AND"
+      },
+      {
+        "team1": "KAM",
+        "team2": "W/B",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 58.0,
+        "team2_pf": 46.0,
+        "games": 1,
+        "leader": "KAM"
+      },
+      {
+        "team1": "AND",
+        "team2": "D/J",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 45.0,
+        "team2_pf": 21.0,
+        "games": 1,
+        "leader": "AND"
+      },
+      {
+        "team1": "J/M",
+        "team2": "STL",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 49.0,
+        "team2_pf": 63.0,
+        "games": 1,
+        "leader": "STL"
+      },
+      {
+        "team1": "G/G",
+        "team2": "K/D",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 46.0,
+        "team2_pf": 47.0,
+        "games": 1,
+        "leader": "K/D"
+      },
+      {
+        "team1": "ADA",
+        "team2": "KEV",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 39.0,
+        "team2_pf": 62.0,
+        "games": 1,
+        "leader": "KEV"
+      },
+      {
+        "team1": "E/J",
+        "team2": "JOH",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 28.0,
+        "team2_pf": 58.0,
+        "games": 1,
+        "leader": "JOH"
+      },
+      {
+        "team1": "AND",
+        "team2": "KAM",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 53.0,
+        "team2_pf": 51.0,
+        "games": 1,
+        "leader": "AND"
+      },
+      {
+        "team1": "D/J",
+        "team2": "J/M",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 51.0,
+        "team2_pf": 67.0,
+        "games": 1,
+        "leader": "J/M"
+      },
+      {
+        "team1": "ADA",
+        "team2": "STL",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 44.0,
+        "team2_pf": 71.0,
+        "games": 1,
+        "leader": "STL"
+      },
+      {
+        "team1": "JOH",
+        "team2": "K/D",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 71.0,
+        "team2_pf": 56.0,
+        "games": 1,
+        "leader": "JOH"
+      },
+      {
+        "team1": "G/G",
+        "team2": "KEV",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 70.0,
+        "team2_pf": 60.0,
+        "games": 1,
+        "leader": "G/G"
+      },
+      {
+        "team1": "E/J",
+        "team2": "W/B",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 41.0,
+        "team2_pf": 30.0,
+        "games": 1,
+        "leader": "E/J"
+      },
+      {
+        "team1": "J/M",
+        "team2": "KAM",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 71.0,
+        "team2_pf": 81.0,
+        "games": 1,
+        "leader": "KAM"
+      },
+      {
+        "team1": "ADA",
+        "team2": "D/J",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 71.0,
+        "team2_pf": 51.0,
+        "games": 1,
+        "leader": "ADA"
+      },
+      {
+        "team1": "JOH",
+        "team2": "STL",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 43.0,
+        "team2_pf": 56.0,
+        "games": 1,
+        "leader": "STL"
+      },
+      {
+        "team1": "E/J",
+        "team2": "K/D",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 45.0,
+        "team2_pf": 17.0,
+        "games": 1,
+        "leader": "E/J"
+      },
+      {
+        "team1": "AND",
+        "team2": "KEV",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 33.0,
+        "team2_pf": 46.0,
+        "games": 1,
+        "leader": "KEV"
+      },
+      {
+        "team1": "G/G",
+        "team2": "W/B",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 37.0,
+        "team2_pf": 31.0,
+        "games": 1,
+        "leader": "G/G"
+      },
+      {
+        "team1": "ADA",
+        "team2": "KAM",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 39.0,
+        "team2_pf": 47.0,
+        "games": 1,
+        "leader": "KAM"
+      },
+      {
+        "team1": "D/J",
+        "team2": "JOH",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 46.0,
+        "team2_pf": 38.0,
+        "games": 1,
+        "leader": "D/J"
+      },
+      {
+        "team1": "AND",
+        "team2": "STL",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 51.0,
+        "team2_pf": 22.0,
+        "games": 1,
+        "leader": "AND"
+      },
+      {
+        "team1": "K/D",
+        "team2": "KEV",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 50.0,
+        "team2_pf": 54.0,
+        "games": 1,
+        "leader": "KEV"
+      },
+      {
+        "team1": "J/M",
+        "team2": "W/B",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 26.0,
+        "team2_pf": 88.0,
+        "games": 1,
+        "leader": "W/B"
+      },
+      {
+        "team1": "E/J",
+        "team2": "G/G",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 28.0,
+        "team2_pf": 54.0,
+        "games": 1,
+        "leader": "G/G"
+      },
+      {
+        "team1": "JOH",
+        "team2": "KAM",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 38.0,
+        "team2_pf": 68.0,
+        "games": 1,
+        "leader": "KAM"
+      },
+      {
+        "team1": "D/J",
+        "team2": "G/G",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 59.0,
+        "team2_pf": 63.0,
+        "games": 1,
+        "leader": "G/G"
+      },
+      {
+        "team1": "KEV",
+        "team2": "STL",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 39.0,
+        "team2_pf": 56.0,
+        "games": 1,
+        "leader": "STL"
+      },
+      {
+        "team1": "K/D",
+        "team2": "W/B",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 71.0,
+        "team2_pf": 28.0,
+        "games": 1,
+        "leader": "K/D"
+      },
+      {
+        "team1": "E/J",
+        "team2": "J/M",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 36.0,
+        "team2_pf": 21.0,
+        "games": 1,
+        "leader": "E/J"
+      },
+      {
+        "team1": "ADA",
+        "team2": "AND",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 45.0,
+        "team2_pf": 46.0,
+        "games": 1,
+        "leader": "AND"
+      },
+      {
+        "team1": "G/G",
+        "team2": "KAM",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 32.0,
+        "team2_pf": 53.0,
+        "games": 1,
+        "leader": "KAM"
+      },
+      {
+        "team1": "D/J",
+        "team2": "STL",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 57.0,
+        "team2_pf": 38.0,
+        "games": 1,
+        "leader": "D/J"
+      },
+      {
+        "team1": "AND",
+        "team2": "K/D",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 63.0,
+        "team2_pf": 33.0,
+        "games": 1,
+        "leader": "AND"
+      },
+      {
+        "team1": "J/M",
+        "team2": "KEV",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 38.0,
+        "team2_pf": 41.0,
+        "games": 1,
+        "leader": "KEV"
+      },
+      {
+        "team1": "ADA",
+        "team2": "E/J",
+        "team1_wins": 0,
+        "team2_wins": 1,
+        "ties": 0,
+        "team1_pf": 25.0,
+        "team2_pf": 48.0,
+        "games": 1,
+        "leader": "E/J"
+      },
+      {
+        "team1": "JOH",
+        "team2": "W/B",
+        "team1_wins": 1,
+        "team2_wins": 0,
+        "ties": 0,
+        "team1_pf": 57.0,
+        "team2_pf": 45.0,
+        "games": 1,
+        "leader": "JOH"
+      }
+    ]
+  },
   "game_times": {
     "1": {
       "SEA": "2026-09-09T20:20:00-05:00",

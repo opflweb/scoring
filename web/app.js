@@ -1275,6 +1275,8 @@
                 `;
             }).join('');
 
+            renderSeasonRecords();
+
             // Tab switching
             document.querySelectorAll('.history-tab').forEach(tab => {
                 tab.addEventListener('click', () => {
@@ -1284,6 +1286,111 @@
                     document.getElementById(`${tab.dataset.tab}-tab`).classList.remove('hidden');
                 });
             });
+        }
+
+        // Season Records: computed player/team records, fun stats, and
+        // head-to-head history from data.hall_of_fame (scripts/export_hall_of_fame.py).
+        // Unlike the Championships and All-Time Records tabs above, this data is
+        // derived from the archived weeks, not hand-maintained.
+        function renderSeasonRecordCard(title, records) {
+            if (!records || records.length === 0) return '';
+            return `
+                <div class="stats-position-card">
+                    <div class="stats-position-header">${title}</div>
+                    ${records.map((text, idx) => `
+                        <div class="record-row">
+                            <span class="record-rank">${idx + 1}</span>
+                            <span class="record-text">${text}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderSeasonRecords() {
+            const hallOfFame = data.hall_of_fame;
+            const container = document.getElementById('season-records-container');
+            const through = document.getElementById('season-records-through');
+            if (!container) return;
+
+            if (!hallOfFame || !hallOfFame.seasons || hallOfFame.seasons.length === 0) {
+                container.innerHTML = '<div class="loading">No completed weeks yet</div>';
+                if (through) through.textContent = '';
+                return;
+            }
+
+            if (through) {
+                const seasonList = hallOfFame.seasons
+                    .map(s => `${s} (through Week ${hallOfFame.completed_through[s] || 0})`)
+                    .join(' · ');
+                through.textContent = seasonList;
+            }
+
+            const player = hallOfFame.player_records || {};
+            const team = hallOfFame.team_records || {};
+            const fun = hallOfFame.fun_stats || [];
+            const h2h = hallOfFame.head_to_head || [];
+
+            const cards = [
+                renderSeasonRecordCard('Most Points (Player)', player.most_points),
+                renderSeasonRecordCard('Most Points, Non-QB', player.most_points_non_qb),
+                renderSeasonRecordCard('Fewest Points, Offensive Starter', player.least_points_offensive),
+                renderSeasonRecordCard('Fewest Points, Kicker', player.least_points_kicker),
+                renderSeasonRecordCard('Most Points (Team Week)', team.most_points),
+                renderSeasonRecordCard('Fewest Points (Team Week)', team.least_points),
+                renderSeasonRecordCard('Largest Margin of Victory', team.largest_margin),
+                ...fun.map(f => renderSeasonRecordCard(f.title, f.records)),
+            ].filter(Boolean);
+
+            container.innerHTML = cards.join('') + renderHeadToHead(h2h);
+        }
+
+        function renderHeadToHead(h2h) {
+            if (!h2h || h2h.length === 0) return '';
+            // Standings are empty until a week completes (Phase 1's rule), so
+            // fall back to any archived week's roster data for the name -
+            // head-to-head history should read with real names all season,
+            // not just once the current season has a finished week.
+            const teamName = abbrev => {
+                const fromStandings = data.standings?.find(s => s.abbrev === abbrev)?.name;
+                if (fromStandings) return fromStandings;
+                for (const week of data.weeks || []) {
+                    const team = week.teams?.find(t => t.abbrev === abbrev);
+                    if (team) return team.name;
+                }
+                return abbrev;
+            };
+
+            const rows = h2h.map(rec => {
+                const leaderName = rec.leader ? teamName(rec.leader) : 'Tied';
+                return `
+                    <tr>
+                        <td>${teamName(rec.team1)}</td>
+                        <td>${teamName(rec.team2)}</td>
+                        <td class="num">${rec.team1_wins}-${rec.team2_wins}-${rec.ties}</td>
+                        <td class="num">${rec.team1_pf.toFixed(1)}-${rec.team2_pf.toFixed(1)}</td>
+                        <td>${leaderName}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            return `
+                <div class="stats-position-card h2h-card">
+                    <div class="stats-position-header">Head-to-Head</div>
+                    <table class="history-table h2h-table">
+                        <thead>
+                            <tr>
+                                <th>Team</th>
+                                <th>Team</th>
+                                <th class="num">W-L-T</th>
+                                <th class="num">PF-PF</th>
+                                <th>Leader</th>
+                            </tr>
+                        </thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                </div>
+            `;
         }
 
         // Helper function to estimate seasons for playoff percentage

@@ -133,8 +133,11 @@ def test_standings_only_count_completed_weeks(data):
     final_weeks = [w['week'] for w in data['weeks'] if w.get('final')]
     assert data['standings_through_week'] == max(final_weeks, default=0)
 
+    # Only weeks with schedule pairings contribute W/L (playoff weeks 16-17
+    # aren't part of the round-robin schedule and are seeded separately).
+    scheduled_final_weeks = [w for w in final_weeks if str(w) in data['schedule']]
     games_played = sum(s['wins'] + s['losses'] + s['ties'] for s in data['standings'])
-    assert games_played == len(final_weeks) * len(ALL_TEAM_CODES)
+    assert games_played == len(scheduled_final_weeks) * len(ALL_TEAM_CODES)
 
 
 def test_every_week_declares_whether_it_is_final(data):

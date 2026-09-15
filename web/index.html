@@ -273,6 +273,7 @@
                     <div class="history-tabs">
                         <button class="history-tab active" data-tab="championships">Championships</button>
                         <button class="history-tab" data-tab="records">All-Time Records</button>
+                        <button class="history-tab" data-tab="season-records">Season Records</button>
                     </div>
                     
                     <div class="history-content" id="championships-tab">
@@ -307,6 +308,11 @@
                             </thead>
                             <tbody id="records-body"></tbody>
                         </table>
+                    </div>
+
+                    <div class="history-content hidden" id="season-records-tab">
+                        <p class="history-subtitle" id="season-records-through"></p>
+                        <div class="records-grid" id="season-records-container"></div>
                     </div>
                 </div>
             </section>

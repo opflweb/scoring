@@ -16,6 +16,8 @@ import openpyxl
 # Add project root to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+from export_hall_of_fame import generate_hall_of_fame
+
 from opfl import OPFLScorer, build_matchup_week, parse_taxi_squads
 from opfl.config import get_config
 from opfl.constants import ALL_TEAM_CODES, CODE_TO_OWNER, resolve_team_code
@@ -358,6 +360,7 @@ def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False)
         'standings_in_progress': not is_final,
         'team_stats': team_stats,
         'playoffs': playoffs,
+        'hall_of_fame': generate_hall_of_fame(),
         'game_times': build_game_times(schedule_rows),
         'trade_deadline_week': TRADE_DEADLINE_WEEK,
         'taxi_squads': parse_taxi_squads(excel_path, ROSTERS_SHEET),
