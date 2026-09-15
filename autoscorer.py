@@ -16,6 +16,7 @@ Usage:
 import argparse
 
 from opfl import OPFLScorer, build_matchup_week, score_week, update_excel_scores
+from opfl.config import get_current_season
 from opfl.constants import CODE_TO_OWNER
 
 
@@ -124,14 +125,14 @@ def main():
     parser.add_argument(
         '--excel',
         '-e',
-        default='OPFL Scoring 2026.xlsx',
+        default=f'OPFL Scoring {get_current_season()}.xlsx',
         help='Path to the Excel file with rosters',
     )
     parser.add_argument(
         '--season',
         '-y',
         type=int,
-        default=2026,
+        default=get_current_season(),
         help='NFL season year',
     )
     parser.add_argument(

@@ -16,20 +16,25 @@ import openpyxl
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from opfl import OPFLScorer, build_matchup_week, parse_taxi_squads
+from opfl.config import get_config
 from opfl.constants import ALL_TEAM_CODES, CODE_TO_OWNER, resolve_team_code
 from opfl.week_archive import load_all_weeks, save_week
 from opfl.week_status import week_games_are_final
 
+# Single source of truth for these is data/league_config.json - a season
+# rollover or roster-shape change only needs to touch that file.
+_config = get_config()
+
 ALL_TEAMS = ALL_TEAM_CODES
 TEAM_COLUMNS = [4, 7, 10, 13, 16, 19]
-POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DF', 'HC']
-TRADE_DEADLINE_WEEK = 12
-REGULAR_SEASON_WEEKS = 15
-PLAYOFF_WEEKS = [16, 17]
+POSITIONS = _config.positions
+TRADE_DEADLINE_WEEK = _config.trade_deadline_week
+REGULAR_SEASON_WEEKS = _config.regular_season_weeks
+PLAYOFF_WEEKS = _config.playoff_weeks
 
-SEASON = 2026
-ROSTERS_SHEET = 'Rosters'
-MATCHUPS_SHEET = 'Matchups'
+SEASON = _config.current_season
+ROSTERS_SHEET = _config.rosters_sheet
+MATCHUPS_SHEET = _config.matchups_sheet
 
 # Draft pick defaults: 6 preseason rounds and 3 waiver rounds per team per season.
 DEFAULT_PRESEASON_ROUNDS = list(range(1, 7))

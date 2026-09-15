@@ -188,13 +188,5 @@ def resolve_team_code(raw_name: str) -> str:
 # Position identifiers used in OPFL Excel
 POSITION_LABELS = ['QB', 'RB', 'WR', 'TE', 'K', 'DF', 'HC']
 
-# Expected player slots per position
-PLAYERS_PER_POSITION = {
-    'QB': 3,
-    'RB': 4,
-    'WR': 4,
-    'TE': 3,
-    'K': 2,
-    'DF': 2,  # Defense
-    'HC': 2,  # Head Coach
-}
+# Roster/starter slot counts per position live in data/league_config.json
+# (opfl.config.get_roster_slots / get_starter_slots) rather than here.
