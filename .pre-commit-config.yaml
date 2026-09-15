@@ -1,0 +1,36 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+        # The OPFL workbooks committed at the repo root run 340KB-1.4MB;
+        # they are the source of truth, not build output, so exclude rather
+        # than raise the limit for everything else.
+        args: ['--maxkb=1000']
+        exclude: '\.xlsx$|\.docx$'
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: mixed-line-ending
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.4
+    hooks:
+      - id: ruff
+        args: [--fix]
+        types_or: [python, pyi]
+      - id: ruff-format
+        types_or: [python, pyi]
+
+  - repo: local
+    hooks:
+      - id: pytest-quick
+        name: pytest-quick
+        entry: python -m pytest tests/ -q --tb=no -x
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-commit]
