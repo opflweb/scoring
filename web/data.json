@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-16T05:20:50.647267Z",
+  "updated_at": "2026-09-16T14:17:14.526526Z",
   "season": 2026,
   "current_week": 2,
   "regular_season_weeks": 15,
@@ -270,7 +270,7 @@
               "name": "Eli Reardon",
               "nfl_team": "NE",
               "position": "TE",
-              "score": 6.0,
+              "score": 0.0,
               "starter": false
             },
             {
@@ -391,7 +391,7 @@
               "name": "Jordyn Tyson",
               "nfl_team": "NO",
               "position": "WR",
-              "score": 6.0,
+              "score": 0.0,
               "starter": false
             },
             {
@@ -1896,7 +1896,8 @@
               "nfl_team": "CHI",
               "position": "QB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 12.5
             },
             {
               "name": "Jordan Love",
@@ -1924,14 +1925,16 @@
               "nfl_team": "NO",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.0
             },
             {
               "name": "Jordan Mason",
               "nfl_team": "MIN",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.3
             },
             {
               "name": "RJ Harvey",
@@ -1945,7 +1948,8 @@
               "nfl_team": "LA",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.6
             },
             {
               "name": "Justin Jefferson",
@@ -1959,7 +1963,8 @@
               "nfl_team": "LA",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.4
             },
             {
               "name": "Mike Evans",
@@ -1987,7 +1992,8 @@
               "nfl_team": "LA",
               "position": "TE",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.6
             },
             {
               "name": "Pat Freiermuth",
@@ -2001,7 +2007,8 @@
               "nfl_team": "MIN",
               "position": "K",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.4
             },
             {
               "name": "Jake Elliott",
@@ -2015,7 +2022,8 @@
               "nfl_team": "DEN",
               "position": "DF",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.3
             },
             {
               "name": "Baltimore",
@@ -2036,7 +2044,8 @@
               "nfl_team": "CHI",
               "position": "HC",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.4
             }
           ],
           "total_score": 0.0,
@@ -2052,7 +2061,8 @@
               "nfl_team": "WAS",
               "position": "QB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 12.3
             },
             {
               "name": "Ty Simpson",
@@ -2073,7 +2083,8 @@
               "nfl_team": "DET",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 7.8
             },
             {
               "name": "Dylan Sampson",
@@ -2094,14 +2105,16 @@
               "nfl_team": "TB",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.6
             },
             {
               "name": "Tet McMillan",
               "nfl_team": "CAR",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.6
             },
             {
               "name": "Jameson Williams",
@@ -2115,7 +2128,8 @@
               "nfl_team": "GB",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.9
             },
             {
               "name": "KC Concepcion",
@@ -2136,7 +2150,8 @@
               "nfl_team": "IND",
               "position": "TE",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.4
             },
             {
               "name": "Eli Stowars",
@@ -2157,7 +2172,8 @@
               "nfl_team": "DAL",
               "position": "K",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.8
             },
             {
               "name": "Chase McLaughlin",
@@ -2171,7 +2187,8 @@
               "nfl_team": "HOU",
               "position": "DF",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 7.3
             },
             {
               "name": "New Orleans",
@@ -2185,7 +2202,8 @@
               "nfl_team": "DET",
               "position": "HC",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.8
             },
             {
               "name": "DeMeco Ryans",
@@ -2215,7 +2233,8 @@
               "nfl_team": "DAL",
               "position": "QB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 15.1
             },
             {
               "name": "Kyler Murray",
@@ -2229,14 +2248,16 @@
               "nfl_team": "LA",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.0
             },
             {
               "name": "D'Andre Swift",
               "nfl_team": "CHI",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.1
             },
             {
               "name": "Blake Corum",
@@ -2257,14 +2278,16 @@
               "nfl_team": "CIN",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.7
             },
             {
               "name": "Tee Higgins",
               "nfl_team": "CIN",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.8
             },
             {
               "name": "Jordyn Tyson",
@@ -2306,7 +2329,8 @@
               "nfl_team": "PHI",
               "position": "TE",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.2
             },
             {
               "name": "Cameron Dicker",
@@ -2320,7 +2344,8 @@
               "nfl_team": "LV",
               "position": "K",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.9
             },
             {
               "name": "San Francisco",
@@ -2334,14 +2359,16 @@
               "nfl_team": "CHI",
               "position": "DF",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.9
             },
             {
               "name": "John Harbaugh",
               "nfl_team": "NYG",
               "position": "HC",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.3
             },
             {
               "name": "Shane Steichen",
@@ -2364,7 +2391,8 @@
               "nfl_team": "PHI",
               "position": "QB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 14.7
             },
             {
               "name": "Matthew Stafford",
@@ -2385,7 +2413,8 @@
               "nfl_team": "MIA",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.8
             },
             {
               "name": "Chris Rodrigues",
@@ -2399,7 +2428,8 @@
               "nfl_team": "WAS",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.8
             },
             {
               "name": "Woody Marks",
@@ -2413,14 +2443,16 @@
               "nfl_team": "BAL",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.3
             },
             {
               "name": "Emeka Egbuka",
               "nfl_team": "TB",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.1
             },
             {
               "name": "Jordan Addison",
@@ -2448,7 +2480,8 @@
               "nfl_team": "KC",
               "position": "TE",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.8
             },
             {
               "name": "Brenton Strange",
@@ -2469,7 +2502,8 @@
               "nfl_team": "PIT",
               "position": "K",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.7
             },
             {
               "name": "Will Lutz",
@@ -2490,14 +2524,16 @@
               "nfl_team": "JAX",
               "position": "DF",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.9
             },
             {
               "name": "Kyle Shanahan",
               "nfl_team": "SF",
               "position": "HC",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.6
             },
             {
               "name": "Kevin Stefanski",
@@ -2520,7 +2556,8 @@
               "nfl_team": "BUF",
               "position": "QB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 16.3
             },
             {
               "name": "Malik Willis",
@@ -2541,14 +2578,16 @@
               "nfl_team": "LAC",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.6
             },
             {
               "name": "James Cook",
               "nfl_team": "BUF",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.1
             },
             {
               "name": "JK Dobbins",
@@ -2569,7 +2608,8 @@
               "nfl_team": "DET",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.5
             },
             {
               "name": "Matthew Golden",
@@ -2583,7 +2623,8 @@
               "nfl_team": "CHI",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.9
             },
             {
               "name": "Quentin Johnston",
@@ -2611,7 +2652,8 @@
               "nfl_team": "NO",
               "position": "TE",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.6
             },
             {
               "name": "Chig Okonkwo",
@@ -2632,7 +2674,8 @@
               "nfl_team": "BAL",
               "position": "K",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.9
             },
             {
               "name": "New England",
@@ -2646,7 +2689,8 @@
               "nfl_team": "KC",
               "position": "DF",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.9
             },
             {
               "name": "Mike Vrabel",
@@ -2660,7 +2704,8 @@
               "nfl_team": "DEN",
               "position": "HC",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.0
             }
           ],
           "total_score": 0.0,
@@ -2676,7 +2721,8 @@
               "nfl_team": "TB",
               "position": "QB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 11.6
             },
             {
               "name": "Tyler Shough",
@@ -2697,14 +2743,16 @@
               "nfl_team": "CLE",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.4
             },
             {
               "name": "Jaylen Warren",
               "nfl_team": "PIT",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.0
             },
             {
               "name": "Chuba Hubbard",
@@ -2725,14 +2773,16 @@
               "nfl_team": "SEA",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.7
             },
             {
               "name": "Rashee Rice",
               "nfl_team": "KC",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.8
             },
             {
               "name": "DJ Moore",
@@ -2760,7 +2810,8 @@
               "nfl_team": "DAL",
               "position": "TE",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.5
             },
             {
               "name": "Cade Otton",
@@ -2781,7 +2832,8 @@
               "nfl_team": "SEA",
               "position": "K",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 7.6
             },
             {
               "name": "Cairo Santos",
@@ -2795,7 +2847,8 @@
               "nfl_team": "SEA",
               "position": "DF",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 8.5
             },
             {
               "name": "Tampa Bay",
@@ -2816,7 +2869,8 @@
               "nfl_team": "BAL",
               "position": "HC",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.4
             }
           ],
           "total_score": 0.0,
@@ -2832,7 +2886,8 @@
               "nfl_team": "LAC",
               "position": "QB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 12.6
             },
             {
               "name": "Aaron Rodgers",
@@ -2860,7 +2915,8 @@
               "nfl_team": "DAL",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.4
             },
             {
               "name": "Jacory Croskey-Merritt",
@@ -2874,14 +2930,16 @@
               "nfl_team": "SEA",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.8
             },
             {
               "name": "Nico Collins",
               "nfl_team": "HOU",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.9
             },
             {
               "name": "Khalil Shakir",
@@ -2902,7 +2960,8 @@
               "nfl_team": "WAS",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.9
             },
             {
               "name": "Antonio Williams",
@@ -2916,7 +2975,8 @@
               "nfl_team": "CHI",
               "position": "TE",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.4
             },
             {
               "name": "Hunter Henry",
@@ -2937,7 +2997,8 @@
               "nfl_team": "CIN",
               "position": "K",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.5
             },
             {
               "name": "Dominic Zvada",
@@ -2958,14 +3019,16 @@
               "nfl_team": "TEN",
               "position": "DF",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.6
             },
             {
               "name": "Mike Macdonald",
               "nfl_team": "SEA",
               "position": "HC",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.3
             },
             {
               "name": "Matt LaFleur",
@@ -2988,7 +3051,8 @@
               "nfl_team": "JAX",
               "position": "QB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 15.4
             },
             {
               "name": "Sam Darnold",
@@ -3009,14 +3073,16 @@
               "nfl_team": "SF",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 7.3
             },
             {
               "name": "Kenneth Walker III",
               "nfl_team": "KC",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.0
             },
             {
               "name": "David Montgomery",
@@ -3037,14 +3103,16 @@
               "nfl_team": "LAC",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.2
             },
             {
               "name": "Jaylen Waddle",
               "nfl_team": "DEN",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.1
             },
             {
               "name": "Makai Lemon",
@@ -3072,7 +3140,8 @@
               "nfl_team": "ARI",
               "position": "TE",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.5
             },
             {
               "name": "Dalton Kincaid",
@@ -3093,7 +3162,8 @@
               "nfl_team": "NO",
               "position": "K",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.4
             },
             {
               "name": "Tyler Bass",
@@ -3107,7 +3177,8 @@
               "nfl_team": "MIN",
               "position": "DF",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.2
             },
             {
               "name": "Green Bay",
@@ -3128,7 +3199,8 @@
               "nfl_team": "LAC",
               "position": "HC",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.4
             }
           ],
           "total_score": 0.0,
@@ -3144,7 +3216,8 @@
               "nfl_team": "CIN",
               "position": "QB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 12.4
             },
             {
               "name": "Jaxson Dart",
@@ -3165,7 +3238,8 @@
               "nfl_team": "ATL",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 7.1
             },
             {
               "name": "Jeremiah Love",
@@ -3179,7 +3253,8 @@
               "nfl_team": "TB",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.9
             },
             {
               "name": "Bhayshul Tuten",
@@ -3193,14 +3268,16 @@
               "nfl_team": "ATL",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.3
             },
             {
               "name": "AJ Brown",
               "nfl_team": "NE",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.8
             },
             {
               "name": "Brian Thomas",
@@ -3235,7 +3312,8 @@
               "nfl_team": "CLE",
               "position": "TE",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.8
             },
             {
               "name": "Kenyon Sadiq",
@@ -3249,7 +3327,8 @@
               "nfl_team": "DET",
               "position": "K",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.0
             },
             {
               "name": "Trey Smack",
@@ -3263,7 +3342,8 @@
               "nfl_team": "PHI",
               "position": "DF",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.9
             },
             {
               "name": "Indianapolis",
@@ -3277,7 +3357,8 @@
               "nfl_team": "PHI",
               "position": "HC",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.2
             },
             {
               "name": "Liam Coen",
@@ -3300,7 +3381,8 @@
               "nfl_team": "BAL",
               "position": "QB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 12.8
             },
             {
               "name": "Drake Maye",
@@ -3321,14 +3403,16 @@
               "nfl_team": "IND",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 7.7
             },
             {
               "name": "Derrick Henry",
               "nfl_team": "BAL",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 8.3
             },
             {
               "name": "Rico Dowdle",
@@ -3349,14 +3433,16 @@
               "nfl_team": "DAL",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.2
             },
             {
               "name": "DeVonta Smith",
               "nfl_team": "PHI",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.9
             },
             {
               "name": "Terry McLaurin",
@@ -3384,7 +3470,8 @@
               "nfl_team": "SF",
               "position": "TE",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.7
             },
             {
               "name": "Oronde Gadsden",
@@ -3405,7 +3492,8 @@
               "nfl_team": "JAX",
               "position": "K",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.6
             },
             {
               "name": "Spencer Shrader",
@@ -3419,7 +3507,8 @@
               "nfl_team": "PIT",
               "position": "DF",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 7.6
             },
             {
               "name": "LA Chargers",
@@ -3440,7 +3529,8 @@
               "nfl_team": "PIT",
               "position": "HC",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.1
             }
           ],
           "total_score": 0.0,
@@ -3456,7 +3546,8 @@
               "nfl_team": "KC",
               "position": "QB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 14.1
             },
             {
               "name": "Bryce Young",
@@ -3477,7 +3568,8 @@
               "nfl_team": "CIN",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.4
             },
             {
               "name": "Jonathan Brooks",
@@ -3498,21 +3590,24 @@
               "nfl_team": "NYG",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.7
             },
             {
               "name": "CeeDee Lamb",
               "nfl_team": "DAL",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.3
             },
             {
               "name": "Malik Nabers",
               "nfl_team": "NYG",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.2
             },
             {
               "name": "Rome Odunze",
@@ -3540,7 +3635,8 @@
               "nfl_team": "BAL",
               "position": "TE",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.6
             },
             {
               "name": "Isaiah Likely",
@@ -3561,7 +3657,8 @@
               "nfl_team": "HOU",
               "position": "K",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 7.1
             },
             {
               "name": "Harrison Mevis",
@@ -3575,7 +3672,8 @@
               "nfl_team": "BUF",
               "position": "DF",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 7.1
             },
             {
               "name": "Cleveland",
@@ -3596,7 +3694,8 @@
               "nfl_team": "MIN",
               "position": "HC",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.6
             }
           ],
           "total_score": 0.0,
@@ -3619,7 +3718,8 @@
               "nfl_team": "DET",
               "position": "QB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 13.8
             },
             {
               "name": "Daniel Jones",
@@ -3633,14 +3733,16 @@
               "nfl_team": "PHI",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.9
             },
             {
               "name": "Ashton Jeanty",
               "nfl_team": "LV",
               "position": "RB",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.7
             },
             {
               "name": "Breece Hall",
@@ -3661,14 +3763,16 @@
               "nfl_team": "NO",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 4.6
             },
             {
               "name": "Garrett Wilson",
               "nfl_team": "NYJ",
               "position": "WR",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.2
             },
             {
               "name": "Xavier Worthy",
@@ -3696,7 +3800,8 @@
               "nfl_team": "ATL",
               "position": "TE",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 3.5
             },
             {
               "name": "Terrance Ferguson",
@@ -3724,14 +3829,16 @@
               "nfl_team": "NE",
               "position": "K",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 5.9
             },
             {
               "name": "Detroit",
               "nfl_team": "DET",
               "position": "DF",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 6.4
             },
             {
               "name": "Dallas",
@@ -3745,7 +3852,8 @@
               "nfl_team": "DAL",
               "position": "HC",
               "score": 0.0,
-              "starter": true
+              "starter": true,
+              "projected_points": 2.8
             },
             {
               "name": "Dan Quinn",
@@ -3760,7 +3868,57 @@
         }
       ],
       "has_scores": false,
-      "final": false
+      "final": false,
+      "projections": {
+        "K/D": {
+          "projected_total": 50.4,
+          "win_probability": 0.4880500596030365
+        },
+        "STL": {
+          "projected_total": 53.5,
+          "win_probability": 0.49298130450090244
+        },
+        "JOH": {
+          "projected_total": 53.1,
+          "win_probability": 0.43678301036727873
+        },
+        "KEV": {
+          "projected_total": 50.7,
+          "win_probability": 0.5
+        },
+        "D/J": {
+          "projected_total": 53.9,
+          "win_probability": 0.5070186954990976
+        },
+        "G/G": {
+          "projected_total": 53.5,
+          "win_probability": 0.5969028879699871
+        },
+        "E/J": {
+          "projected_total": 48.4,
+          "win_probability": 0.40309711203001286
+        },
+        "AND": {
+          "projected_total": 52.5,
+          "win_probability": 0.5429831850266333
+        },
+        "W/B": {
+          "projected_total": 50.2,
+          "win_probability": 0.45701681497336666
+        },
+        "KAM": {
+          "projected_total": 56.8,
+          "win_probability": 0.5632169896327213
+        },
+        "J/M": {
+          "projected_total": 51.1,
+          "win_probability": 0.5119499403969635
+        },
+        "ADA": {
+          "projected_total": 50.7,
+          "win_probability": 0.5
+        }
+      }
     }
   ],
   "schedule": {
@@ -4316,7 +4474,7 @@
     }
   ],
   "standings_through_week": 1,
-  "standings_in_progress": false,
+  "standings_in_progress": true,
   "team_stats": {
     "KAM": {
       "abbrev": "KAM",
@@ -4477,8 +4635,8 @@
         "count": 1
       },
       "lineup_actual_points": 70.0,
-      "lineup_optimal_points": 83.0,
-      "points_left_on_table": 13.0,
+      "lineup_optimal_points": 77.0,
+      "points_left_on_table": 7.0,
       "lineup_weeks": 1,
       "total_points_for": 70.0,
       "total_points_against": 80.0,
@@ -4498,8 +4656,8 @@
       "games_above_500": -1,
       "record": "0-1",
       "opr": 63.0,
-      "owner_success_rate": 84.3,
-      "points_left_on_table_pct": 15.7,
+      "owner_success_rate": 90.9,
+      "points_left_on_table_pct": 9.1,
       "adjusted_opr": 0.948,
       "league_avg_opr": 66.45
     },
