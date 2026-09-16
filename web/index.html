@@ -275,6 +275,7 @@
                         <button class="history-tab active" data-tab="championships">Championships</button>
                         <button class="history-tab" data-tab="records">All-Time Records</button>
                         <button class="history-tab" data-tab="season-records">Season Records</button>
+                        <button class="history-tab" data-tab="past-seasons">Past Seasons</button>
                     </div>
                     
                     <div class="history-content" id="championships-tab">
@@ -314,6 +315,19 @@
                     <div class="history-content hidden" id="season-records-tab">
                         <p class="history-subtitle" id="season-records-through"></p>
                         <div class="records-grid" id="season-records-container"></div>
+                    </div>
+
+                    <div class="history-content hidden" id="past-seasons-tab">
+                        <div class="past-season-controls">
+                            <label for="past-season-select">Season</label>
+                            <select id="past-season-select"></select>
+                        </div>
+                        <div id="past-season-standings"></div>
+                        <div class="past-season-controls">
+                            <label for="past-season-week-select">Week</label>
+                            <select id="past-season-week-select"></select>
+                        </div>
+                        <div id="past-season-matchups"></div>
                     </div>
                 </div>
             </section>

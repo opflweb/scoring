@@ -43,21 +43,21 @@ def test_render_stats_leaders_is_wired_into_init():
 def test_leaders_read_the_flat_opfl_week_shape():
     """OPFL's week.teams[] is flatter than QPFL's week.matchups[].team1/team2 -
     the ported aggregation loop must use the OPFL shape, not the QPFL one."""
-    leaders_fn = APP_JS.split('function getStatsLeaders()')[1].split('\nfunction ')[0]
+    leaders_fn = APP_JS.split('function getStatsLeaders()')[1].split('\n        function ')[0]
     assert 'team.roster' in leaders_fn
     assert 'week.teams' in leaders_fn
     assert 'matchups' not in leaders_fn
 
 
 def test_leaders_skip_in_progress_weeks():
-    leaders_fn = APP_JS.split('function getStatsLeaders()')[1].split('\nfunction ')[0]
+    leaders_fn = APP_JS.split('function getStatsLeaders()')[1].split('\n        function ')[0]
     assert 'week.final' in leaders_fn
 
 
 def test_no_offensive_line_or_dst_naming():
     """OPFL has no OL position and calls the defense slot DF, not D/ST."""
-    leaders_fn = APP_JS.split('function getStatsLeaders()')[1].split('\nfunction ')[0]
-    render_fn = APP_JS.split('function renderStatsLeaders()')[1].split('\nfunction ')[0]
+    leaders_fn = APP_JS.split('function getStatsLeaders()')[1].split('\n        function ')[0]
+    render_fn = APP_JS.split('function renderStatsLeaders()')[1].split('\n        function ')[0]
     assert 'OL' not in leaders_fn
     assert "'D/ST'" not in render_fn
 

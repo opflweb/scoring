@@ -21,6 +21,7 @@ from export_hall_of_fame import generate_hall_of_fame
 from opfl import OPFLScorer, build_matchup_week, parse_taxi_squads
 from opfl.config import get_config
 from opfl.constants import ALL_TEAM_CODES, CODE_TO_OWNER, resolve_team_code
+from opfl.projections import calculate_week_projections
 from opfl.week_archive import load_all_weeks, load_week, save_week
 from opfl.week_status import week_games_are_final
 
@@ -212,6 +213,32 @@ def load_schedule_rows(season=SEASON):
         return []
 
 
+def load_season_schedule(season=SEASON):
+    """Load the full-season fixture list (week -> [[code, code], ...]).
+
+    W-sheets and the Matchups tab only carry pairings for weeks that have
+    already been scored, so future weeks fall back to data/schedules/{season}.json
+    (the printed schedule, translated from team numbers to this year's teams).
+    """
+    path = Path(__file__).parent.parent / 'data' / 'schedules' / f'{season}.json'
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text()).get('weeks', {})
+
+
+def load_projection_schedule_rows(season=SEASON):
+    """Fetch this season's and last season's NFL schedules.
+
+    Projections need the prior season's opponents too, since its archived
+    weeks feed the history the model is built on.
+    """
+    try:
+        return list(nfl.load_schedules(seasons=[season - 1, season]).iter_rows(named=True))
+    except Exception as e:
+        print(f'Warning: could not load schedule context for projections: {e}')
+        return []
+
+
 def build_game_times(schedule_rows):
     """Map week -> NFL team -> kickoff, for the frontend's lineup-lock display."""
     game_times = {}
@@ -382,12 +409,28 @@ def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False)
     state = 'final' if is_final else 'in progress'
     print(f'  Week {week_num} is {state}' + ('' if written else ' (already archived as final)'))
 
+    # Only the live week needs projections - a final week's rosters already
+    # have real scores, and projecting them would just be wasted work.
+    if not is_final:
+        try:
+            projection_schedule_rows = load_projection_schedule_rows(season)
+            week_data['projections'] = calculate_week_projections(
+                week_data, pairings, season, week_num, projection_schedule_rows
+            )
+        except Exception as e:
+            print(f'  Could not build week projections: {e}')
+
     # The archive is the season; the live week we just scored overrides its own
     # entry so an in-progress week still shows current scores.
     weeks, schedule = load_all_weeks(season)
     weeks = [w for w in weeks if w['week'] != week_num] + [week_data]
     weeks.sort(key=lambda w: w['week'])
     schedule[str(week_num)] = pairings
+
+    # Weeks that haven't been played yet have no archived or live pairings -
+    # show the printed schedule for those so the site doesn't say "not set".
+    for future_week, future_pairings in load_season_schedule(season).items():
+        schedule.setdefault(future_week, future_pairings)
 
     # Standings only count completed weeks.
     completed = [w for w in weeks if w.get('final')]
@@ -417,7 +460,47 @@ def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False)
         'game_times': build_game_times(schedule_rows),
         'trade_deadline_week': TRADE_DEADLINE_WEEK,
         'taxi_squads': parse_taxi_squads(excel_path, ROSTERS_SHEET),
+        'previous_seasons': build_previous_seasons(season),
     }
+
+
+def build_previous_seasons(current_season):
+    """Season-level archives for years before the live one.
+
+    Built entirely from data/weeks/ and data/schedules/ - no workbook needed,
+    since those seasons are done and archived. A year with no archived weeks
+    (no data/weeks/{year}/ directory, or none marked final) is left out rather
+    than shown empty.
+    """
+    previous = {}
+    weeks_root = Path(__file__).parent.parent / 'data' / 'weeks'
+    if not weeks_root.exists():
+        return previous
+
+    for season_dir in sorted(weeks_root.iterdir()):
+        if not season_dir.is_dir():
+            continue
+        try:
+            season = int(season_dir.name)
+        except ValueError:
+            continue
+        if season >= current_season:
+            continue
+
+        weeks, schedule = load_all_weeks(season)
+        completed = [w for w in weeks if w.get('final')]
+        if not completed:
+            continue
+
+        standings = build_standings(completed, schedule)
+        previous[str(season)] = {
+            'season': season,
+            'weeks': completed,
+            'schedule': schedule,
+            'standings': standings,
+        }
+
+    return previous
 
 
 def build_standings(weeks, schedule):
@@ -480,8 +563,8 @@ def build_standings(weeks, schedule):
                 standings[abbrev2]['ties'] += 1
                 standings[abbrev2]['rank_points'] += 0.5
 
-        # Top 6 scoring bonus (0.5 each), split evenly across ties that
-        # straddle the cutoff.
+        # Top 6 scoring bonus (1 full rank point each), split evenly across
+        # ties that straddle the cutoff.
         teams_by_score = sorted(week_data['teams'], key=lambda x: x['total_score'], reverse=True)
         current_rank = 1
         i = 0
@@ -496,7 +579,7 @@ def build_standings(weeks, schedule):
             positions_in_top6 = [p for p in tied_positions if p <= 6]
 
             if positions_in_top6:
-                points_per_team = (0.5 * len(positions_in_top6)) / len(tied_teams)
+                points_per_team = (1.0 * len(positions_in_top6)) / len(tied_teams)
                 for team in tied_teams:
                     standings[team['abbrev']]['rank_points'] += points_per_team
                     standings[team['abbrev']]['top_half'] += 1

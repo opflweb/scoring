@@ -521,11 +521,23 @@
                 };
             }).filter(m => m.team1 && m.team2);
 
+            const projections = weekData.projections || null;
+
             container.innerHTML = matchups.map((matchup, idx) => {
                 const t1 = matchup.team1;
                 const t2 = matchup.team2;
                 const t1Winning = t1.total_score > t2.total_score;
                 const t2Winning = t2.total_score > t1.total_score;
+
+                const p1 = projections?.[t1.abbrev];
+                const p2 = projections?.[t2.abbrev];
+                const projectionHtml = (p1 && p2) ? `
+                    <div class="projection-display">
+                        <span class="projected-score">Proj ${p1.projected_total}</span>
+                        <span class="win-probability">${Math.round(p1.win_probability * 100)}% - ${Math.round(p2.win_probability * 100)}%</span>
+                        <span class="projected-score">${p2.projected_total} Proj</span>
+                    </div>
+                ` : '';
 
                 return `
                     <div class="matchup-card">
@@ -540,6 +552,7 @@
                                     <span class="score-divider">-</span>
                                     <span class="score ${t2Winning ? 'winning' : t1Winning ? 'losing' : ''}">${t2.total_score}</span>
                                 </div>
+                                ${projectionHtml}
                             </div>
                             <div class="team right">
                                 <div class="team-name">${t2.name}</div>
@@ -1453,6 +1466,7 @@
             }).join('');
 
             renderSeasonRecords();
+            initPastSeasons();
 
             // Tab switching
             document.querySelectorAll('.history-tab').forEach(tab => {
@@ -1463,6 +1477,140 @@
                     document.getElementById(`${tab.dataset.tab}-tab`).classList.remove('hidden');
                 });
             });
+        }
+
+        // Past Seasons: archived years (data.previous_seasons, built from
+        // data/weeks/ + data/schedules/ - see scripts/export_for_web.py's
+        // build_previous_seasons) with no live features (drafts, trades).
+        function initPastSeasons() {
+            const seasons = data.previous_seasons || {};
+            const years = Object.keys(seasons).sort((a, b) => b - a);
+            const seasonSelect = document.getElementById('past-season-select');
+
+            if (years.length === 0) {
+                seasonSelect.innerHTML = '';
+                document.getElementById('past-season-standings').innerHTML =
+                    '<div class="loading">No archived seasons yet</div>';
+                document.getElementById('past-season-matchups').innerHTML = '';
+                document.getElementById('past-season-week-select').innerHTML = '';
+                return;
+            }
+
+            seasonSelect.innerHTML = years.map(y => `<option value="${y}">${y}</option>`).join('');
+            seasonSelect.onchange = () => renderPastSeason(seasonSelect.value);
+            renderPastSeason(years[0]);
+        }
+
+        function renderPastSeason(year) {
+            const season = (data.previous_seasons || {})[year];
+            const weekSelect = document.getElementById('past-season-week-select');
+            if (!season) {
+                document.getElementById('past-season-standings').innerHTML = '';
+                document.getElementById('past-season-matchups').innerHTML = '';
+                weekSelect.innerHTML = '';
+                return;
+            }
+
+            const standings = [...season.standings].sort((a, b) => {
+                const rpDiff = (b.rank_points || 0) - (a.rank_points || 0);
+                if (rpDiff !== 0) return rpDiff;
+                return (b.points_for || 0) - (a.points_for || 0);
+            });
+
+            document.getElementById('past-season-standings').innerHTML = `
+                <table class="standings-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team</th>
+                            <th class="num">W-L-T</th>
+                            <th class="num">Top 6</th>
+                            <th class="num">PF</th>
+                            <th class="num">PA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${standings.map((team, idx) => `
+                            <tr>
+                                <td><span class="rank ${idx < 4 ? 'playoffs' : ''}">${idx + 1}</span></td>
+                                <td>
+                                    <span class="team-name">${team.name}</span>
+                                    <span class="team-code">${team.abbrev}</span>
+                                </td>
+                                <td class="num record">${team.wins || 0}-${team.losses || 0}-${team.ties || 0}</td>
+                                <td class="num top-half">${team.top_half || 0}</td>
+                                <td class="num points-for">${(team.points_for || 0).toFixed(1)}</td>
+                                <td class="num">${(team.points_against || 0).toFixed(1)}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+
+            const weekNumbers = season.weeks.map(w => w.week).sort((a, b) => a - b);
+            weekSelect.innerHTML = weekNumbers.map(w => `<option value="${w}">Week ${w}</option>`).join('');
+            weekSelect.onchange = () => renderPastSeasonWeek(year, Number(weekSelect.value));
+            renderPastSeasonWeek(year, weekNumbers[0]);
+        }
+
+        function renderPastSeasonWeek(year, weekNum) {
+            const season = (data.previous_seasons || {})[year];
+            const container = document.getElementById('past-season-matchups');
+            const weekData = season?.weeks.find(w => w.week === weekNum);
+            const pairings = season?.schedule?.[String(weekNum)] || [];
+            if (!weekData || pairings.length === 0) {
+                container.innerHTML = '<div class="loading">No matchup data for this week</div>';
+                return;
+            }
+
+            const teamsByAbbrev = {};
+            weekData.teams.forEach(t => { teamsByAbbrev[t.abbrev] = t; });
+
+            const matchups = pairings
+                .map(([a, b]) => ({ team1: teamsByAbbrev[a], team2: teamsByAbbrev[b] }))
+                .filter(m => m.team1 && m.team2);
+
+            container.innerHTML = matchups.map((m, idx) => {
+                const t1 = m.team1, t2 = m.team2;
+                const t1Winning = t1.total_score > t2.total_score;
+                const t2Winning = t2.total_score > t1.total_score;
+                return `
+                    <div class="matchup-card">
+                        <div class="matchup-header">
+                            <div class="team">
+                                <div class="team-name">${t1.name}</div>
+                            </div>
+                            <div class="vs-container">
+                                <div class="score-display">
+                                    <span class="score ${t1Winning ? 'winning' : t2Winning ? 'losing' : ''}">${t1.total_score}</span>
+                                    <span class="score-divider">-</span>
+                                    <span class="score ${t2Winning ? 'winning' : t1Winning ? 'losing' : ''}">${t2.total_score}</span>
+                                </div>
+                            </div>
+                            <div class="team right">
+                                <div class="team-name">${t2.name}</div>
+                            </div>
+                        </div>
+                        <button class="expand-btn" onclick="togglePastRoster(${idx})">View Rosters</button>
+                        <div class="roster-panel" id="past-roster-${idx}">
+                            <div class="roster-grid">
+                                <div class="roster-column">
+                                    <h4>${t1.name}</h4>
+                                    ${renderRosterList(t1.roster)}
+                                </div>
+                                <div class="roster-column">
+                                    <h4>${t2.name}</h4>
+                                    ${renderRosterList(t2.roster)}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function togglePastRoster(idx) {
+            document.getElementById(`past-roster-${idx}`).classList.toggle('expanded');
         }
 
         // Season Records: computed player/team records, fun stats, and

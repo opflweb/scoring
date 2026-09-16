@@ -152,10 +152,14 @@ def test_schedule_pairs_reference_real_teams_and_nobody_plays_twice(data):
         assert len(played) == len(set(played)), f'week {week} schedules a team twice'
 
 
-def test_every_scheduled_week_has_matching_week_data(data):
+def test_every_exported_week_has_a_schedule_entry(data):
+    """Every week that has actually been scored must have pairings to match
+    it against. The reverse isn't required: `schedule` may also list weeks
+    that haven't been played yet (the printed fixture list, shown so the site
+    can preview an upcoming week's matchups before it's scored)."""
     exported = {w['week'] for w in data['weeks']}
     scheduled = {int(w) for w in data['schedule']}
-    assert scheduled <= exported, f'scheduled but not exported: {scheduled - exported}'
+    assert exported <= scheduled, f'exported but not scheduled: {exported - scheduled}'
 
 
 def test_team_stats_only_covers_teams_that_appear_in_standings(data):

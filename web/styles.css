@@ -404,6 +404,17 @@
         .score.losing { color: var(--text-muted); }
         .score-divider { color: var(--text-muted); font-size: 1.2rem; }
 
+        .projection-display {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .projected-score { font-family: 'JetBrains Mono', monospace; }
+        .win-probability { font-weight: 600; }
+
         .expand-btn {
             width: 100%;
             padding: 0.75rem;
@@ -991,6 +1002,28 @@
 
         .history-content.hidden {
             display: none;
+        }
+
+        .past-season-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .past-season-controls label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .past-season-controls select {
+            background: var(--bg-secondary, #1a1a2e);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.4rem 0.75rem;
+            font-family: inherit;
+            font-size: 0.9rem;
         }
 
         .history-table {

@@ -286,6 +286,75 @@ def parse_roster_from_rosters_sheet(filepath: str) -> list[FantasyTeam]:
     return parse_roster_from_excel(filepath, sheet_name='Rosters')
 
 
+def parse_week_sheet_points(filepath: str, sheet_name: str = 'W1') -> list[tuple[str, list[dict]]]:
+    """Read a W-sheet's own recorded points, rather than re-deriving them.
+
+    Each player's points are static values sitting one column to the left of
+    the star column - the commissioner (or an older season's scoring engine)
+    already computed them at the time, so for archived seasons this is more
+    trustworthy than re-scoring from nflreadpy stats, which requires an NFL
+    team per player that older-format sheets never recorded.
+
+    Returns:
+        [(team_name, [{'name', 'nfl_team', 'position', 'score', 'starter'}, ...]), ...]
+    """
+    wb = openpyxl.load_workbook(filepath, data_only=True)
+    ws = wb[sheet_name]
+
+    results: list[tuple[str, list[dict]]] = []
+    seen_team_names: set[str] = set()
+
+    for header_row, end_row in ((1, 38), (39, 80)):
+        team_columns = find_team_columns(ws, header_row=header_row)
+        if not team_columns:
+            for col in VALID_TEAM_COLUMNS:
+                if col <= ws.max_column:
+                    header = ws.cell(row=header_row, column=col).value
+                    if header and str(header).strip():
+                        team_columns.append((col, str(header).strip(), header_row))
+
+        position_rows = find_position_rows(ws, start_row=header_row, end_row=end_row)
+
+        for player_col, team_name_raw, _header_row in team_columns:
+            match = re.match(r'^(.+?)\s*\(\d+\)$', team_name_raw)
+            team_name = match.group(1).strip() if match else team_name_raw
+            if team_name in seen_team_names:
+                continue
+            seen_team_names.add(team_name)
+
+            star_col = player_col - 1
+            points_col = player_col - 2
+
+            roster = []
+            for position, rows in position_rows.items():
+                for row in rows:
+                    player_cell = ws.cell(row=row, column=player_col)
+                    if not player_cell.value:
+                        continue
+                    name, nfl_team = parse_player_name(str(player_cell.value))
+                    if not is_valid_player_name(name, position):
+                        continue
+
+                    points_value = ws.cell(row=row, column=points_col).value
+                    score = float(points_value) if isinstance(points_value, (int, float)) else 0.0
+                    starter = ws.cell(row=row, column=star_col).value == '*'
+
+                    roster.append(
+                        {
+                            'name': name,
+                            'nfl_team': nfl_team,
+                            'position': position,
+                            'score': round(score, 1),
+                            'starter': starter,
+                        }
+                    )
+
+            results.append((team_name, roster))
+
+    wb.close()
+    return results
+
+
 # The Matchups tab lists one lineup per block, always in this slot order.
 MATCHUP_LINEUP_POSITIONS = ['QB', 'RB', 'RB', 'WR', 'WR', 'TE', 'K', 'DF', 'HC']
 

@@ -6,11 +6,17 @@ workbook. Those sheets are static values (not formulas) in the same roster-block
 layout as the Rosters tab, with that week's starters starred — so a whole season
 can be reconstructed from them.
 
-Use this to seed a past season, or to repair the current one if a scoring run
-was missed and the Matchups tab has already moved on.
+By default this reads each player's points straight out of the sheet rather
+than re-deriving them from nflreadpy stats. That is the only reliable option
+for older seasons: their W-sheets never recorded a player's NFL team (just
+"D. Adams", not "D. Adams (LV)"), so re-scoring has to guess at stat lookups
+for any ambiguous surname and quietly undercounts the week. The sheet's own
+point values don't have that problem - they're what the league actually used.
+Pass --rescore to re-derive from nflreadpy instead, e.g. to repair a current
+season week where a late stat correction hasn't been typed into the sheet.
 
-    python scripts/backfill_weeks.py --excel "OPFL Scoring 2025 (5).xlsx" --season 2025
-    python scripts/backfill_weeks.py --season 2025 --weeks 3 4 5 --force
+    python scripts/backfill_weeks.py --excel "data/previous_seasons/OPFL Scoring 2022.xlsx" --season 2022
+    python scripts/backfill_weeks.py --season 2025 --weeks 3 4 5 --force --rescore
 """
 
 import argparse
@@ -26,7 +32,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from opfl import OPFLScorer, parse_roster_from_excel
 from opfl.constants import CODE_TO_OWNER, resolve_team_code
-from opfl.excel_parser import is_valid_player_name
+from opfl.excel_parser import is_valid_player_name, parse_week_sheet_points
 from opfl.week_archive import save_week
 from opfl.week_status import week_games_are_final
 
@@ -43,8 +49,45 @@ def find_week_sheets(excel_path):
     return sorted(sheets)
 
 
+def _finish_week_data(teams_data):
+    for rank, team in enumerate(
+        sorted(teams_data, key=lambda t: t['total_score'], reverse=True), 1
+    ):
+        team['score_rank'] = rank
+    return {
+        'week': None,  # filled in by the caller
+        'teams': teams_data,
+        'has_scores': any(t['total_score'] > 0 for t in teams_data),
+    }
+
+
+def score_week_sheet_from_points(excel_path, sheet_name, week_num, season):
+    """Build the web week shape from the sheet's own recorded points."""
+    teams_data = []
+    for team_name, roster in parse_week_sheet_points(excel_path, sheet_name):
+        code = resolve_team_code(team_name)
+        if not code:
+            print(f'    WARNING: could not resolve team name {team_name!r}; skipping')
+            continue
+
+        total_score = round(sum(p['score'] for p in roster if p['starter']), 1)
+        teams_data.append(
+            {
+                'name': CODE_TO_OWNER.get(code, team_name),
+                'owner': CODE_TO_OWNER.get(code, team_name),
+                'abbrev': code,
+                'roster': roster,
+                'total_score': total_score,
+            }
+        )
+
+    week_data = _finish_week_data(teams_data)
+    week_data['week'] = week_num
+    return week_data
+
+
 def score_week_sheet(excel_path, sheet_name, week_num, season):
-    """Score one archived W-sheet into the web week shape."""
+    """Score one archived W-sheet by re-deriving points from nflreadpy stats."""
     teams = parse_roster_from_excel(excel_path, sheet_name)
     scorer = OPFLScorer(season, week_num)
 
@@ -85,16 +128,9 @@ def score_week_sheet(excel_path, sheet_name, week_num, season):
             }
         )
 
-    for rank, team in enumerate(
-        sorted(teams_data, key=lambda t: t['total_score'], reverse=True), 1
-    ):
-        team['score_rank'] = rank
-
-    return {
-        'week': week_num,
-        'teams': teams_data,
-        'has_scores': any(t['total_score'] > 0 for t in teams_data),
-    }
+    week_data = _finish_week_data(teams_data)
+    week_data['week'] = week_num
+    return week_data
 
 
 def load_season_schedule(season):
@@ -122,6 +158,11 @@ def main():
         '--force', action='store_true', help='Overwrite weeks already archived as final'
     )
     parser.add_argument('--dry-run', action='store_true', help='Score but do not write')
+    parser.add_argument(
+        '--rescore',
+        action='store_true',
+        help='Re-derive points from nflreadpy stats instead of reading the sheet\'s own values',
+    )
     args = parser.parse_args()
 
     project_dir = Path(__file__).parent.parent
@@ -157,10 +198,12 @@ def main():
 
     season_schedule = load_season_schedule(args.season)
 
+    score_fn = score_week_sheet if args.rescore else score_week_sheet_from_points
+
     written = 0
     for week_num, sheet_name in sheets:
         print(f'\nScoring {sheet_name} (week {week_num})...')
-        week_data = score_week_sheet(str(excel_path), sheet_name, week_num, args.season)
+        week_data = score_fn(str(excel_path), sheet_name, week_num, args.season)
         is_final = week_games_are_final(schedule_rows, week_num, args.season)
         week_data['final'] = is_final
 
