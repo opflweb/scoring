@@ -17,7 +17,8 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
 
-from export_for_web import ROSTERS_SHEET, resolve_matchups_week  # noqa: E402
+import export_for_web  # noqa: E402
+from export_for_web import ROSTERS_SHEET, export_season, resolve_matchups_week  # noqa: E402
 
 from opfl.week_archive import save_week  # noqa: E402
 
@@ -91,3 +92,43 @@ def test_no_prior_archive_trusts_the_requested_week(tmp_path):
         str(WORKBOOK), requested_week=2, season=2026, data_dir=tmp_path
     )
     assert resolved == 2
+
+
+def test_export_season_checks_the_tab_even_with_an_explicit_week(monkeypatch):
+    """The actual regression: the workflow always passes --week explicitly
+    (computed from nflreadpy's calendar), which used to skip the stale-tab
+    check entirely - it only ran when week_num was left as None. That let a
+    week get archived with the previous week's lineups and pairings silently
+    relabeled as the new one. export_season must run the check regardless of
+    where week_num came from.
+    """
+    calls = []
+
+    def fake_resolve(excel_path, requested_week, season, data_dir=None):
+        calls.append(requested_week)
+        return requested_week - 1
+
+    monkeypatch.setattr(export_for_web, 'resolve_matchups_week', fake_resolve)
+    monkeypatch.setattr(export_for_web, 'load_schedule_rows', lambda season: [])
+    monkeypatch.setattr(export_for_web, 'get_current_nfl_week', lambda: 2)
+    monkeypatch.setattr(
+        export_for_web,
+        'export_matchup_week',
+        lambda excel_path, week_num, season: ({'week': week_num, 'teams': []}, []),
+    )
+    monkeypatch.setattr(export_for_web, 'week_games_are_final', lambda *a, **k: False)
+    monkeypatch.setattr(export_for_web, 'save_week', lambda *a, **k: True)
+    monkeypatch.setattr(export_for_web, 'load_all_weeks', lambda season: ([], {}))
+    monkeypatch.setattr(export_for_web, 'load_season_schedule', lambda season: {})
+    monkeypatch.setattr(export_for_web, 'build_standings', lambda weeks, schedule: [])
+    monkeypatch.setattr(
+        export_for_web, 'calculate_team_stats', lambda weeks, schedule, standings: {}
+    )
+    monkeypatch.setattr(export_for_web, 'generate_hall_of_fame', lambda: {})
+    monkeypatch.setattr(export_for_web, 'build_game_times', lambda schedule_rows: {})
+    monkeypatch.setattr(export_for_web, 'parse_taxi_squads', lambda *a, **k: {})
+    monkeypatch.setattr(export_for_web, 'build_previous_seasons', lambda season: {})
+
+    export_for_web.export_season('irrelevant.xlsx', week_num=2, season=2026)
+
+    assert calls == [2]

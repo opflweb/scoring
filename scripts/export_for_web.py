@@ -391,8 +391,14 @@ def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False)
     schedule_rows = load_schedule_rows(season)
     current_nfl_week = get_current_nfl_week()
 
-    if week_num is None:
-        week_num = resolve_matchups_week(excel_path, current_nfl_week, season)
+    # Always run the stale-Matchups-tab check, not just when week_num was left
+    # to default: the workflow passes an explicit --week computed from
+    # nflreadpy's calendar-based current week, which is exactly the guess
+    # resolve_matchups_week exists to double-check against the workbook. An
+    # explicit --week that skipped this check is how a week got archived
+    # with the previous week's lineups and pairings silently relabeled.
+    requested_week = week_num if week_num is not None else current_nfl_week
+    week_num = resolve_matchups_week(excel_path, requested_week, season)
 
     print(f'Scoring week {week_num} from the {MATCHUPS_SHEET} tab...')
     week_data, pairings = export_matchup_week(excel_path, week_num, season)
