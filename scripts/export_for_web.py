@@ -9,6 +9,7 @@ import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import nflreadpy as nfl
 import openpyxl
@@ -242,6 +243,7 @@ def load_projection_schedule_rows(season=SEASON):
 def build_game_times(schedule_rows):
     """Map week -> NFL team -> kickoff, for the frontend's lineup-lock display."""
     game_times = {}
+    eastern = ZoneInfo('America/New_York')
     for row in schedule_rows:
         week = row.get('week')
         game_date = row.get('gameday', '')
@@ -249,10 +251,12 @@ def build_game_times(schedule_rows):
         if not week or not game_date or not game_time:
             continue
         try:
-            dt = datetime.strptime(f'{game_date} {game_time}', '%Y-%m-%d %H:%M')
+            dt = datetime.strptime(f'{game_date} {game_time}', '%Y-%m-%d %H:%M').replace(
+                tzinfo=eastern
+            )
         except (ValueError, TypeError):
             continue
-        kickoff_iso = dt.strftime('%Y-%m-%dT%H:%M:00-05:00')
+        kickoff_iso = dt.isoformat(timespec='seconds')
         slot = game_times.setdefault(week, {})
         for side in ('home_team', 'away_team'):
             if row.get(side):

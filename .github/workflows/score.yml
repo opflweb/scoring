@@ -87,6 +87,12 @@ jobs:
           echo "week=$WEEK" >> $GITHUB_OUTPUT
           echo "Scoring NFL Week: $WEEK"
 
+      - name: Run autoscorer (workbook-based for 2026+)
+        if: steps.check_window.outputs.in_window == 'true'
+        run: |
+          WEEK=${{ steps.week.outputs.week }}
+          uv run --frozen python autoscorer.py --excel "${{ env.WORKBOOK }}" --week $WEEK --season ${{ env.SEASON }}
+
       - name: Export scores for web
         if: steps.check_window.outputs.in_window == 'true'
         run: |
@@ -95,7 +101,7 @@ jobs:
 
       - name: Validate exported data
         if: steps.check_window.outputs.in_window == 'true'
-        run: uv run --frozen pytest tests/test_export_shape.py tests/test_no_workbook_writes.py -q
+        run: uv run --frozen pytest tests/test_export_shape.py tests/test_no_workbook_writes.py tests/test_autoscorer_output.py tests/test_ui_player_scores.py tests/test_game_times.py -q
 
       - name: Commit and push updated scores
         if: steps.check_window.outputs.in_window == 'true'

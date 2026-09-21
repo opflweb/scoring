@@ -25,6 +25,22 @@
             return pairs.map(pair => pair.map(entry => numberMap[entry] || numberMap[String(entry)] || entry));
         }
 
+        function playerGameHasStarted(player, weekNum) {
+            const weekTimes = data?.game_times?.[String(weekNum)] || data?.game_times?.[weekNum];
+            if (!weekTimes) return true;
+
+            const kickoff = weekTimes[player.nfl_team];
+            if (!kickoff) return false;
+
+            const kickoffTime = Date.parse(kickoff);
+            return Number.isNaN(kickoffTime) || kickoffTime <= Date.now();
+        }
+
+        function playerScoreText(player, weekNum) {
+            if (weekNum !== undefined && !playerGameHasStarted(player, weekNum)) return '-';
+            return player.score ?? 0;
+        }
+
         // Historical championship data
         const CHAMPIONSHIPS = [
             { year: 2024, first: "Kemp/A/M", second: "Wes", third: "John", fourth: "Jarrett/Matt", score: "88-57", jamboree: "Steve L. (157)" },
@@ -564,11 +580,11 @@
                             <div class="roster-grid">
                                 <div class="roster-column">
                                     <h4>${t1.name}</h4>
-                                    ${renderRosterList(t1.roster)}
+                                    ${renderRosterList(t1.roster, currentWeek)}
                                 </div>
                                 <div class="roster-column">
                                     <h4>${t2.name}</h4>
-                                    ${renderRosterList(t2.roster)}
+                                    ${renderRosterList(t2.roster, currentWeek)}
                                 </div>
                             </div>
                         </div>
@@ -577,7 +593,7 @@
             }).join('');
         }
 
-        function renderRosterList(roster) {
+        function renderRosterList(roster, weekNum) {
             if (!roster) return '<div class="player-row">No roster data</div>';
             
             const starters = roster.filter(p => p.starter);
@@ -590,7 +606,7 @@
                         <span class="player-name">${p.name}</span>
                         <span class="player-team">${p.nfl_team}</span>
                     </div>
-                    <span class="player-score">${p.score || 0}</span>
+                    <span class="player-score">${playerScoreText(p, weekNum)}</span>
                 </div>
             `).join('');
         }
@@ -1296,9 +1312,10 @@
                             };
                     }
                         rosterByPlayer[key].weeks[week.week] = {
-                            score: player.score || 0,
-                        starter: player.starter
-                    };
+                            score: player.score ?? 0,
+                            starter: player.starter,
+                            gameStarted: playerGameHasStarted(player, week.week)
+                        };
                 });
                 }
             });
@@ -1326,7 +1343,8 @@
                                 const weekData = player.weeks[w];
                                 if (!weekData) return '<td class="week-score">-</td>';
                                 const cls = weekData.starter ? 'starter' : 'bench';
-                                return `<td class="week-score ${cls}">${weekData.score}</td>`;
+                                const score = weekData.gameStarted ? weekData.score : '-';
+                                return `<td class="week-score ${cls}">${score}</td>`;
                             }).join('')}
                             <td class="week-score season-total">${seasonTotal}</td>
                         </tr>

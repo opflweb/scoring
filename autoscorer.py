@@ -29,12 +29,14 @@ def score_matchups(args):
 
     results = {}
     for code, team in teams_by_code.items():
-        scores = scorer.score_fantasy_team(team, starters_only=True)
+        scores = scorer.score_fantasy_team(team, starters_only=False)
 
         player_points = {}
         total = 0.0
         for player_scores in scores.values():
             for ps in player_scores:
+                if not ps.is_starter:
+                    continue
                 player_points[ps.name] = round(ps.total_points, 1)
                 total += ps.total_points
 
@@ -47,13 +49,15 @@ def score_matchups(args):
             for position in ['QB', 'RB', 'WR', 'TE', 'K', 'DF', 'HC']:
                 for ps in scores.get(position, []):
                     status = '✓' if ps.found_in_stats else '✗'
+                    bench = '' if ps.is_starter else ' [BENCH]'
                     matched = (
                         f' -> {ps.matched_name}'
                         if ps.matched_name and ps.matched_name != ps.name
                         else ''
                     )
                     print(
-                        f'  {position:3s} {ps.name} ({ps.team}){matched}: {ps.total_points:.1f} pts {status}'
+                        f'  {position:3s} {ps.name} ({ps.team}){matched}: '
+                        f'{ps.total_points:.1f} pts {status}{bench}'
                     )
                     for key, val in ps.breakdown.items():
                         if key != 'floor_applied':
