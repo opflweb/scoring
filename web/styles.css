@@ -472,6 +472,38 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            min-width: 0;
+        }
+
+        .player-identity {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            min-width: 0;
+        }
+
+        .player-name-line,
+        .player-game-context {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .player-matchup {
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+        }
+
+        .player-game-time {
+            padding: 0.08rem 0.3rem;
+            border-radius: 0.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.62rem;
+            font-weight: 500;
+            white-space: nowrap;
         }
 
         .position-tag {
@@ -492,6 +524,65 @@
             font-size: 0.9rem;
             font-weight: 600;
         }
+
+        .player-points {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.15rem;
+            margin-left: auto;
+        }
+
+        .player-projection {
+            color: var(--accent-tertiary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            white-space: nowrap;
+        }
+
+        .score-breakdown { text-align: right; }
+
+        .score-breakdown summary {
+            list-style: none;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .score-breakdown summary::-webkit-details-marker { display: none; }
+
+        .has-breakdown {
+            text-decoration: underline dotted;
+            text-underline-offset: 3px;
+        }
+
+        .breakdown-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            margin-top: 0.35rem;
+            padding: 0.4rem 0.5rem;
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.04);
+            text-align: left;
+        }
+
+        .bd-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+        }
+
+        .bd-label { color: var(--text-muted); }
+        .bd-pts { color: var(--text-secondary); font-weight: 600; }
+
+        .player-game-time.game-time-thursday { background: rgba(180, 167, 214, 0.3); color: #b4a7d6; }
+        .player-game-time.game-time-frisat { background: rgba(194, 123, 160, 0.3); color: #c27ba0; }
+        .player-game-time.game-time-sun-morning { background: rgba(244, 204, 204, 0.3); color: #f4cccc; }
+        .player-game-time.game-time-sun-afternoon { background: rgba(255, 229, 153, 0.3); color: #ffe599; }
+        .player-game-time.game-time-sun-night { background: rgba(182, 215, 168, 0.3); color: #b6d7a8; }
+        .player-game-time.game-time-monday { background: rgba(164, 194, 244, 0.3); color: #a4c2f4; }
 
         /* Standings */
         .standings-table {

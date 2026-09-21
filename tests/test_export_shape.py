@@ -30,6 +30,7 @@ REQUIRED_TOP_LEVEL_KEYS = {
     'team_stats',
     'playoffs',
     'game_times',
+    'game_opponents',
     'trade_deadline_week',
     'taxi_squads',
     'pending_trades',
@@ -93,6 +94,29 @@ def test_every_roster_player_has_the_expected_fields(data):
                 assert player['position'] in VALID_POSITIONS
                 assert isinstance(player['score'], (int, float))
                 assert isinstance(player['starter'], bool)
+                if 'breakdown' in player:
+                    assert isinstance(player['breakdown'], dict)
+                if 'found' in player:
+                    assert isinstance(player['found'], bool)
+
+
+def test_latest_week_players_have_matchup_detail_fields(data):
+    latest = max(data['weeks'], key=lambda week: week['week'])
+    for team in latest['teams']:
+        for player in team['roster']:
+            assert isinstance(player.get('found'), bool)
+            assert isinstance(player.get('breakdown'), dict)
+            if not latest.get('final'):
+                assert isinstance(player.get('projected_points'), (int, float))
+
+
+def test_game_opponents_cover_both_sides_of_each_nfl_game(data):
+    for week, teams in data['game_opponents'].items():
+        for team, game in teams.items():
+            opponent = game['opponent']
+            assert teams[opponent]['opponent'] == team, f'week {week}: {team} vs {opponent}'
+            assert teams[opponent]['is_home'] is not game['is_home']
+            assert isinstance(game['final'], bool)
 
 
 def test_each_team_starts_exactly_nine_players(data):

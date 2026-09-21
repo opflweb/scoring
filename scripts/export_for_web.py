@@ -21,7 +21,12 @@ from export_hall_of_fame import generate_hall_of_fame
 
 from opfl import OPFLScorer, build_matchup_week, parse_taxi_squads
 from opfl.config import get_config
-from opfl.constants import ALL_TEAM_CODES, CODE_TO_OWNER, resolve_team_code
+from opfl.constants import (
+    ALL_TEAM_CODES,
+    CODE_TO_OWNER,
+    TEAM_ABBREV_NORMALIZE,
+    resolve_team_code,
+)
 from opfl.projections import calculate_week_projections
 from opfl.week_archive import load_all_weeks, load_week, save_week
 from opfl.week_status import week_games_are_final
@@ -169,6 +174,8 @@ def export_matchup_week(excel_path, week_num, season=SEASON):
                         'position': position,
                         'score': round(ps.total_points, 1),
                         'starter': ps.is_starter,
+                        'found': ps.found_in_stats,
+                        'breakdown': ps.breakdown,
                     }
                 )
                 # Only starters count toward the team total.
@@ -262,6 +269,27 @@ def build_game_times(schedule_rows):
             if row.get(side):
                 slot[row[side]] = kickoff_iso
     return game_times
+
+
+def build_game_opponents(schedule_rows):
+    """Map week -> NFL team -> opponent, home/away, and final status."""
+    opponents = {}
+    for row in schedule_rows:
+        if row.get('game_type') not in (None, 'REG'):
+            continue
+        week = row.get('week')
+        home = str(row.get('home_team') or '').upper()
+        away = str(row.get('away_team') or '').upper()
+        home = TEAM_ABBREV_NORMALIZE.get(home, home)
+        away = TEAM_ABBREV_NORMALIZE.get(away, away)
+        if not week or not home or not away:
+            continue
+
+        final = row.get('result') not in (None, '')
+        slot = opponents.setdefault(week, {})
+        slot[home] = {'opponent': away, 'is_home': True, 'final': final}
+        slot[away] = {'opponent': home, 'is_home': False, 'final': final}
+    return opponents
 
 
 def parse_draft_picks(excel_path):
@@ -468,6 +496,7 @@ def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False)
         'playoffs': playoffs,
         'hall_of_fame': generate_hall_of_fame(),
         'game_times': build_game_times(schedule_rows),
+        'game_opponents': build_game_opponents(schedule_rows),
         'trade_deadline_week': TRADE_DEADLINE_WEEK,
         'taxi_squads': parse_taxi_squads(excel_path, ROSTERS_SHEET),
         'previous_seasons': build_previous_seasons(season),

@@ -36,7 +36,8 @@ def live_week(number):
             {
                 'abbrev': 'AAA',
                 'roster': [
-                    {'name': 'Big Thrower', 'nfl_team': 'KC', 'position': 'QB', 'score': 0.0, 'starter': True}
+                    {'name': 'Big Thrower', 'nfl_team': 'KC', 'position': 'QB', 'score': 0.0, 'starter': True},
+                    {'name': 'Bench Thrower', 'nfl_team': 'KC', 'position': 'QB', 'score': 0.0, 'starter': False},
                 ],
             },
             {
@@ -82,6 +83,7 @@ class TestCalculateWeekProjections:
 
         assert result['AAA']['projected_total'] == aaa_player['projected_points']
         assert result['BBB']['projected_total'] == bbb_player['projected_points']
+        assert 'projected_points' in week_data['teams'][0]['roster'][1]
         assert result['AAA']['win_probability'] > result['BBB']['win_probability']
         assert result['AAA']['win_probability'] + result['BBB']['win_probability'] == 1.0
 

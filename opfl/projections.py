@@ -165,9 +165,9 @@ def calculate_week_projections(
     """Project every starter still to play, and roll those up into matchups.
 
     Mutates `week_data`'s rosters in place, stamping a `projected_points` on
-    each starter. Returns `{abbrev: {'projected_total', 'win_probability'}}`
-    for every team with a scored roster, which `pairings` turns into
-    head-to-head win probabilities.
+    every player. Only starters roll up into the team projection. Returns
+    `{abbrev: {'projected_total', 'win_probability'}}` for every team with a
+    scored roster, which `pairings` turns into head-to-head win probabilities.
     """
     schedule_lookup = build_schedule_lookup(schedule_rows)
     observations = _load_history(season, week, schedule_lookup, data_dir)
@@ -222,8 +222,6 @@ def calculate_week_projections(
         starters_remaining = 0
 
         for player in team.get('roster', []) or []:
-            if not player.get('starter'):
-                continue
             position = player.get('position')
             nfl_team = normalize_team(player.get('nfl_team'))
             game = schedule_lookup.get((season, week, nfl_team))
@@ -242,6 +240,8 @@ def calculate_week_projections(
 
             player['projected_points'] = round(projected, 1)
 
+            if not player.get('starter'):
+                continue
             if game and game.final:
                 effective_total += player.get('score', 0.0) or 0.0
             elif on_bye:

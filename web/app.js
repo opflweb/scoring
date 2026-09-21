@@ -25,15 +25,89 @@
             return pairs.map(pair => pair.map(entry => numberMap[entry] || numberMap[String(entry)] || entry));
         }
 
-        function playerGameHasStarted(player, weekNum) {
-            const weekTimes = data?.game_times?.[String(weekNum)] || data?.game_times?.[weekNum];
-            if (!weekTimes) return true;
+        const NFL_TEAM_ALIASES = { LAR: 'LA', JAC: 'JAX', WSH: 'WAS' };
+        const NFL_TEAM_REVERSE_ALIASES = { LA: 'LAR', JAX: 'JAC', WAS: 'WSH' };
 
-            const kickoff = weekTimes[player.nfl_team];
-            if (!kickoff) return false;
+        function resolveNflTeamKey(lookup, team) {
+            if (!lookup) return null;
+            if (lookup[team] !== undefined) return team;
+            const alias = NFL_TEAM_ALIASES[team];
+            if (alias && lookup[alias] !== undefined) return alias;
+            const reverse = NFL_TEAM_REVERSE_ALIASES[team];
+            if (reverse && lookup[reverse] !== undefined) return reverse;
+            return null;
+        }
+
+        function getWeekOpponent(nflTeam, weekNum) {
+            const weekOpponents = data?.game_opponents?.[String(weekNum)] || data?.game_opponents?.[weekNum];
+            if (!weekOpponents) return null;
+            const key = resolveNflTeamKey(weekOpponents, nflTeam);
+            return key ? weekOpponents[key] : { bye: true };
+        }
+
+        function getPlayerKickoff(player, weekNum) {
+            const weekTimes = data?.game_times?.[String(weekNum)] || data?.game_times?.[weekNum];
+            const key = resolveNflTeamKey(weekTimes, player.nfl_team);
+            return key ? weekTimes[key] : null;
+        }
+
+        function playerGameHasStarted(player, weekNum) {
+            const opponent = getWeekOpponent(player.nfl_team, weekNum);
+            if (opponent?.final) return true;
+            if (opponent?.bye) return false;
+
+            const kickoff = getPlayerKickoff(player, weekNum);
+            if (!kickoff) return opponent === null;
 
             const kickoffTime = Date.parse(kickoff);
             return Number.isNaN(kickoffTime) || kickoffTime <= Date.now();
+        }
+
+        function formatPlayerKickoff(kickoffValue) {
+            const kickoff = new Date(kickoffValue);
+            if (Number.isNaN(kickoff.getTime())) return { label: '', colorClass: '' };
+
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            let hours = kickoff.getHours();
+            const minutes = kickoff.getMinutes();
+            const ampm = hours >= 12 ? 'p' : 'a';
+            hours = hours % 12 || 12;
+            const time = minutes === 0 ? `${hours}${ampm}` : `${hours}:${String(minutes).padStart(2, '0')}${ampm}`;
+
+            let colorClass = 'game-time-default';
+            const day = kickoff.getDay();
+            if (day === 4) colorClass = 'game-time-thursday';
+            else if (day === 5 || day === 6) colorClass = 'game-time-frisat';
+            else if (day === 0 && kickoff.getHours() < 16) colorClass = 'game-time-sun-morning';
+            else if (day === 0 && kickoff.getHours() < 19) colorClass = 'game-time-sun-afternoon';
+            else if (day === 0) colorClass = 'game-time-sun-night';
+            else if (day === 1) colorClass = 'game-time-monday';
+
+            return { label: `${days[day]} ${time}`, colorClass };
+        }
+
+        function getPlayerGameDetails(player, weekNum) {
+            const opponent = getWeekOpponent(player.nfl_team, weekNum);
+            if (opponent?.bye) return { matchup: 'BYE', gameTime: '', colorClass: '' };
+
+            const matchup = opponent
+                ? (opponent.is_home === false ? `@${opponent.opponent}` : `vs ${opponent.opponent}`)
+                : '';
+            const kickoff = getPlayerKickoff(player, weekNum);
+            if (!kickoff) {
+                return { matchup, gameTime: opponent?.final ? 'Final' : '', colorClass: '' };
+            }
+
+            if (!playerGameHasStarted(player, weekNum)) {
+                const formatted = formatPlayerKickoff(kickoff);
+                return { matchup, gameTime: formatted.label, colorClass: formatted.colorClass };
+            }
+
+            return {
+                matchup,
+                gameTime: opponent?.final ? 'Final' : 'In progress',
+                colorClass: ''
+            };
         }
 
         function playerScoreText(player, weekNum) {
@@ -593,22 +667,96 @@
             }).join('');
         }
 
+        const BREAKDOWN_LABELS = {
+            passing_yards: 'Pass Yds',
+            rushing_yards: 'Rush Yds',
+            receiving_yards: 'Rec Yds',
+            combined_rush_rec_yards: 'Rush + Rec',
+            touchdowns: 'TD',
+            two_point_conversions: '2PT',
+            interceptions: 'INT',
+            pick_sixes: 'Pick 6',
+            fumbles_lost: 'Fum Lost',
+            fumble_sixes: 'Fum TD',
+            pat_made: 'PAT',
+            pat_missed: 'PAT Miss',
+            fg_1_29: 'FG 1–29',
+            fg_30_39: 'FG 30–39',
+            fg_40_49: 'FG 40–49',
+            'fg_50+': 'FG 50+',
+            fg_missed: 'FG Miss',
+            points_allowed: 'Pts Allow',
+            fumble_recoveries: 'Fum Rec',
+            sacks: 'Sacks',
+            safeties: 'Safety',
+            blocked_kicks: 'Blk Kick',
+            blocked_pats: 'Blk PAT',
+            defensive_tds: 'Def TD',
+            home_underdog_win: 'Home Dog Win',
+            home_favorite_win: 'Home Fav Win',
+            road_underdog_win: 'Road Dog Win',
+            road_favorite_win: 'Road Fav Win',
+            loss: 'Loss'
+        };
+
+        function renderBreakdown(breakdown) {
+            if (!breakdown) return '';
+            const parts = Object.entries(breakdown)
+                .filter(([key, value]) => key !== 'floor_applied' && value !== 0)
+                .map(([key, value]) => {
+                    const label = BREAKDOWN_LABELS[key] || key.replace(/_/g, ' ');
+                    const points = value > 0 ? `+${value}` : String(value);
+                    return `<span class="bd-item"><span class="bd-label">${label}</span><span class="bd-pts">${points}</span></span>`;
+                });
+            if (breakdown.floor_applied) {
+                parts.push('<span class="bd-item"><span class="bd-label">Minimum score</span><span class="bd-pts">0</span></span>');
+            }
+            return parts.length ? `<div class="breakdown-content">${parts.join('')}</div>` : '';
+        }
+
         function renderRosterList(roster, weekNum) {
             if (!roster) return '<div class="player-row">No roster data</div>';
             
             const starters = roster.filter(p => p.starter);
             const bench = roster.filter(p => !p.starter);
             
-            return [...starters, ...bench].map(p => `
-                <div class="player-row ${p.starter ? '' : 'bench'}">
-                    <div class="player-info">
-                        <span class="position-tag">${p.position}</span>
-                        <span class="player-name">${p.name}</span>
-                        <span class="player-team">${p.nfl_team}</span>
+            return [...starters, ...bench].map(p => {
+                const game = weekNum === undefined
+                    ? { matchup: '', gameTime: '', colorClass: '' }
+                    : getPlayerGameDetails(p, weekNum);
+                const gameContext = game.matchup || game.gameTime
+                    ? `<span class="player-game-context">
+                        ${game.matchup ? `<span class="player-matchup">${game.matchup}</span>` : ''}
+                        ${game.gameTime && game.matchup !== 'BYE'
+                            ? `<span class="player-game-time ${game.colorClass}">${game.gameTime}</span>`
+                            : ''}
+                    </span>`
+                    : '';
+                const score = playerScoreText(p, weekNum);
+                const breakdown = score === '-' ? '' : renderBreakdown(p.breakdown);
+                const scoreDisplay = breakdown
+                    ? `<details class="score-breakdown"><summary class="player-score has-breakdown">${score}</summary>${breakdown}</details>`
+                    : `<span class="player-score">${score}</span>`;
+                const projection = Number.isFinite(p.projected_points)
+                    ? `<span class="player-projection">Proj ${p.projected_points.toFixed(1)}</span>`
+                    : '';
+
+                return `
+                    <div class="player-row ${p.starter ? '' : 'bench'}">
+                        <div class="player-info">
+                            <span class="position-tag">${p.position}</span>
+                            <span class="player-identity">
+                                <span class="player-name-line">
+                                    <span class="player-name">${p.name}</span>
+                                    <span class="player-team">${p.nfl_team}</span>
+                                </span>
+                                ${gameContext}
+                            </span>
+                        </div>
+                        <div class="player-points">${scoreDisplay}${projection}</div>
                     </div>
-                    <span class="player-score">${playerScoreText(p, weekNum)}</span>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function toggleRoster(idx) {
