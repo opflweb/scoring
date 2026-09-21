@@ -1,49 +1,349 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Read-only scores, standings, rosters, and history for the Oakland Perennial Football League.">
-  <meta name="theme-color" content="#071321">
-  <title>OPFL Archive &amp; Scoreboard</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oakland Perennial Football League</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header">
-    <a class="brand" href="#/2025/home" aria-label="OPFL home">
-      <span class="brand-mark" aria-hidden="true">O</span>
-      <span><strong>OPFL</strong><small>Since 1988</small></span>
-    </a>
-    <div class="header-actions">
-      <label class="season-picker">Season
-        <select id="season-select" aria-label="Select season"></select>
-      </label>
-      <button id="menu-toggle" class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-        <span aria-hidden="true">☰</span><span>Menu</span>
-      </button>
+    <div class="container">
+        <header>
+            <div class="logo">Oakland Perennial Football League</div>
+            <div class="season-badge" id="season-badge">2026 SEASON</div>
+            <div class="updated" id="updated-time"></div>
+        </header>
+
+        <nav>
+            <button class="nav-btn active" data-section="matchups">Matchups</button>
+            <button class="nav-btn" data-section="schedule">Schedule</button>
+            <button class="nav-btn" data-section="standings">Standings</button>
+            <button class="nav-btn" data-section="stats">Leaders</button>
+            <button class="nav-btn" data-section="teams">Teams</button>
+            <button class="nav-btn" data-section="rules">Rules</button>
+            <button class="nav-btn" data-section="history">History</button>
+            <button class="nav-btn" data-section="banners">Banner Room</button>
+        </nav>
+
+        <main>
+            <!-- Matchups Section -->
+            <section id="matchups" class="section active">
+                <div class="week-selector" id="week-selector"></div>
+                
+                <!-- Playoff Bracket (shown for weeks 16-17) -->
+                <div id="playoff-container" style="display: none;">
+                    <div class="playoff-section">
+                        <div class="playoff-header">
+                            <h2>🏆 OPFL PLAYOFFS</h2>
+                            <div class="subtitle">Top 4 seeds compete for the Oakland Bowl</div>
+                        </div>
+                        <div class="playoff-bracket" id="playoff-bracket"></div>
+                    </div>
+                    
+                    <div class="jamboree-section">
+                        <div class="jamboree-header">
+                            <h2>🎪 THE JAMBOREE</h2>
+                            <div class="subtitle">Seeds 5-12 compete for glory — highest combined score over Weeks 16-17 wins!</div>
+                        </div>
+                        <div id="jamboree-standings"></div>
+                    </div>
+                </div>
+                
+                <!-- Regular matchups -->
+                <div class="matchups" id="matchups-container">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading...
+                    </div>
+                </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section id="schedule" class="section">
+                <div class="schedule-container">
+                    <h2 class="section-title" id="schedule-title">2026 SEASON SCHEDULE &amp; PLAYOFFS</h2>
+                    <div class="schedule-grid" id="schedule-container">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            Loading schedule...
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Standings Section -->
+            <section id="standings" class="section">
+                <div id="standings-container">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading...
+        </div>
+        </div>
+                <div id="playoff-odds-card" style="display: none;"></div>
+            </section>
+
+            <!-- Stats / Leaders Section -->
+            <section id="stats" class="section">
+                <div class="stats-position-selector" id="stats-position-selector" role="tablist"></div>
+                <div id="stats-leaders-container">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading...
+                    </div>
+                </div>
+            </section>
+
+            <!-- Teams Section -->
+            <section id="teams" class="section">
+                <div class="team-selector" id="team-selector"></div>
+                <div id="team-roster-container"></div>
+            </section>
+
+            <!-- Rules Section -->
+            <section id="rules" class="section">
+                <div class="rules-container">
+                    <h2 class="section-title" id="rules-title">2026 OPFL Scoring and Rules</h2>
+                    
+                    <div class="rules-grid">
+                        <div class="rule-card">
+                            <h3>General Scoring</h3>
+                            <ul>
+                                <li><strong>Touchdown:</strong> 6 pts</li>
+                                <li><strong>TD Pass:</strong> 6 pts</li>
+                                <li><strong>2-Point Conversion:</strong> 2 pts</li>
+                                <li>No player or defense score can be less than zero</li>
+                                <li>Individual player TDs on special teams, fumble recoveries count</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Passing</h3>
+                            <ul>
+                                <li><strong>200+ yards:</strong> 2 pts</li>
+                                <li><strong>Each 50 yards after 200:</strong> +1 pt (no ceiling)</li>
+                                <li>Below 200 yards: No points</li>
+                                <li><strong>Interception:</strong> -1 pt</li>
+                                <li><strong>INT returned for TD:</strong> -3 pts</li>
+                                <li><strong>Fumble lost:</strong> -1 pt</li>
+                                <li><strong>Fumble lost returned for TD:</strong> -3 pts</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Rushing/Receiving (RB/WR)</h3>
+                            <ul>
+                                <li><strong>75+ yards (each):</strong> 2 pts</li>
+                                <li><strong>Each 25 yards after 75:</strong> +1 pt (no ceiling)</li>
+                                <li>Below 75 yards: No points</li>
+                                <li><strong>Fumble lost / INT thrown:</strong> -1 pt</li>
+                                <li><strong>Turnover returned for TD:</strong> -3 pts</li>
+                            </ul>
+                            <div class="rule-note">
+                                <strong>Alternate Combined:</strong> 100 combined rush/rec yards = 2 pts, +1 per 25 yards after. Whichever yields more points.
+                            </div>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Tight End Scoring</h3>
+                            <ul>
+                                <li><strong>50+ yards:</strong> 2 pts</li>
+                                <li><strong>Each 25 yards after 50:</strong> +1 pt (no ceiling)</li>
+                                <li>Below 50 yards: No points</li>
+                                <li><strong>Fumble lost / INT thrown:</strong> -1 pt</li>
+                                <li><strong>Turnover returned for TD:</strong> -3 pts</li>
+                            </ul>
+                            <div class="rule-note">
+                                <strong>Alternate Combined:</strong> 75 combined rush/rec yards = 2 pts, +1 per 25 yards after.
+                            </div>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Kicker</h3>
+                            <ul>
+                                <li><strong>PAT:</strong> 1 pt</li>
+                                <li><strong>FG 0-29 yards:</strong> 1 pt</li>
+                                <li><strong>FG 30-39 yards:</strong> 2 pts</li>
+                                <li><strong>FG 40-49 yards:</strong> 3 pts</li>
+                                <li><strong>FG 50+ yards:</strong> 4 pts</li>
+                                <li><strong>Missed/blocked FG:</strong> -2 pts</li>
+                                <li><strong>Missed/blocked PAT:</strong> -1 pt</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Defense</h3>
+                            <ul>
+                                <li><strong>Interception:</strong> 2 pts</li>
+                                <li><strong>Fumble recovery:</strong> 2 pts</li>
+                                <li><strong>Safety:</strong> 2 pts</li>
+                                <li><strong>Blocked punt/FG:</strong> 2 pts</li>
+                                <li><strong>Blocked PAT:</strong> 1 pt</li>
+                                <li><strong>Defensive TD:</strong> 4 pts*</li>
+                                <li><strong>Sack:</strong> 1 pt</li>
+                            </ul>
+                            <div class="rule-note">* TDs count on INTs, fumble recoveries, blocked punts/kicks - not on returns.</div>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Points Allowed (Defense)</h3>
+                            <ul>
+                                <li><strong>Shutout (0 pts):</strong> 8 pts</li>
+                                <li><strong>2-9 points:</strong> 6 pts</li>
+                                <li><strong>10-13 points:</strong> 4 pts</li>
+                                <li><strong>14-17 points:</strong> 2 pts</li>
+                                <li><strong>18-27 points:</strong> 0 pts</li>
+                                <li><strong>28-31 points:</strong> -2 pts</li>
+                                <li><strong>32-35 points:</strong> -4 pts</li>
+                                <li><strong>36+ points:</strong> -6 pts</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Head Coach</h3>
+                            <ul>
+                                <li><strong>Win:</strong> 4 pts</li>
+                                <li><strong>Road Win:</strong> 5 pts</li>
+                                <li><strong>Underdog Win:</strong> +2 bonus pts (based on Vegas line at kickoff)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h2 class="section-title" style="margin-top: 3rem;">League Rules</h2>
+                    
+                    <div class="rules-grid">
+                        <div class="rule-card">
+                            <h3>Fees & Payouts</h3>
+                            <ul>
+                                <li><strong>Entry Fee:</strong> $250</li>
+                                <li><strong>1st Place:</strong> $1,500</li>
+                                <li><strong>2nd Place:</strong> $700</li>
+                                <li><strong>3rd Place:</strong> $350</li>
+                                <li><strong>4th Place:</strong> $250</li>
+                                <li><strong>Jamboree Winner:</strong> $200</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Preseason Draft</h3>
+                            <ul>
+                                <li>3 taxi rounds</li>
+                                <li>Cut to 2 taxi slots by kickoff week 3</li>
+                                <li>Cut to 1 final taxi/DP slot by kickoff week 4</li>
+                                <li>Auto-cut rule: Latest selected player is auto-cut if no announcement</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Waiver Draft</h3>
+                            <ul>
+                                <li>3 taxi rounds ahead of week 9</li>
+                                <li>Cut to 2 taxi slots before kickoff week 10</li>
+                                <li>Cut to 1 final taxi/DP slot by kickoff week 11</li>
+                                <li>Week 11 is also the formal trade deadline</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Trade Rules</h3>
+                            <ul>
+                                <li><strong>Trade Back Rule:</strong> Any trade back must include a waiting period of 1.5 seasons</li>
+                                <li><strong>Eric Hughes Rule:</strong> Remaining picks for which an owner plans to pass cannot be traded</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-card">
+                            <h3>Roster Expansion (Future)</h3>
+                            <ul>
+                                <li><strong>2026:</strong> WR rosters expand from 4 to 5 (lineup remains 2 WR)</li>
+                                <li><strong>2027:</strong> Additional RB/WR/TE flex position added to roster and lineup</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- History Section -->
+            <section id="history" class="section">
+                <div class="history-container">
+                    <h2 class="section-title">OPFL Championship History</h2>
+                    <p class="history-subtitle">37 Seasons of Oakland Bowl Glory (1988-2024)</p>
+                    
+                    <div class="history-tabs">
+                        <button class="history-tab active" data-tab="championships">Championships</button>
+                        <button class="history-tab" data-tab="records">All-Time Records</button>
+                        <button class="history-tab" data-tab="season-records">Season Records</button>
+                        <button class="history-tab" data-tab="past-seasons">Past Seasons</button>
+                    </div>
+                    
+                    <div class="history-content" id="championships-tab">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Champion</th>
+                                    <th>Runner-Up</th>
+                                    <th>3rd</th>
+                                    <th>4th</th>
+                                    <th>Oakland Bowl</th>
+                                    <th>Jamboree</th>
+                                </tr>
+                            </thead>
+                            <tbody id="championships-body"></tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="history-content hidden" id="records-tab">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Owner</th>
+                                    <th class="num">1st</th>
+                                    <th class="num">2nd</th>
+                                    <th class="num">3rd</th>
+                                    <th class="num">4th</th>
+                                    <th class="num">Playoffs</th>
+                                    <th class="num">% Playoffs</th>
+                                </tr>
+                            </thead>
+                            <tbody id="records-body"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="history-content hidden" id="season-records-tab">
+                        <p class="history-subtitle" id="season-records-through"></p>
+                        <div class="records-grid" id="season-records-container"></div>
+                    </div>
+
+                    <div class="history-content hidden" id="past-seasons-tab">
+                        <div class="past-season-controls">
+                            <label for="past-season-select">Season</label>
+                            <select id="past-season-select"></select>
+                        </div>
+                        <div id="past-season-standings"></div>
+                        <div class="past-season-controls">
+                            <label for="past-season-week-select">Week</label>
+                            <select id="past-season-week-select"></select>
+                        </div>
+                        <div id="past-season-matchups"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Banner Room Section -->
+            <section id="banners" class="section">
+                <div class="banners-grid" id="banners-container">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading banners...
+        </div>
+                    </div>
+            </section>
+        </main>
     </div>
-  </header>
-  <div class="app-shell">
-    <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
-      <a data-view="home" href="#/2025/home">Home</a>
-      <a data-view="matchups" data-capability="matchups" href="#/2025/matchups">Matchups</a>
-      <a data-view="schedule" data-capability="schedules" href="#/2025/schedule">Schedule</a>
-      <a data-view="standings" href="#/2025/standings">Standings</a>
-      <a data-view="rosters" data-capability="rosters" href="#/2025/rosters">Rosters</a>
-      <a data-view="stats" data-capability="player_stats" href="#/2025/stats">Stats</a>
-      <a data-view="transactions" href="#/2025/transactions">Transactions</a>
-      <a data-view="drafts" href="#/2025/drafts">Drafts</a>
-      <a data-view="history" href="#/2025/history">History</a>
-      <a data-view="rules" href="#/2025/rules">Rules</a>
-      <a data-view="banners" href="#/2025/banners">Banner Room</a>
-    </nav>
-    <main id="main-content" tabindex="-1">
-      <div id="status" class="status" role="status" aria-live="polite">Loading OPFL archive…</div>
-      <div id="app"></div>
-    </main>
-  </div>
-  <noscript><p class="noscript">This read-only archive requires JavaScript to load its season data.</p></noscript>
+
+    <script src="app.js"></script>
 </body>
 </html>
