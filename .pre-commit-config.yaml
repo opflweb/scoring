@@ -7,8 +7,9 @@ repos:
       - id: check-yaml
       - id: check-json
       - id: check-added-large-files
-        # OPFL workbooks are committed weekly as source inputs, so exclude
-        # them rather than raise the limit for every file type.
+        # The OPFL workbooks committed at the repo root run 340KB-1.4MB;
+        # they are the source of truth, not build output, so exclude rather
+        # than raise the limit for everything else.
         args: ['--maxkb=1000']
         exclude: '\.xlsx$|\.docx$'
       - id: check-merge-conflict

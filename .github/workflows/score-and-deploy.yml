@@ -16,7 +16,6 @@ on:
       - "data/league.json"
       - "data/teams.json"
       - "data/seasons/**/lineups/**"
-      - "data/seasons/**/workbooks/**"
       - "data/seasons/**/rosters.json"
       - "data/seasons/**/schedule.json"
       - "opfl/**"
@@ -77,14 +76,6 @@ jobs:
           with Path(os.environ["GITHUB_OUTPUT"]).open("a") as output:
               output.write(f"season={season}\nweek={week}\nscore={str(should_score).lower()}\n")
           PY
-
-      - name: Import weekly workbook
-        if: steps.target.outputs.score == 'true'
-        run: >-
-          .venv/bin/python scripts/import_lineups.py
-          --season ${{ steps.target.outputs.season }}
-          --week ${{ steps.target.outputs.week }}
-          --apply --replace-existing
 
       - name: Score authoritative JSON
         if: steps.target.outputs.score == 'true'

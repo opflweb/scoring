@@ -216,11 +216,7 @@ def _compatibility_snapshot(
         "regular_season_weeks": metadata["regular_season_weeks"],
         "weeks": weeks,
         "standings": [{**row, "top_half": row["top_six"]} for row in standings],
-        "playoffs": (
-            read_json(season_root / "playoffs.json")
-            if (season_root / "playoffs.json").exists()
-            else None
-        ),
+        "playoffs": read_json(season_root / "playoffs.json"),
         "trade_deadline_week": 12,
         "taxi_squads": {team: roster.get("taxi", []) for team, roster in rosters.items()},
         "pending_trades": [],

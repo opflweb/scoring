@@ -1,7 +1,7 @@
 {
   "league": "Oakland Perennial Football League",
-  "current_season": 2026,
-  "generated_at": "2026-09-21T19:57:57.735162Z",
+  "current_season": 2025,
+  "generated_at": "2026-09-02T18:53:08.031942Z",
   "seasons": [
     {
       "year": 1988,
@@ -616,25 +616,6 @@
         15,
         16,
         17
-      ],
-      "capabilities": {
-        "standings": true,
-        "advanced_standings": true,
-        "matchups": true,
-        "schedules": true,
-        "rosters": true,
-        "player_stats": true,
-        "transactions": true,
-        "drafts": true,
-        "history": true
-      }
-    },
-    {
-      "year": 2026,
-      "detail_level": "full",
-      "weeks_available": [
-        1,
-        2
       ],
       "capabilities": {
         "standings": true,

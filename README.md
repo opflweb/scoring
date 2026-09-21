@@ -1,8 +1,8 @@
 # OPFL Autoscorer and Archive
 
-The Oakland Perennial Football League site is a read-only, GitHub Pages–first archive. Seasons from 1988–2024 contain summary standings and finishes. Seasons from 2025 onward contain detailed weekly lineups, player scores, matchups, standings, and playoff data as it becomes available.
+The Oakland Perennial Football League site is a read-only, GitHub Pages–first archive. Seasons from 1988–2024 contain summary standings and finishes. The 2025 season contains full weekly lineups, player scores, matchups, playoffs, and the two-week Jamboree.
 
-The completed 2025 workbook was imported as a season archive. Starting in 2026, every week has its own required Excel source file. The importer preserves that week's roster snapshot and lineup in JSON so historical weeks can be rescored without using a later roster.
+Excel is an import and troubleshooting source only. After a season or lineup is imported, `data/` JSON is authoritative for scoring, integrity checks, and public exports.
 
 ## Data model
 
@@ -22,11 +22,6 @@ data/
     playoffs.json
     lineups/week_N.json
     weeks/week_N.json
-  seasons/2026/
-    workbooks/week_1.xlsx       required weekly commissioner input
-    workbooks/week_2.xlsx
-    lineups/week_N.json         generated roster snapshot and starters
-    weeks/week_N.json           generated scores
 web/
   index.html
   styles.css
@@ -62,38 +57,35 @@ Serve the static site locally from `web/`:
 python -m http.server 8000 --directory web
 ```
 
-## Weekly 2026 imports
+## Safe commissioner imports
 
-Place each weekly workbook at `data/seasons/2026/workbooks/week_N.xlsx`. The workbook must contain `Rosters` and `Matchups` tabs, all twelve teams, nine starters per team, and the six scheduled matchups. A missing workbook is an error; the scorer does not fall back to a shared season workbook.
+Both import commands are dry-run by default. `--apply` is required to write files. If a target JSON file already exists, `--replace-existing` is also required.
 
-Validate Week 2 without writing JSON:
-
-```bash
-.venv/bin/python scripts/import_lineups.py --season 2026 --week 2
-```
-
-Import the workbook, score the week, validate, and publish:
-
-```bash
-.venv/bin/python scripts/import_lineups.py \
-  --season 2026 --week 2 --apply --replace-existing
-.venv/bin/python scripts/score_json_week.py \
-  --season 2026 --week 2 --apply --replace-existing
-.venv/bin/python scripts/validate_data.py --source-only
-.venv/bin/python scripts/export_public.py
-```
-
-Both import and scoring commands are dry-run by default. `--apply` is required to write files, and `--replace-existing` is required to update an existing week.
-
-## Legacy season import
-
-The complete-season importer remains available for archived workbooks such as 2025:
+Import a complete season:
 
 ```bash
 .venv/bin/python scripts/import_season.py \
-  --season 2025 \
-  --excel "data/previous_seasons/OPFL Scoring 2025 (5).xlsx" \
-  --schedule data/schedules/2025.txt
+  --season 2026 \
+  --excel "OPFL Scoring 2026.xlsx" \
+  --schedule data/schedules/2026.txt
+```
+
+After reviewing the validation summary:
+
+```bash
+.venv/bin/python scripts/import_season.py \
+  --season 2026 \
+  --excel "OPFL Scoring 2026.xlsx" \
+  --schedule data/schedules/2026.txt \
+  --apply
+```
+
+Import one lineup week:
+
+```bash
+.venv/bin/python scripts/import_lineups.py \
+  --season 2026 --week 1 \
+  --excel "OPFL Scoring 2026.xlsx" --sheet W1
 ```
 
 Schedules must use exactly six lines per week, with every team appearing once:
@@ -149,6 +141,6 @@ The export is built in a staging directory and replaces `web/data/` only after s
 
 ## Automation
 
-CI runs Ruff, Mypy, pytest with coverage, schema checks, cross-file integrity, and JavaScript syntax validation. The scoring workflow reads the active public season from `data/league.json`, imports the required weekly workbook, scores its generated JSON snapshot, validates before and after export, commits generated data when it changes, and deploys `web/` to GitHub Pages.
+CI runs Ruff, Mypy, pytest with coverage, schema checks, cross-file integrity, and JavaScript syntax validation. The scoring workflow reads the active public season from `data/league.json`, scores only from JSON, validates before and after export, commits generated data when it changes, and deploys `web/` to GitHub Pages.
 
-The legacy season importer remains available for archive reconciliation and troubleshooting. It is not part of automated scoring or public export input.
+The 2025 Excel scorer remains available only for archive reconciliation and troubleshooting. It is not part of automated scoring or public export input.
