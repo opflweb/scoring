@@ -4,7 +4,12 @@ from pathlib import Path
 import pytest
 
 from opfl.archives import extract_drafts_trades_picks, extract_history
-from opfl.importing import import_workbook, load_teams
+from opfl.importing import (
+    import_weekly_workbook,
+    import_workbook,
+    load_teams,
+    weekly_workbook_path,
+)
 from opfl.league import season_config, starter_count
 from scripts.import_archives import build_archives
 from scripts.import_season import apply_season
@@ -27,7 +32,9 @@ def test_season_configuration_is_opfl_specific() -> None:
 
 def test_final_2025_workbook_import_counts_and_reconciliation() -> None:
     teams = load_teams(ROOT / "data" / "teams.json")
-    rosters, weeks, lineups = import_workbook(ROOT / "OPFL Scoring 2025 (5).xlsx", teams, 2025)
+    rosters, weeks, lineups = import_workbook(
+        ROOT / "data" / "previous_seasons" / "OPFL Scoring 2025 (5).xlsx", teams, 2025
+    )
     assert len(rosters["teams"]) == 12
     assert sorted(weeks) == list(range(1, 18))
     assert len(lineups) == 17
@@ -39,6 +46,18 @@ def test_final_2025_workbook_import_counts_and_reconciliation() -> None:
                 team["starter_total"] + team["manual_correction"]
             )
     assert any(player.get("placeholder") for player in weeks[8]["teams"][3]["roster"])
+
+
+def test_2026_requires_one_workbook_per_week() -> None:
+    teams = load_teams(ROOT / "data" / "teams.json")
+    for week in (1, 2):
+        path = weekly_workbook_path(ROOT / "data", 2026, week)
+        assert path == ROOT / "data" / "seasons" / "2026" / "workbooks" / f"week_{week}.xlsx"
+        rosters, lineups = import_weekly_workbook(path, teams, 2026, week)
+        assert len(rosters["teams"]) == 12
+        assert lineups["source_workbook"] == f"workbooks/week_{week}.xlsx"
+        assert len(lineups["pairings"]) == 6
+        assert all(len(starters) == 9 for starters in lineups["lineups"].values())
 
 
 def test_archive_source_counts() -> None:

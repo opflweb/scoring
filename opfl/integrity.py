@@ -62,11 +62,20 @@ def validate_source_season(season_dir: str | Path, root: Path | None = None) -> 
             raise IntegrityError(f"{abbreviation} exceeds the taxi limit")
 
     weeks_available = [int(week) for week in metadata.get("weeks_available", [])]
+    weekly_excel = metadata.get("source", {}).get("type") == "weekly_excel"
     for week in weeks_available:
         week_path = directory / "weeks" / f"week_{week}.json"
         lineup_path = directory / "lineups" / f"week_{week}.json"
         week_data = read_json(week_path)
         lineup_data = read_json(lineup_path)
+        if weekly_excel:
+            expected_source = f"workbooks/week_{week}.xlsx"
+            if lineup_data.get("source_workbook") != expected_source:
+                raise IntegrityError(
+                    f"Week {week} must identify {expected_source} as its source workbook"
+                )
+            if not (directory / expected_source).is_file():
+                raise IntegrityError(f"Week {week} is missing source workbook {expected_source}")
         week_teams = week_data.get("teams", [])
         if len(week_teams) != 12 or {item["abbrev"] for item in week_teams} != abbreviations:
             raise IntegrityError(f"Week {week} must contain all twelve teams")

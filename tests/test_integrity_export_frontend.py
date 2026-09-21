@@ -9,22 +9,27 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def test_authoritative_and_public_integrity() -> None:
     assert validate_source_season(ROOT / "data" / "seasons" / "2025", ROOT)
+    assert validate_source_season(ROOT / "data" / "seasons" / "2026", ROOT)
     assert validate_archives(ROOT / "data")
     assert validate_public_tree(ROOT / "web" / "data")
 
 
 def test_public_capabilities_and_split_contract() -> None:
     index = json.loads((ROOT / "web" / "data" / "index.json").read_text())
-    assert len(index["seasons"]) == 38
-    assert 2026 not in [season["year"] for season in index["seasons"]]
+    assert len(index["seasons"]) == 39
+    assert index["current_season"] == 2026
     summary = next(season for season in index["seasons"] if season["year"] == 1988)
     full = next(season for season in index["seasons"] if season["year"] == 2025)
+    current = next(season for season in index["seasons"] if season["year"] == 2026)
     assert summary["detail_level"] == "summary"
     assert summary["weeks_available"] == []
     assert summary["capabilities"]["matchups"] is False
     assert summary["capabilities"]["player_stats"] is False
     assert full["weeks_available"] == list(range(1, 18))
+    assert current["detail_level"] == "full"
+    assert current["weeks_available"] == [1, 2]
     assert (ROOT / "web" / "data" / "seasons" / "2025" / "weeks" / "week_17.json").exists()
+    assert (ROOT / "web" / "data" / "seasons" / "2026" / "weeks" / "week_2.json").exists()
 
 
 def test_frontend_contract_and_static_only_hosting() -> None:

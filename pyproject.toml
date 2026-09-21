@@ -16,7 +16,6 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project.scripts]
-opfl-score = "autoscorer:main"
 opfl-import-season = "scripts.import_season:main"
 opfl-import-lineups = "scripts.import_lineups:main"
 opfl-score-json = "scripts.score_json_week:main"
@@ -48,12 +47,12 @@ show_missing = true
 python_version = "3.10"
 ignore_missing_imports = true
 check_untyped_defs = true
-exclude = ["api/", "scripts/export_for_web.py", "scripts/migrate_to_json.py"]
+exclude = ["api/"]
 
 [tool.ruff]
 line-length = 100
 target-version = "py310"
-exclude = ["api", "scripts/export_for_web.py", "scripts/migrate_to_json.py"]
+exclude = ["api"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP"]

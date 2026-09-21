@@ -1,0 +1,118 @@
+{
+  "year": 2026,
+  "detail_level": "full",
+  "status": "in_progress",
+  "weeks_available": [
+    1,
+    2
+  ],
+  "regular_season_weeks": 15,
+  "playoff_weeks": [
+    16,
+    17
+  ],
+  "capabilities": {
+    "standings": true,
+    "advanced_standings": true,
+    "matchups": true,
+    "schedules": true,
+    "rosters": true,
+    "player_stats": true,
+    "transactions": true,
+    "drafts": true,
+    "history": true
+  },
+  "configuration": {
+    "regular_season_weeks": 15,
+    "playoff_weeks": [
+      16,
+      17
+    ],
+    "playoff_seeds": 4,
+    "jamboree": {
+      "teams": 8,
+      "weeks": 2
+    },
+    "top_six_cutoff": 6,
+    "rank_points_formula": "wins + top_six + 0.5 * ties",
+    "roster_limits": {
+      "QB": 3,
+      "RB": 4,
+      "WR": 5,
+      "TE": 3,
+      "K": 2,
+      "DF": 2,
+      "HC": 2
+    },
+    "taxi_limit": 3,
+    "lineup_slots": [
+      {
+        "name": "QB",
+        "count": 1,
+        "eligible_positions": [
+          "QB"
+        ]
+      },
+      {
+        "name": "RB",
+        "count": 2,
+        "eligible_positions": [
+          "RB"
+        ]
+      },
+      {
+        "name": "WR",
+        "count": 2,
+        "eligible_positions": [
+          "WR"
+        ]
+      },
+      {
+        "name": "TE",
+        "count": 1,
+        "eligible_positions": [
+          "TE"
+        ]
+      },
+      {
+        "name": "K",
+        "count": 1,
+        "eligible_positions": [
+          "K"
+        ]
+      },
+      {
+        "name": "DF",
+        "count": 1,
+        "eligible_positions": [
+          "DF"
+        ]
+      },
+      {
+        "name": "HC",
+        "count": 1,
+        "eligible_positions": [
+          "HC"
+        ]
+      },
+      {
+        "name": "FLEX",
+        "count": 0,
+        "eligible_positions": [
+          "RB",
+          "WR",
+          "TE"
+        ]
+      }
+    ],
+    "season": 2026,
+    "league_name": "Oakland Perennial Football League",
+    "team_count": 12
+  },
+  "source": {
+    "type": "weekly_excel",
+    "workbook_pattern": "workbooks/week_{week}.xlsx",
+    "schedule": "schedule.json",
+    "json_generated_from_weekly_workbooks": true
+  }
+}

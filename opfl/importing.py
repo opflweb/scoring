@@ -17,6 +17,7 @@ from .league import POSITIONS, season_config, starter_count
 TEAM_COLUMNS = (4, 7, 10, 13, 16, 19)
 BLOCKS = ((1, 1, 38), (39, 39, 80))
 HEADER_PATTERN = re.compile(r"^(.+?)\s*\(\d+\)$")
+WEEKLY_WORKBOOK_DIRECTORY = "workbooks"
 
 
 class ImportValidationError(ValueError):
@@ -40,11 +41,14 @@ def team_aliases(teams: list[dict[str, str]]) -> dict[str, dict[str, str]]:
     aliases.update(
         {
             "GREG/GRIFF": aliases["GREG/GRIFFIN"],
+            "GREG/G": aliases["GREG/GRIFFIN"],
             "JARRETT/M": aliases["JARRETT/MATT"],
             "KIRK/D": aliases["KIRK/DAVID"],
+            "K/A/M": aliases["KEMP/A/M"],
             "ERIC/J": aliases["ERIC/JEFF"],
             "WES/B": aliases["WES/BILL"],
             "STEVE L": aliases["STEVE L."],
+            "LAM": aliases["STEVE L."],
         }
     )
     return aliases
@@ -55,6 +59,15 @@ def make_player_id(position: str, name: str, nfl_team: str) -> str:
     digest = hashlib.sha1(raw.encode("utf-8")).hexdigest()[:10]
     slug = re.sub(r"[^a-z0-9]+", "-", name.casefold()).strip("-")[:36]
     return f"{position.lower()}-{slug}-{digest}"
+
+
+def weekly_workbook_path(data_root: str | Path, season: int, week: int) -> Path:
+    """Return the required source workbook path for one season/week."""
+    if week < 1 or week > 18:
+        raise ImportValidationError(f"Week must be between 1 and 18, found {week}")
+    return (
+        Path(data_root) / "seasons" / str(season) / WEEKLY_WORKBOOK_DIRECTORY / f"week_{week}.xlsx"
+    )
 
 
 def extract_sheet(
@@ -211,6 +224,56 @@ def import_workbook(
         workbook.close()
 
 
+def import_weekly_workbook(
+    excel_path: str | Path,
+    teams: list[dict[str, str]],
+    season: int,
+    week: int,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Import one 2026-style workbook containing Rosters and Matchups tabs."""
+    path = Path(excel_path)
+    workbook = openpyxl.load_workbook(path, data_only=True)
+    try:
+        required_sheets = {"Rosters", "Matchups"}
+        missing_sheets = required_sheets - set(workbook.sheetnames)
+        if missing_sheets:
+            raise ImportValidationError(
+                f"{path.name} is missing sheet(s): {', '.join(sorted(missing_sheets))}"
+            )
+        current = extract_sheet(workbook["Rosters"], teams, season)
+        _validate_week_lineups(current, season)
+        pairings = _extract_matchup_pairings(workbook["Matchups"], teams)
+    finally:
+        workbook.close()
+
+    roster_teams = {
+        item["abbrev"]: {
+            "name": item["name"],
+            "owner": item["owner"],
+            "players": [
+                {key: value for key, value in player.items() if key != "starter"}
+                for player in item["roster"]
+            ],
+            "taxi": [],
+        }
+        for item in current
+    }
+    rosters = {"season": season, "teams": roster_teams}
+    lineups = {
+        "season": season,
+        "week": week,
+        "source_workbook": f"{WEEKLY_WORKBOOK_DIRECTORY}/week_{week}.xlsx",
+        "pairings": pairings,
+        "lineups": {
+            item["abbrev"]: [player["player_id"] for player in item["roster"] if player["starter"]]
+            for item in current
+        },
+        "roster_snapshot": rosters,
+        "manual_corrections": {},
+    }
+    return rosters, lineups
+
+
 def attach_regular_matchups(
     weeks: dict[int, dict[str, Any]], schedule: list[dict[str, Any]]
 ) -> None:
@@ -227,6 +290,35 @@ def attach_regular_matchups(
             }
             for matchup in schedule_by_week[week]
         ]
+
+
+def _extract_matchup_pairings(
+    worksheet: Worksheet, teams: list[dict[str, str]]
+) -> list[dict[str, str]]:
+    aliases = team_aliases(teams)
+    pairings: list[dict[str, str]] = []
+    seen: set[str] = set()
+    row = 1
+    while row <= worksheet.max_row:
+        left_value = worksheet.cell(row, 1).value
+        right_value = worksheet.cell(row, 4).value
+        left = aliases.get(_normalize_owner(str(left_value))) if left_value else None
+        right = aliases.get(_normalize_owner(str(right_value))) if right_value else None
+        if not left or not right:
+            row += 1
+            continue
+        away, home = left["abbrev"], right["abbrev"]
+        if away in seen or home in seen:
+            raise ImportValidationError(f"Duplicate matchup team in {worksheet.title} row {row}")
+        pairings.append({"away": away, "home": home})
+        seen.update((away, home))
+        row += 12
+    expected = {team["abbrev"] for team in teams}
+    if len(pairings) != 6 or seen != expected:
+        raise ImportValidationError(
+            f"{worksheet.title} must contain six matchups covering all 12 teams"
+        )
+    return pairings
 
 
 def _position_rows(worksheet: Worksheet, start_row: int, end_row: int) -> dict[str, list[int]]:

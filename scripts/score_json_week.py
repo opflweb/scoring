@@ -29,8 +29,9 @@ def score_json_week(
     scorer: OPFLScorer | None = None,
 ) -> dict[str, Any]:
     season_dir = data_root / "seasons" / str(season)
-    rosters = read_json(season_dir / "rosters.json")["teams"]
     lineups = read_json(season_dir / "lineups" / f"week_{week}.json")
+    rosters = lineups.get("roster_snapshot") or read_json(season_dir / "rosters.json")
+    rosters = rosters["teams"]
     schedule = read_json(season_dir / "schedule.json")["weeks"]
     team_registry = read_json(data_root / "teams.json")["teams"]
     scoring_engine = scorer or OPFLScorer(season, week)
@@ -163,6 +164,17 @@ def main() -> int:
     metadata["weeks_available"] = sorted({*metadata.get("weeks_available", []), args.week})
     metadata["status"] = "in_progress"
     metadata_path.write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
+    week_documents = []
+    for week_path in sorted((season_dir / "weeks").glob("week_*.json")):
+        week_documents.append(payload if week_path == path else read_json(week_path))
+    team_registry = read_json(args.data_root / "teams.json")["teams"]
+    schedule = read_json(season_dir / "schedule.json")["weeks"]
+    standings = calculate_standings(team_registry, schedule, week_documents, 15)
+    standings_path = season_dir / "standings.json"
+    standings_path.write_text(
+        json.dumps({"season": args.season, "standings": standings}, indent=2) + "\n",
+        encoding="utf-8",
+    )
     print(f"Wrote {path}")
     return 0
 
