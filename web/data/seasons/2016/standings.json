@@ -1,0 +1,150 @@
+{
+  "season": 2016,
+  "detail_level": "summary",
+  "standings": [
+    {
+      "name": "Steve M.",
+      "owner": "Steve M.",
+      "wins": 11.0,
+      "losses": 3.0,
+      "ties": 0.0,
+      "top_six": 8.5,
+      "rank_points": 19.5,
+      "points_for": 690.0,
+      "rank": 1
+    },
+    {
+      "name": "Eric/Jeff",
+      "owner": "Eric/Jeff",
+      "wins": 9.0,
+      "losses": 5.0,
+      "ties": 0.0,
+      "top_six": 10.0,
+      "rank_points": 19.0,
+      "points_for": 702.0,
+      "rank": 2
+    },
+    {
+      "name": "Kemp",
+      "owner": "Kemp",
+      "wins": 9.0,
+      "losses": 4.0,
+      "ties": 1.0,
+      "top_six": 8.5,
+      "rank_points": 18.0,
+      "points_for": 725.0,
+      "rank": 3
+    },
+    {
+      "name": "Steve L.",
+      "owner": "Steve L.",
+      "wins": 6.0,
+      "losses": 7.0,
+      "ties": 1.0,
+      "top_six": 10.0,
+      "rank_points": 16.5,
+      "points_for": 692.0,
+      "rank": 4
+    },
+    {
+      "name": "Kevin",
+      "owner": "Kevin",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 8.0,
+      "rank_points": 16.0,
+      "points_for": 696.0,
+      "rank": 5
+    },
+    {
+      "name": "Andrew",
+      "owner": "Andrew",
+      "wins": 8.0,
+      "losses": 5.0,
+      "ties": 1.0,
+      "top_six": 7.5,
+      "rank_points": 16.0,
+      "points_for": 691.0,
+      "rank": 6
+    },
+    {
+      "name": "Adam",
+      "owner": "Adam",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 7.5,
+      "rank_points": 15.5,
+      "points_for": 650.0,
+      "rank": 7
+    },
+    {
+      "name": "Kirk/David",
+      "owner": "Kirk/David",
+      "wins": 5.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": 8.5,
+      "rank_points": 13.5,
+      "points_for": 719.0,
+      "rank": 8
+    },
+    {
+      "name": "Greg/Griffin",
+      "owner": "Greg/Griffin",
+      "wins": 7.0,
+      "losses": 7.0,
+      "ties": 0.0,
+      "top_six": 5.5,
+      "rank_points": 12.5,
+      "points_for": 649.0,
+      "rank": 9
+    },
+    {
+      "name": "Jarrett/Matt",
+      "owner": "Jarrett/Matt",
+      "wins": 4.0,
+      "losses": 9.0,
+      "ties": 1.0,
+      "top_six": 5.5,
+      "rank_points": 10.0,
+      "points_for": 554.0,
+      "rank": 10
+    },
+    {
+      "name": "Bill",
+      "owner": "Bill",
+      "wins": 3.0,
+      "losses": 9.0,
+      "ties": 2.0,
+      "top_six": 3.0,
+      "rank_points": 7.0,
+      "points_for": 524.0,
+      "rank": 11
+    },
+    {
+      "name": "John",
+      "owner": "John",
+      "wins": 3.0,
+      "losses": 11.0,
+      "ties": 0.0,
+      "top_six": 1.5,
+      "rank_points": 4.5,
+      "points_for": 499.0,
+      "rank": 12
+    }
+  ],
+  "finish": {
+    "year": 2016,
+    "first": "Kemp/Ad/Miles",
+    "second": "Steve L.",
+    "third": "Steve/Wes",
+    "fourth": "Eric/Jeff",
+    "championship_score": "61-33",
+    "toilet_bowl_score": "76-49",
+    "jamboree": "Bill/Jill (115)",
+    "comments": "Kemp recruits the third generation (Adelese and Miles) to win third title.",
+    "team_count": 12
+  }
+}

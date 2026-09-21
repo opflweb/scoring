@@ -1,0 +1,128 @@
+{
+  "season": 2001,
+  "detail_level": "summary",
+  "standings": [
+    {
+      "name": "John",
+      "owner": "John",
+      "wins": 13.0,
+      "losses": 2.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 953.0,
+      "rank": 1
+    },
+    {
+      "name": "Kemp",
+      "owner": "Kemp",
+      "wins": 11.0,
+      "losses": 4.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 816.0,
+      "rank": 2
+    },
+    {
+      "name": "Kirk/David",
+      "owner": "Kirk/David",
+      "wins": 11.0,
+      "losses": 4.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 809.0,
+      "rank": 3
+    },
+    {
+      "name": "Steve L.",
+      "owner": "Steve L.",
+      "wins": 8.0,
+      "losses": 7.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 801.0,
+      "rank": 4
+    },
+    {
+      "name": "Eric/Bret/Joe",
+      "owner": "Eric/Bret/Joe",
+      "wins": 8.0,
+      "losses": 7.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 659.0,
+      "rank": 5
+    },
+    {
+      "name": "Eric/Jeff",
+      "owner": "Eric/Jeff",
+      "wins": 7.0,
+      "losses": 8.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 817.0,
+      "rank": 6
+    },
+    {
+      "name": "Steve M.",
+      "owner": "Steve M.",
+      "wins": 6.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 725.0,
+      "rank": 7
+    },
+    {
+      "name": "Bill",
+      "owner": "Bill",
+      "wins": 6.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 653.0,
+      "rank": 8
+    },
+    {
+      "name": "Greg/Griffin",
+      "owner": "Greg/Griffin",
+      "wins": 3.0,
+      "losses": 12.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 526.0,
+      "rank": 9
+    },
+    {
+      "name": "Kreg",
+      "owner": "Kreg",
+      "wins": 2.0,
+      "losses": 13.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 594.0,
+      "rank": 10
+    }
+  ],
+  "finish": {
+    "year": 2001,
+    "first": "Kemp/Rams",
+    "second": "John",
+    "third": "Kirk",
+    "fourth": "Steve L.",
+    "championship_score": "65-59",
+    "toilet_bowl_score": "44-41",
+    "jamboree": "",
+    "comments": "Kemp/Ramsey's first team championship.  Kemp's second. Eliminated 2 division format.",
+    "team_count": 10
+  }
+}

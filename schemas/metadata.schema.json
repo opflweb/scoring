@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["year", "detail_level", "status", "weeks_available", "capabilities"],
+  "properties": {
+    "year": {"type": "integer", "minimum": 1988},
+    "detail_level": {"enum": ["summary", "full"]},
+    "status": {"enum": ["preseason", "in_progress", "final"]},
+    "weeks_available": {"type": "array", "items": {"type": "integer", "minimum": 1, "maximum": 18}, "uniqueItems": true},
+    "capabilities": {
+      "type": "object",
+      "required": ["standings", "advanced_standings", "matchups", "schedules", "rosters", "player_stats", "transactions", "drafts", "history"],
+      "additionalProperties": {"type": "boolean"}
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "season": 2019,
+  "detail_level": "summary",
+  "standings": [
+    {
+      "name": "Andrew",
+      "owner": "Andrew",
+      "wins": 11.0,
+      "losses": 3.0,
+      "ties": 0.0,
+      "top_six": 13.0,
+      "rank_points": 24.0,
+      "points_for": 838.0,
+      "rank": 1
+    },
+    {
+      "name": "Kirk/David",
+      "owner": "Kirk/David",
+      "wins": 9.0,
+      "losses": 5.0,
+      "ties": 0.0,
+      "top_six": 7.0,
+      "rank_points": 16.0,
+      "points_for": 719.0,
+      "rank": 2
+    },
+    {
+      "name": "Steve L.",
+      "owner": "Steve L.",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 7.0,
+      "rank_points": 15.0,
+      "points_for": 683.0,
+      "rank": 3
+    },
+    {
+      "name": "Jarrett/Matt",
+      "owner": "Jarrett/Matt",
+      "wins": 7.0,
+      "losses": 7.0,
+      "ties": 0.0,
+      "top_six": 8.0,
+      "rank_points": 15.0,
+      "points_for": 737.0,
+      "rank": 4
+    },
+    {
+      "name": "Adam",
+      "owner": "Adam",
+      "wins": 7.0,
+      "losses": 7.0,
+      "ties": 0.0,
+      "top_six": 7.0,
+      "rank_points": 14.0,
+      "points_for": 723.0,
+      "rank": 5
+    },
+    {
+      "name": "Steve M.",
+      "owner": "Steve M.",
+      "wins": 6.0,
+      "losses": 8.0,
+      "ties": 0.0,
+      "top_six": 7.0,
+      "rank_points": 13.0,
+      "points_for": 682.0,
+      "rank": 6
+    },
+    {
+      "name": "Eric/Jeff",
+      "owner": "Eric/Jeff",
+      "wins": 6.0,
+      "losses": 8.0,
+      "ties": 0.0,
+      "top_six": 7.0,
+      "rank_points": 13.0,
+      "points_for": 633.0,
+      "rank": 7
+    },
+    {
+      "name": "Greg/Griffin",
+      "owner": "Greg/Griffin",
+      "wins": 5.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": 8.0,
+      "rank_points": 13.0,
+      "points_for": 740.0,
+      "rank": 8
+    },
+    {
+      "name": "John",
+      "owner": "John",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 4.0,
+      "rank_points": 12.0,
+      "points_for": 632.0,
+      "rank": 9
+    },
+    {
+      "name": "Kevin",
+      "owner": "Kevin",
+      "wins": 6.0,
+      "losses": 8.0,
+      "ties": 0.0,
+      "top_six": 6.0,
+      "rank_points": 12.0,
+      "points_for": 626.0,
+      "rank": 10
+    },
+    {
+      "name": "Kemp",
+      "owner": "Kemp",
+      "wins": 5.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": 6.0,
+      "rank_points": 11.0,
+      "points_for": 698.0,
+      "rank": 11
+    },
+    {
+      "name": "Bill",
+      "owner": "Bill",
+      "wins": 6.0,
+      "losses": 8.0,
+      "ties": 0.0,
+      "top_six": 4.0,
+      "rank_points": 10.0,
+      "points_for": 642.0,
+      "rank": 12
+    }
+  ],
+  "finish": {
+    "year": 2019,
+    "first": "Andrew",
+    "second": "Kirk/David",
+    "third": "Jarrett/Matt",
+    "fourth": "Steve L.",
+    "championship_score": "76-61",
+    "toilet_bowl_score": "66-50",
+    "jamboree": "Adam (141)",
+    "comments": "Andrew wins first championship in his 11th year behind Jackson & McCaffrey.",
+    "team_count": 12
+  }
+}

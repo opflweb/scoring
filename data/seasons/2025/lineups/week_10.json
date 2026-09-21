@@ -1,0 +1,139 @@
+{
+  "season": 2025,
+  "week": 10,
+  "lineups": {
+    "K/D": [
+      "qb-caleb-williams-b89697398e",
+      "rb-josh-jacobs-b3175c8b32",
+      "rb-rj-harvey-1d19ae4728",
+      "wr-puka-nacua-a8d8415c03",
+      "wr-davante-adams-cae3cf6233",
+      "te-dalton-schultz-45786b8524",
+      "k-will-reichard-711a90890d",
+      "df-denver-74645867c1",
+      "hc-sean-mcvay-3f6bcc96e7"
+    ],
+    "STL": [
+      "qb-tua-tagovailoa-52fb70545b",
+      "rb-jahmyr-gibbs-ac9ad31a4b",
+      "rb-d-andre-swift-8d4ef1cc3a",
+      "wr-dk-metcalf-afd30ad53e",
+      "wr-tet-mcmillan-ce59cb8c64",
+      "te-sam-laporta-b7daecd928",
+      "k-chase-mclaughlin-3d189eb185",
+      "df-houston-dde3ccb39a",
+      "hc-dan-campbell-4c2c12e8b0"
+    ],
+    "JOH": [
+      "qb-bo-nix-47d31b7181",
+      "rb-kyren-williams-5637bb948d",
+      "rb-blake-corum-0e2e8b138b",
+      "wr-courtland-sutton-9499ede0a2",
+      "wr-michael-pittman-d0ea369041",
+      "te-tyler-warren-f24ab7c38f",
+      "k-cameron-dicker-ff34cac7d4",
+      "df-chicago-7ea8ddb34e",
+      "hc-shane-steichen-d4126a5540"
+    ],
+    "KEV": [
+      "qb-jalen-hurts-373b90b5b8",
+      "rb-de-von-achane-113e701048",
+      "rb-rachaad-white-7319cf8397",
+      "wr-jordan-addison-9cbdc8d480",
+      "wr-emeka-egbuka-46ac3c20db",
+      "te-theo-johnson-d974198cc2",
+      "k-chris-boswell-3e25c160d1",
+      "df-jacksonville-1046c9b1a6",
+      "hc-kyle-shanahan-61e682a143"
+    ],
+    "D/J": [
+      "qb-josh-allen-76be441419",
+      "rb-jk-dobbins-c429dfde15",
+      "rb-zach-charbonnet-2f0ee7e536",
+      "wr-amon-ra-st-brown-4641153a43",
+      "wr-marvin-harrison-cecdca00b9",
+      "te-juwan-johnson-efeead977d",
+      "k-tyler-loop-c73abca5e1",
+      "df-new-england-3f2649a225",
+      "hc-sean-payton-30a1c3719b"
+    ],
+    "G/G": [
+      "qb-baker-mayfield-f7c748acf3",
+      "rb-quinshon-judkins-42964a6fd9",
+      "rb-jaylen-warren-43a64fcfe7",
+      "wr-jaxon-smith-njigba-036c5e02ca",
+      "wr-dj-moore-80562daad3",
+      "te-cade-otton-480a5a32ea",
+      "k-jason-myers-696e496ce1",
+      "df-seattle-9602792ca9",
+      "hc-mike-tomlin-a18806cb82"
+    ],
+    "E/J": [
+      "qb-justin-herbert-41695ebf27",
+      "rb-treveyon-henderson-8d31de9a53",
+      "rb-jacory-croskey-merritt-1a3a0bdd0d",
+      "wr-nico-collins-e489a7b9cf",
+      "wr-khalil-shakir-4a8c590292",
+      "te-colston-loveland-46124741e9",
+      "k-graham-gano-a1d7826aa9",
+      "df-ny-giants-f43d06187a",
+      "hc-mike-macdonald-1377122e2a"
+    ],
+    "AND": [
+      "qb-jj-mccarthy-a2fe729f34",
+      "rb-christian-mccaffrey-b15e0363eb",
+      "rb-david-montgomery-181ae4bce7",
+      "wr-ladd-mcconkey-19051e877d",
+      "wr-jaylen-waddle-8839f2a4e8",
+      "te-trey-mcbride-b3661c83dc",
+      "k-daniel-carlson-2eaed7541a",
+      "df-green-bay-c3a83d8cc4",
+      "hc-jim-harbaugh-f03668a08e"
+    ],
+    "W/B": [
+      "qb-sam-darnold-c89c1c3e2d",
+      "rb-bijan-robinson-9c5ce19991",
+      "rb-james-cook-42d42867c3",
+      "wr-drake-london-a2a8673692",
+      "wr-a-j-brown-78d58f3679",
+      "te-brock-bowers-f9ff6be614",
+      "k-jake-bates-860dc26bf1",
+      "df-indianapolis-6dbdd53329",
+      "hc-liam-coen-03797ddead"
+    ],
+    "KAM": [
+      "qb-lamar-jackson-d89d8bfe51",
+      "rb-jonathan-taylor-facf70df22",
+      "rb-derrick-henry-e8b024fc79",
+      "wr-devonta-smith-d81a9dc2f3",
+      "wr-keenan-allen-7a24f7d6dc",
+      "te-oronde-gadsden-b5d96a24b5",
+      "k-cam-little-02b015461b",
+      "df-la-chargers-e94c61cfda",
+      "hc-sean-mcdermott-d2798ac945"
+    ],
+    "J/M": [
+      "qb-bryce-young-5041c21167",
+      "rb-alvin-kamara-8df35aa269",
+      "rb-tony-pollard-49d4508687",
+      "wr-rome-odunze-854605f130",
+      "wr-travis-hunter-808302cd16",
+      "te-mark-andrews-fb16142177",
+      "k-joshua-karty-f254907a57",
+      "df-cleveland-83b77a3f4a",
+      "hc-kevin-o-connell-f1b60e3ca4"
+    ],
+    "ADA": [
+      "qb-jared-goff-847b25786e",
+      "rb-saquon-barkley-ed5d2238a4",
+      "rb-ashton-jeanty-32b7ab0cdb",
+      "wr-garrett-wilson-280d5ca745",
+      "wr-chris-olave-1ca7d108ba",
+      "te-aj-barner-9d30611ecf",
+      "k-andres-borregales-573c7da195",
+      "df-detroit-7e02315182",
+      "hc-dan-quinn-20dde0592c"
+    ]
+  },
+  "manual_corrections": {}
+}

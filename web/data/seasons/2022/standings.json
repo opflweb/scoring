@@ -1,0 +1,150 @@
+{
+  "season": 2022,
+  "detail_level": "summary",
+  "standings": [
+    {
+      "name": "Kemp",
+      "owner": "Kemp",
+      "wins": 12.0,
+      "losses": 3.0,
+      "ties": 0.0,
+      "top_six": 10.0,
+      "rank_points": 22.0,
+      "points_for": 769.0,
+      "rank": 1
+    },
+    {
+      "name": "Jarrett/Matt",
+      "owner": "Jarrett/Matt",
+      "wins": 8.0,
+      "losses": 5.0,
+      "ties": 2.0,
+      "top_six": 12.5,
+      "rank_points": 21.5,
+      "points_for": 857.0,
+      "rank": 2
+    },
+    {
+      "name": "John",
+      "owner": "John",
+      "wins": 11.0,
+      "losses": 4.0,
+      "ties": 0.0,
+      "top_six": 10.0,
+      "rank_points": 21.0,
+      "points_for": 755.0,
+      "rank": 3
+    },
+    {
+      "name": "Wes",
+      "owner": "Wes",
+      "wins": 9.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 8.0,
+      "rank_points": 17.0,
+      "points_for": 760.0,
+      "rank": 4
+    },
+    {
+      "name": "Kirk/David",
+      "owner": "Kirk/David",
+      "wins": 8.0,
+      "losses": 7.0,
+      "ties": 0.0,
+      "top_six": 9.0,
+      "rank_points": 17.0,
+      "points_for": 744.0,
+      "rank": 5
+    },
+    {
+      "name": "Danny/Joey",
+      "owner": "Danny/Joey",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 1.0,
+      "top_six": 8.5,
+      "rank_points": 17.0,
+      "points_for": 730.0,
+      "rank": 6
+    },
+    {
+      "name": "Greg/Griffin",
+      "owner": "Greg/Griffin",
+      "wins": 6.0,
+      "losses": 7.0,
+      "ties": 2.0,
+      "top_six": 9.5,
+      "rank_points": 16.5,
+      "points_for": 776.0,
+      "rank": 7
+    },
+    {
+      "name": "Andrew",
+      "owner": "Andrew",
+      "wins": 6.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": 8.0,
+      "rank_points": 14.0,
+      "points_for": 761.0,
+      "rank": 8
+    },
+    {
+      "name": "Kevin",
+      "owner": "Kevin",
+      "wins": 7.0,
+      "losses": 8.0,
+      "ties": 0.0,
+      "top_six": 4.5,
+      "rank_points": 11.5,
+      "points_for": 595.0,
+      "rank": 9
+    },
+    {
+      "name": "Steve L.",
+      "owner": "Steve L.",
+      "wins": 4.0,
+      "losses": 9.0,
+      "ties": 2.0,
+      "top_six": 5.0,
+      "rank_points": 10.0,
+      "points_for": 603.0,
+      "rank": 10
+    },
+    {
+      "name": "Adam",
+      "owner": "Adam",
+      "wins": 4.0,
+      "losses": 10.0,
+      "ties": 1.0,
+      "top_six": 2.0,
+      "rank_points": 6.5,
+      "points_for": 573.0,
+      "rank": 11
+    },
+    {
+      "name": "Eric/Jeff",
+      "owner": "Eric/Jeff",
+      "wins": 3.0,
+      "losses": 12.0,
+      "ties": 0.0,
+      "top_six": 3.0,
+      "rank_points": 6.0,
+      "points_for": 509.0,
+      "rank": 12
+    }
+  ],
+  "finish": {
+    "year": 2022,
+    "first": "Jarrett/Matt & Wes",
+    "second": "Jarrett/Matt & Wes",
+    "third": "John & Kemp/A/M",
+    "fourth": "John & Kemp/A/M",
+    "championship_score": "53-45",
+    "toilet_bowl_score": "23-10",
+    "jamboree": "Kirk/David (122)",
+    "comments": "Jarrett/Matt and Wes declare historic tie when Bills Bengals game gets cancelled.",
+    "team_count": 12
+  }
+}

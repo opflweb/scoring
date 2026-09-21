@@ -1,0 +1,4171 @@
+{
+  "season": 2025,
+  "players": [
+    {
+      "player_id": "qb-josh-allen-76be441419",
+      "name": "Josh Allen",
+      "position": "QB",
+      "nfl_team": "BUF",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 257.0,
+      "ppg": 15.12,
+      "high": 38.0,
+      "median": 14.0
+    },
+    {
+      "player_id": "qb-trevor-lawrence-bc86602a40",
+      "name": "Trevor Lawrence",
+      "position": "QB",
+      "nfl_team": "JAX",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 223.0,
+      "ppg": 13.12,
+      "high": 40.0,
+      "median": 14.0
+    },
+    {
+      "player_id": "qb-jared-goff-847b25786e",
+      "name": "Jared Goff",
+      "position": "QB",
+      "nfl_team": "DET",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 222.0,
+      "ppg": 13.06,
+      "high": 34.0,
+      "median": 14.0
+    },
+    {
+      "player_id": "qb-jalen-hurts-373b90b5b8",
+      "name": "Jalen Hurts",
+      "position": "QB",
+      "nfl_team": "PHI",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 192.0,
+      "ppg": 11.29,
+      "high": 25.0,
+      "median": 12.0
+    },
+    {
+      "player_id": "qb-patrick-mahomes-dc680f94df",
+      "name": "Patrick Mahomes",
+      "position": "QB",
+      "nfl_team": "KC",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 14,
+      "games": 17,
+      "points": 191.0,
+      "ppg": 11.24,
+      "high": 27.0,
+      "median": 8.0
+    },
+    {
+      "player_id": "qb-dak-prescott-ed27d64ed3",
+      "name": "Dak Prescott",
+      "position": "QB",
+      "nfl_team": "DAL",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 11,
+      "games": 17,
+      "points": 179.0,
+      "ppg": 10.53,
+      "high": 26.0,
+      "median": 9.0
+    },
+    {
+      "player_id": "qb-baker-mayfield-f7c748acf3",
+      "name": "Baker Mayfield",
+      "position": "QB",
+      "nfl_team": "TB",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 173.0,
+      "ppg": 10.18,
+      "high": 21.0,
+      "median": 10.0
+    },
+    {
+      "player_id": "qb-justin-herbert-41695ebf27",
+      "name": "Justin Herbert",
+      "position": "QB",
+      "nfl_team": "LAC",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 161.0,
+      "ppg": 9.47,
+      "high": 22.0,
+      "median": 8.0
+    },
+    {
+      "player_id": "rb-jonathan-taylor-facf70df22",
+      "name": "Jonathan Taylor",
+      "position": "RB",
+      "nfl_team": "IND",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 156.0,
+      "ppg": 9.18,
+      "high": 27.0,
+      "median": 6.0
+    },
+    {
+      "player_id": "rb-christian-mccaffrey-b15e0363eb",
+      "name": "Christian McCaffrey",
+      "position": "RB",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 14,
+      "games": 17,
+      "points": 132.0,
+      "ppg": 7.76,
+      "high": 20.0,
+      "median": 8.0
+    },
+    {
+      "player_id": "df-houston-dde3ccb39a",
+      "name": "Houston",
+      "position": "DF",
+      "nfl_team": "HOU",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 14,
+      "games": 17,
+      "points": 130.0,
+      "ppg": 7.65,
+      "high": 16.0,
+      "median": 9.0
+    },
+    {
+      "player_id": "rb-jahmyr-gibbs-ac9ad31a4b",
+      "name": "Jahmyr Gibbs",
+      "position": "RB",
+      "nfl_team": "DET",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 129.0,
+      "ppg": 7.59,
+      "high": 26.0,
+      "median": 6.0
+    },
+    {
+      "player_id": "qb-lamar-jackson-d89d8bfe51",
+      "name": "Lamar Jackson",
+      "position": "QB",
+      "nfl_team": "BAL",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 129.0,
+      "ppg": 7.59,
+      "high": 26.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-derrick-henry-e8b024fc79",
+      "name": "Derrick Henry",
+      "position": "RB",
+      "nfl_team": "BAL",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 127.0,
+      "ppg": 7.47,
+      "high": 31.0,
+      "median": 5.0
+    },
+    {
+      "player_id": "k-brandon-aubrey-8787177b88",
+      "name": "Brandon Aubrey",
+      "position": "K",
+      "nfl_team": "DAL",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 118.0,
+      "ppg": 6.94,
+      "high": 18.0,
+      "median": 6.0
+    },
+    {
+      "player_id": "qb-sam-darnold-c89c1c3e2d",
+      "name": "Sam Darnold",
+      "position": "QB",
+      "nfl_team": "SEA",
+      "fantasy_teams": [
+        "KAM",
+        "W/B"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 116.0,
+      "ppg": 6.82,
+      "high": 27.0,
+      "median": 3.0
+    },
+    {
+      "player_id": "k-cam-little-02b015461b",
+      "name": "Cam Little",
+      "position": "K",
+      "nfl_team": "JAX",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 111.0,
+      "ppg": 6.53,
+      "high": 12.0,
+      "median": 8.0
+    },
+    {
+      "player_id": "k-cameron-dicker-ff34cac7d4",
+      "name": "Cameron Dicker",
+      "position": "K",
+      "nfl_team": "LAC",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 110.0,
+      "ppg": 6.47,
+      "high": 15.0,
+      "median": 7.0
+    },
+    {
+      "player_id": "df-seattle-9602792ca9",
+      "name": "Seattle",
+      "position": "DF",
+      "nfl_team": "SEA",
+      "fantasy_teams": [
+        "G/G",
+        "KEV"
+      ],
+      "starts": 12,
+      "games": 17,
+      "points": 109.0,
+      "ppg": 6.41,
+      "high": 26.0,
+      "median": 4.0
+    },
+    {
+      "player_id": "rb-de-von-achane-113e701048",
+      "name": "De'Von Achane",
+      "position": "RB",
+      "nfl_team": "MIA",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 108.0,
+      "ppg": 6.35,
+      "high": 19.0,
+      "median": 6.0
+    },
+    {
+      "player_id": "qb-drake-maye-6f0ecd960a",
+      "name": "Drake Maye",
+      "position": "QB",
+      "nfl_team": "NE",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 7,
+      "games": 17,
+      "points": 108.0,
+      "ppg": 6.35,
+      "high": 33.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-jordan-love-787c09a757",
+      "name": "Jordan Love",
+      "position": "QB",
+      "nfl_team": "GB",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 108.0,
+      "ppg": 6.35,
+      "high": 26.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-ka-imi-fairbairn-7d26079fd3",
+      "name": "Ka'imi Fairbairn",
+      "position": "K",
+      "nfl_team": "HOU",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 105.0,
+      "ppg": 6.18,
+      "high": 15.0,
+      "median": 6.0
+    },
+    {
+      "player_id": "te-trey-mcbride-b3661c83dc",
+      "name": "Trey McBride",
+      "position": "TE",
+      "nfl_team": "ARI",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 104.0,
+      "ppg": 6.12,
+      "high": 17.0,
+      "median": 6.0
+    },
+    {
+      "player_id": "wr-jaxon-smith-njigba-036c5e02ca",
+      "name": "Jaxon Smith-Njigba",
+      "position": "WR",
+      "nfl_team": "SEA",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 102.0,
+      "ppg": 6.0,
+      "high": 17.0,
+      "median": 4.0
+    },
+    {
+      "player_id": "rb-josh-jacobs-b3175c8b32",
+      "name": "Josh Jacobs",
+      "position": "RB",
+      "nfl_team": "GB",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 101.0,
+      "ppg": 5.94,
+      "high": 16.0,
+      "median": 6.0
+    },
+    {
+      "player_id": "k-evan-mcpherson-9484f93ac3",
+      "name": "Evan McPherson",
+      "position": "K",
+      "nfl_team": "CIN",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 100.0,
+      "ppg": 5.88,
+      "high": 17.0,
+      "median": 6.0
+    },
+    {
+      "player_id": "rb-bijan-robinson-9c5ce19991",
+      "name": "Bijan Robinson",
+      "position": "RB",
+      "nfl_team": "ATL",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 98.0,
+      "ppg": 5.76,
+      "high": 15.0,
+      "median": 4.0
+    },
+    {
+      "player_id": "df-denver-74645867c1",
+      "name": "Denver",
+      "position": "DF",
+      "nfl_team": "DEN",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 14,
+      "games": 17,
+      "points": 98.0,
+      "ppg": 5.76,
+      "high": 16.0,
+      "median": 6.0
+    },
+    {
+      "player_id": "k-jake-bates-860dc26bf1",
+      "name": "Jake Bates",
+      "position": "K",
+      "nfl_team": "DET",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 96.0,
+      "ppg": 5.65,
+      "high": 11.0,
+      "median": 5.0
+    },
+    {
+      "player_id": "wr-puka-nacua-a8d8415c03",
+      "name": "Puka Nacua",
+      "position": "WR",
+      "nfl_team": "LA",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 95.0,
+      "ppg": 5.59,
+      "high": 20.0,
+      "median": 4.0
+    },
+    {
+      "player_id": "df-cleveland-83b77a3f4a",
+      "name": "Cleveland",
+      "position": "DF",
+      "nfl_team": "CLE",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 12,
+      "games": 17,
+      "points": 94.0,
+      "ppg": 5.53,
+      "high": 22.0,
+      "median": 1.0
+    },
+    {
+      "player_id": "qb-joe-burrow-b4947aa283",
+      "name": "Joe Burrow",
+      "position": "QB",
+      "nfl_team": "CIN",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 7,
+      "games": 17,
+      "points": 94.0,
+      "ppg": 5.53,
+      "high": 28.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-kyren-williams-5637bb948d",
+      "name": "Kyren Williams",
+      "position": "RB",
+      "nfl_team": "LA",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 92.0,
+      "ppg": 5.41,
+      "high": 14.0,
+      "median": 6.0
+    },
+    {
+      "player_id": "k-jason-myers-696e496ce1",
+      "name": "Jason Myers",
+      "position": "K",
+      "nfl_team": "SEA",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 9,
+      "games": 9,
+      "points": 90.0,
+      "ppg": 10.0,
+      "high": 18.0,
+      "median": 10.0
+    },
+    {
+      "player_id": "wr-amon-ra-st-brown-4641153a43",
+      "name": "Amon-Ra St. Brown",
+      "position": "WR",
+      "nfl_team": "DET",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 89.0,
+      "ppg": 5.24,
+      "high": 21.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "qb-brock-purdy-3d31aa9688",
+      "name": "Brock Purdy",
+      "position": "QB",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 86.0,
+      "ppg": 5.06,
+      "high": 32.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-chris-boswell-3e25c160d1",
+      "name": "Chris Boswell",
+      "position": "K",
+      "nfl_team": "PIT",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 14,
+      "games": 17,
+      "points": 84.0,
+      "ppg": 4.94,
+      "high": 16.0,
+      "median": 4.0
+    },
+    {
+      "player_id": "df-philadelphia-8bc514d651",
+      "name": "Philadelphia",
+      "position": "DF",
+      "nfl_team": "PHI",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 82.0,
+      "ppg": 4.82,
+      "high": 14.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "wr-george-pickens-76e387ce57",
+      "name": "George Pickens",
+      "position": "WR",
+      "nfl_team": "DAL",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 14,
+      "games": 17,
+      "points": 81.0,
+      "ppg": 4.76,
+      "high": 16.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "rb-chase-brown-73a7ad0ebc",
+      "name": "Chase Brown",
+      "position": "RB",
+      "nfl_team": "CIN",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 80.0,
+      "ppg": 4.71,
+      "high": 20.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "k-tyler-loop-c73abca5e1",
+      "name": "Tyler Loop",
+      "position": "K",
+      "nfl_team": "BAL",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 14,
+      "games": 17,
+      "points": 80.0,
+      "ppg": 4.71,
+      "high": 10.0,
+      "median": 5.0
+    },
+    {
+      "player_id": "qb-bo-nix-47d31b7181",
+      "name": "Bo Nix",
+      "position": "QB",
+      "nfl_team": "DEN",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 79.0,
+      "ppg": 4.65,
+      "high": 25.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-james-cook-42d42867c3",
+      "name": "James Cook",
+      "position": "RB",
+      "nfl_team": "BUF",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 79.0,
+      "ppg": 4.65,
+      "high": 19.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "df-la-rams-d097bf8e0a",
+      "name": "LA Rams",
+      "position": "DF",
+      "nfl_team": "LA",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 77.0,
+      "ppg": 4.53,
+      "high": 16.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-saquon-barkley-ed5d2238a4",
+      "name": "Saquon Barkley",
+      "position": "RB",
+      "nfl_team": "PHI",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 76.0,
+      "ppg": 4.47,
+      "high": 17.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "rb-ashton-jeanty-32b7ab0cdb",
+      "name": "Ashton Jeanty",
+      "position": "RB",
+      "nfl_team": "LV",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 74.0,
+      "ppg": 4.35,
+      "high": 21.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-tua-tagovailoa-52fb70545b",
+      "name": "Tua Tagovailoa",
+      "position": "QB",
+      "nfl_team": "MIA",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 6,
+      "games": 17,
+      "points": 73.0,
+      "ppg": 4.29,
+      "high": 26.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-ja-marr-chase-8e79ed9e56",
+      "name": "Ja'Marr Chase",
+      "position": "WR",
+      "nfl_team": "CIN",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 72.0,
+      "ppg": 4.24,
+      "high": 15.0,
+      "median": 3.0
+    },
+    {
+      "player_id": "df-detroit-7e02315182",
+      "name": "Detroit",
+      "position": "DF",
+      "nfl_team": "DET",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 12,
+      "games": 17,
+      "points": 69.0,
+      "ppg": 4.06,
+      "high": 14.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "k-will-reichard-711a90890d",
+      "name": "Will Reichard",
+      "position": "K",
+      "nfl_team": "MIN",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 68.0,
+      "ppg": 4.0,
+      "high": 13.0,
+      "median": 3.0
+    },
+    {
+      "player_id": "rb-d-andre-swift-8d4ef1cc3a",
+      "name": "D'Andre Swift",
+      "position": "RB",
+      "nfl_team": "CHI",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 67.0,
+      "ppg": 3.94,
+      "high": 14.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "rb-zach-charbonnet-2f0ee7e536",
+      "name": "Zach Charbonnet",
+      "position": "RB",
+      "nfl_team": "SEA",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 67.0,
+      "ppg": 3.94,
+      "high": 15.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-jayden-daniels-ee7095b400",
+      "name": "Jayden Daniels",
+      "position": "QB",
+      "nfl_team": "WAS",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 7,
+      "games": 17,
+      "points": 66.0,
+      "ppg": 3.88,
+      "high": 18.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-matthew-stafford-4d5ef6300c",
+      "name": "Matthew Stafford",
+      "position": "QB",
+      "nfl_team": "LA",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 4,
+      "games": 17,
+      "points": 64.0,
+      "ppg": 3.76,
+      "high": 27.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-chris-olave-1ca7d108ba",
+      "name": "Chris Olave",
+      "position": "WR",
+      "nfl_team": "NO",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 62.0,
+      "ppg": 3.65,
+      "high": 16.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-davante-adams-cae3cf6233",
+      "name": "Davante Adams",
+      "position": "WR",
+      "nfl_team": "LA",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 62.0,
+      "ppg": 3.65,
+      "high": 18.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-pittsburgh-620f8e2f39",
+      "name": "Pittsburgh",
+      "position": "DF",
+      "nfl_team": "PIT",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 62.0,
+      "ppg": 3.65,
+      "high": 17.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-nico-collins-e489a7b9cf",
+      "name": "Nico Collins",
+      "position": "WR",
+      "nfl_team": "HOU",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 61.0,
+      "ppg": 3.59,
+      "high": 14.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "te-brock-bowers-f9ff6be614",
+      "name": "Brock Bowers",
+      "position": "TE",
+      "nfl_team": "LV",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 12,
+      "games": 17,
+      "points": 59.0,
+      "ppg": 3.47,
+      "high": 23.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-green-bay-c3a83d8cc4",
+      "name": "Green Bay",
+      "position": "DF",
+      "nfl_team": "GB",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 59.0,
+      "ppg": 3.47,
+      "high": 17.0,
+      "median": 1.0
+    },
+    {
+      "player_id": "rb-jaylen-warren-43a64fcfe7",
+      "name": "Jaylen Warren",
+      "position": "RB",
+      "nfl_team": "PIT",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 59.0,
+      "ppg": 3.47,
+      "high": 16.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-treveyon-henderson-8d31de9a53",
+      "name": "TreVeyon Henderson",
+      "position": "RB",
+      "nfl_team": "NE",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 59.0,
+      "ppg": 3.47,
+      "high": 18.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-kyle-shanahan-61e682a143",
+      "name": "Kyle Shanahan",
+      "position": "HC",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 57.0,
+      "ppg": 3.35,
+      "high": 7.0,
+      "median": 4.0
+    },
+    {
+      "player_id": "df-la-chargers-e94c61cfda",
+      "name": "LA Chargers",
+      "position": "DF",
+      "nfl_team": "LAC",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 57.0,
+      "ppg": 3.35,
+      "high": 15.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-indianapolis-6dbdd53329",
+      "name": "Indianapolis",
+      "position": "DF",
+      "nfl_team": "IND",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 7,
+      "games": 17,
+      "points": 56.0,
+      "ppg": 3.29,
+      "high": 16.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-new-england-3f2649a225",
+      "name": "New England",
+      "position": "DF",
+      "nfl_team": "NE",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 56.0,
+      "ppg": 3.29,
+      "high": 11.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "rb-travis-etienne-bee8670767",
+      "name": "Travis Etienne",
+      "position": "RB",
+      "nfl_team": "JAX",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 56.0,
+      "ppg": 3.29,
+      "high": 20.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-drake-london-a2a8673692",
+      "name": "Drake London",
+      "position": "WR",
+      "nfl_team": "ATL",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 55.0,
+      "ppg": 3.24,
+      "high": 21.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-harrison-butker-4a5edfd2e4",
+      "name": "Harrison Butker",
+      "position": "K",
+      "nfl_team": "KC",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 55.0,
+      "ppg": 3.24,
+      "high": 8.0,
+      "median": 4.0
+    },
+    {
+      "player_id": "te-jake-ferguson-08cdc42e92",
+      "name": "Jake Ferguson",
+      "position": "TE",
+      "nfl_team": "DAL",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 54.0,
+      "ppg": 3.18,
+      "high": 12.0,
+      "median": 1.0
+    },
+    {
+      "player_id": "df-buffalo-4f034fddfa",
+      "name": "Buffalo",
+      "position": "DF",
+      "nfl_team": "BUF",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 51.0,
+      "ppg": 3.0,
+      "high": 19.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-emeka-egbuka-46ac3c20db",
+      "name": "Emeka Egbuka",
+      "position": "WR",
+      "nfl_team": "TB",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 51.0,
+      "ppg": 3.0,
+      "high": 13.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-tampa-bay-a064194fbb",
+      "name": "Tampa Bay",
+      "position": "DF",
+      "nfl_team": "TB",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 6,
+      "games": 17,
+      "points": 51.0,
+      "ppg": 3.0,
+      "high": 23.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-george-kittle-8b63a75b3b",
+      "name": "George Kittle",
+      "position": "TE",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 50.0,
+      "ppg": 2.94,
+      "high": 14.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-daniel-carlson-2eaed7541a",
+      "name": "Daniel Carlson",
+      "position": "K",
+      "nfl_team": "LV",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 48.0,
+      "ppg": 2.82,
+      "high": 9.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "wr-rashee-rice-9af0d26ccf",
+      "name": "Rashee Rice",
+      "position": "WR",
+      "nfl_team": "KC",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 48.0,
+      "ppg": 2.82,
+      "high": 14.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-chicago-7ea8ddb34e",
+      "name": "Chicago",
+      "position": "DF",
+      "nfl_team": "CHI",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 47.0,
+      "ppg": 2.76,
+      "high": 14.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-jaylen-waddle-8839f2a4e8",
+      "name": "Jaylen Waddle",
+      "position": "WR",
+      "nfl_team": "MIA",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 47.0,
+      "ppg": 2.76,
+      "high": 9.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-kansas-city-a0421a561c",
+      "name": "Kansas City",
+      "position": "DF",
+      "nfl_team": "KC",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 7,
+      "games": 17,
+      "points": 47.0,
+      "ppg": 2.76,
+      "high": 12.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-andres-borregales-573c7da195",
+      "name": "Andres Borregales",
+      "position": "K",
+      "nfl_team": "NE",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 7,
+      "games": 17,
+      "points": 46.0,
+      "ppg": 2.71,
+      "high": 13.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-courtland-sutton-9499ede0a2",
+      "name": "Courtland Sutton",
+      "position": "WR",
+      "nfl_team": "DEN",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 46.0,
+      "ppg": 2.71,
+      "high": 9.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-kenneth-walker-iii-e5bf1bab00",
+      "name": "Kenneth Walker III",
+      "position": "RB",
+      "nfl_team": "SEA",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 16,
+      "games": 17,
+      "points": 45.0,
+      "ppg": 2.65,
+      "high": 12.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-aaron-rodgers-8b19763fe7",
+      "name": "Aaron Rodgers",
+      "position": "QB",
+      "nfl_team": "PIT",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 44.0,
+      "ppg": 2.59,
+      "high": 24.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-nick-sirianni-4d328f4681",
+      "name": "Nick Sirianni",
+      "position": "HC",
+      "nfl_team": "PHI",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 12,
+      "games": 17,
+      "points": 43.0,
+      "ppg": 2.53,
+      "high": 7.0,
+      "median": 4.0
+    },
+    {
+      "player_id": "df-minnesota-da231d2df3",
+      "name": "Minnesota",
+      "position": "DF",
+      "nfl_team": "MIN",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 4,
+      "games": 17,
+      "points": 42.0,
+      "ppg": 2.47,
+      "high": 21.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-quinshon-judkins-42964a6fd9",
+      "name": "Quinshon Judkins",
+      "position": "RB",
+      "nfl_team": "CLE",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 11,
+      "games": 17,
+      "points": 41.0,
+      "ppg": 2.41,
+      "high": 20.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-sean-mcvay-3f6bcc96e7",
+      "name": "Sean McVay",
+      "position": "HC",
+      "nfl_team": "LA",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 12,
+      "games": 17,
+      "points": 41.0,
+      "ppg": 2.41,
+      "high": 5.0,
+      "median": 4.0
+    },
+    {
+      "player_id": "wr-ceedee-lamb-0d6d959a73",
+      "name": "CeeDee Lamb",
+      "position": "WR",
+      "nfl_team": "DAL",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 40.0,
+      "ppg": 2.35,
+      "high": 9.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "hc-sean-payton-30a1c3719b",
+      "name": "Sean Payton",
+      "position": "HC",
+      "nfl_team": "DEN",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 40.0,
+      "ppg": 2.35,
+      "high": 7.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-mark-andrews-fb16142177",
+      "name": "Mark Andrews",
+      "position": "TE",
+      "nfl_team": "BAL",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 39.0,
+      "ppg": 2.29,
+      "high": 15.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-omarion-hampton-92787e163c",
+      "name": "Omarion Hampton",
+      "position": "RB",
+      "nfl_team": "LAC",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 39.0,
+      "ppg": 2.29,
+      "high": 10.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-tony-pollard-49d4508687",
+      "name": "Tony Pollard",
+      "position": "RB",
+      "nfl_team": "TEN",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 39.0,
+      "ppg": 2.29,
+      "high": 17.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-a-j-brown-78d58f3679",
+      "name": "A.J. Brown",
+      "position": "WR",
+      "nfl_team": "PHI",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 12,
+      "games": 17,
+      "points": 38.0,
+      "ppg": 2.24,
+      "high": 16.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-mike-vrabel-afc013e3ef",
+      "name": "Mike Vrabel",
+      "position": "HC",
+      "nfl_team": "NE",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 38.0,
+      "ppg": 2.24,
+      "high": 7.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-tyler-warren-f24ab7c38f",
+      "name": "Tyler Warren",
+      "position": "TE",
+      "nfl_team": "IND",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 11,
+      "games": 17,
+      "points": 38.0,
+      "ppg": 2.24,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-brian-schottenheimer-90d5bb4421",
+      "name": "Brian Schottenheimer",
+      "position": "HC",
+      "nfl_team": "DAL",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 37.0,
+      "ppg": 2.18,
+      "high": 7.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-aj-barner-9d30611ecf",
+      "name": "AJ Barner",
+      "position": "TE",
+      "nfl_team": "SEA",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 36.0,
+      "ppg": 2.12,
+      "high": 14.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-blake-corum-0e2e8b138b",
+      "name": "Blake Corum",
+      "position": "RB",
+      "nfl_team": "LA",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 36.0,
+      "ppg": 2.12,
+      "high": 16.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-cam-skattebo-0c44566cd8",
+      "name": "Cam Skattebo",
+      "position": "RB",
+      "nfl_team": "NYG",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 36.0,
+      "ppg": 2.12,
+      "high": 20.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-jacory-croskey-merritt-1a3a0bdd0d",
+      "name": "Jacory Croskey-Merritt",
+      "position": "RB",
+      "nfl_team": "WAS",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 36.0,
+      "ppg": 2.12,
+      "high": 15.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-kyle-pitts-3cd4a6594c",
+      "name": "Kyle Pitts",
+      "position": "TE",
+      "nfl_team": "ATL",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 7,
+      "games": 17,
+      "points": 36.0,
+      "ppg": 2.12,
+      "high": 24.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-sean-mcdermott-d2798ac945",
+      "name": "Sean McDermott",
+      "position": "HC",
+      "nfl_team": "BUF",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 36.0,
+      "ppg": 2.12,
+      "high": 5.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-zay-flowers-4495e425ae",
+      "name": "Zay Flowers",
+      "position": "WR",
+      "nfl_team": "BAL",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 36.0,
+      "ppg": 2.12,
+      "high": 10.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-ladd-mcconkey-19051e877d",
+      "name": "Ladd McConkey",
+      "position": "WR",
+      "nfl_team": "LAC",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 15,
+      "games": 17,
+      "points": 35.0,
+      "ppg": 2.06,
+      "high": 9.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-rj-harvey-1d19ae4728",
+      "name": "RJ Harvey",
+      "position": "RB",
+      "nfl_team": "DEN",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 6,
+      "games": 17,
+      "points": 34.0,
+      "ppg": 2.0,
+      "high": 12.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-caleb-williams-b89697398e",
+      "name": "Caleb Williams",
+      "position": "QB",
+      "nfl_team": "CHI",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 4,
+      "games": 17,
+      "points": 32.0,
+      "ppg": 1.88,
+      "high": 16.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-breece-hall-d22640c779",
+      "name": "Breece Hall",
+      "position": "RB",
+      "nfl_team": "NYJ",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 31.0,
+      "ppg": 1.82,
+      "high": 22.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-christian-watson-9df79421d7",
+      "name": "Christian Watson",
+      "position": "WR",
+      "nfl_team": "GB",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 3,
+      "games": 7,
+      "points": 31.0,
+      "ppg": 4.43,
+      "high": 14.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-devonta-smith-d81a9dc2f3",
+      "name": "DeVonta Smith",
+      "position": "WR",
+      "nfl_team": "PHI",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 12,
+      "games": 17,
+      "points": 31.0,
+      "ppg": 1.82,
+      "high": 12.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-jake-elliott-b0379700a4",
+      "name": "Jake Elliott",
+      "position": "K",
+      "nfl_team": "PHI",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 31.0,
+      "ppg": 1.82,
+      "high": 7.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-javonte-williams-d4c3947a58",
+      "name": "Javonte Williams",
+      "position": "RB",
+      "nfl_team": "DAL",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 8,
+      "games": 9,
+      "points": 31.0,
+      "ppg": 3.44,
+      "high": 8.0,
+      "median": 2.0
+    },
+    {
+      "player_id": "te-sam-laporta-b7daecd928",
+      "name": "Sam LaPorta",
+      "position": "TE",
+      "nfl_team": "DET",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 31.0,
+      "ppg": 1.82,
+      "high": 9.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-dk-metcalf-afd30ad53e",
+      "name": "DK Metcalf",
+      "position": "WR",
+      "nfl_team": "PIT",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 30.0,
+      "ppg": 1.76,
+      "high": 10.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-demeco-ryans-7e65d8aece",
+      "name": "DeMeco Ryans",
+      "position": "HC",
+      "nfl_team": "HOU",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 6,
+      "games": 17,
+      "points": 30.0,
+      "ppg": 1.76,
+      "high": 7.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-john-harbaugh-68663a1a30",
+      "name": "John Harbaugh",
+      "position": "HC",
+      "nfl_team": "BAL",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 30.0,
+      "ppg": 1.76,
+      "high": 7.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-ny-giants-f43d06187a",
+      "name": "NY Giants",
+      "position": "DF",
+      "nfl_team": "NYG",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 30.0,
+      "ppg": 1.76,
+      "high": 12.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-daniel-jones-e28fa0178f",
+      "name": "Daniel Jones",
+      "position": "QB",
+      "nfl_team": "IND",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 2,
+      "games": 17,
+      "points": 29.0,
+      "ppg": 1.71,
+      "high": 21.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-san-francisco-7ae80c99d1",
+      "name": "San Francisco",
+      "position": "DF",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 29.0,
+      "ppg": 1.71,
+      "high": 13.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-tet-mcmillan-ce59cb8c64",
+      "name": "Tet McMillan",
+      "position": "WR",
+      "nfl_team": "CAR",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 29.0,
+      "ppg": 1.71,
+      "high": 12.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-travis-kelce-af8ea8dfb9",
+      "name": "Travis Kelce",
+      "position": "TE",
+      "nfl_team": "KC",
+      "fantasy_teams": [
+        "G/G",
+        "KEV"
+      ],
+      "starts": 11,
+      "games": 17,
+      "points": 29.0,
+      "ppg": 1.71,
+      "high": 9.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-washington-b6903f2d60",
+      "name": "Washington",
+      "position": "DF",
+      "nfl_team": "WAS",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 29.0,
+      "ppg": 1.71,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-atlanta-39330213f1",
+      "name": "Atlanta",
+      "position": "DF",
+      "nfl_team": "ATL",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 28.0,
+      "ppg": 1.65,
+      "high": 13.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-brandon-mcmanus-6674c08a69",
+      "name": "Brandon McManus",
+      "position": "K",
+      "nfl_team": "GB",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 7,
+      "games": 17,
+      "points": 28.0,
+      "ppg": 1.65,
+      "high": 9.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-khalil-shakir-4a8c590292",
+      "name": "Khalil Shakir",
+      "position": "WR",
+      "nfl_team": "BUF",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 14,
+      "games": 17,
+      "points": 28.0,
+      "ppg": 1.65,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-shane-steichen-d4126a5540",
+      "name": "Shane Steichen",
+      "position": "HC",
+      "nfl_team": "IND",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 7,
+      "games": 17,
+      "points": 28.0,
+      "ppg": 1.65,
+      "high": 7.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-todd-bowles-a98f0f05b4",
+      "name": "Todd Bowles",
+      "position": "HC",
+      "nfl_team": "TB",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 27.0,
+      "ppg": 1.59,
+      "high": 7.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-dan-campbell-4c2c12e8b0",
+      "name": "Dan Campbell",
+      "position": "HC",
+      "nfl_team": "DET",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 11,
+      "games": 17,
+      "points": 26.0,
+      "ppg": 1.53,
+      "high": 5.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-jordan-mason-ecf0ac92b0",
+      "name": "Jordan Mason",
+      "position": "RB",
+      "nfl_team": "MIN",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 6,
+      "games": 17,
+      "points": 26.0,
+      "ppg": 1.53,
+      "high": 15.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-woody-marks-d7cfb4675c",
+      "name": "Woody Marks",
+      "position": "RB",
+      "nfl_team": "HOU",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 26.0,
+      "ppg": 1.53,
+      "high": 14.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-kevin-o-connell-f1b60e3ca4",
+      "name": "Kevin O'Connell",
+      "position": "HC",
+      "nfl_team": "MIN",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 25.0,
+      "ppg": 1.47,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-baltimore-6cf153dc5f",
+      "name": "Baltimore",
+      "position": "DF",
+      "nfl_team": "BAL",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 24.0,
+      "ppg": 1.41,
+      "high": 11.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-hunter-henry-4b890624e5",
+      "name": "Hunter Henry",
+      "position": "TE",
+      "nfl_team": "NE",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 24.0,
+      "ppg": 1.41,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-jacksonville-1046c9b1a6",
+      "name": "Jacksonville",
+      "position": "DF",
+      "nfl_team": "JAX",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 3,
+      "games": 9,
+      "points": 23.0,
+      "ppg": 2.56,
+      "high": 9.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-juwan-johnson-efeead977d",
+      "name": "Juwan Johnson",
+      "position": "TE",
+      "nfl_team": "NO",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 7,
+      "games": 17,
+      "points": 23.0,
+      "ppg": 1.35,
+      "high": 9.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-matt-lafleur-8ba8442218",
+      "name": "Matt LaFleur",
+      "position": "HC",
+      "nfl_team": "GB",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 23.0,
+      "ppg": 1.35,
+      "high": 5.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-mike-macdonald-1377122e2a",
+      "name": "Mike Macdonald",
+      "position": "HC",
+      "nfl_team": "SEA",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 7,
+      "games": 17,
+      "points": 23.0,
+      "ppg": 1.35,
+      "high": 5.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-theo-johnson-d974198cc2",
+      "name": "Theo Johnson",
+      "position": "TE",
+      "nfl_team": "NYG",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 23.0,
+      "ppg": 1.35,
+      "high": 12.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-eddy-pineiro-37f5b6e85e",
+      "name": "Eddy Pineiro",
+      "position": "K",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 3,
+      "games": 9,
+      "points": 22.0,
+      "ppg": 2.44,
+      "high": 9.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-jameis-winston-1b2cde9222",
+      "name": "Jameis Winston",
+      "position": "QB",
+      "nfl_team": "NYG",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 22.0,
+      "ppg": 1.29,
+      "high": 22.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-will-lutz-df7e7ab8cc",
+      "name": "Will Lutz",
+      "position": "K",
+      "nfl_team": "DEN",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 22.0,
+      "ppg": 1.29,
+      "high": 7.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-andy-reid-617c052d44",
+      "name": "Andy Reid",
+      "position": "HC",
+      "nfl_team": "KC",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 11,
+      "games": 17,
+      "points": 21.0,
+      "ppg": 1.24,
+      "high": 5.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-ben-johnson-6e81b21f69",
+      "name": "Ben Johnson",
+      "position": "HC",
+      "nfl_team": "CHI",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 21.0,
+      "ppg": 1.24,
+      "high": 7.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-justin-jefferson-1e0ff0b221",
+      "name": "Justin Jefferson",
+      "position": "WR",
+      "nfl_team": "MIN",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 10,
+      "games": 17,
+      "points": 21.0,
+      "ppg": 1.24,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-tyler-shough-42555bd292",
+      "name": "Tyler Shough",
+      "position": "QB",
+      "nfl_team": "NO",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 1,
+      "games": 9,
+      "points": 21.0,
+      "ppg": 2.33,
+      "high": 16.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-cam-ward-7918c7247e",
+      "name": "Cam Ward",
+      "position": "QB",
+      "nfl_team": "TEN",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 20.0,
+      "ppg": 1.18,
+      "high": 12.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-dallas-goedert-767b412600",
+      "name": "Dallas Goedert",
+      "position": "TE",
+      "nfl_team": "PHI",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 6,
+      "games": 17,
+      "points": 20.0,
+      "ppg": 1.18,
+      "high": 14.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-jameson-williams-8c2f41adc7",
+      "name": "Jameson Williams",
+      "position": "WR",
+      "nfl_team": "DET",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 20.0,
+      "ppg": 1.18,
+      "high": 10.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-colston-loveland-46124741e9",
+      "name": "Colston Loveland",
+      "position": "TE",
+      "nfl_team": "CHI",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 19.0,
+      "ppg": 1.12,
+      "high": 9.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-liam-coen-03797ddead",
+      "name": "Liam Coen",
+      "position": "HC",
+      "nfl_team": "JAX",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 19.0,
+      "ppg": 1.12,
+      "high": 5.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-mike-tomlin-a18806cb82",
+      "name": "Mike Tomlin",
+      "position": "HC",
+      "nfl_team": "PIT",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 19.0,
+      "ppg": 1.12,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-marvin-harrison-cecdca00b9",
+      "name": "Marvin Harrison",
+      "position": "WR",
+      "nfl_team": "ARI",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 18.0,
+      "ppg": 1.06,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-bryce-young-5041c21167",
+      "name": "Bryce Young",
+      "position": "QB",
+      "nfl_team": "CAR",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 17.0,
+      "ppg": 1.0,
+      "high": 12.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-malik-nabers-121f3102ed",
+      "name": "Malik Nabers",
+      "position": "WR",
+      "nfl_team": "NYG",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 17.0,
+      "ppg": 1.0,
+      "high": 17.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-rome-odunze-854605f130",
+      "name": "Rome Odunze",
+      "position": "WR",
+      "nfl_team": "CHI",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 13,
+      "games": 17,
+      "points": 17.0,
+      "ppg": 1.0,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-zac-taylor-ca60d9940f",
+      "name": "Zac Taylor",
+      "position": "HC",
+      "nfl_team": "CIN",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 15.0,
+      "ppg": 0.88,
+      "high": 7.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-darren-waller-846d5d64bc",
+      "name": "Darren Waller",
+      "position": "TE",
+      "nfl_team": "MIA",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 5,
+      "games": 9,
+      "points": 14.0,
+      "ppg": 1.56,
+      "high": 14.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-david-montgomery-181ae4bce7",
+      "name": "David Montgomery",
+      "position": "RB",
+      "nfl_team": "DET",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 4,
+      "games": 17,
+      "points": 14.0,
+      "ppg": 0.82,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-garrett-wilson-280d5ca745",
+      "name": "Garrett Wilson",
+      "position": "WR",
+      "nfl_team": "NYJ",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 14.0,
+      "ppg": 0.82,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-jaxson-dart-3128f3dac4",
+      "name": "Jaxson Dart",
+      "position": "QB",
+      "nfl_team": "NYG",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 14.0,
+      "ppg": 0.82,
+      "high": 14.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-arizona-5d7e14dc79",
+      "name": "Arizona",
+      "position": "DF",
+      "nfl_team": "ARI",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 12.0,
+      "ppg": 0.71,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-brenton-strange-f4f8d8a03d",
+      "name": "Brenton Strange",
+      "position": "TE",
+      "nfl_team": "JAX",
+      "fantasy_teams": [
+        "D/J",
+        "K/D"
+      ],
+      "starts": 8,
+      "games": 17,
+      "points": 12.0,
+      "ppg": 0.71,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-cj-stroud-c5a609de7c",
+      "name": "CJ Stroud",
+      "position": "QB",
+      "nfl_team": "HOU",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 12.0,
+      "ppg": 0.71,
+      "high": 12.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-chuba-hubbard-821e1ebf0d",
+      "name": "Chuba Hubbard",
+      "position": "RB",
+      "nfl_team": "CAR",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 7,
+      "games": 17,
+      "points": 12.0,
+      "ppg": 0.71,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-james-conner-c07b492d7a",
+      "name": "James Conner",
+      "position": "RB",
+      "nfl_team": "ARI",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 3,
+      "games": 7,
+      "points": 12.0,
+      "ppg": 1.71,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-kyler-murray-aaebc08b48",
+      "name": "Kyler Murray",
+      "position": "QB",
+      "nfl_team": "ARI",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 12.0,
+      "ppg": 0.71,
+      "high": 12.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-luther-burden-16661a0fbd",
+      "name": "Luther Burden",
+      "position": "WR",
+      "nfl_team": "CHI",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 2,
+      "games": 9,
+      "points": 12.0,
+      "ppg": 1.33,
+      "high": 10.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-nick-chubb-9c3c488a8e",
+      "name": "Nick Chubb",
+      "position": "RB",
+      "nfl_team": "HOU",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 9,
+      "games": 17,
+      "points": 12.0,
+      "ppg": 0.71,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-tee-higgins-f9803d1b63",
+      "name": "Tee Higgins",
+      "position": "WR",
+      "nfl_team": "CIN",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 4,
+      "games": 17,
+      "points": 12.0,
+      "ppg": 0.71,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-michael-pittman-d0ea369041",
+      "name": "Michael Pittman",
+      "position": "WR",
+      "nfl_team": "IND",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 11.0,
+      "ppg": 0.65,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-dalton-schultz-45786b8524",
+      "name": "Dalton Schultz",
+      "position": "TE",
+      "nfl_team": "HOU",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 4,
+      "games": 17,
+      "points": 10.0,
+      "ppg": 0.59,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-jordan-addison-9cbdc8d480",
+      "name": "Jordan Addison",
+      "position": "WR",
+      "nfl_team": "MIN",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 10.0,
+      "ppg": 0.59,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-chris-godwin-bc6638364e",
+      "name": "Chris Godwin",
+      "position": "WR",
+      "nfl_team": "TB",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 0,
+      "games": 7,
+      "points": 9.0,
+      "ppg": 1.29,
+      "high": 9.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-jim-harbaugh-f03668a08e",
+      "name": "Jim Harbaugh",
+      "position": "HC",
+      "nfl_team": "LAC",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 9.0,
+      "ppg": 0.53,
+      "high": 5.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-stefon-diggs-2d5f34dbe5",
+      "name": "Stefon Diggs",
+      "position": "WR",
+      "nfl_team": "NE",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 9.0,
+      "ppg": 0.53,
+      "high": 9.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-brian-thomas-dcedb60145",
+      "name": "Brian Thomas",
+      "position": "WR",
+      "nfl_team": "JAX",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 6,
+      "games": 11,
+      "points": 8.0,
+      "ppg": 0.73,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-brian-thomas-jr-90f67e4c54",
+      "name": "Brian Thomas Jr.",
+      "position": "WR",
+      "nfl_team": "JAX",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 5,
+      "games": 6,
+      "points": 8.0,
+      "ppg": 1.33,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-bucky-irving-2ddf499f3e",
+      "name": "Bucky Irving",
+      "position": "RB",
+      "nfl_team": "TB",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 8.0,
+      "ppg": 0.47,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-chase-mclaughlin-3d189eb185",
+      "name": "Chase McLaughlin",
+      "position": "K",
+      "nfl_team": "TB",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 2,
+      "games": 17,
+      "points": 8.0,
+      "ppg": 0.47,
+      "high": 4.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-dj-moore-80562daad3",
+      "name": "DJ Moore",
+      "position": "WR",
+      "nfl_team": "CHI",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 8.0,
+      "ppg": 0.47,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-david-njoku-99c536bdc2",
+      "name": "David Njoku",
+      "position": "TE",
+      "nfl_team": "CLE",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 8.0,
+      "ppg": 0.47,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-deebo-samuel-c289b76daa",
+      "name": "Deebo Samuel",
+      "position": "WR",
+      "nfl_team": "WAS",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 6,
+      "games": 17,
+      "points": 8.0,
+      "ppg": 0.47,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-jake-tonges-8c1cb82be3",
+      "name": "Jake Tonges",
+      "position": "TE",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 1,
+      "games": 9,
+      "points": 8.0,
+      "ppg": 0.89,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-rhamondre-stevenson-6e373867ef",
+      "name": "Rhamondre Stevenson",
+      "position": "RB",
+      "nfl_team": "NE",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 3,
+      "games": 5,
+      "points": 8.0,
+      "ppg": 1.6,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-ricky-pearsall-459067b950",
+      "name": "Ricky Pearsall",
+      "position": "WR",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 8.0,
+      "ppg": 0.47,
+      "high": 3.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-xavier-worthy-3e4e714f66",
+      "name": "Xavier Worthy",
+      "position": "WR",
+      "nfl_team": "KC",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 14,
+      "games": 17,
+      "points": 8.0,
+      "ppg": 0.47,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-zach-ertz-3481d22662",
+      "name": "Zach Ertz",
+      "position": "TE",
+      "nfl_team": "WAS",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 8.0,
+      "ppg": 0.47,
+      "high": 8.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-michael-penix-0cb4bd44ca",
+      "name": "Michael Penix",
+      "position": "QB",
+      "nfl_team": "ATL",
+      "fantasy_teams": [
+        "D/J",
+        "KAM"
+      ],
+      "starts": 1,
+      "games": 16,
+      "points": 7.0,
+      "ppg": 0.44,
+      "high": 7.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-aaron-jones-ec8e6f1e54",
+      "name": "Aaron Jones",
+      "position": "RB",
+      "nfl_team": "MIN",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 6.0,
+      "ppg": 0.35,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-harold-fannin-5f3032008b",
+      "name": "Harold Fannin",
+      "position": "TE",
+      "nfl_team": "CLE",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 2,
+      "games": 17,
+      "points": 6.0,
+      "ppg": 0.35,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-jj-mccarthy-a2fe729f34",
+      "name": "JJ McCarthy",
+      "position": "QB",
+      "nfl_team": "MIN",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 6.0,
+      "ppg": 0.35,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-jayden-higgins-7ff6f3c86a",
+      "name": "Jayden Higgins",
+      "position": "WR",
+      "nfl_team": "",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 1,
+      "games": 1,
+      "points": 6.0,
+      "ppg": 6.0,
+      "high": 6.0,
+      "median": 6.0
+    },
+    {
+      "player_id": "qb-joe-flacco-f9bac35ab6",
+      "name": "Joe Flacco",
+      "position": "QB",
+      "nfl_team": "CIN",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 4,
+      "games": 9,
+      "points": 6.0,
+      "ppg": 0.67,
+      "high": 3.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-jonnu-smith-4d0cbcd48f",
+      "name": "Jonnu Smith",
+      "position": "TE",
+      "nfl_team": "PIT",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 4,
+      "games": 17,
+      "points": 6.0,
+      "ppg": 0.35,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-kevin-stefanski-b6a908bf38",
+      "name": "Kevin Stefanski",
+      "position": "HC",
+      "nfl_team": "CLE",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 6.0,
+      "ppg": 0.35,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-matt-gay-baccca2254",
+      "name": "Matt Gay",
+      "position": "K",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 1,
+      "games": 2,
+      "points": 6.0,
+      "ppg": 3.0,
+      "high": 6.0,
+      "median": 3.0
+    },
+    {
+      "player_id": "wr-mike-evans-837ec626ed",
+      "name": "Mike Evans",
+      "position": "WR",
+      "nfl_team": "TB",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 3,
+      "games": 8,
+      "points": 6.0,
+      "ppg": 0.75,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "df-ny-jets-13c4d410d0",
+      "name": "NY Jets",
+      "position": "DF",
+      "nfl_team": "NYJ",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 2,
+      "games": 8,
+      "points": 6.0,
+      "ppg": 0.75,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-oronde-gadsden-b5d96a24b5",
+      "name": "Oronde Gadsden",
+      "position": "TE",
+      "nfl_team": "LAC",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 2,
+      "games": 9,
+      "points": 6.0,
+      "ppg": 0.67,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-rachaad-white-7319cf8397",
+      "name": "Rachaad White",
+      "position": "RB",
+      "nfl_team": "TB",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 6.0,
+      "ppg": 0.35,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-terry-mclaurin-e353f982b9",
+      "name": "Terry McLaurin",
+      "position": "WR",
+      "nfl_team": "WAS",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 6.0,
+      "ppg": 0.35,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-tyreek-hill-86e3133f29",
+      "name": "Tyreek Hill",
+      "position": "WR",
+      "nfl_team": "MIA",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 3,
+      "games": 7,
+      "points": 6.0,
+      "ppg": 0.86,
+      "high": 6.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-keon-coleman-37479d5d50",
+      "name": "Keon Coleman",
+      "position": "WR",
+      "nfl_team": "BUF",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 5.0,
+      "ppg": 0.29,
+      "high": 5.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-younghoe-koo-635c72b7c9",
+      "name": "Younghoe Koo",
+      "position": "K",
+      "nfl_team": "ATL",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 5.0,
+      "ppg": 0.29,
+      "high": 5.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-dalton-kincaid-24b85c78c7",
+      "name": "Dalton Kincaid",
+      "position": "TE",
+      "nfl_team": "BUF",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 4.0,
+      "ppg": 0.24,
+      "high": 4.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-dan-quinn-20dde0592c",
+      "name": "Dan Quinn",
+      "position": "HC",
+      "nfl_team": "WAS",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 4,
+      "games": 17,
+      "points": 4.0,
+      "ppg": 0.24,
+      "high": 4.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-jk-dobbins-c429dfde15",
+      "name": "JK Dobbins",
+      "position": "RB",
+      "nfl_team": "DEN",
+      "fantasy_teams": [
+        "D/J",
+        "KAM"
+      ],
+      "starts": 3,
+      "games": 16,
+      "points": 4.0,
+      "ppg": 0.25,
+      "high": 2.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-shedeur-sanders-9cd9baf76f",
+      "name": "Shedeur Sanders",
+      "position": "QB",
+      "nfl_team": "CLE",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 0,
+      "games": 9,
+      "points": 4.0,
+      "ppg": 0.44,
+      "high": 4.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-cade-otton-480a5a32ea",
+      "name": "Cade Otton",
+      "position": "TE",
+      "nfl_team": "TB",
+      "fantasy_teams": [
+        "G/G",
+        "KEV"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 3.0,
+      "ppg": 0.18,
+      "high": 3.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-jk-dobbins-46f66a7b3b",
+      "name": "JK Dobbins",
+      "position": "RB",
+      "nfl_team": "",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 1,
+      "games": 1,
+      "points": 3.0,
+      "ppg": 3.0,
+      "high": 3.0,
+      "median": 3.0
+    },
+    {
+      "player_id": "k-joshua-karty-f254907a57",
+      "name": "Joshua Karty",
+      "position": "K",
+      "nfl_team": "LA",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 4,
+      "games": 17,
+      "points": 3.0,
+      "ppg": 0.18,
+      "high": 2.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-matt-gay-dea724d68f",
+      "name": "Matt Gay",
+      "position": "K",
+      "nfl_team": "WAS",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 1,
+      "games": 15,
+      "points": 3.0,
+      "ppg": 0.2,
+      "high": 3.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-alvin-kamara-8df35aa269",
+      "name": "Alvin Kamara",
+      "position": "RB",
+      "nfl_team": "NO",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 2.0,
+      "ppg": 0.12,
+      "high": 2.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-chad-ryland-b73fe9de5a",
+      "name": "Chad Ryland",
+      "position": "K",
+      "nfl_team": "ARI",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 2.0,
+      "ppg": 0.12,
+      "high": 2.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-chig-okonkwo-00afa54a3e",
+      "name": "Chig Okonkwo",
+      "position": "TE",
+      "nfl_team": "TEN",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 1,
+      "games": 8,
+      "points": 2.0,
+      "ppg": 0.25,
+      "high": 2.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-gunnar-helm-087b2ad0e8",
+      "name": "Gunnar Helm",
+      "position": "TE",
+      "nfl_team": "TEN",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 5,
+      "games": 9,
+      "points": 2.0,
+      "ppg": 0.22,
+      "high": 2.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-quentin-johnston-da37c1dd47",
+      "name": "Quentin Johnston",
+      "position": "WR",
+      "nfl_team": "LAC",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 2,
+      "games": 9,
+      "points": 2.0,
+      "ppg": 0.22,
+      "high": 2.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-rico-dowdle-e62f76684b",
+      "name": "Rico Dowdle",
+      "position": "RB",
+      "nfl_team": "CAR",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 1,
+      "games": 9,
+      "points": 2.0,
+      "ppg": 0.22,
+      "high": 2.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-amari-cooper-e9b6f32d8e",
+      "name": "Amari Cooper",
+      "position": "WR",
+      "nfl_team": "LV",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 0,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-anthony-richardson-e6a5129996",
+      "name": "Anthony Richardson",
+      "position": "QB",
+      "nfl_team": "IND",
+      "fantasy_teams": [
+        "KAM",
+        "W/B"
+      ],
+      "starts": 0,
+      "games": 7,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-anthony-richardson-7678c57fd6",
+      "name": "Anthony Richardson",
+      "position": "QB",
+      "nfl_team": "",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 0,
+      "games": 1,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-bhayshul-tuten-886aa22056",
+      "name": "Bhayshul Tuten",
+      "position": "RB",
+      "nfl_team": "JAX",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 2,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-braelon-allen-bcaec9b291",
+      "name": "Braelon Allen",
+      "position": "RB",
+      "nfl_team": "NYJ",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 0,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-brandon-aiyuk-c20c23bd09",
+      "name": "Brandon Aiyuk",
+      "position": "WR",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "D/J",
+        "K/D"
+      ],
+      "starts": 0,
+      "games": 9,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-brian-robinson-a4ba62aafb",
+      "name": "Brian Robinson",
+      "position": "RB",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-cairo-santos-636f14bf9b",
+      "name": "Cairo Santos",
+      "position": "K",
+      "nfl_team": "CHI",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 0,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-calvin-ridley-5500c9a277",
+      "name": "Calvin Ridley",
+      "position": "WR",
+      "nfl_team": "TEN",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 2,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-chris-rodriguez-d85ffe9488",
+      "name": "Chris Rodriguez",
+      "position": "RB",
+      "nfl_team": "WAS",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 0,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-cole-kmet-72a6990ae2",
+      "name": "Cole Kmet",
+      "position": "TE",
+      "nfl_team": "CHI",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 2,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-cooper-kupp-9611e1c3ee",
+      "name": "Cooper Kupp",
+      "position": "WR",
+      "nfl_team": "SEA",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-dillon-gabriel-8419d5f5f7",
+      "name": "Dillon Gabriel",
+      "position": "QB",
+      "nfl_team": "CLE",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-dylan-sampson-d31eb2c1a8",
+      "name": "Dylan Sampson",
+      "position": "RB",
+      "nfl_team": "CLE",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 0,
+      "games": 2,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-elijah-arroyo-559d6c7098",
+      "name": "Elijah Arroyo",
+      "position": "TE",
+      "nfl_team": "SEA",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-evan-engram-6d92824c80",
+      "name": "Evan Engram",
+      "position": "TE",
+      "nfl_team": "DEN",
+      "fantasy_teams": [
+        "D/J",
+        "STL"
+      ],
+      "starts": 4,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-geno-smith-fe66b60c0f",
+      "name": "Geno Smith",
+      "position": "QB",
+      "nfl_team": "LV",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 0,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-graham-gano-a1d7826aa9",
+      "name": "Graham Gano",
+      "position": "K",
+      "nfl_team": "NYG",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 1,
+      "games": 9,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-isaiah-likely-2d5a26c993",
+      "name": "Isaiah Likely",
+      "position": "TE",
+      "nfl_team": "BAL",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-isaiah-pacheco-60eee7a102",
+      "name": "Isaiah Pacheco",
+      "position": "RB",
+      "nfl_team": "KC",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 3,
+      "games": 11,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-isiah-pacheco-54030898ea",
+      "name": "Isiah Pacheco",
+      "position": "RB",
+      "nfl_team": "KC",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 1,
+      "games": 4,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-ja-tavion-sanders-af3aef15e8",
+      "name": "Ja'Tavion Sanders",
+      "position": "TE",
+      "nfl_team": "CAR",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 0,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-jake-moody-da0797a3d3",
+      "name": "Jake Moody",
+      "position": "K",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 1,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-jalen-milroe-51eb7b20cf",
+      "name": "Jalen Milroe",
+      "position": "QB",
+      "nfl_team": "SEA",
+      "fantasy_teams": [
+        "STL",
+        "W/B"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-james-conner-577aee4e91",
+      "name": "James Conner",
+      "position": "RB",
+      "nfl_team": "",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 0,
+      "games": 1,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-jauan-jennings-5ce9ba3029",
+      "name": "Jauan Jennings",
+      "position": "WR",
+      "nfl_team": "",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 1,
+      "games": 1,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-jerry-jeudy-32eda579a9",
+      "name": "Jerry Jeudy",
+      "position": "WR",
+      "nfl_team": "CLE",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 0,
+      "games": 7,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-joe-mixon-ef17e85614",
+      "name": "Joe Mixon",
+      "position": "RB",
+      "nfl_team": "HOU",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 0,
+      "games": 9,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-josh-downs-1b1ab3ca31",
+      "name": "Josh Downs",
+      "position": "WR",
+      "nfl_team": "IND",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 0,
+      "games": 10,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-justin-fields-147087dfbc",
+      "name": "Justin Fields",
+      "position": "QB",
+      "nfl_team": "NYJ",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-justin-tucker-754b38db03",
+      "name": "Justin Tucker ()",
+      "position": "K",
+      "nfl_team": "",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 0,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-kaleb-johnson-8396378b1d",
+      "name": "Kaleb Johnson",
+      "position": "RB",
+      "nfl_team": "PIT",
+      "fantasy_teams": [
+        "STL"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-kayshon-boutte-c8c451ef38",
+      "name": "Kayshon Boutte",
+      "position": "WR",
+      "nfl_team": "NE",
+      "fantasy_teams": [
+        "E/J"
+      ],
+      "starts": 3,
+      "games": 9,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-keenan-allen-7a24f7d6dc",
+      "name": "Keenan Allen",
+      "position": "WR",
+      "nfl_team": "LAC",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 2,
+      "games": 2,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-kimani-vidal-35ee399551",
+      "name": "Kimani Vidal",
+      "position": "RB",
+      "nfl_team": "LAC",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 1,
+      "games": 9,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-luther-burden-d609561bc5",
+      "name": "Luther Burden",
+      "position": "WR",
+      "nfl_team": "",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 1,
+      "games": 1,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-mac-jones-92cb486d97",
+      "name": "Mac Jones",
+      "position": "QB",
+      "nfl_team": "SF",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 0,
+      "games": 9,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-mason-taylor-be05502af5",
+      "name": "Mason Taylor",
+      "position": "TE",
+      "nfl_team": "NYJ",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-matthew-golden-b7cb668e82",
+      "name": "Matthew Golden",
+      "position": "WR",
+      "nfl_team": "GB",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-michael-badgley-5a35cffb32",
+      "name": "Michael Badgley",
+      "position": "K",
+      "nfl_team": "IND",
+      "fantasy_teams": [
+        "W/B"
+      ],
+      "starts": 0,
+      "games": 9,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-michael-penix-a89de7d450",
+      "name": "Michael Penix",
+      "position": "QB",
+      "nfl_team": "",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 0,
+      "games": 1,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-mike-gesicki-2623a7f41f",
+      "name": "Mike Gesicki",
+      "position": "TE",
+      "nfl_team": "CIN",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-najee-harris-c23c4fcb6f",
+      "name": "Najee Harris",
+      "position": "RB",
+      "nfl_team": "LAC",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-pat-freiermuth-0e1c842767",
+      "name": "Pat Freiermuth",
+      "position": "TE",
+      "nfl_team": "PIT",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 0,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "hc-raheem-morris-934cacd949",
+      "name": "Raheem Morris",
+      "position": "HC",
+      "nfl_team": "ATL",
+      "fantasy_teams": [
+        "KAM"
+      ],
+      "starts": 4,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-ray-davis-57c2854c42",
+      "name": "Ray Davis",
+      "position": "RB",
+      "nfl_team": "BUF",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 1,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-romeo-doubs-58046caa63",
+      "name": "Romeo Doubs",
+      "position": "WR",
+      "nfl_team": "GB",
+      "fantasy_teams": [
+        "K/D"
+      ],
+      "starts": 0,
+      "games": 7,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-russell-wilson-680b0f0ed8",
+      "name": "Russell Wilson",
+      "position": "QB",
+      "nfl_team": "NYG",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 0,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "qb-spencer-rattler-51f0c12812",
+      "name": "Spencer Rattler",
+      "position": "QB",
+      "nfl_team": "NO",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 0,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-tj-hockenson-1f6793b1a1",
+      "name": "TJ Hockenson",
+      "position": "TE",
+      "nfl_team": "MIN",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-tank-bigsby-jax-5c56135df0",
+      "name": "Tank Bigsby (Jax",
+      "position": "RB",
+      "nfl_team": "",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 0,
+      "games": 5,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-terrance-ferguson-f9c48f4e1e",
+      "name": "Terrance Ferguson",
+      "position": "TE",
+      "nfl_team": "LA",
+      "fantasy_teams": [
+        "ADA"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "wr-travis-hunter-808302cd16",
+      "name": "Travis Hunter",
+      "position": "WR",
+      "nfl_team": "JAX",
+      "fantasy_teams": [
+        "J/M"
+      ],
+      "starts": 3,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-trey-benson-53b76e15a5",
+      "name": "Trey Benson",
+      "position": "RB",
+      "nfl_team": "ARI",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 1,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-tucker-kraft-9c94f2ab85",
+      "name": "Tucker Kraft",
+      "position": "TE",
+      "nfl_team": "GB",
+      "fantasy_teams": [
+        "JOH"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-tyjae-spears-6705ebd719",
+      "name": "Tyjae Spears",
+      "position": "RB",
+      "nfl_team": "TEN",
+      "fantasy_teams": [
+        "D/J"
+      ],
+      "starts": 3,
+      "games": 7,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "k-tyler-bass-29b57386b5",
+      "name": "Tyler Bass",
+      "position": "K",
+      "nfl_team": "BUF",
+      "fantasy_teams": [
+        "G/G"
+      ],
+      "starts": 1,
+      "games": 8,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "te-tyler-higbee-95d7f44eac",
+      "name": "Tyler Higbee",
+      "position": "TE",
+      "nfl_team": "CIN",
+      "fantasy_teams": [
+        "AND"
+      ],
+      "starts": 0,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    },
+    {
+      "player_id": "rb-tyrone-tracy-f9caf2e22b",
+      "name": "Tyrone Tracy",
+      "position": "RB",
+      "nfl_team": "NYG",
+      "fantasy_teams": [
+        "KEV"
+      ],
+      "starts": 5,
+      "games": 17,
+      "points": 0.0,
+      "ppg": 0.0,
+      "high": 0.0,
+      "median": 0.0
+    }
+  ]
+}

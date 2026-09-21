@@ -1,0 +1,150 @@
+{
+  "year": 2004,
+  "detail_level": "summary",
+  "standings": [
+    {
+      "name": "John",
+      "owner": "John",
+      "wins": 10.0,
+      "losses": 4.0,
+      "ties": 1.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 884.0,
+      "rank": 1
+    },
+    {
+      "name": "Steve L.",
+      "owner": "Steve L.",
+      "wins": 9.0,
+      "losses": 5.0,
+      "ties": 1.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 912.0,
+      "rank": 2
+    },
+    {
+      "name": "Kreg",
+      "owner": "Kreg",
+      "wins": 9.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 865.0,
+      "rank": 3
+    },
+    {
+      "name": "Adam",
+      "owner": "Adam",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 1.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 771.0,
+      "rank": 4
+    },
+    {
+      "name": "Jarrett/Matt",
+      "owner": "Jarrett/Matt",
+      "wins": 8.0,
+      "losses": 7.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 786.0,
+      "rank": 5
+    },
+    {
+      "name": "Kemp",
+      "owner": "Kemp",
+      "wins": 8.0,
+      "losses": 7.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 777.0,
+      "rank": 6
+    },
+    {
+      "name": "Kirk/David",
+      "owner": "Kirk/David",
+      "wins": 7.0,
+      "losses": 8.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 669.0,
+      "rank": 7
+    },
+    {
+      "name": "Eric/Bret/Joe",
+      "owner": "Eric/Bret/Joe",
+      "wins": 6.0,
+      "losses": 8.0,
+      "ties": 1.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 774.0,
+      "rank": 8
+    },
+    {
+      "name": "Eric/Jeff",
+      "owner": "Eric/Jeff",
+      "wins": 6.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 756.0,
+      "rank": 9
+    },
+    {
+      "name": "Mike",
+      "owner": "Mike",
+      "wins": 6.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 733.0,
+      "rank": 10
+    },
+    {
+      "name": "Steve M.",
+      "owner": "Steve M.",
+      "wins": 6.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 659.0,
+      "rank": 11
+    },
+    {
+      "name": "Greg/Griffin",
+      "owner": "Greg/Griffin",
+      "wins": 5.0,
+      "losses": 10.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 595.0,
+      "rank": 12
+    }
+  ],
+  "finish": {
+    "year": 2004,
+    "first": "Kreg",
+    "second": "John",
+    "third": "Adam/Nick/Bill",
+    "fourth": "Steve L.",
+    "championship_score": "69-57",
+    "toilet_bowl_score": "48-36",
+    "jamboree": "Eric H. (165)",
+    "comments": "Kreg's first championship. John's fifth consecutive playoff berth.",
+    "team_count": 12
+  }
+}

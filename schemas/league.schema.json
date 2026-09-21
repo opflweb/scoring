@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["league_name", "team_count", "public_seasons", "current_public_season", "defaults"],
+  "properties": {
+    "league_name": {"type": "string", "minLength": 1},
+    "team_count": {"const": 12},
+    "public_seasons": {"type": "array", "items": {"type": "integer"}, "uniqueItems": true},
+    "current_public_season": {"type": "integer"},
+    "defaults": {
+      "type": "object",
+      "required": ["regular_season_weeks", "playoff_seeds", "jamboree", "roster_limits", "lineup_slots"],
+      "properties": {
+        "regular_season_weeks": {"const": 15},
+        "playoff_seeds": {"const": 4},
+        "jamboree": {
+          "type": "object",
+          "required": ["teams", "weeks"],
+          "properties": {"teams": {"const": 8}, "weeks": {"const": 2}}
+        }
+      }
+    }
+  }
+}

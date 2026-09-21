@@ -1,1754 +1,544 @@
-        let data = null;
-        let currentWeek = 1;
-        let currentTeam = null;
-
-        // Team numbers used by the printed OPFL schedule. Overridden by
-        // data.team_number_map when the export provides one.
-        const DEFAULT_TEAM_NUMBER_MAP = {
-            1: 'AND', 2: 'JOH', 3: 'W/B', 4: 'STL', 5: 'G/G', 6: 'J/M',
-            7: 'KEV', 8: 'KAM', 9: 'K/D', 10: 'E/J', 11: 'ADA', 12: 'D/J'
-        };
-
-        function teamNumberMap() {
-            return data?.team_number_map || DEFAULT_TEAM_NUMBER_MAP;
-        }
-
-        // Weekly pairings come straight from the workbook (data.schedule maps
-        // a week number to a list of [abbrev, abbrev] pairs). Weeks that have
-        // not been published yet simply return null.
-        function getWeekMatchups(weekNum) {
-            const schedule = data?.schedule || {};
-            const pairs = schedule[String(weekNum)] || schedule[weekNum];
-            if (!pairs || !pairs.length) return null;
-
-            const numberMap = teamNumberMap();
-            return pairs.map(pair => pair.map(entry => numberMap[entry] || numberMap[String(entry)] || entry));
-        }
-
-        // Historical championship data
-        const CHAMPIONSHIPS = [
-            { year: 2024, first: "Kemp/A/M", second: "Wes", third: "John", fourth: "Jarrett/Matt", score: "88-57", jamboree: "Steve L. (157)" },
-            { year: 2023, first: "Kemp/A/M", second: "Greg/Griffin", third: "Jarrett/Matt", fourth: "Kevin", score: "43-31", jamboree: "John (120)" },
-            { year: 2022, first: "Jarrett/Matt & Wes", second: "Jarrett/Matt & Wes", third: "John & Kemp/A/M", fourth: "John & Kemp/A/M", score: "53-45", jamboree: "Kirk/David (122)", comment: "Historic tie declared" },
-            { year: 2021, first: "Kemp/A/M", second: "Greg/Griffin", third: "Kevin", fourth: "Eric/Jeff", score: "41-40", jamboree: "Wes/Bill (149)" },
-            { year: 2020, first: "Kemp/A/M", second: "Jarrett/Matt", third: "Kirk/David", fourth: "Steve M.", score: "67-57", jamboree: "Kevin (125)" },
-            { year: 2019, first: "Andrew", second: "Kirk/David", third: "Jarrett/Matt", fourth: "Steve L.", score: "76-61", jamboree: "Adam (141)" },
-            { year: 2018, first: "Adam", second: "Jarrett/Matt", third: "Steve L.", fourth: "Kirk/David", score: "63-35", jamboree: "Steve M. (117)" },
-            { year: 2017, first: "Kirk/David", second: "Steve L./Wes", third: "Greg/Griffin", fourth: "Andrew", score: "52-51", jamboree: "Eric/Jeff (115)" },
-            { year: 2016, first: "Kemp/A/M", second: "Steve L.", third: "Steve/Wes", fourth: "Eric/Jeff", score: "61-33", jamboree: "Bill/Jill (115)" },
-            { year: 2015, first: "Steve L.", second: "Adam", third: "Greg/Griffin", fourth: "Kirk/David", score: "65-32", jamboree: "Jarrett (126)" },
-            { year: 2014, first: "Steve L.", second: "Kirk/David", third: "Steve/Wes", fourth: "John", score: "57-31", jamboree: "Greg/Griffin (111)" },
-            { year: 2013, first: "Jarrett", second: "Steve L.", third: "Adam", fourth: "Steve/Wes", score: "48-42", jamboree: "Greg (124)" },
-            { year: 2012, first: "Kevin", second: "Kirk/David", third: "John", fourth: "Steve/Wes", score: "67-62", jamboree: "Adam (147)" },
-            { year: 2011, first: "Bill/Jill", second: "Kirk/David", third: "Greg", fourth: "Steve L.", score: "89-48", jamboree: "Kevin (124)" },
-            { year: 2010, first: "Kirk/David", second: "John", third: "Steve L.", fourth: "Kevin", score: "62-43", jamboree: "Jarrett (145)" },
-            { year: 2009, first: "Steve L.", second: "Bill", third: "Greg", fourth: "John", score: "57-57*", jamboree: "Jarrett (129)", comment: "Won on better record" },
-            { year: 2008, first: "Steve L.", second: "Greg", third: "John", fourth: "Jarrett", score: "67-28", jamboree: "Eric S. (109)" },
-            { year: 2007, first: "Eric S.", second: "Kevin", third: "Mike", fourth: "Kirk", score: "55-23", jamboree: "Jarrett (121)" },
-            { year: 2006, first: "Kirk", second: "John", third: "Kevin", fourth: "Jarrett", score: "52-52*", jamboree: "Kemp (147)", comment: "Won on better record" },
-            { year: 2005, first: "Jarrett", second: "Eric/Bret/Joe", third: "Kirk", fourth: "Steve/Wes", score: "48-34", jamboree: "Eric S. (132)" },
-            { year: 2004, first: "Kreg", second: "John", third: "Adam/Nick/Bill", fourth: "Steve L.", score: "69-57", jamboree: "Eric H. (165)" },
-            { year: 2003, first: "Kirk", second: "Steve/Wes", third: "John", fourth: "Steve L.", score: "55-46", jamboree: "Jarrett (139)" },
-            { year: 2002, first: "Adam/Nick", second: "Greg", third: "Eric S.", fourth: "John", score: "28-28*", jamboree: "Kemp/Rams (115)", comment: "Won on better record" },
-            { year: 2001, first: "Kemp/Rams", second: "John", third: "Kirk", fourth: "Steve L.", score: "65-59", jamboree: "" },
-            { year: 2000, first: "John", second: "Steve/J", third: "Kemp/Rams", fourth: "Steve L.", score: "84-55", jamboree: "" },
-            { year: 1999, first: "Eric S.", second: "Steve L.", third: "Steve/J", fourth: "Kemp/Rams", score: "86-51", jamboree: "" },
-            { year: 1998, first: "Eric S.", second: "John", third: "Steve L.", fourth: "Eric H.", score: "47-41", jamboree: "" },
-            { year: 1997, first: "Kemp", second: "Bill", third: "Chris", fourth: "Kreg/J", score: "27-24", jamboree: "" },
-            { year: 1996, first: "Steve/J", second: "Eric S.", third: "John", fourth: "Chris", score: "39-16", jamboree: "" },
-            { year: 1995, first: "Chris", second: "Steve L.", third: "Kemp", fourth: "John", score: "67-36", jamboree: "" },
-            { year: 1994, first: "Bill", second: "John", third: "Eric H.", fourth: "Steve L.", score: "68-47", jamboree: "" },
-            { year: 1993, first: "Bill", second: "Steve L.", third: "John", fourth: "Eric H.", score: "67-41", jamboree: "" },
-            { year: 1992, first: "Steve L.", second: "Steve M.", third: "Kirk", fourth: "Bill", score: "38-35", jamboree: "" },
-            { year: 1991, first: "Steve M.", second: "John", third: "Chris", fourth: "Nan/Kemp", score: "74-17", jamboree: "" },
-            { year: 1990, first: "Bill", second: "Chris", third: "Kreg", fourth: "John", score: "25-22", jamboree: "" },
-            { year: 1989, first: "Chris", second: "Eric H.", third: "Eric S.", fourth: "Nan/Kemp", score: "66-42", jamboree: "" },
-            { year: 1988, first: "Bill", second: "Steve M.", third: "Eric H.", fourth: "Kreg", score: "45-34", jamboree: "" }
-        ];
-
-        // All-time records
-        const ALL_TIME_RECORDS = [
-            { owner: "Kemp", first: 7, second: 0, third: 2.5, fourth: 3.5 },
-            { owner: "Steve L.", first: 5, second: 6, third: 3, fourth: 7 },
-            { owner: "Bill/Wes", first: 5, second: 2, third: 0, fourth: 1 },
-            { owner: "Kirk/David", first: 4, second: 4, third: 4, fourth: 3 },
-            { owner: "Eric S.", first: 3, second: 1, third: 2, fourth: 2 },
-            { owner: "Jarrett/Matt", first: 2.5, second: 2.5, third: 2, fourth: 3 },
-            { owner: "Chris", first: 2, second: 1, third: 2, fourth: 1 },
-            { owner: "Steve M.", first: 2, second: 4, third: 3, fourth: 4 },
-            { owner: "Adam", first: 2, second: 1, third: 2, fourth: 0 },
-            { owner: "John", first: 1, second: 7, third: 6.5, fourth: 5.5 },
-            { owner: "Kevin", first: 1, second: 1, third: 2, fourth: 2 },
-            { owner: "Kreg", first: 1, second: 0, third: 1, fourth: 2 },
-            { owner: "Andrew", first: 1, second: 0, third: 0, fourth: 1 },
-            { owner: "Wes", first: 0.5, second: 1.5, third: 0, fourth: 0 },
-            { owner: "Greg/Griffin", first: 0, second: 4, third: 4, fourth: 0 },
-            { owner: "Eric H.", first: 0, second: 2, third: 2, fourth: 2 }
-        ];
-
-        // Load data
-        async function loadData() {
-            try {
-                const response = await fetch('data.json');
-                data = await response.json();
-                // Default to the most recent week that has data
-                const availableWeeks = (data.weeks || []).map(w => w.week);
-                currentWeek = availableWeeks.length > 0 ? Math.max(...availableWeeks) : 1;
-                initApp();
-            } catch (error) {
-                console.error('Error loading data:', error);
-                document.getElementById('matchups-container').innerHTML = 
-                    '<div class="loading">Error loading data. Please refresh.</div>';
-            }
-        }
-
-        function initApp() {
-            // Season labels
-            if (data.season) {
-                document.getElementById('season-badge').textContent = `${data.season} SEASON`;
-                document.getElementById('schedule-title').textContent = `${data.season} SEASON SCHEDULE & PLAYOFFS`;
-                document.getElementById('rules-title').textContent = `${data.season} OPFL Scoring and Rules`;
-            }
-
-            // Update timestamp
-            if (data.updated_at) {
-                const date = new Date(data.updated_at);
-                document.getElementById('updated-time').textContent = 
-                    `Updated: ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-            }
-
-            // Navigation
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-                    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-                    btn.classList.add('active');
-                    document.getElementById(btn.dataset.section).classList.add('active');
-                });
-            });
-            
-            renderWeekSelector();
-            renderMatchups();
-            renderSchedule();
-            renderStandings();
-            renderPlayoffOdds();
-            renderStatsLeaders();
-            renderTeamSelector();
-            renderHistory();
-            renderBanners();
-        }
-
-        function renderWeekSelector() {
-            const container = document.getElementById('week-selector');
-            const weeks = data.weeks || [];
-            const regularSeasonWeeks = data.regular_season_weeks || 15;
-            
-            // Separate regular season and playoff weeks
-            const regSeasonWeeks = weeks.filter(w => w.week <= regularSeasonWeeks);
-            const playoffWeeks = weeks.filter(w => w.week > regularSeasonWeeks);
-            
-            let html = `<span class="week-label">WEEK</span>`;
-            
-            // Regular season weeks
-            html += regSeasonWeeks.map(w => `
-                <button class="week-btn ${w.week === currentWeek ? 'active' : ''}" 
-                        data-week="${w.week}">${w.week}</button>
-            `).join('');
-            
-            // Show playoff weeks after regular season is complete
-            if (data.playoffs || playoffWeeks.length > 0) {
-                html += `<span class="week-label" style="margin-left: 1rem;">PLAYOFFS</span>`;
-                
-                // Week 16
-                html += `<button class="week-btn ${currentWeek === 16 ? 'active' : ''}" 
-                        data-week="16" style="background: rgba(255, 215, 0, 0.1); border-color: var(--accent-gold);">16</button>`;
-                
-                // Week 17
-                html += `<button class="week-btn ${currentWeek === 17 ? 'active' : ''}" 
-                        data-week="17" style="background: rgba(255, 215, 0, 0.1); border-color: var(--accent-gold);">17</button>`;
-            }
-            
-            container.innerHTML = html;
-
-            container.querySelectorAll('.week-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    currentWeek = parseInt(btn.dataset.week);
-                    container.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    renderMatchups();
-                });
-            });
-        }
-
-        function renderSchedule() {
-            const container = document.getElementById('schedule-container');
-            const currentWeekNum = data.current_week || 1;
-            const weeks = data.weeks || [];
-            const regularSeasonWeeks = data.regular_season_weeks || 15;
-            const playoffs = data.playoffs;
-            
-            // Create lookup for week data
-            const weekDataMap = {};
-            weeks.forEach(w => {
-                weekDataMap[w.week] = w;
-            });
-
-            // Build schedule for regular season (weeks 1-15)
-            let html = '';
-            for (let weekNum = 1; weekNum <= regularSeasonWeeks; weekNum++) {
-                const schedule = getWeekMatchups(weekNum);
-                const weekData = weekDataMap[weekNum];
-                const isCurrent = weekNum === currentWeekNum;
-                const isComplete = weekNum < currentWeekNum;
-                const isUpcoming = weekNum > currentWeekNum;
-                
-                // Get team data for this week
-                const teamsByAbbrev = {};
-                if (weekData?.teams) {
-                    weekData.teams.forEach(t => {
-                        teamsByAbbrev[t.abbrev] = t;
-                    });
-                }
-
-                // Determine badge
-                let badgeClass = 'upcoming';
-                let badgeText = 'Upcoming';
-                if (isCurrent) {
-                    badgeClass = 'current';
-                    badgeText = 'Current';
-                } else if (isComplete) {
-                    badgeClass = 'complete';
-                    badgeText = 'Complete';
-                }
-
-                // Weeks whose pairings have not been published yet are shown
-                // as a placeholder rather than skipped entirely.
-                if (!schedule) {
-                    html += `
-                        <div class="schedule-week ${isCurrent ? 'current' : ''}">
-                            <div class="schedule-week-header">
-                                <span class="schedule-week-title">Week ${weekNum}</span>
-                                <span class="schedule-week-badge upcoming">Not yet set</span>
-                            </div>
-                            <div class="schedule-matchups">
-                                <div class="schedule-matchup">
-                                    <span class="schedule-no-score">Matchups not posted yet</span>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    continue;
-                }
-
-                // Build matchups HTML
-                const matchupsHtml = schedule.map(([abbrev1, abbrev2]) => {
-                    const team1 = teamsByAbbrev[abbrev1];
-                    const team2 = teamsByAbbrev[abbrev2];
-                    
-                    const hasScores = team1 && team2 && (team1.total_score > 0 || team2.total_score > 0);
-                    const score1 = team1?.total_score || 0;
-                    const score2 = team2?.total_score || 0;
-                    const team1Winning = score1 > score2;
-                    const team2Winning = score2 > score1;
-                    
-                    // Get team names from standings if not in week data
-                    const team1Name = team1?.name || data.standings?.find(s => s.abbrev === abbrev1)?.name || abbrev1;
-                    const team2Name = team2?.name || data.standings?.find(s => s.abbrev === abbrev2)?.name || abbrev2;
-
-                    if (hasScores || isComplete) {
-                        return `
-                            <div class="schedule-matchup">
-                                <div class="schedule-team ${team1Winning ? 'winner' : team2Winning ? 'loser' : ''}">
-                                    <span class="schedule-team-name">${team1Name}</span>
-                                </div>
-                                <div class="schedule-score-box">
-                                    <span class="schedule-score ${team1Winning ? 'winning' : ''}">${score1}</span>
-                                    <span class="schedule-vs">-</span>
-                                    <span class="schedule-score ${team2Winning ? 'winning' : ''}">${score2}</span>
-                                </div>
-                                <div class="schedule-team away ${team2Winning ? 'winner' : team1Winning ? 'loser' : ''}">
-                                    <span class="schedule-team-name">${team2Name}</span>
-                                </div>
-                            </div>
-                        `;
-                    } else {
-                        return `
-                            <div class="schedule-matchup">
-                                <div class="schedule-team">
-                                    <span class="schedule-team-name">${team1Name}</span>
-                                </div>
-                                <div class="schedule-score-box">
-                                    <span class="schedule-no-score">vs</span>
-                                </div>
-                                <div class="schedule-team away">
-                                    <span class="schedule-team-name">${team2Name}</span>
-                                </div>
-                            </div>
-                        `;
-                    }
-                }).join('');
-
-                html += `
-                    <div class="schedule-week ${isCurrent ? 'current' : ''}">
-                        <div class="schedule-week-header">
-                            <span class="schedule-week-title">Week ${weekNum}</span>
-                            <span class="schedule-week-badge ${badgeClass}">${badgeText}</span>
-                        </div>
-                        <div class="schedule-matchups">
-                            ${matchupsHtml}
-                        </div>
-                    </div>
-                `;
-            }
-            
-            // Add playoff weeks (16-17) - show projected matchups from current standings
-            if (playoffs) {
-                html += renderPlayoffScheduleWeeks(playoffs, weekDataMap, currentWeekNum);
-            }
-
-            container.innerHTML = html;
-        }
-        
-        function renderPlayoffScheduleWeeks(playoffs, weekDataMap, currentWeekNum) {
-            const standings = data.standings || [];
-            
-            const getTeamName = (abbrev) => {
-                if (!abbrev) return 'TBD';
-                const team = standings.find(s => s.abbrev === abbrev);
-                return team ? team.name : abbrev;
-            };
-            
-            let html = '';
-            
-            // Week 16 - Semifinals
-            const sf1 = playoffs?.week_16?.semifinal_1 || {};
-            const sf2 = playoffs?.week_16?.semifinal_2 || {};
-            const jamboreeTeams = playoffs?.jamboree_teams || [];
-            const week16Data = weekDataMap[16];
-            
-            const isCurrent16 = currentWeekNum === 16;
-            const isComplete16 = currentWeekNum > 16;
-            let badge16Class = 'upcoming';
-            let badge16Text = 'Upcoming';
-            if (isCurrent16) { badge16Class = 'current'; badge16Text = 'Current'; }
-            else if (isComplete16) { badge16Class = 'complete'; badge16Text = 'Complete'; }
-            
-            // Build semifinal matchups
-            const renderPlayoffMatchup = (game, label) => {
-                if (!game.higher_seed && !game.lower_seed) {
-                    return `
-                        <div class="schedule-matchup">
-                            <div class="schedule-team"><span class="schedule-team-name">TBD</span></div>
-                            <div class="schedule-score-box"><span class="schedule-no-score">vs</span></div>
-                            <div class="schedule-team away"><span class="schedule-team-name">TBD</span></div>
-                        </div>
-                    `;
-                }
-                const team1Name = getTeamName(game.higher_seed);
-                const team2Name = getTeamName(game.lower_seed);
-                const score1 = game.higher_score || 0;
-                const score2 = game.lower_score || 0;
-                const hasScores = score1 > 0 || score2 > 0;
-                const team1Winning = score1 > score2;
-                const team2Winning = score2 > score1;
-                
-                if (hasScores || isComplete16) {
-                    return `
-                        <div class="schedule-matchup">
-                            <div class="schedule-team ${team1Winning ? 'winner' : team2Winning ? 'loser' : ''}">
-                                <span class="schedule-team-name">${team1Name}</span>
-                                <span class="schedule-playoff-label">${label}</span>
-                            </div>
-                            <div class="schedule-score-box">
-                                <span class="schedule-score ${team1Winning ? 'winning' : ''}">${score1}</span>
-                                <span class="schedule-vs">-</span>
-                                <span class="schedule-score ${team2Winning ? 'winning' : ''}">${score2}</span>
-                            </div>
-                            <div class="schedule-team away ${team2Winning ? 'winner' : team1Winning ? 'loser' : ''}">
-                                <span class="schedule-team-name">${team2Name}</span>
-                            </div>
-                        </div>
-                    `;
-                }
-                return `
-                    <div class="schedule-matchup">
-                        <div class="schedule-team">
-                            <span class="schedule-team-name">${team1Name}</span>
-                            <span class="schedule-playoff-label">${label}</span>
-                        </div>
-                        <div class="schedule-score-box"><span class="schedule-no-score">vs</span></div>
-                        <div class="schedule-team away"><span class="schedule-team-name">${team2Name}</span></div>
-                    </div>
-                `;
-            };
-            
-            html += `
-                <div class="schedule-week playoff ${isCurrent16 ? 'current' : ''}">
-                    <div class="schedule-week-header">
-                        <span class="schedule-week-title">Week 16 - Semifinals</span>
-                        <span class="schedule-week-badge ${badge16Class}">${badge16Text}</span>
-                    </div>
-                    <div class="schedule-matchups">
-                        ${renderPlayoffMatchup(sf1, '(1) vs (4)')}
-                        ${renderPlayoffMatchup(sf2, '(2) vs (3)')}
-                        <div class="schedule-matchup" style="opacity: 0.7; border-top: 1px dashed var(--border); margin-top: 0.5rem; padding-top: 0.5rem;">
-                            <div class="schedule-team"><span class="schedule-team-name" style="color: var(--accent-tertiary);">🎪 Jamboree: Seeds 5-12</span></div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            // Week 17 - Finals
-            const champ = playoffs?.week_17?.championship || {};
-            const third = playoffs?.week_17?.third_place || {};
-            
-            const isCurrent17 = currentWeekNum === 17;
-            const isComplete17 = currentWeekNum > 17;
-            let badge17Class = 'upcoming';
-            let badge17Text = 'Upcoming';
-            if (isCurrent17) { badge17Class = 'current'; badge17Text = 'Current'; }
-            else if (isComplete17) { badge17Class = 'complete'; badge17Text = 'Complete'; }
-            
-            const renderFinalMatchup = (game, label, isChampionship = false) => {
-                if (!game.team1 && !game.team2) {
-                    return `
-                        <div class="schedule-matchup">
-                            <div class="schedule-team"><span class="schedule-team-name">TBD</span></div>
-                            <div class="schedule-score-box"><span class="schedule-no-score">vs</span></div>
-                            <div class="schedule-team away"><span class="schedule-team-name">TBD</span></div>
-                        </div>
-                    `;
-                }
-                const team1Name = getTeamName(game.team1);
-                const team2Name = getTeamName(game.team2);
-                const score1 = game.score1 || 0;
-                const score2 = game.score2 || 0;
-                const hasScores = score1 > 0 || score2 > 0;
-                const team1Winning = score1 > score2;
-                const team2Winning = score2 > score1;
-                
-                const labelStyle = isChampionship ? 'color: var(--accent-gold);' : '';
-                
-                if (hasScores || isComplete17) {
-                    return `
-                        <div class="schedule-matchup">
-                            <div class="schedule-team ${team1Winning ? 'winner' : team2Winning ? 'loser' : ''}">
-                                <span class="schedule-team-name">${team1Name}</span>
-                                <span class="schedule-playoff-label" style="${labelStyle}">${label}</span>
-                            </div>
-                            <div class="schedule-score-box">
-                                <span class="schedule-score ${team1Winning ? 'winning' : ''}">${score1}</span>
-                                <span class="schedule-vs">-</span>
-                                <span class="schedule-score ${team2Winning ? 'winning' : ''}">${score2}</span>
-                            </div>
-                            <div class="schedule-team away ${team2Winning ? 'winner' : team1Winning ? 'loser' : ''}">
-                                <span class="schedule-team-name">${team2Name}</span>
-                            </div>
-                        </div>
-                    `;
-                }
-                return `
-                    <div class="schedule-matchup">
-                        <div class="schedule-team">
-                            <span class="schedule-team-name">${team1Name}</span>
-                            <span class="schedule-playoff-label" style="${labelStyle}">${label}</span>
-                        </div>
-                        <div class="schedule-score-box"><span class="schedule-no-score">vs</span></div>
-                        <div class="schedule-team away"><span class="schedule-team-name">${team2Name}</span></div>
-                    </div>
-                `;
-            };
-            
-            html += `
-                <div class="schedule-week playoff ${isCurrent17 ? 'current' : ''}">
-                    <div class="schedule-week-header">
-                        <span class="schedule-week-title">Week 17 - Finals</span>
-                        <span class="schedule-week-badge ${badge17Class}">${badge17Text}</span>
-                    </div>
-                    <div class="schedule-matchups">
-                        ${renderFinalMatchup(champ, '🏆 Oakland Bowl', true)}
-                        ${renderFinalMatchup(third, '3rd Place')}
-                        <div class="schedule-matchup" style="opacity: 0.7; border-top: 1px dashed var(--border); margin-top: 0.5rem; padding-top: 0.5rem;">
-                            <div class="schedule-team"><span class="schedule-team-name" style="color: var(--accent-tertiary);">🎪 Jamboree continues</span></div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            return html;
-        }
-
-        function renderMatchups() {
-            const container = document.getElementById('matchups-container');
-            const playoffContainer = document.getElementById('playoff-container');
-            const regularSeasonWeeks = data.regular_season_weeks || 15;
-            
-            // Check if this is a playoff week
-            const isPlayoffWeek = currentWeek > regularSeasonWeeks;
-            
-            if (isPlayoffWeek) {
-                // Show playoff bracket and Jamboree
-                playoffContainer.style.display = 'block';
-                container.style.display = 'none';
-                renderPlayoffBracket();
-                renderJamboree();
-                return;
-            }
-            
-            // Regular season - hide playoff container
-            playoffContainer.style.display = 'none';
-            container.style.display = 'block';
-            
-            const weekData = data.weeks?.find(w => w.week === currentWeek);
-            const schedule = getWeekMatchups(currentWeek);
-            
-            if (!weekData || !weekData.teams || !schedule) {
-                container.innerHTML = '<div class="loading">No matchup data for this week</div>';
-                return;
-            }
-
-            // Create a lookup map for team data by abbreviation
-            const teamsByAbbrev = {};
-            weekData.teams.forEach(t => {
-                teamsByAbbrev[t.abbrev] = t;
-            });
-
-            // Build matchups from schedule
-            const matchups = schedule.map(([abbrev1, abbrev2]) => {
-                return {
-                    team1: teamsByAbbrev[abbrev1],
-                    team2: teamsByAbbrev[abbrev2]
-                };
-            }).filter(m => m.team1 && m.team2);
-
-            const projections = weekData.projections || null;
-
-            container.innerHTML = matchups.map((matchup, idx) => {
-                const t1 = matchup.team1;
-                const t2 = matchup.team2;
-                const t1Winning = t1.total_score > t2.total_score;
-                const t2Winning = t2.total_score > t1.total_score;
-
-                const p1 = projections?.[t1.abbrev];
-                const p2 = projections?.[t2.abbrev];
-                const projectionHtml = (p1 && p2) ? `
-                    <div class="projection-display">
-                        <span class="projected-score">Proj ${p1.projected_total}</span>
-                        <span class="win-probability">${Math.round(p1.win_probability * 100)}% - ${Math.round(p2.win_probability * 100)}%</span>
-                        <span class="projected-score">${p2.projected_total} Proj</span>
-                    </div>
-                ` : '';
-
-                return `
-                    <div class="matchup-card">
-                        <div class="matchup-header">
-                            <div class="team">
-                                <div class="team-name">${t1.name}</div>
-                                <div class="team-owner">${t1.owner}</div>
-                            </div>
-                            <div class="vs-container">
-                                <div class="score-display">
-                                    <span class="score ${t1Winning ? 'winning' : t2Winning ? 'losing' : ''}">${t1.total_score}</span>
-                                    <span class="score-divider">-</span>
-                                    <span class="score ${t2Winning ? 'winning' : t1Winning ? 'losing' : ''}">${t2.total_score}</span>
-                                </div>
-                                ${projectionHtml}
-                            </div>
-                            <div class="team right">
-                                <div class="team-name">${t2.name}</div>
-                                <div class="team-owner">${t2.owner}</div>
-                            </div>
-                        </div>
-                        <button class="expand-btn" onclick="toggleRoster(${idx})">View Rosters</button>
-                        <div class="roster-panel" id="roster-${idx}">
-                            <div class="roster-grid">
-                                <div class="roster-column">
-                                    <h4>${t1.name}</h4>
-                                    ${renderRosterList(t1.roster)}
-                                </div>
-                                <div class="roster-column">
-                                    <h4>${t2.name}</h4>
-                                    ${renderRosterList(t2.roster)}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function renderRosterList(roster) {
-            if (!roster) return '<div class="player-row">No roster data</div>';
-            
-            const starters = roster.filter(p => p.starter);
-            const bench = roster.filter(p => !p.starter);
-            
-            return [...starters, ...bench].map(p => `
-                <div class="player-row ${p.starter ? '' : 'bench'}">
-                    <div class="player-info">
-                        <span class="position-tag">${p.position}</span>
-                        <span class="player-name">${p.name}</span>
-                        <span class="player-team">${p.nfl_team}</span>
-                    </div>
-                    <span class="player-score">${p.score || 0}</span>
-                </div>
-            `).join('');
-        }
-
-        function toggleRoster(idx) {
-            const panel = document.getElementById(`roster-${idx}`);
-            panel.classList.toggle('expanded');
-        }
-
-        function renderPlayoffBracket() {
-            const playoffs = data.playoffs;
-            if (!playoffs) {
-                document.getElementById('playoff-bracket').innerHTML = '<div class="loading">Playoff seeding not yet determined</div>';
-                return;
-            }
-            
-            const standings = data.standings || [];
-            
-            const getTeamName = (abbrev) => {
-                const team = standings.find(s => s.abbrev === abbrev);
-                return team ? team.name : abbrev;
-            };
-            
-            const seeds = playoffs.seeds || {};
-            const sf1 = playoffs.week_16?.semifinal_1 || {};
-            const sf2 = playoffs.week_16?.semifinal_2 || {};
-            const champ = playoffs.week_17?.championship || {};
-            const third = playoffs.week_17?.third_place || {};
-            
-            const renderBracketTeam = (abbrev, score, isWinner, isLoser, showSeed = true) => {
-                if (!abbrev) {
-                    return `<div class="bracket-tbd">TBD</div>`;
-                }
-                const seed = seeds[abbrev] || '?';
-                const winClass = isWinner ? 'winner' : (isLoser ? 'loser' : '');
-                return `
-                    <div class="bracket-team ${winClass}">
-                        <div class="bracket-team-info">
-                            ${showSeed ? `<span class="bracket-seed">${seed}</span>` : ''}
-                            <span class="bracket-team-name">${getTeamName(abbrev)}</span>
-                        </div>
-                        <span class="bracket-score">${score || 0}</span>
-                    </div>
-                `;
-            };
-            
-            const html = `
-                <!-- Left: Semifinals -->
-                <div class="bracket-round">
-                    <div class="bracket-game">
-                        <div class="bracket-game-header">Semifinal 1 • Week 16</div>
-                        ${renderBracketTeam(sf1.higher_seed, sf1.higher_score, sf1.winner === sf1.higher_seed, sf1.loser === sf1.higher_seed)}
-                        ${renderBracketTeam(sf1.lower_seed, sf1.lower_score, sf1.winner === sf1.lower_seed, sf1.loser === sf1.lower_seed)}
-                    </div>
-                    <div class="bracket-game">
-                        <div class="bracket-game-header">Semifinal 2 • Week 16</div>
-                        ${renderBracketTeam(sf2.higher_seed, sf2.higher_score, sf2.winner === sf2.higher_seed, sf2.loser === sf2.higher_seed)}
-                        ${renderBracketTeam(sf2.lower_seed, sf2.lower_score, sf2.winner === sf2.lower_seed, sf2.loser === sf2.lower_seed)}
-                    </div>
-                </div>
-                
-                <!-- Center: Finals -->
-                <div class="bracket-finals">
-                    <div class="bracket-game championship">
-                        <div class="bracket-game-header">🏆 Oakland Bowl • Week 17</div>
-                        ${renderBracketTeam(champ.team1, champ.score1, champ.winner === champ.team1, champ.loser === champ.team1, false)}
-                        ${renderBracketTeam(champ.team2, champ.score2, champ.winner === champ.team2, champ.loser === champ.team2, false)}
-                    </div>
-                    <div class="bracket-game third-place">
-                        <div class="bracket-game-header">3rd Place Game • Week 17</div>
-                        ${renderBracketTeam(third.team1, third.score1, third.winner === third.team1, third.loser === third.team1, false)}
-                        ${renderBracketTeam(third.team2, third.score2, third.winner === third.team2, third.loser === third.team2, false)}
-                    </div>
-                </div>
-                
-                <!-- Right: Results summary -->
-                <div class="bracket-round">
-                    <div class="bracket-game">
-                        <div class="bracket-game-header">Final Standings</div>
-                        <div class="bracket-team ${champ.winner ? 'winner' : ''}">
-                            <div class="bracket-team-info">
-                                <span class="bracket-seed">1st</span>
-                                <span class="bracket-team-name">${champ.winner ? getTeamName(champ.winner) : 'TBD'}</span>
-                            </div>
-                        </div>
-                        <div class="bracket-team ${champ.loser ? 'loser' : ''}">
-                            <div class="bracket-team-info">
-                                <span class="bracket-seed">2nd</span>
-                                <span class="bracket-team-name">${champ.loser ? getTeamName(champ.loser) : 'TBD'}</span>
-                            </div>
-                        </div>
-                        <div class="bracket-team ${third.winner ? '' : ''}">
-                            <div class="bracket-team-info">
-                                <span class="bracket-seed">3rd</span>
-                                <span class="bracket-team-name">${third.winner ? getTeamName(third.winner) : 'TBD'}</span>
-                            </div>
-                        </div>
-                        <div class="bracket-team ${third.loser ? 'loser' : ''}">
-                            <div class="bracket-team-info">
-                                <span class="bracket-seed">4th</span>
-                                <span class="bracket-team-name">${third.loser ? getTeamName(third.loser) : 'TBD'}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            document.getElementById('playoff-bracket').innerHTML = html;
-        }
-
-        function renderJamboree() {
-            const playoffs = data.playoffs;
-            const container = document.getElementById('jamboree-standings');
-            
-            if (!playoffs || !playoffs.jamboree || !playoffs.jamboree.standings) {
-                container.innerHTML = '<div class="loading">Jamboree standings will appear once playoffs begin</div>';
-                return;
-            }
-            
-            const standings = playoffs.jamboree.standings;
-            const winner = playoffs.jamboree.winner;
-            
-            if (standings.length === 0) {
-                container.innerHTML = '<div class="loading">No Jamboree teams</div>';
-                return;
-            }
-            
-            container.innerHTML = `
-                <table class="jamboree-table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Team</th>
-                            <th class="num">Week 16</th>
-                            <th class="num">Week 17</th>
-                            <th class="num">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${standings.map((team, idx) => {
-                            const isWinner = winner && team.abbrev === winner;
-                            return `
-                                <tr class="${isWinner ? 'winner' : ''}">
-                                    <td><span class="jamboree-rank">${idx + 1}</span></td>
-                                    <td>
-                                        ${team.name}
-                                        ${isWinner ? '<span class="jamboree-winner-badge">CHAMPION</span>' : ''}
-                                    </td>
-                                    <td class="num">${team.week_16_score}</td>
-                                    <td class="num">${team.week_17_score}</td>
-                                    <td class="num total-col">${team.total}</td>
-                                </tr>
-                            `;
-                        }).join('')}
-                    </tbody>
-                </table>
-            `;
-        }
-
-        // Expected wins / luck rating: ported from the sibling QPFL site's
-        // computeExpectedWins. Each week a team earns the fraction of the rest
-        // of the field it outscored (0..1), so xWins is on the same scale as
-        // actual wins (one matchup per week). "Luck" is actual wins minus
-        // expected wins - a team that keeps winning close games it "should"
-        // lose on points shows positive luck.
-        function computeExpectedWins() {
-            const result = {};
-            for (const week of data.weeks || []) {
-                // An in-progress week's scores are still moving and standings
-                // don't count it either - skip it here for the same reason.
-                if (!week.final) continue;
-
-                const teams = week.teams || [];
-                const n = teams.length;
-                if (n < 2) continue;
-
-                for (const team of teams) {
-                    if (!result[team.abbrev]) result[team.abbrev] = { xWins: 0, xLosses: 0 };
-                    let beats = 0, ties = 0;
-                    for (const other of teams) {
-                        if (other.abbrev === team.abbrev) continue;
-                        if (team.total_score > other.total_score) beats++;
-                        else if (team.total_score === other.total_score) ties++;
-                    }
-                    const opponents = n - 1;
-                    // One game per week: the fraction of the field beaten.
-                    const expected = (beats + ties * 0.5) / opponents;
-                    result[team.abbrev].xWins += expected;
-                    result[team.abbrev].xLosses += 1 - expected;
-                }
-            }
-            return result;
-        }
-
-        // Remaining strength of schedule: average PPG of each team's
-        // not-yet-played regular-season opponents. Ported from the sibling
-        // QPFL site's computeRemainingSOS, adapted to OPFL's schedule shape
-        // (data.schedule is {"1": [[abbrev, abbrev], ...]}, not a list of
-        // week objects with nested team1/team2).
-        function computeRemainingSOS(standings) {
-            const schedule = data.schedule || {};
-            const completedThrough = data.standings_through_week || 0;
-            const regularSeasonWeeks = data.regular_season_weeks || 15;
-
-            const teamPpg = {};
-            for (const team of standings) {
-                const games = (team.wins || 0) + (team.losses || 0) + (team.ties || 0);
-                teamPpg[team.abbrev] = games ? (team.points_for || 0) / games : null;
-            }
-
-            const remaining = {};
-            for (const [weekStr, pairings] of Object.entries(schedule)) {
-                const week = parseInt(weekStr, 10);
-                if (week > regularSeasonWeeks || week <= completedThrough) continue;
-                for (const [a1, a2] of pairings) {
-                    if (!remaining[a1]) remaining[a1] = [];
-                    if (!remaining[a2]) remaining[a2] = [];
-                    remaining[a1].push(a2);
-                    remaining[a2].push(a1);
-                }
-            }
-
-            if (Object.keys(remaining).length === 0) return null;
-
-            const result = {};
-            for (const [abbrev, opponents] of Object.entries(remaining)) {
-                if (!opponents.length) continue;
-                const ppgs = opponents.map(opp => teamPpg[opp]).filter(v => v != null);
-                if (ppgs.length) result[abbrev] = ppgs.reduce((s, v) => s + v, 0) / ppgs.length;
-            }
-            return Object.keys(result).length ? result : null;
-        }
-
-        // Playoff odds: Monte Carlo simulation of the remaining regular
-        // season, adapted from the sibling QPFL site's simulatePlayoffOdds.
-        // Two simplifications versus that version: team scoring distributions
-        // come straight from team_stats' ppg/std_dev (Phase 5 already computed
-        // them) rather than being re-derived from raw weeks here, and this
-        // only reports playoff-berth odds - no mathematical clinch/elimination
-        // tracking, which QPFL needs for its toilet-bowl bracket and OPFL's
-        // simpler top-4 bracket doesn't.
-        const PLAYOFF_TRIALS = 2000;
-        const PLAYOFF_SLOTS = 4;
-        const PLAYOFF_MEAN_PRIOR_GAMES = 3;
-
-        function createSeededRandom(seed) {
-            let state = seed >>> 0;
-            return () => {
-                state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
-                return state / 4294967296;
-            };
-        }
-
-        function gaussianSample(mean, std, random = Math.random) {
-            // Box-Muller. std is clamped to a small positive number to avoid 0-variance.
-            const s = Math.max(std, 1);
-            let u = 0, v = 0;
-            while (u === 0) u = random();
-            while (v === 0) v = random();
-            const z = Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
-            return mean + z * s;
-        }
-
-        function getRemainingRegularSeasonMatchups() {
-            const regularSeasonWeeks = data.regular_season_weeks || 15;
-            const completedThrough = data.standings_through_week || 0;
-            const schedule = data.schedule || {};
-
-            const out = [];
-            for (const [weekStr, pairings] of Object.entries(schedule)) {
-                const week = parseInt(weekStr, 10);
-                if (week > regularSeasonWeeks || week <= completedThrough) continue;
-                for (const [team1, team2] of pairings) {
-                    out.push({ week, team1, team2 });
-                }
-            }
-            return out;
-        }
-
-        function simulatePlayoffOdds() {
-            const standings = data.standings || [];
-            if (standings.length === 0) return null;
-
-            const remaining = getRemainingRegularSeasonMatchups();
-            if (remaining.length === 0) return null;
-
-            const teamStats = data.team_stats || {};
-            const allPpg = standings
-                .map(t => teamStats[t.abbrev]?.ppg)
-                .filter(v => typeof v === 'number');
-            const leagueMean = allPpg.length ? allPpg.reduce((s, v) => s + v, 0) / allPpg.length : 50;
-            const allStd = standings
-                .map(t => teamStats[t.abbrev]?.std_dev)
-                .filter(v => typeof v === 'number');
-            const leagueStd = allStd.length ? allStd.reduce((s, v) => s + v, 0) / allStd.length : 15;
-
-            // Shrink each team's mean toward the league average, weighted as if
-            // the league mean were three extra prior games - so a hot or cold
-            // week 1 doesn't dominate the whole rest-of-season forecast.
-            const teamMean = {};
-            for (const t of standings) {
-                const stats = teamStats[t.abbrev];
-                const games = (t.wins || 0) + (t.losses || 0) + (t.ties || 0);
-                teamMean[t.abbrev] = (typeof stats?.ppg === 'number' && games > 0)
-                    ? (stats.ppg * games + leagueMean * PLAYOFF_MEAN_PRIOR_GAMES) / (games + PLAYOFF_MEAN_PRIOR_GAMES)
-                    : leagueMean;
-            }
-
-            const weeksRemaining = {};
-            for (const m of remaining) {
-                if (!weeksRemaining[m.week]) weeksRemaining[m.week] = [];
-                weeksRemaining[m.week].push(m);
-            }
-            const remainingWeekNums = Object.keys(weeksRemaining).map(Number).sort((a, b) => a - b);
-
-            const initialRP = {}, initialPF = {}, teamLabel = {};
-            for (const t of standings) {
-                initialRP[t.abbrev] = t.rank_points || 0;
-                initialPF[t.abbrev] = t.points_for || 0;
-                teamLabel[t.abbrev] = t.name || t.abbrev;
-            }
-
-            const playoffCount = {};
-            for (const t of standings) playoffCount[t.abbrev] = 0;
-
-            const random = createSeededRandom(Number(data.season || 1) * 1009 + 17);
-
-            for (let trial = 0; trial < PLAYOFF_TRIALS; trial++) {
-                const rp = { ...initialRP };
-                const pf = { ...initialPF };
-
-                for (const wk of remainingWeekNums) {
-                    const matchups = weeksRemaining[wk];
-                    const weekScores = {};
-                    const teamsThisWeek = new Set();
-                    for (const m of matchups) {
-                        teamsThisWeek.add(m.team1);
-                        teamsThisWeek.add(m.team2);
-                    }
-                    for (const abbrev of teamsThisWeek) {
-                        weekScores[abbrev] = gaussianSample(teamMean[abbrev] ?? leagueMean, leagueStd, random);
-                        pf[abbrev] = (pf[abbrev] || 0) + weekScores[abbrev];
-                    }
-                    for (const m of matchups) {
-                        const s1 = weekScores[m.team1];
-                        const s2 = weekScores[m.team2];
-                        if (s1 > s2) rp[m.team1] += 1;
-                        else if (s2 > s1) rp[m.team2] += 1;
-                        else { rp[m.team1] += 0.5; rp[m.team2] += 0.5; }
-                    }
-                    // Top-6 scoring bonus, matching build_standings' rule.
-                    // Exact score ties are effectively impossible with continuous
-                    // samples, so this skips the real rule's tie-splitting.
-                    const sortedThisWeek = Array.from(teamsThisWeek).sort((a, b) => weekScores[b] - weekScores[a]);
-                    const topHalfCount = Math.min(6, sortedThisWeek.length);
-                    for (let i = 0; i < topHalfCount; i++) rp[sortedThisWeek[i]] += 0.5;
-                }
-
-                // Final order follows the real tiebreak: rank_points, then points_for.
-                const finalOrder = standings.map(t => t.abbrev).sort((a, b) => {
-                    if (rp[b] !== rp[a]) return rp[b] - rp[a];
-                    return pf[b] - pf[a];
-                });
-                for (let i = 0; i < PLAYOFF_SLOTS && i < finalOrder.length; i++) {
-                    playoffCount[finalOrder[i]] += 1;
-                }
-            }
-
-            const byTeam = {};
-            for (const t of standings) {
-                byTeam[t.abbrev] = {
-                    name: teamLabel[t.abbrev],
-                    odds: playoffCount[t.abbrev] / PLAYOFF_TRIALS,
-                };
-            }
-            return { byTeam, weeksRemaining: remainingWeekNums.length };
-        }
-
-        function renderPlayoffOdds() {
-            const card = document.getElementById('playoff-odds-card');
-            if (!card) return;
-
-            const sim = simulatePlayoffOdds();
-            if (!sim) {
-                card.style.display = 'none';
-                return;
-            }
-
-            const teams = Object.values(sim.byTeam).sort((a, b) => b.odds - a.odds);
-            card.style.display = '';
-            card.innerHTML = `
-                <div class="stats-position-card">
-                    <div class="stats-position-header">
-                        Playoff Odds
-                        <span class="playoff-odds-meta">${sim.weeksRemaining} week${sim.weeksRemaining === 1 ? '' : 's'} remaining &middot; ${PLAYOFF_TRIALS.toLocaleString()} simulations</span>
-                    </div>
-                    ${teams.map(t => `
-                        <div class="playoff-odds-row">
-                            <span class="playoff-odds-name">${t.name}</span>
-                            <div class="playoff-odds-bar-track">
-                                <div class="playoff-odds-bar" style="width: ${(t.odds * 100).toFixed(1)}%"></div>
-                            </div>
-                            <span class="playoff-odds-pct">${(t.odds * 100).toFixed(0)}%</span>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-        }
-
-        function renderStandings() {
-            const container = document.getElementById('standings-container');
-            let standings = data.standings || [];
-
-            if (standings.length === 0) {
-                container.innerHTML = '<div class="loading">No standings data yet</div>';
-                return;
-            }
-
-            // Sort standings by: 1) rank_points (wins + top6), 2) wins, 3) points_for
-            standings = [...standings].sort((a, b) => {
-                // First by rank_points (descending)
-                const rpDiff = (b.rank_points || 0) - (a.rank_points || 0);
-                if (rpDiff !== 0) return rpDiff;
-                // Then by wins (descending)
-                const winsDiff = (b.wins || 0) - (a.wins || 0);
-                if (winsDiff !== 0) return winsDiff;
-                // Then by points_for (descending)
-                return (b.points_for || 0) - (a.points_for || 0);
-            });
-
-            const through = data.standings_through_week || 0;
-            const note = through
-                ? `<div class="standings-note">Through Week ${through}${data.standings_in_progress ? ' &middot; week in progress' : ''}</div>`
-                : '';
-
-            const expectedWins = computeExpectedWins();
-            const sos = computeRemainingSOS(standings);
-
-            container.innerHTML = note + `
-                <table class="standings-table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Team</th>
-                            <th class="num">Pts</th>
-                            <th class="num">W-L-T</th>
-                            <th class="num">Top 6</th>
-                            <th class="num">PF</th>
-                            <th class="num">PA</th>
-                            <th class="num">xW-xL</th>
-                            <th class="num">Luck</th>
-                            ${sos ? '<th class="num">Rem. SOS</th>' : ''}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${standings.map((team, idx) => {
-                            const rank = idx + 1;
-                            const isPlayoff = rank <= 4;
-                            const isToilet = rank >= standings.length - 1;
-                            const record = `${team.wins || 0}-${team.losses || 0}-${team.ties || 0}`;
-
-                            const xw = expectedWins[team.abbrev];
-                            let xwCell = '<td class="num xwl">—</td><td class="num luck">—</td>';
-                            if (xw) {
-                                const luck = (team.wins || 0) - xw.xWins;
-                                const luckStr = (luck >= 0 ? '+' : '') + luck.toFixed(1);
-                                const luckClass = luck > 0.5 ? 'luck-pos' : (luck < -0.5 ? 'luck-neg' : '');
-                                xwCell = `<td class="num xwl">${xw.xWins.toFixed(1)}-${xw.xLosses.toFixed(1)}</td>` +
-                                         `<td class="num luck ${luckClass}">${luckStr}</td>`;
-                            }
-                            const sosValue = sos && sos[team.abbrev] != null
-                                ? `<td class="num sos">${sos[team.abbrev].toFixed(1)}</td>`
-                                : (sos ? '<td class="num sos">—</td>' : '');
-
-                            return `
-                                <tr>
-                                    <td>
-                                        <span class="rank ${isPlayoff ? 'playoffs' : isToilet ? 'toilet-bowl' : ''}">${rank}</span>
-                                    </td>
-                                    <td>
-                                        <span class="team-name">${team.name}</span>
-                                        <span class="team-code">${team.abbrev}</span>
-                                        ${isPlayoff ? '<span class="playoff-label playoffs">PLAYOFF</span>' : ''}
-                                        ${isToilet ? '<span class="playoff-label toilet">TOILET</span>' : ''}
-                                    </td>
-                                    <td class="num rank-points">${team.rank_points?.toFixed(1) || 0}</td>
-                                    <td class="num record">${record}</td>
-                                    <td class="num top-half">${team.top_half || 0}</td>
-                                    <td class="num points-for">${team.points_for?.toFixed(1) || 0}</td>
-                                    <td class="num points-against">${team.points_against?.toFixed(1) || 0}</td>
-                                    ${xwCell}
-                                    ${sosValue}
-                                </tr>
-                            `;
-                        }).join('')}
-                    </tbody>
-                </table>
-            `;
-        }
-
-        // Points Leaders
-        //
-        // Ported from the sibling QPFL site's getStatsLeaders/renderStatsLeaders.
-        // OPFL's weeks[] is flatter than QPFL's (week.teams[] rather than
-        // week.matchups[].team1/team2), which simplifies the aggregation loop;
-        // everything else - the composite key, the per-position grouping, the
-        // "top 5 unless a position is expanded" UI - carries over unchanged.
-        const STATS_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DF', 'HC'];
-        const STATS_POSITION_NAMES = {
-            QB: 'Quarterbacks',
-            RB: 'Running Backs',
-            WR: 'Wide Receivers',
-            TE: 'Tight Ends',
-            K: 'Kickers',
-            DF: 'Defenses',
-            HC: 'Head Coaches',
-        };
-
-        let currentStatsPosition = 'ALL';
-        let _statsLeadersCache = { dataRef: null, value: null };
-
-        function getStatsLeaders() {
-            if (!data) return {};
-
-            // Memoized: leaders depend only on the current data object, and
-            // recomputing means re-walking every week's every roster.
-            if (_statsLeadersCache.dataRef === data) {
-                return _statsLeadersCache.value;
-            }
-
-            // key: "name|nflTeam|position" -> aggregate. Position is part of the
-            // key (not just name+team) because a head coach and a defense can
-            // share an NFL team abbreviation.
-            const playerStats = {};
-
-            for (const week of data.weeks || []) {
-                // An in-progress week's scores are still moving; counting it
-                // would make the leaderboard jump around mid-Sunday.
-                if (week.final === false) continue;
-
-                for (const team of week.teams || []) {
-                    for (const player of team.roster || []) {
-                        if (!player.name || !player.position) continue;
-
-                        const key = `${player.name}|${player.nfl_team || ''}|${player.position}`;
-                        if (!playerStats[key]) {
-                            playerStats[key] = {
-                                name: player.name,
-                                nfl_team: player.nfl_team || '',
-                                position: player.position,
-                                fantasy_team: team.abbrev,
-                                total_points: 0,
-                                weeks_played: 0,
-                            };
-                        }
-
-                        playerStats[key].fantasy_team = team.abbrev;
-                        if (player.score !== undefined && player.score !== null) {
-                            playerStats[key].total_points += player.score;
-                            if (player.score !== 0) {
-                                playerStats[key].weeks_played++;
-                            }
-                        }
-                    }
-                }
-            }
-
-            const byPosition = {};
-            for (const player of Object.values(playerStats)) {
-                if (!byPosition[player.position]) byPosition[player.position] = [];
-                byPosition[player.position].push(player);
-            }
-            for (const pos of Object.keys(byPosition)) {
-                byPosition[pos].sort((a, b) => b.total_points - a.total_points);
-            }
-
-            _statsLeadersCache = { dataRef: data, value: byPosition };
-            return byPosition;
-        }
-
-        function renderStatsLeaders() {
-            const leaders = getStatsLeaders();
-
-            const selector = document.getElementById('stats-position-selector');
-            selector.innerHTML = `
-                <button class="stats-pos-btn ${currentStatsPosition === 'ALL' ? 'active' : ''}"
-                        role="tab" aria-selected="${currentStatsPosition === 'ALL'}" data-pos="ALL">All</button>
-                ${STATS_POSITIONS.map(pos => `
-                    <button class="stats-pos-btn ${currentStatsPosition === pos ? 'active' : ''}"
-                            role="tab" aria-selected="${currentStatsPosition === pos}" data-pos="${pos}">${pos}</button>
-                `).join('')}
-            `;
-
-            selector.querySelectorAll('.stats-pos-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    currentStatsPosition = btn.dataset.pos;
-                    renderStatsLeaders();
-                });
-            });
-
-            const container = document.getElementById('stats-leaders-container');
-            const positionsToShow = currentStatsPosition === 'ALL' ? STATS_POSITIONS : [currentStatsPosition];
-            container.classList.toggle('single-position', currentStatsPosition !== 'ALL');
-
-            const anyLeaders = positionsToShow.some(pos => (leaders[pos] || []).length > 0);
-            if (!anyLeaders) {
-                container.innerHTML = '<div class="loading">No completed weeks yet</div>';
-                return;
-            }
-
-            container.innerHTML = positionsToShow.map(pos => {
-                const posLeaders = currentStatsPosition === 'ALL'
-                    ? (leaders[pos] || []).slice(0, 5)
-                    : (leaders[pos] || []);
-                if (posLeaders.length === 0) return '';
-
-                return `
-                    <div class="stats-position-card">
-                        <div class="stats-position-header">${STATS_POSITION_NAMES[pos] || pos}</div>
-                        ${posLeaders.map((player, idx) => {
-                            const rank = idx + 1;
-                            const rankClass = rank <= 3 ? `rank-${rank}` : '';
-                            return `
-                                <div class="stats-leader-row ${rankClass}">
-                                    <div class="stats-rank">${rank}</div>
-                                    <div class="stats-player-info">
-                                        <span class="stats-player-name">${player.name}</span>
-                                        <div class="stats-player-meta">
-                                            <span class="stats-nfl-team">${player.nfl_team}</span>
-                                            <span class="stats-fantasy-team">• ${player.fantasy_team}</span>
-                                        </div>
-                                    </div>
-                                    <div class="stats-points">${player.total_points.toFixed(1)}</div>
-                                </div>
-                            `;
-                        }).join('')}
-                        ${currentStatsPosition === 'ALL' && (leaders[pos] || []).length > 5 ? `
-                            <button class="stats-view-all" data-pos="${pos}">View all ${STATS_POSITION_NAMES[pos]}</button>
-                        ` : ''}
-                    </div>
-                `;
-            }).join('');
-
-            container.querySelectorAll('.stats-view-all').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    currentStatsPosition = btn.dataset.pos;
-                    renderStatsLeaders();
-                });
-            });
-        }
-
-        function renderTeamSelector() {
-            const container = document.getElementById('team-selector');
-            const teams = data.standings || [];
-
-            if (teams.length === 0) return;
-
-            container.innerHTML = teams.map(team => `
-                <button class="team-btn" data-abbrev="${team.abbrev}">${team.name}</button>
-            `).join('');
-            
-            container.querySelectorAll('.team-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    container.querySelectorAll('.team-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentTeam = btn.dataset.abbrev;
-                    renderTeamPage();
-                });
-            });
-            
-            // Select first team by default
-            if (teams.length > 0) {
-                currentTeam = teams[0].abbrev;
-                container.querySelector('.team-btn').classList.add('active');
-                renderTeamPage();
-            }
-        }
-
-        function renderTeamPage() {
-            const container = document.getElementById('team-roster-container');
-            const teamInfo = data.standings?.find(t => t.abbrev === currentTeam);
-            
-            if (!teamInfo) {
-                container.innerHTML = '<div class="loading">Select a team</div>';
-                return;
-            }
-
-            // Get roster across all weeks
-            const weeks = data.weeks || [];
-            const rosterByPlayer = {};
-
-            weeks.forEach(week => {
-                const teamData = week.teams?.find(t => t.abbrev === currentTeam);
-                if (teamData?.roster) {
-                teamData.roster.forEach(player => {
-                    const key = `${player.position}-${player.name}`;
-                        if (!rosterByPlayer[key]) {
-                            rosterByPlayer[key] = {
-                            name: player.name,
-                            nfl_team: player.nfl_team,
-                            position: player.position,
-                            weeks: {}
-                            };
-                    }
-                        rosterByPlayer[key].weeks[week.week] = {
-                            score: player.score || 0,
-                        starter: player.starter
-                    };
-                });
-                }
-            });
-            
-            // Group by position
-            const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DF', 'HC'];
-            const weekNums = weeks.map(w => w.week).sort((a, b) => a - b);
-            
-            let tableRows = '';
-            positions.forEach(pos => {
-                const playersInPos = Object.values(rosterByPlayer).filter(p => p.position === pos);
-                if (playersInPos.length === 0) return;
-
-                tableRows += `<tr class="position-group"><td colspan="${weekNums.length + 3}">${pos}</td></tr>`;
-                
-                playersInPos.forEach(player => {
-                    // Calculate season total for this player (all weeks, regardless of starter status)
-                    const seasonTotal = Object.values(player.weeks).reduce((sum, w) => sum + (w.score || 0), 0);
-                    
-                    tableRows += `
-                        <tr>
-                            <td><span class="player-name">${player.name}</span></td>
-                            <td><span class="player-team">${player.nfl_team}</span></td>
-                            ${weekNums.map(w => {
-                                const weekData = player.weeks[w];
-                                if (!weekData) return '<td class="week-score">-</td>';
-                                const cls = weekData.starter ? 'starter' : 'bench';
-                                return `<td class="week-score ${cls}">${weekData.score}</td>`;
-                            }).join('')}
-                            <td class="week-score season-total">${seasonTotal}</td>
-                        </tr>
-                    `;
-                });
-            });
-            
-            // Calculate totals
-            const totals = weekNums.map(w => {
-                const weekData = weeks.find(wk => wk.week === w);
-                const teamData = weekData?.teams?.find(t => t.abbrev === currentTeam);
-                return teamData?.total_score || 0;
-            });
-            const seasonGrandTotal = totals.reduce((sum, t) => sum + t, 0);
-
-            tableRows += `
-                <tr class="total-row">
-                    <td colspan="2"><strong>TOTAL</strong></td>
-                    ${totals.map(t => `<td class="week-score">${t}</td>`).join('')}
-                    <td class="week-score season-total">${seasonGrandTotal}</td>
-                </tr>
-            `;
-            
-            // Taxi Squad section
-            const taxiSquad = data.taxi_squads?.[currentTeam] || [];
-            let taxiHtml = `
-                <div class="taxi-section">
-                    <h3>Taxi Squad (${taxiSquad.length}/3)</h3>
-                    ${taxiSquad.length === 0 
-                        ? '<div class="taxi-empty">No players on taxi squad</div>'
-                        : taxiSquad.map(p => `
-                            <div class="player-row">
-                                <div class="player-info">
-                                    <span class="position-tag">${p.position}</span>
-                                    <span class="player-name">${p.name}</span>
-                                    <span class="player-team">${p.nfl_team}</span>
-                                    </div>
-                            </div>
-                        `).join('')
-                    }
-                        </div>
-                    `;
-            
-            // Draft Picks section
-            let picksHtml = '';
-            if (data.draft_picks && data.draft_picks[currentTeam]) {
-                const teamPicks = data.draft_picks[currentTeam];
-                const seasons = Object.keys(teamPicks).sort();
-                
-                picksHtml = `
-                    <div class="draft-picks-section">
-                        <h3>Future Draft Picks</h3>
-                        <div class="picks-grid">
-                            ${seasons.map(season => `
-                                <div class="picks-season">
-                                    <div class="picks-season-header">${season}</div>
-                                    ${Object.entries(teamPicks[season]).map(([draftType, picks]) => {
-                                        if (!picks || picks.length === 0) return '';
-                                        const typeLabel = draftType.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase());
-                                        return `
-                                            <div class="picks-draft-type">
-                                                <div class="picks-type-label">${typeLabel}</div>
-                                                <div class="picks-list">
-                                                    ${picks.map(p => {
-                                                        const fromLabel = p.own ? '' : ` <span class="pick-from">(${p.from})</span>`;
-                                                        return `<span class="pick-item ${p.own ? 'own' : 'acquired'}">R${p.round}${fromLabel}</span>`;
-                                                    }).join('')}
-                                                </div>
-                                            </div>
-                                        `;
-                                    }).join('')}
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-            
-            container.innerHTML = `
-                <div class="team-header">
-                    <h2>${teamInfo.name}</h2>
-                    <div class="owner">${teamInfo.owner}</div>
-                </div>
-                <div style="overflow-x: auto;">
-                    <table class="roster-table">
-                        <thead>
-                            <tr>
-                                <th>Player</th>
-                                <th>Team</th>
-                                ${weekNums.map(w => `<th class="week-col">W${w}</th>`).join('')}
-                                <th class="week-col total-col">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${tableRows}
-                        </tbody>
-                    </table>
-                </div>
-                ${taxiHtml}
-                ${picksHtml}
-            `;
-        }
-
-        function renderHistory() {
-            // Render championships table
-            const champBody = document.getElementById('championships-body');
-            champBody.innerHTML = CHAMPIONSHIPS.map(c => `
-                <tr>
-                    <td class="year-cell">${c.year}</td>
-                    <td class="champion">${c.first}</td>
-                    <td>${c.second}</td>
-                    <td>${c.third}</td>
-                    <td>${c.fourth}</td>
-                    <td class="score-cell">${c.score}</td>
-                    <td class="jamboree-cell">${c.jamboree || '-'}</td>
-                </tr>
-            `).join('');
-
-            // Render all-time records
-            const recordsBody = document.getElementById('records-body');
-            recordsBody.innerHTML = ALL_TIME_RECORDS.map(r => {
-                const playoffs = r.first + r.second + r.third + r.fourth;
-                // Approximate seasons (based on data)
-                const seasons = getSeasonsForOwner(r.owner);
-                const pct = seasons > 0 ? ((playoffs / seasons) * 100).toFixed(1) : 'N/A';
-                return `
-                    <tr>
-                        <td><strong>${r.owner}</strong></td>
-                        <td class="num champion">${r.first}</td>
-                        <td class="num">${r.second}</td>
-                        <td class="num">${r.third}</td>
-                        <td class="num">${r.fourth}</td>
-                        <td class="num">${playoffs}</td>
-                        <td class="num">${pct}%</td>
-                    </tr>
-                `;
-            }).join('');
-
-            renderSeasonRecords();
-            initPastSeasons();
-
-            // Tab switching
-            document.querySelectorAll('.history-tab').forEach(tab => {
-                tab.addEventListener('click', () => {
-                    document.querySelectorAll('.history-tab').forEach(t => t.classList.remove('active'));
-                    document.querySelectorAll('.history-content').forEach(c => c.classList.add('hidden'));
-                    tab.classList.add('active');
-                    document.getElementById(`${tab.dataset.tab}-tab`).classList.remove('hidden');
-                });
-            });
-        }
-
-        // Past Seasons: archived years (data.previous_seasons, built from
-        // data/weeks/ + data/schedules/ - see scripts/export_for_web.py's
-        // build_previous_seasons) with no live features (drafts, trades).
-        function initPastSeasons() {
-            const seasons = data.previous_seasons || {};
-            const years = Object.keys(seasons).sort((a, b) => b - a);
-            const seasonSelect = document.getElementById('past-season-select');
-
-            if (years.length === 0) {
-                seasonSelect.innerHTML = '';
-                document.getElementById('past-season-standings').innerHTML =
-                    '<div class="loading">No archived seasons yet</div>';
-                document.getElementById('past-season-matchups').innerHTML = '';
-                document.getElementById('past-season-week-select').innerHTML = '';
-                return;
-            }
-
-            seasonSelect.innerHTML = years.map(y => `<option value="${y}">${y}</option>`).join('');
-            seasonSelect.onchange = () => renderPastSeason(seasonSelect.value);
-            renderPastSeason(years[0]);
-        }
-
-        function renderPastSeason(year) {
-            const season = (data.previous_seasons || {})[year];
-            const weekSelect = document.getElementById('past-season-week-select');
-            if (!season) {
-                document.getElementById('past-season-standings').innerHTML = '';
-                document.getElementById('past-season-matchups').innerHTML = '';
-                weekSelect.innerHTML = '';
-                return;
-            }
-
-            const standings = [...season.standings].sort((a, b) => {
-                const rpDiff = (b.rank_points || 0) - (a.rank_points || 0);
-                if (rpDiff !== 0) return rpDiff;
-                return (b.points_for || 0) - (a.points_for || 0);
-            });
-
-            document.getElementById('past-season-standings').innerHTML = `
-                <table class="standings-table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Team</th>
-                            <th class="num">W-L-T</th>
-                            <th class="num">Top 6</th>
-                            <th class="num">PF</th>
-                            <th class="num">PA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${standings.map((team, idx) => `
-                            <tr>
-                                <td><span class="rank ${idx < 4 ? 'playoffs' : ''}">${idx + 1}</span></td>
-                                <td>
-                                    <span class="team-name">${team.name}</span>
-                                    <span class="team-code">${team.abbrev}</span>
-                                </td>
-                                <td class="num record">${team.wins || 0}-${team.losses || 0}-${team.ties || 0}</td>
-                                <td class="num top-half">${team.top_half || 0}</td>
-                                <td class="num points-for">${(team.points_for || 0).toFixed(1)}</td>
-                                <td class="num">${(team.points_against || 0).toFixed(1)}</td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            `;
-
-            const weekNumbers = season.weeks.map(w => w.week).sort((a, b) => a - b);
-            weekSelect.innerHTML = weekNumbers.map(w => `<option value="${w}">Week ${w}</option>`).join('');
-            weekSelect.onchange = () => renderPastSeasonWeek(year, Number(weekSelect.value));
-            renderPastSeasonWeek(year, weekNumbers[0]);
-        }
-
-        function renderPastSeasonWeek(year, weekNum) {
-            const season = (data.previous_seasons || {})[year];
-            const container = document.getElementById('past-season-matchups');
-            const weekData = season?.weeks.find(w => w.week === weekNum);
-            const pairings = season?.schedule?.[String(weekNum)] || [];
-            if (!weekData || pairings.length === 0) {
-                container.innerHTML = '<div class="loading">No matchup data for this week</div>';
-                return;
-            }
-
-            const teamsByAbbrev = {};
-            weekData.teams.forEach(t => { teamsByAbbrev[t.abbrev] = t; });
-
-            const matchups = pairings
-                .map(([a, b]) => ({ team1: teamsByAbbrev[a], team2: teamsByAbbrev[b] }))
-                .filter(m => m.team1 && m.team2);
-
-            container.innerHTML = matchups.map((m, idx) => {
-                const t1 = m.team1, t2 = m.team2;
-                const t1Winning = t1.total_score > t2.total_score;
-                const t2Winning = t2.total_score > t1.total_score;
-                return `
-                    <div class="matchup-card">
-                        <div class="matchup-header">
-                            <div class="team">
-                                <div class="team-name">${t1.name}</div>
-                            </div>
-                            <div class="vs-container">
-                                <div class="score-display">
-                                    <span class="score ${t1Winning ? 'winning' : t2Winning ? 'losing' : ''}">${t1.total_score}</span>
-                                    <span class="score-divider">-</span>
-                                    <span class="score ${t2Winning ? 'winning' : t1Winning ? 'losing' : ''}">${t2.total_score}</span>
-                                </div>
-                            </div>
-                            <div class="team right">
-                                <div class="team-name">${t2.name}</div>
-                            </div>
-                        </div>
-                        <button class="expand-btn" onclick="togglePastRoster(${idx})">View Rosters</button>
-                        <div class="roster-panel" id="past-roster-${idx}">
-                            <div class="roster-grid">
-                                <div class="roster-column">
-                                    <h4>${t1.name}</h4>
-                                    ${renderRosterList(t1.roster)}
-                                </div>
-                                <div class="roster-column">
-                                    <h4>${t2.name}</h4>
-                                    ${renderRosterList(t2.roster)}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function togglePastRoster(idx) {
-            document.getElementById(`past-roster-${idx}`).classList.toggle('expanded');
-        }
-
-        // Season Records: computed player/team records, fun stats, and
-        // head-to-head history from data.hall_of_fame (scripts/export_hall_of_fame.py).
-        // Unlike the Championships and All-Time Records tabs above, this data is
-        // derived from the archived weeks, not hand-maintained.
-        function renderSeasonRecordCard(title, records) {
-            if (!records || records.length === 0) return '';
-            return `
-                <div class="stats-position-card">
-                    <div class="stats-position-header">${title}</div>
-                    ${records.map((text, idx) => `
-                        <div class="record-row">
-                            <span class="record-rank">${idx + 1}</span>
-                            <span class="record-text">${text}</span>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-        }
-
-        function renderSeasonRecords() {
-            const hallOfFame = data.hall_of_fame;
-            const container = document.getElementById('season-records-container');
-            const through = document.getElementById('season-records-through');
-            if (!container) return;
-
-            if (!hallOfFame || !hallOfFame.seasons || hallOfFame.seasons.length === 0) {
-                container.innerHTML = '<div class="loading">No completed weeks yet</div>';
-                if (through) through.textContent = '';
-                return;
-            }
-
-            if (through) {
-                const seasonList = hallOfFame.seasons
-                    .map(s => `${s} (through Week ${hallOfFame.completed_through[s] || 0})`)
-                    .join(' · ');
-                through.textContent = seasonList;
-            }
-
-            const player = hallOfFame.player_records || {};
-            const team = hallOfFame.team_records || {};
-            const fun = hallOfFame.fun_stats || [];
-            const h2h = hallOfFame.head_to_head || [];
-
-            const cards = [
-                renderSeasonRecordCard('Most Points (Player)', player.most_points),
-                renderSeasonRecordCard('Most Points, Non-QB', player.most_points_non_qb),
-                renderSeasonRecordCard('Fewest Points, Offensive Starter', player.least_points_offensive),
-                renderSeasonRecordCard('Fewest Points, Kicker', player.least_points_kicker),
-                renderSeasonRecordCard('Most Points (Team Week)', team.most_points),
-                renderSeasonRecordCard('Fewest Points (Team Week)', team.least_points),
-                renderSeasonRecordCard('Largest Margin of Victory', team.largest_margin),
-                ...fun.map(f => renderSeasonRecordCard(f.title, f.records)),
-            ].filter(Boolean);
-
-            container.innerHTML = cards.join('') + renderHeadToHead(h2h);
-        }
-
-        function renderHeadToHead(h2h) {
-            if (!h2h || h2h.length === 0) return '';
-            // Standings are empty until a week completes (Phase 1's rule), so
-            // fall back to any archived week's roster data for the name -
-            // head-to-head history should read with real names all season,
-            // not just once the current season has a finished week.
-            const teamName = abbrev => {
-                const fromStandings = data.standings?.find(s => s.abbrev === abbrev)?.name;
-                if (fromStandings) return fromStandings;
-                for (const week of data.weeks || []) {
-                    const team = week.teams?.find(t => t.abbrev === abbrev);
-                    if (team) return team.name;
-                }
-                return abbrev;
-            };
-
-            const rows = h2h.map(rec => {
-                const leaderName = rec.leader ? teamName(rec.leader) : 'Tied';
-                return `
-                    <tr>
-                        <td>${teamName(rec.team1)}</td>
-                        <td>${teamName(rec.team2)}</td>
-                        <td class="num">${rec.team1_wins}-${rec.team2_wins}-${rec.ties}</td>
-                        <td class="num">${rec.team1_pf.toFixed(1)}-${rec.team2_pf.toFixed(1)}</td>
-                        <td>${leaderName}</td>
-                    </tr>
-                `;
-            }).join('');
-
-            return `
-                <div class="stats-position-card h2h-card">
-                    <div class="stats-position-header">Head-to-Head</div>
-                    <table class="history-table h2h-table">
-                        <thead>
-                            <tr>
-                                <th>Team</th>
-                                <th>Team</th>
-                                <th class="num">W-L-T</th>
-                                <th class="num">PF-PF</th>
-                                <th>Leader</th>
-                            </tr>
-                        </thead>
-                        <tbody>${rows}</tbody>
-                    </table>
-                </div>
-            `;
-        }
-
-        // Helper function to estimate seasons for playoff percentage
-        function getSeasonsForOwner(owner) {
-            const seasonMap = {
-                'Kemp': 37, 'Steve L.': 37, 'Bill/Wes': 26, 'Kirk/David': 35,
-                'Eric S.': 21, 'Jarrett/Matt': 23, 'Chris': 12, 'Steve M.': 27,
-                'Adam': 23, 'John': 37, 'Kevin': 16, 'Kreg': 17,
-                'Andrew': 16, 'Wes': 6, 'Greg/Griffin': 23, 'Eric H.': 17
-            };
-            return seasonMap[owner] || 0;
-        }
-
-        function renderBanners() {
-            const container = document.getElementById('banners-container');
-            const bannerImages = data.banners || [];
-            
-            if (bannerImages.length === 0) {
-                container.innerHTML = '<div class="loading">No banners available</div>';
-                return;
-            }
-            
-            // Banners are sorted by year descending (most recent first)
-            // Filename format: 2024.png, 2023.png, etc.
-            container.innerHTML = bannerImages.map(img => {
-                const year = img.replace('.png', '');
-                return `
-                    <div class="banner-item">
-                        <img src="images/banners/${img}" alt="OPFL ${year} Champion" loading="lazy">
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Initialize
-                    loadData();
+"use strict";
+
+const app = document.querySelector("#app");
+const statusRegion = document.querySelector("#status");
+const seasonSelect = document.querySelector("#season-select");
+const navigation = document.querySelector("#primary-nav");
+const menuToggle = document.querySelector("#menu-toggle");
+const mainContent = document.querySelector("#main-content");
+
+const VIEWS = new Set([
+  "home", "matchups", "schedule", "standings", "rosters", "stats",
+  "transactions", "drafts", "history", "rules", "banners",
+]);
+const CAPABILITY_BY_VIEW = {
+  matchups: "matchups",
+  schedule: "schedules",
+  rosters: "rosters",
+  stats: "player_stats",
+  drafts: "drafts",
+};
+const VIEW_TITLES = {
+  home: "Home",
+  matchups: "Matchups",
+  schedule: "Schedule",
+  standings: "Standings",
+  rosters: "Rosters",
+  stats: "Stats",
+  transactions: "Transactions",
+  drafts: "Drafts",
+  history: "League History",
+  rules: "Rules",
+  banners: "Banner Room",
+};
+
+let archiveIndex = null;
+let renderVersion = 0;
+const dataCache = new Map();
+
+const escapeHtml = (value) => String(value ?? "").replace(/[&<>'"]/g, (character) => ({
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  "'": "&#39;",
+  '"': "&quot;",
+})[character]);
+
+const formatNumber = (value, digits = 1) => {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) return "—";
+  const number = Number(value);
+  return number.toLocaleString(undefined, {
+    minimumFractionDigits: Number.isInteger(number) ? 0 : digits,
+    maximumFractionDigits: digits,
+  });
+};
+
+const fetchJson = async (path) => {
+  if (!dataCache.has(path)) {
+    dataCache.set(path, fetch(path).then((response) => {
+      if (!response.ok) throw new Error(`${response.status} while loading ${path}`);
+      return response.json();
+    }).catch((error) => {
+      dataCache.delete(path);
+      throw error;
+    }));
+  }
+  return dataCache.get(path);
+};
+
+const seasonPath = (year, file) => `data/seasons/${year}/${file}`;
+const sharedPath = (file) => `data/shared/${file}`;
+const entryFor = (year) => archiveIndex.seasons.find((entry) => Number(entry.year) === Number(year));
+
+function parseRoute() {
+  const parts = window.location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
+  const requestedYear = Number(parts[0]);
+  const year = entryFor(requestedYear) ? requestedYear : archiveIndex.current_season;
+  const view = VIEWS.has(parts[1]) ? parts[1] : "home";
+  const weekIndex = parts.indexOf("week");
+  const week = weekIndex >= 0 && Number.isInteger(Number(parts[weekIndex + 1]))
+    ? Number(parts[weekIndex + 1])
+    : null;
+  return { year, view, week };
+}
+
+function routeHref(year, view, week = null) {
+  return `#/${year}/${view}${week ? `/week/${week}` : ""}`;
+}
+
+function pageHeader(year, title, description, extra = "") {
+  return `<header class="page-header">
+    <div>
+      <p class="eyebrow">${escapeHtml(year)} OPFL</p>
+      <h1>${escapeHtml(title)}</h1>
+      <p class="lede">${escapeHtml(description)}</p>
+    </div>
+    ${extra}
+  </header>`;
+}
+
+function emptyState(title, message, link = "") {
+  return `<section class="empty-state">
+    <strong>${escapeHtml(title)}</strong>
+    <p>${escapeHtml(message)}</p>
+    ${link}
+  </section>`;
+}
+
+function updateChrome(route, metadata) {
+  seasonSelect.value = String(route.year);
+  document.title = `${VIEW_TITLES[route.view]} · ${route.year} OPFL`;
+  document.querySelectorAll("#primary-nav a").forEach((link) => {
+    const view = link.dataset.view;
+    const capability = CAPABILITY_BY_VIEW[view];
+    link.href = routeHref(route.year, view);
+    link.toggleAttribute("aria-current", view === route.view);
+    if (view === route.view) link.setAttribute("aria-current", "page");
+    const unavailable = capability && metadata.capabilities[capability] === false;
+    if (unavailable) link.setAttribute("aria-disabled", "true");
+    else link.removeAttribute("aria-disabled");
+  });
+  document.querySelector(".brand").href = routeHref(route.year, "home");
+}
+
+async function loadSeasonBase(year) {
+  const [metadata, standingsDocument] = await Promise.all([
+    fetchJson(seasonPath(year, "metadata.json")),
+    fetchJson(seasonPath(year, "standings.json")),
+  ]);
+  return { metadata, standingsDocument, standings: standingsDocument.standings };
+}
+
+async function renderRoute() {
+  const version = ++renderVersion;
+  const route = parseRoute();
+  statusRegion.textContent = `Loading ${route.year} ${VIEW_TITLES[route.view].toLowerCase()}…`;
+  app.innerHTML = '<div class="grid two"><div class="card skeleton"></div><div class="card skeleton"></div></div>';
+  navigation.classList.remove("open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  try {
+    const base = await loadSeasonBase(route.year);
+    if (version !== renderVersion) return;
+    updateChrome(route, base.metadata);
+    const capability = CAPABILITY_BY_VIEW[route.view];
+    if (capability && base.metadata.capabilities[capability] === false) {
+      app.innerHTML = pageHeader(
+        route.year,
+        VIEW_TITLES[route.view],
+        "This season is preserved at summary detail.",
+        '<span class="badge">Summary archive</span>',
+      ) + emptyState(
+        `${VIEW_TITLES[route.view]} unavailable`,
+        `The ${route.year} archive contains final standings and league finishes, but no reliable weekly, roster, or player-stat detail.`,
+        `<a href="${routeHref(route.year, "standings")}">View recorded standings</a>`,
+      );
+      statusRegion.textContent = "Summary-season limitation shown.";
+      return;
+    }
+    const renderers = {
+      home: renderHome,
+      matchups: renderMatchupsPage,
+      schedule: renderSchedule,
+      standings: renderStandings,
+      rosters: renderRosters,
+      stats: renderStats,
+      transactions: renderTransactions,
+      drafts: renderDrafts,
+      history: renderHistory,
+      rules: renderRules,
+      banners: renderBanners,
+    };
+    const markup = await renderers[route.view](route, base);
+    if (version !== renderVersion) return;
+    app.innerHTML = markup;
+    bindViewEvents(route, base);
+    statusRegion.textContent = `${route.year} ${VIEW_TITLES[route.view]} loaded.`;
+  } catch (error) {
+    if (version !== renderVersion) return;
+    console.error(error);
+    app.innerHTML = `<section class="error-state">
+      <strong>We couldn’t load this view.</strong>
+      <p>${escapeHtml(error.message)}</p>
+      <button id="retry-load" type="button">Try again</button>
+    </section>`;
+    statusRegion.textContent = "Data loading error.";
+    document.querySelector("#retry-load")?.addEventListener("click", renderRoute);
+  }
+}
+
+function renderStandingsTable(rows, advanced = true, limit = null) {
+  const selected = limit ? rows.slice(0, limit) : rows;
+  const historical = !advanced;
+  return `<div class="table-wrap"><table>
+    <caption class="sr-only">OPFL season standings</caption>
+    <thead><tr>
+      <th>Team</th><th>W-L-T</th>
+      ${historical ? "<th>PF</th><th>Finish</th>" : "<th>Rank Pts</th><th>Top 6</th><th>PF</th><th>Avg</th><th>PA</th><th>Expected</th><th>Luck</th><th>SOS</th>"}
+    </tr></thead>
+    <tbody>${selected.map((row) => `<tr>
+      <td><span class="rank">${escapeHtml(row.rank)}.</span> <span class="team-code">${escapeHtml(row.abbrev || row.name)}</span><br><small class="muted">${escapeHtml(row.name)}</small></td>
+      <td>${formatNumber(row.wins, 1)}-${formatNumber(row.losses, 1)}-${formatNumber(row.ties, 1)}</td>
+      ${historical
+        ? `<td>${formatNumber(row.points_for)}</td><td>${escapeHtml(row.finish || "—")}</td>`
+        : `<td><strong>${formatNumber(row.rank_points, 3)}</strong></td>
+          <td>${formatNumber(row.top_six, 3)}</td><td>${formatNumber(row.points_for)}</td>
+          <td>${formatNumber(row.average_points_for)}</td><td>${formatNumber(row.points_against)}</td>
+          <td>${formatNumber(row.expected_wins)}-${formatNumber(row.expected_losses)}</td>
+          <td class="${Number(row.luck) >= 0 ? "positive" : "negative"}">${Number(row.luck) > 0 ? "+" : ""}${formatNumber(row.luck)}</td>
+          <td>${formatNumber(row.remaining_sos)}</td>`}
+    </tr>`).join("")}</tbody>
+  </table></div>`;
+}
+
+async function renderHome(route, base) {
+  if (base.metadata.detail_level === "summary") {
+    const finish = base.standingsDocument.finish;
+    return pageHeader(route.year, "Season Archive", "Recorded standings and championship finish.", '<span class="badge">Summary</span>') +
+      `<section class="grid four">
+        <article class="card metric gold-line"><span>Champion</span><strong>${escapeHtml(finish.first)}</strong></article>
+        <article class="card metric"><span>Runner-up</span><strong>${escapeHtml(finish.second)}</strong></article>
+        <article class="card metric"><span>Oakland Bowl</span><strong>${escapeHtml(finish.championship_score || "—")}</strong></article>
+        <article class="card metric"><span>League size</span><strong>${escapeHtml(finish.team_count)}</strong></article>
+      </section>
+      <section class="card flush" style="margin-top:1rem"><div class="card-header"><h2>Final standings</h2></div>${renderStandingsTable(base.standings, false)}</section>
+      ${finish.comments ? `<section class="card" style="margin-top:1rem"><h2>Season note</h2><p class="muted">${escapeHtml(finish.comments)}</p></section>` : ""}`;
+  }
+  const weeks = base.metadata.weeks_available;
+  const latestWeek = Math.max(...weeks);
+  const [latest, previous, transactions, playoffs] = await Promise.all([
+    fetchJson(seasonPath(route.year, `weeks/week_${latestWeek}.json`)),
+    latestWeek > 1 ? fetchJson(seasonPath(route.year, `weeks/week_${latestWeek - 1}.json`)) : Promise.resolve(null),
+    fetchJson(sharedPath("transactions.json")),
+    fetchJson(seasonPath(route.year, "playoffs.json")).catch(() => null),
+  ]);
+  const leader = base.standings[0];
+  const recentTrades = transactions.trades.filter((trade) => Number(trade.date.slice(0, 4)) <= route.year).slice(0, 3);
+  const jamboreeLeader = playoffs?.jamboree?.standings?.[0];
+  return pageHeader(route.year, "League Dashboard", "Scores, playoff results, standings, and recent league activity.", '<span class="badge gold">Full season</span>') +
+    `<section class="grid four">
+      <article class="card metric gold-line"><span>Rank leader</span><strong>${escapeHtml(leader.abbrev)}</strong><small>${formatNumber(leader.rank_points, 3)} Rank Pts</small></article>
+      <article class="card metric"><span>Points leader</span><strong>${escapeHtml([...base.standings].sort((a, b) => b.points_for - a.points_for)[0].abbrev)}</strong><small>${formatNumber(Math.max(...base.standings.map((row) => row.points_for)))} PF</small></article>
+      <article class="card metric green-line"><span>Oakland Bowl</span><strong>${escapeHtml(playoffs?.championship?.winner || "TBD")}</strong><small>Weeks 16–17</small></article>
+      <article class="card metric red-line"><span>Jamboree</span><strong>${escapeHtml(jamboreeLeader?.abbrev || "TBD")}</strong><small>${formatNumber(jamboreeLeader?.total)} points</small></article>
+    </section>
+    <section class="grid two" style="margin-top:1rem">
+      <article class="card"><div class="card-header"><h2>Week ${escapeHtml(latestWeek)}</h2><a href="${routeHref(route.year, "matchups", latestWeek)}">Full detail</a></div>${renderCompactMatchups(latest)}</article>
+      <article class="card"><div class="card-header"><h2>${previous ? `Week ${latestWeek - 1}` : "Standings"}</h2>${previous ? `<a href="${routeHref(route.year, "matchups", latestWeek - 1)}">Review</a>` : ""}</div>${previous ? renderCompactMatchups(previous) : renderStandingsTable(base.standings, true, 5)}</article>
+    </section>
+    <section class="grid two" style="margin-top:1rem">
+      <article class="card flush"><div class="card-header"><h2>Top five</h2><a href="${routeHref(route.year, "standings")}">Advanced standings</a></div>${renderStandingsTable(base.standings, true, 5)}</article>
+      <article class="card"><div class="card-header"><h2>Recent trades</h2><a href="${routeHref(route.year, "transactions")}">Search all</a></div>${renderActivityItems(recentTrades)}</article>
+    </section>`;
+}
+
+function normalizeMatchup(matchup) {
+  if (matchup.away) return { team1: matchup.away, team2: matchup.home, score1: matchup.away_score, score2: matchup.home_score };
+  return { team1: matchup.team1 || matchup.higher_seed, team2: matchup.team2 || matchup.lower_seed, score1: matchup.score1 ?? matchup.higher_score, score2: matchup.score2 ?? matchup.lower_score };
+}
+
+function renderCompactMatchups(weekData) {
+  if (!weekData.matchups.length) return '<p class="muted">No head-to-head matchups were recorded for this week.</p>';
+  return `<div class="matchup-list">${weekData.matchups.map((raw) => {
+    const game = normalizeMatchup(raw);
+    return `<div class="schedule-game"><span>${escapeHtml(game.team1)} <strong>${formatNumber(game.score1)}</strong></span><span>${escapeHtml(game.team2)} <strong>${formatNumber(game.score2)}</strong></span></div>`;
+  }).join("")}</div>`;
+}
+
+function renderTeamLineup(team) {
+  if (!team) return '<p class="muted">Roster detail unavailable.</p>';
+  const ordered = [...team.roster].sort((a, b) => Number(b.starter) - Number(a.starter) || a.position.localeCompare(b.position));
+  return `<h3>${escapeHtml(team.abbrev)} lineup</h3>${ordered.map((player) => {
+    const breakdown = Object.entries(player.breakdown || {}).filter(([key]) => key !== "floor_applied").map(([key, value]) => `${key.replaceAll("_", " ")}: ${value}`).join("; ");
+    return `<div class="lineup-row ${player.starter ? "" : "bench"}" title="${escapeHtml(breakdown || "No scoring breakdown in archive")}">
+      <span class="position">${escapeHtml(player.position)}</span><span>${escapeHtml(player.name)} <small class="muted">${escapeHtml(player.nfl_team)}</small>${player.starter ? ' <span class="starter">●</span>' : ""}</span><strong>${formatNumber(player.score)}</strong>
+    </div>`;
+  }).join("")}`;
+}
+
+function renderDetailedMatchups(weekData) {
+  const teams = Object.fromEntries(weekData.teams.map((team) => [team.abbrev, team]));
+  if (!weekData.matchups.length) return emptyState("No head-to-head bracket", "This week contains individual team scores only.");
+  return `<div class="matchup-list">${weekData.matchups.map((raw, index) => {
+    const game = normalizeMatchup(raw);
+    const winner1 = game.score1 !== null && Number(game.score1) > Number(game.score2);
+    const winner2 = game.score2 !== null && Number(game.score2) > Number(game.score1);
+    return `<details class="matchup" ${index === 0 ? "open" : ""}>
+      <summary>
+        <span class="matchup-team ${winner1 ? "winner" : ""}"><strong>${escapeHtml(game.team1)}</strong><span class="score">${formatNumber(game.score1)}</span></span>
+        <span class="versus">VS</span>
+        <span class="matchup-team ${winner2 ? "winner" : ""}"><strong>${escapeHtml(game.team2)}</strong><span class="score">${formatNumber(game.score2)}</span></span>
+      </summary>
+      <div class="matchup-detail"><div>${renderTeamLineup(teams[game.team1])}</div><div>${renderTeamLineup(teams[game.team2])}</div></div>
+    </details>`;
+  }).join("")}</div>`;
+}
+
+async function renderMatchupsPage(route, base) {
+  const weeks = base.metadata.weeks_available;
+  const week = weeks.includes(route.week) ? route.week : Math.max(...weeks);
+  const weekData = await fetchJson(seasonPath(route.year, `weeks/week_${week}.json`));
+  const options = weeks.map((number) => `<option value="${number}" ${number === week ? "selected" : ""}>Week ${number}${number > 15 ? " · Playoffs" : ""}</option>`).join("");
+  return pageHeader(route.year, `Week ${week} Matchups`, "Expand a matchup for starter, bench, and scoring detail.", `<span class="badge">${escapeHtml(weekData.status)}</span>`) +
+    `<div class="toolbar"><label class="field">Week<select id="matchup-week">${options}</select></label></div>${renderDetailedMatchups(weekData)}`;
+}
+
+async function renderSchedule(route) {
+  const schedule = await fetchJson(seasonPath(route.year, "schedule.json"));
+  const weekDocuments = await Promise.all(schedule.weeks.map((item) => fetchJson(seasonPath(route.year, `weeks/week_${item.week}.json`)).catch(() => null)));
+  const scoreByWeek = Object.fromEntries(weekDocuments.filter(Boolean).map((week) => [week.week, Object.fromEntries(week.teams.map((team) => [team.abbrev, team.total_score]))]));
+  const teams = [...new Set(schedule.weeks.flatMap((week) => week.matchups.flatMap((game) => [game.away, game.home])))].sort();
+  return pageHeader(route.year, "Season Schedule", "Fifteen regular-season weeks; filter the grid to follow one team.") +
+    `<div class="toolbar"><label class="field">Team<select id="schedule-team"><option value="">All teams</option>${teams.map((team) => `<option>${escapeHtml(team)}</option>`).join("")}</select></label></div>
+    <div id="schedule-grid" class="schedule-grid">${renderScheduleGrid(schedule.weeks, scoreByWeek, "")}</div>`;
+}
+
+function renderScheduleGrid(weeks, scores, selected) {
+  return weeks.map((week) => `<article class="schedule-week"><h3><span>Week ${week.week}</span><a href="${routeHref(parseRoute().year, "matchups", week.week)}">Details</a></h3>
+    ${week.matchups.map((game) => {
+      const active = selected && [game.away, game.home].includes(selected);
+      return `<div class="schedule-game ${active ? "selected" : ""}"><span>${escapeHtml(game.away)} ${scores[week.week] ? `<strong>${formatNumber(scores[week.week][game.away])}</strong>` : ""}</span><span>${escapeHtml(game.home)} ${scores[week.week] ? `<strong>${formatNumber(scores[week.week][game.home])}</strong>` : ""}</span></div>`;
+    }).join("")}</article>`).join("");
+}
+
+async function renderStandings(route, base) {
+  const advanced = base.metadata.capabilities.advanced_standings;
+  const finish = base.standingsDocument.finish;
+  const historyRows = advanced ? base.standings.map((row) => `<tr><td><span class="team-code">${escapeHtml(row.abbrev)}</span></td><td class="text-left">${(row.weekly_rank_history || []).map((item) => `W${item.week}:${item.rank}`).join(" · ")}</td></tr>`).join("") : "";
+  return pageHeader(route.year, "Standings", advanced ? "Rank Points, all-play expectation, luck, schedule strength, and weekly rank history." : "Recorded regular-season results; advanced weekly inputs were not archived.", `<span class="badge">${advanced ? "Advanced" : "Summary"}</span>`) +
+    `<section class="card flush">${renderStandingsTable(base.standings, advanced)}</section>
+    ${advanced ? `<section class="card flush" style="margin-top:1rem"><div class="card-header"><h2>Weekly rank history</h2></div><div class="table-wrap"><table><thead><tr><th>Team</th><th class="text-left">Weekly ranks</th></tr></thead><tbody>${historyRows}</tbody></table></div></section>` :
+      `<section class="card" style="margin-top:1rem"><h2>League finish</h2><p><strong>${escapeHtml(finish.first)}</strong> defeated ${escapeHtml(finish.second)} · ${escapeHtml(finish.championship_score)}</p><p class="muted">${escapeHtml(finish.comments)}</p></section>`}`;
+}
+
+async function renderRosters(route, base) {
+  const [rosters, futurePicks, transactions] = await Promise.all([
+    fetchJson(seasonPath(route.year, "rosters.json")),
+    fetchJson(sharedPath("future-picks.json")),
+    fetchJson(sharedPath("transactions.json")),
+  ]);
+  const teams = Object.keys(rosters.teams);
+  const week = Math.max(...base.metadata.weeks_available);
+  return pageHeader(route.year, "Roster Browser", "Search all rosters, inspect weekly lineups and taxi slots, compare teams, and filter related activity.") +
+    `<div class="toolbar">
+      <label class="field">Roster<select id="roster-team"><option value="ALL">All teams</option>${teams.map((team) => `<option value="${escapeHtml(team)}">${escapeHtml(team)}</option>`).join("")}</select></label>
+      <label class="field">Snapshot<select id="roster-week"><option value="current">Current roster</option>${base.metadata.weeks_available.map((number) => `<option value="${number}" ${number === week ? "selected" : ""}>Week ${number}</option>`).join("")}</select></label>
+      <label class="field grow">Player search<input id="roster-search" type="search" placeholder="Name, NFL team, or position"></label>
+      <label class="field">Compare with<select id="compare-team"><option value="">None</option>${teams.map((team) => `<option value="${escapeHtml(team)}">${escapeHtml(team)}</option>`).join("")}</select></label>
+    </div>
+    <div id="roster-results"></div>`;
+}
+
+function rosterCards(entries, query) {
+  const needle = query.trim().toLowerCase();
+  const players = entries.flatMap(([team, roster]) => roster.map((player) => ({ ...player, fantasy_team: team }))).filter((player) => !player.placeholder && (!needle || `${player.name} ${player.nfl_team} ${player.position} ${player.fantasy_team}`.toLowerCase().includes(needle)));
+  if (!players.length) return emptyState("No roster matches", "Try a broader player or team search.");
+  return `<div class="roster-grid">${players.map((player) => `<article class="player-card"><header><strong><span class="position">${escapeHtml(player.position)}</span>${escapeHtml(player.name)}</strong>${player.starter ? '<span class="starter">Starter</span>' : ""}</header><p>${escapeHtml(player.fantasy_team)} · ${escapeHtml(player.nfl_team || "No NFL team")}${player.score !== undefined ? ` · ${formatNumber(player.score)} pts` : ""}</p></article>`).join("")}</div>`;
+}
+
+function activityMatchesTeam(trade, team, teamName = "") {
+  if (!team || team === "ALL") return true;
+  const text = `${trade.team_a} ${trade.team_b}`.toLowerCase();
+  return text.includes(team.toLowerCase()) || (teamName && text.includes(teamName.toLowerCase()));
+}
+
+function renderActivityItems(trades) {
+  if (!trades.length) return '<p class="muted">No matching trades.</p>';
+  return `<div class="activity-list">${trades.map((trade) => `<article class="activity-item"><header><strong>${escapeHtml(trade.team_a)} ↔ ${escapeHtml(trade.team_b)}</strong><time>${escapeHtml(trade.date)}</time></header><div class="grid two" style="margin-top:.55rem"><div><small>${escapeHtml(trade.team_a)} receives</small><ul class="asset-list">${trade.team_a_receives.map((asset) => `<li>${escapeHtml(asset)}</li>`).join("")}</ul></div><div><small>${escapeHtml(trade.team_b)} receives</small><ul class="asset-list">${trade.team_b_receives.map((asset) => `<li>${escapeHtml(asset)}</li>`).join("")}</ul></div></div>${trade.notes ? `<p class="muted">${escapeHtml(trade.notes)}</p>` : ""}</article>`).join("")}</div>`;
+}
+
+async function updateRosterResults(route, base) {
+  const container = document.querySelector("#roster-results");
+  if (!container) return;
+  const team = document.querySelector("#roster-team").value;
+  const compare = document.querySelector("#compare-team").value;
+  const snapshot = document.querySelector("#roster-week").value;
+  const query = document.querySelector("#roster-search").value;
+  const [current, futurePicks, transactions] = await Promise.all([
+    fetchJson(seasonPath(route.year, "rosters.json")),
+    fetchJson(sharedPath("future-picks.json")),
+    fetchJson(sharedPath("transactions.json")),
+  ]);
+  let entries;
+  if (snapshot === "current") {
+    entries = Object.entries(current.teams).map(([code, value]) => [code, value.players]);
+  } else {
+    const week = await fetchJson(seasonPath(route.year, `weeks/week_${snapshot}.json`));
+    entries = week.teams.map((value) => [value.abbrev, value.roster]);
+  }
+  const selected = team === "ALL" ? entries : entries.filter(([code]) => code === team);
+  const compared = compare ? entries.filter(([code]) => code === compare) : [];
+  const selectedName = team !== "ALL" ? current.teams[team]?.name : "";
+  const taxi = team !== "ALL" ? current.teams[team]?.taxi || [] : [];
+  const ownerTerms = [team, selectedName].filter(Boolean).map((value) => value.toLowerCase());
+  const pickNotes = futurePicks.notes.filter((note) => team === "ALL" || ownerTerms.some((term) => note.toLowerCase().includes(term)));
+  const activity = transactions.trades.filter((trade) => activityMatchesTeam(trade, team, selectedName)).slice(0, 8);
+  container.innerHTML = `${compare ? `<section class="compare"><article class="card"><h2>${escapeHtml(team)} roster</h2>${rosterCards(selected, query)}</article><article class="card"><h2>${escapeHtml(compare)} roster</h2>${rosterCards(compared, query)}</article></section>` : `<section class="card"><h2>${team === "ALL" ? "All rostered players" : `${escapeHtml(team)} roster`}</h2>${rosterCards(selected, query)}</section>`}
+    <section class="grid two" style="margin-top:1rem">
+      <article class="card"><h2>Taxi & future picks</h2>${taxi.length ? rosterCards([[team, taxi]], query) : '<p class="muted">No taxi players recorded in this snapshot.</p>'}<ul class="asset-list">${pickNotes.slice(0, 12).map((note) => `<li>${escapeHtml(note)}</li>`).join("") || "<li>No matching future-pick notes.</li>"}</ul></article>
+      <article class="card"><h2>Filtered activity</h2>${renderActivityItems(activity)}</article>
+    </section>`;
+}
+
+async function renderStats(route) {
+  const [players, teams] = await Promise.all([
+    fetchJson(seasonPath(route.year, "player-stats.json")),
+    fetchJson(seasonPath(route.year, "team-stats.json")),
+  ]);
+  const positions = [...new Set(players.players.map((player) => player.position))];
+  return pageHeader(route.year, "Player & Team Stats", "Player leaders and team scoring profiles from all recorded weekly scores.") +
+    `<div class="toolbar"><label class="field">Position<select id="stats-position"><option value="">All</option>${positions.map((position) => `<option>${escapeHtml(position)}</option>`).join("")}</select></label></div>
+    <section class="grid two"><article class="card flush"><div class="card-header"><h2>Player leaders</h2><span class="badge">Bench included</span></div><div id="player-leaders">${renderPlayerLeaders(players.players, "")}</div></article>
+    <article class="card flush"><div class="card-header"><h2>Team stats</h2></div>${renderTeamStats(teams.teams)}</article></section>`;
+}
+
+function renderPlayerLeaders(players, position) {
+  const filtered = players.filter((player) => !position || player.position === position).slice(0, 60);
+  return `<div class="table-wrap"><table><thead><tr><th>Player</th><th>Pos</th><th>Team</th><th>Pts</th><th>PPG</th><th>High</th><th>Starts</th></tr></thead><tbody>${filtered.map((player) => `<tr><td>${escapeHtml(player.name)}<br><small class="muted">${escapeHtml(player.nfl_team)}</small></td><td>${escapeHtml(player.position)}</td><td>${escapeHtml(player.fantasy_teams.join(" → "))}</td><td><strong>${formatNumber(player.points)}</strong></td><td>${formatNumber(player.ppg)}</td><td>${formatNumber(player.high)}</td><td>${escapeHtml(player.starts)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+
+function renderTeamStats(teams) {
+  return `<div class="table-wrap"><table><thead><tr><th>Team</th><th>Record</th><th>PPG</th><th>PF</th><th>PA</th><th>Diff</th><th>High</th><th>Low</th><th>Median</th></tr></thead><tbody>${teams.map((team) => `<tr><td><span class="team-code">${escapeHtml(team.abbrev)}</span></td><td>${team.wins}-${team.losses}-${team.ties}</td><td>${formatNumber(team.average_points_for)}</td><td>${formatNumber(team.points_for)}</td><td>${formatNumber(team.points_against)}</td><td class="${Number(team.point_differential) >= 0 ? "positive" : "negative"}">${formatNumber(team.point_differential)}</td><td>${formatNumber(team.high_score)}</td><td>${formatNumber(team.low_score)}</td><td>${formatNumber(team.median_score)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+
+async function renderTransactions(route) {
+  const data = await fetchJson(sharedPath("transactions.json"));
+  const teams = [...new Set(data.trades.flatMap((trade) => trade.teams))].sort();
+  const yearTrades = data.trades.filter((trade) => Number(trade.date.slice(0, 4)) === route.year);
+  return pageHeader(route.year, "Trade History", "Search recorded 2024–2025 transactions by team, asset, pick, or note.") +
+    `<div class="toolbar"><label class="field">Team<select id="trade-team"><option value="">All teams</option>${teams.map((team) => `<option>${escapeHtml(team)}</option>`).join("")}</select></label><label class="field grow">Search<input id="trade-search" type="search" placeholder="Player, pick, or note"></label></div>
+    <div id="transaction-results">${renderActivityItems(yearTrades)}</div>`;
+}
+
+async function renderDrafts(route) {
+  const data = await fetchJson(sharedPath("drafts.json"));
+  const boards = data.drafts;
+  const years = [...new Set(boards.map((board) => board.year))].sort((a, b) => b - a);
+  const initialYear = years.includes(route.year) ? route.year : years[0];
+  const board = boards.find((item) => item.year === initialYear && item.type === "preseason") || boards.find((item) => item.year === initialYear);
+  return pageHeader(route.year, "Draft Archives", "Preseason and waiver boards, including taxi rounds, picks, passes, and recorded drops.") +
+    `<div class="toolbar"><label class="field">Draft year<select id="draft-year">${years.map((year) => `<option value="${year}" ${year === initialYear ? "selected" : ""}>${year}</option>`).join("")}</select></label><label class="field">Board<select id="draft-type"><option value="preseason" ${board.type === "preseason" ? "selected" : ""}>Preseason</option><option value="waiver" ${board.type === "waiver" ? "selected" : ""}>Waiver</option></select></label><label class="field grow">Filter<input id="draft-search" type="search" placeholder="Owner, selection, or drop"></label></div>
+    <div id="draft-board">${renderDraftBoard(board, "")}</div>`;
+}
+
+function renderDraftBoard(board, query) {
+  if (!board) return emptyState("Board unavailable", "No draft board matches these filters.");
+  const needle = query.toLowerCase();
+  const picks = board.picks.filter((pick) => !needle || `${pick.owner} ${pick.selection} ${pick.drop}`.toLowerCase().includes(needle));
+  return `<section class="card flush"><div class="card-header"><h2>${escapeHtml(board.title)}</h2><span class="badge">${escapeHtml(board.date)}</span></div>${picks.map((pick) => `<div class="draft-pick ${pick.taxi ? "taxi" : ""}"><span>${pick.taxi ? `T${pick.round}.${pick.slot}` : `#${pick.overall}`}</span><strong>${escapeHtml(pick.owner)}</strong><span>${escapeHtml(pick.selection || "—")}</span><span class="muted">Drop: ${escapeHtml(pick.drop || "—")}</span></div>`).join("") || '<p class="muted" style="padding:1rem">No picks match.</p>'}</section>`;
+}
+
+async function renderHistory(route) {
+  const data = await fetchJson(sharedPath("history.json"));
+  const seasons = [...data.seasons].sort((a, b) => b.year - a.year);
+  return pageHeader(route.year, "League History", "Oakland Bowl finishes, Jamboree winners, season notes, and historical owner summaries since 1988.") +
+    `<div class="toolbar"><label class="field grow">Find a season or owner<input id="history-search" type="search" placeholder="Year, champion, owner, or note"></label></div>
+    <section class="grid two"><div id="history-results" class="history-list">${renderHistoryItems(seasons, "")}</div><article class="card flush"><div class="card-header"><h2>Owner summaries</h2></div><div class="table-wrap"><table><thead><tr><th>Owner label</th><th>Seasons</th><th>Titles</th><th>W-L-T</th><th>PF</th></tr></thead><tbody>${data.owners.map((owner) => `<tr><td>${escapeHtml(owner.owner)}</td><td>${escapeHtml(owner.seasons)}</td><td>${formatNumber(owner.titles)}</td><td>${formatNumber(owner.wins, 1)}-${formatNumber(owner.losses, 1)}-${formatNumber(owner.ties, 1)}</td><td>${formatNumber(owner.points_for)}</td></tr>`).join("")}</tbody></table></div></article></section>`;
+}
+
+function renderHistoryItems(seasons, query) {
+  const needle = query.toLowerCase();
+  const filtered = seasons.filter((season) => !needle || JSON.stringify(season).toLowerCase().includes(needle));
+  return filtered.map((season) => `<article class="history-item"><header><strong>${escapeHtml(season.year)} · ${escapeHtml(season.first)}</strong><span class="badge gold">Champion</span></header><p>${escapeHtml(season.first)} over ${escapeHtml(season.second)} · ${escapeHtml(season.championship_score)}</p><p class="muted">3rd ${escapeHtml(season.third)} · 4th ${escapeHtml(season.fourth)}${season.jamboree ? ` · Jamboree ${escapeHtml(season.jamboree)}` : ""}</p>${season.comments ? `<small class="muted">${escapeHtml(season.comments)}</small>` : ""}</article>`).join("") || emptyState("No history matches", "Try a year, owner, or broader phrase.");
+}
+
+async function renderRules(route) {
+  const data = await fetchJson(sharedPath("rules.json"));
+  return pageHeader(route.year, data.title, "The preserved OPFL scoring and league-format rules used by the JSON scorer.") + data.sections.map((section, index) => `<details class="rule-section" ${index === 0 ? "open" : ""}><summary>${escapeHtml(section.title)}</summary><ul>${section.rules.map((rule) => `<li>${escapeHtml(rule)}</li>`).join("")}</ul></details>`).join("");
+}
+
+async function renderBanners(route) {
+  const data = await fetchJson(sharedPath("banners.json"));
+  const safePath = (value) => /^images\/banners\/\d{4}\.png$/.test(value) ? value : "";
+  return pageHeader(route.year, "Banner Room", "Every preserved OPFL championship banner from 1988 through 2024.", `<span class="badge gold">${data.banners.length} banners</span>`) +
+    `<div class="banner-grid">${data.banners.map((banner) => `<figure class="banner-card"><img src="${safePath(banner.image)}" alt="${escapeHtml(`${banner.year} OPFL championship banner`)}" loading="lazy" width="400" height="300"><figcaption><strong>${escapeHtml(banner.year)}</strong><br>${escapeHtml(banner.champion)}</figcaption></figure>`).join("")}</div>`;
+}
+
+function bindViewEvents(route, base) {
+  document.querySelector("#matchup-week")?.addEventListener("change", (event) => { window.location.hash = routeHref(route.year, "matchups", Number(event.target.value)); });
+  document.querySelector("#schedule-team")?.addEventListener("change", async (event) => {
+    const schedule = await fetchJson(seasonPath(route.year, "schedule.json"));
+    const weekDocuments = await Promise.all(schedule.weeks.map((item) => fetchJson(seasonPath(route.year, `weeks/week_${item.week}.json`)).catch(() => null)));
+    const scores = Object.fromEntries(weekDocuments.filter(Boolean).map((week) => [week.week, Object.fromEntries(week.teams.map((team) => [team.abbrev, team.total_score]))]));
+    document.querySelector("#schedule-grid").innerHTML = renderScheduleGrid(schedule.weeks, scores, event.target.value);
+  });
+  ["#roster-team", "#roster-week", "#compare-team"].forEach((selector) => document.querySelector(selector)?.addEventListener("change", () => updateRosterResults(route, base)));
+  document.querySelector("#roster-search")?.addEventListener("input", () => updateRosterResults(route, base));
+  if (document.querySelector("#roster-results")) updateRosterResults(route, base);
+  document.querySelector("#stats-position")?.addEventListener("change", async (event) => {
+    const players = await fetchJson(seasonPath(route.year, "player-stats.json"));
+    document.querySelector("#player-leaders").innerHTML = renderPlayerLeaders(players.players, event.target.value);
+  });
+  const updateTransactions = async () => {
+    const data = await fetchJson(sharedPath("transactions.json"));
+    const team = document.querySelector("#trade-team")?.value || "";
+    const needle = (document.querySelector("#trade-search")?.value || "").toLowerCase();
+    const trades = data.trades.filter((trade) => Number(trade.date.slice(0, 4)) === route.year && activityMatchesTeam(trade, team) && (!needle || JSON.stringify(trade).toLowerCase().includes(needle)));
+    document.querySelector("#transaction-results").innerHTML = renderActivityItems(trades);
+  };
+  document.querySelector("#trade-team")?.addEventListener("change", updateTransactions);
+  document.querySelector("#trade-search")?.addEventListener("input", updateTransactions);
+  const updateDrafts = async () => {
+    const data = await fetchJson(sharedPath("drafts.json"));
+    const year = Number(document.querySelector("#draft-year").value);
+    const type = document.querySelector("#draft-type").value;
+    const query = document.querySelector("#draft-search").value;
+    document.querySelector("#draft-board").innerHTML = renderDraftBoard(data.drafts.find((board) => board.year === year && board.type === type), query);
+  };
+  ["#draft-year", "#draft-type"].forEach((selector) => document.querySelector(selector)?.addEventListener("change", updateDrafts));
+  document.querySelector("#draft-search")?.addEventListener("input", updateDrafts);
+  document.querySelector("#history-search")?.addEventListener("input", async (event) => {
+    const data = await fetchJson(sharedPath("history.json"));
+    document.querySelector("#history-results").innerHTML = renderHistoryItems([...data.seasons].sort((a, b) => b.year - a.year), event.target.value);
+  });
+}
+
+async function initialize() {
+  menuToggle.addEventListener("click", () => {
+    const open = navigation.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(open));
+  });
+  navigation.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+    if (link?.getAttribute("aria-disabled") === "true") {
+      event.preventDefault();
+      statusRegion.textContent = "That view is unavailable for this summary season.";
+    }
+  });
+  seasonSelect.addEventListener("change", () => {
+    const route = parseRoute();
+    window.location.hash = routeHref(Number(seasonSelect.value), route.view, route.week);
+  });
+  window.addEventListener("hashchange", renderRoute);
+  try {
+    archiveIndex = await fetchJson("data/index.json");
+    seasonSelect.innerHTML = [...archiveIndex.seasons].sort((a, b) => b.year - a.year).map((entry) => `<option value="${entry.year}">${entry.year} · ${entry.detail_level === "full" ? "Full" : "Summary"}</option>`).join("");
+    if (!window.location.hash) history.replaceState(null, "", routeHref(archiveIndex.current_season, "home"));
+    await renderRoute();
+  } catch (error) {
+    console.error(error);
+    statusRegion.textContent = "Archive index unavailable.";
+    app.innerHTML = `<section class="error-state"><strong>The OPFL archive could not start.</strong><p>${escapeHtml(error.message)}</p></section>`;
+  }
+}
+
+initialize();

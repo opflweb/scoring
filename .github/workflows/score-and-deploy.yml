@@ -1,0 +1,114 @@
+name: Score and deploy OPFL
+
+on:
+  workflow_dispatch:
+    inputs:
+      season:
+        description: Season (defaults to data/league.json)
+        required: false
+        type: number
+      week:
+        description: NFL week to score
+        required: false
+        type: number
+  push:
+    paths:
+      - "data/league.json"
+      - "data/teams.json"
+      - "data/seasons/**/lineups/**"
+      - "data/seasons/**/rosters.json"
+      - "data/seasons/**/schedule.json"
+      - "opfl/**"
+      - "scripts/score_json_week.py"
+      - "scripts/export_public.py"
+  schedule:
+    - cron: "30 9 * 1,2,9-12 *"
+    - cron: "0 6 * 1,2,9-12 5"
+    - cron: "30 22 * 1,2,9-12 0"
+    - cron: "35 0 * 1,2,9-12 1"
+    - cron: "0 6 * 1,2,9-12 1,2"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: opfl-pages
+  cancel-in-progress: false
+
+jobs:
+  score-export-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install frozen dependencies
+        run: uv sync --frozen --all-extras
+
+      - name: Resolve scoring target
+        id: target
+        env:
+          INPUT_SEASON: ${{ inputs.season }}
+          INPUT_WEEK: ${{ inputs.week }}
+        run: |
+          .venv/bin/python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          league = json.loads(Path("data/league.json").read_text())
+          season = int(os.environ.get("INPUT_SEASON") or league["current_public_season"])
+          metadata = json.loads(Path(f"data/seasons/{season}/metadata.json").read_text())
+          week = os.environ.get("INPUT_WEEK", "").strip()
+          should_score = bool(week) or metadata["status"] != "final"
+          if not week and should_score:
+              import nflreadpy as nfl
+              week = str(nfl.get_current_week())
+          with Path(os.environ["GITHUB_OUTPUT"]).open("a") as output:
+              output.write(f"season={season}\nweek={week}\nscore={str(should_score).lower()}\n")
+          PY
+
+      - name: Score authoritative JSON
+        if: steps.target.outputs.score == 'true'
+        run: >-
+          .venv/bin/python scripts/score_json_week.py
+          --season ${{ steps.target.outputs.season }}
+          --week ${{ steps.target.outputs.week }}
+          --apply --replace-existing
+
+      - name: Validate source data
+        run: .venv/bin/python scripts/validate_data.py --source-only
+
+      - name: Export static data
+        run: .venv/bin/python scripts/export_public.py
+
+      - name: Validate exported data and JavaScript
+        run: |
+          .venv/bin/python scripts/validate_data.py
+          node --check web/app.js
+
+      - name: Commit generated data
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/seasons web/data web/data.json
+          git diff --staged --quiet || git commit -m "Update OPFL scores and public data"
+          git push
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

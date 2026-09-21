@@ -1,0 +1,139 @@
+{
+  "season": 2025,
+  "week": 7,
+  "lineups": {
+    "K/D": [
+      "qb-caleb-williams-b89697398e",
+      "rb-josh-jacobs-b3175c8b32",
+      "rb-jordan-mason-ecf0ac92b0",
+      "wr-justin-jefferson-1e0ff0b221",
+      "wr-davante-adams-cae3cf6233",
+      "te-cole-kmet-72a6990ae2",
+      "k-will-reichard-711a90890d",
+      "df-denver-74645867c1",
+      "hc-sean-mcvay-3f6bcc96e7"
+    ],
+    "STL": [
+      "qb-jayden-daniels-ee7095b400",
+      "rb-jahmyr-gibbs-ac9ad31a4b",
+      "rb-d-andre-swift-8d4ef1cc3a",
+      "wr-dk-metcalf-afd30ad53e",
+      "wr-tet-mcmillan-ce59cb8c64",
+      "te-sam-laporta-b7daecd928",
+      "k-brandon-aubrey-8787177b88",
+      "df-houston-dde3ccb39a",
+      "hc-dan-campbell-4c2c12e8b0"
+    ],
+    "JOH": [
+      "qb-dak-prescott-ed27d64ed3",
+      "rb-kyren-williams-5637bb948d",
+      "rb-nick-chubb-9c3c488a8e",
+      "wr-ja-marr-chase-8e79ed9e56",
+      "wr-courtland-sutton-9499ede0a2",
+      "te-tyler-warren-f24ab7c38f",
+      "k-cameron-dicker-ff34cac7d4",
+      "df-chicago-7ea8ddb34e",
+      "hc-shane-steichen-d4126a5540"
+    ],
+    "KEV": [
+      "qb-jalen-hurts-373b90b5b8",
+      "rb-de-von-achane-113e701048",
+      "rb-rachaad-white-7319cf8397",
+      "wr-jordan-addison-9cbdc8d480",
+      "wr-emeka-egbuka-46ac3c20db",
+      "te-theo-johnson-d974198cc2",
+      "k-chris-boswell-3e25c160d1",
+      "df-la-rams-d097bf8e0a",
+      "hc-kyle-shanahan-61e682a143"
+    ],
+    "D/J": [
+      "qb-michael-penix-0cb4bd44ca",
+      "rb-zach-charbonnet-2f0ee7e536",
+      "rb-rhamondre-stevenson-6e373867ef",
+      "wr-amon-ra-st-brown-4641153a43",
+      "wr-marvin-harrison-cecdca00b9",
+      "te-tj-hockenson-1f6793b1a1",
+      "k-tyler-loop-c73abca5e1",
+      "df-kansas-city-a0421a561c",
+      "hc-mike-vrabel-afc013e3ef"
+    ],
+    "G/G": [
+      "qb-baker-mayfield-f7c748acf3",
+      "rb-quinshon-judkins-42964a6fd9",
+      "rb-jaylen-warren-43a64fcfe7",
+      "wr-jaxon-smith-njigba-036c5e02ca",
+      "wr-rashee-rice-9af0d26ccf",
+      "te-jake-ferguson-08cdc42e92",
+      "k-brandon-mcmanus-6674c08a69",
+      "df-ny-jets-13c4d410d0",
+      "hc-mike-tomlin-a18806cb82"
+    ],
+    "E/J": [
+      "qb-aaron-rodgers-8b19763fe7",
+      "rb-treveyon-henderson-8d31de9a53",
+      "rb-jacory-croskey-merritt-1a3a0bdd0d",
+      "wr-nico-collins-e489a7b9cf",
+      "wr-calvin-ridley-5500c9a277",
+      "te-hunter-henry-4b890624e5",
+      "k-evan-mcpherson-9484f93ac3",
+      "df-ny-giants-f43d06187a",
+      "hc-matt-lafleur-8ba8442218"
+    ],
+    "AND": [
+      "qb-trevor-lawrence-bc86602a40",
+      "rb-christian-mccaffrey-b15e0363eb",
+      "rb-kenneth-walker-iii-e5bf1bab00",
+      "wr-ladd-mcconkey-19051e877d",
+      "wr-jaylen-waddle-8839f2a4e8",
+      "te-trey-mcbride-b3661c83dc",
+      "k-daniel-carlson-2eaed7541a",
+      "df-green-bay-c3a83d8cc4",
+      "hc-andy-reid-617c052d44"
+    ],
+    "W/B": [
+      "qb-sam-darnold-c89c1c3e2d",
+      "rb-bijan-robinson-9c5ce19991",
+      "rb-bhayshul-tuten-886aa22056",
+      "wr-brian-thomas-dcedb60145",
+      "wr-drake-london-a2a8673692",
+      "te-harold-fannin-5f3032008b",
+      "k-jake-bates-860dc26bf1",
+      "df-philadelphia-8bc514d651",
+      "hc-nick-sirianni-4d328f4681"
+    ],
+    "KAM": [
+      "qb-drake-maye-6f0ecd960a",
+      "rb-jonathan-taylor-facf70df22",
+      "rb-jk-dobbins-c429dfde15",
+      "wr-devonta-smith-d81a9dc2f3",
+      "wr-george-pickens-76e387ce57",
+      "te-george-kittle-8b63a75b3b",
+      "k-cam-little-02b015461b",
+      "df-pittsburgh-620f8e2f39",
+      "hc-raheem-morris-934cacd949"
+    ],
+    "J/M": [
+      "qb-patrick-mahomes-dc680f94df",
+      "rb-chase-brown-73a7ad0ebc",
+      "rb-cam-skattebo-0c44566cd8",
+      "wr-ceedee-lamb-0d6d959a73",
+      "wr-rome-odunze-854605f130",
+      "te-elijah-arroyo-559d6c7098",
+      "k-ka-imi-fairbairn-7d26079fd3",
+      "df-cleveland-83b77a3f4a",
+      "hc-kevin-o-connell-f1b60e3ca4"
+    ],
+    "ADA": [
+      "qb-jared-goff-847b25786e",
+      "rb-saquon-barkley-ed5d2238a4",
+      "rb-ashton-jeanty-32b7ab0cdb",
+      "wr-xavier-worthy-3e4e714f66",
+      "wr-chris-olave-1ca7d108ba",
+      "te-aj-barner-9d30611ecf",
+      "k-harrison-butker-4a5edfd2e4",
+      "df-detroit-7e02315182",
+      "hc-brian-schottenheimer-90d5bb4421"
+    ]
+  },
+  "manual_corrections": {}
+}

@@ -1,0 +1,150 @@
+{
+  "season": 2024,
+  "detail_level": "summary",
+  "standings": [
+    {
+      "name": "Wes",
+      "owner": "Wes",
+      "wins": 11.0,
+      "losses": 4.0,
+      "ties": 0.0,
+      "top_six": 10.0,
+      "rank_points": 21.0,
+      "points_for": 865.0,
+      "rank": 1
+    },
+    {
+      "name": "Kemp",
+      "owner": "Kemp",
+      "wins": 9.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 12.0,
+      "rank_points": 21.0,
+      "points_for": 972.0,
+      "rank": 2
+    },
+    {
+      "name": "Jarrett/Matt",
+      "owner": "Jarrett/Matt",
+      "wins": 10.0,
+      "losses": 5.0,
+      "ties": 0.0,
+      "top_six": 10.0,
+      "rank_points": 20.0,
+      "points_for": 802.0,
+      "rank": 3
+    },
+    {
+      "name": "John",
+      "owner": "John",
+      "wins": 9.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 9.0,
+      "rank_points": 18.0,
+      "points_for": 781.0,
+      "rank": 4
+    },
+    {
+      "name": "Kevin",
+      "owner": "Kevin",
+      "wins": 9.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 9.0,
+      "rank_points": 18.0,
+      "points_for": 751.0,
+      "rank": 5
+    },
+    {
+      "name": "Steve L.",
+      "owner": "Steve L.",
+      "wins": 9.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 8.5,
+      "rank_points": 17.5,
+      "points_for": 726.0,
+      "rank": 6
+    },
+    {
+      "name": "Kirk/David",
+      "owner": "Kirk/David",
+      "wins": 8.0,
+      "losses": 7.0,
+      "ties": 0.0,
+      "top_six": 7.0,
+      "rank_points": 15.0,
+      "points_for": 702.0,
+      "rank": 7
+    },
+    {
+      "name": "Greg/Griffin",
+      "owner": "Greg/Griffin",
+      "wins": 6.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": 6.5,
+      "rank_points": 12.5,
+      "points_for": 710.0,
+      "rank": 8
+    },
+    {
+      "name": "Andrew",
+      "owner": "Andrew",
+      "wins": 6.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": 6.0,
+      "rank_points": 12.0,
+      "points_for": 735.0,
+      "rank": 9
+    },
+    {
+      "name": "Danny/Joey",
+      "owner": "Danny/Joey",
+      "wins": 4.0,
+      "losses": 10.0,
+      "ties": 1.0,
+      "top_six": 4.5,
+      "rank_points": 9.0,
+      "points_for": 699.0,
+      "rank": 10
+    },
+    {
+      "name": "Eric/Jeff",
+      "owner": "Eric/Jeff",
+      "wins": 5.0,
+      "losses": 9.0,
+      "ties": 1.0,
+      "top_six": 2.5,
+      "rank_points": 8.0,
+      "points_for": 623.0,
+      "rank": 11
+    },
+    {
+      "name": "Adam",
+      "owner": "Adam",
+      "wins": 3.0,
+      "losses": 12.0,
+      "ties": 0.0,
+      "top_six": 5.0,
+      "rank_points": 8.0,
+      "points_for": 661.0,
+      "rank": 12
+    }
+  ],
+  "finish": {
+    "year": 2024,
+    "first": "Kemp/Ad/Miles",
+    "second": "Wes",
+    "third": "John",
+    "fourth": "Jarrett/Matt",
+    "championship_score": "88-57",
+    "toilet_bowl_score": "59-51",
+    "jamboree": "Steve L. (157)",
+    "comments": "Kemp/A/M win seventh championship and 4 of last 5 Oakland Bowls!!!!",
+    "team_count": 12
+  }
+}

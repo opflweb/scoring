@@ -6,8 +6,8 @@ import polars as pl
 
 try:
     import nflreadpy as nfl
-except ImportError as err:
-    raise ImportError('Please install nflreadpy: pip install nflreadpy') from err
+except ImportError:
+    raise ImportError("Please install nflreadpy: pip install nflreadpy")
 
 try:
     from thefuzz import fuzz, process
@@ -19,7 +19,7 @@ except ImportError:
 from .constants import TEAM_ABBREV_NORMALIZE
 
 # Offensive line positions
-OL_POSITIONS = {'T', 'G', 'C', 'OT', 'OG', 'OL', 'LT', 'RT', 'LG', 'RG'}
+OL_POSITIONS = {"T", "G", "C", "OT", "OG", "OL", "LT", "RT", "LG", "RG"}
 
 
 def normalize_name(name: str) -> str:
@@ -30,13 +30,13 @@ def normalize_name(name: str) -> str:
     Also removes unclosed parentheses that can break regex matching.
     """
     # Remove common suffixes
-    name = re.sub(r'\s+(Sr\.?|Jr\.?|II|III|IV|V)$', '', name.strip(), flags=re.IGNORECASE)
+    name = re.sub(r"\s+(Sr\.?|Jr\.?|II|III|IV|V)$", "", name.strip(), flags=re.IGNORECASE)
     # Remove periods and extra whitespace
-    name = re.sub(r'\.', '', name)
-    name = re.sub(r'\s+', ' ', name)
+    name = re.sub(r"\.", "", name)
+    name = re.sub(r"\s+", " ", name)
     # Remove unclosed parentheses (e.g., "Tank Bigsby (JAX" without closing paren)
     # This can happen with malformed Excel data
-    name = re.sub(r'\s*\([^)]*$', '', name)
+    name = re.sub(r"\s*\([^)]*$", "", name)
     return name.lower().strip()
 
 
@@ -89,36 +89,36 @@ class NFLDataFetcher:
     def player_stats(self) -> pl.DataFrame:
         """Lazy load player stats."""
         if self._player_stats is None:
-            print(f'Loading player stats for {self.season} week {self.week}...')
-            stats = nfl.load_player_stats(seasons=self.season, summary_level='week')
-            self._player_stats = stats.filter(pl.col('week') == self.week)
+            print(f"Loading player stats for {self.season} week {self.week}...")
+            stats = nfl.load_player_stats(seasons=self.season, summary_level="week")
+            self._player_stats = stats.filter(pl.col("week") == self.week)
         return self._player_stats
 
     @property
     def team_stats(self) -> pl.DataFrame:
         """Lazy load team stats."""
         if self._team_stats is None:
-            print(f'Loading team stats for {self.season} week {self.week}...')
-            stats = nfl.load_team_stats(seasons=self.season, summary_level='week')
-            self._team_stats = stats.filter(pl.col('week') == self.week)
+            print(f"Loading team stats for {self.season} week {self.week}...")
+            stats = nfl.load_team_stats(seasons=self.season, summary_level="week")
+            self._team_stats = stats.filter(pl.col("week") == self.week)
         return self._team_stats
 
     @property
     def schedules(self) -> pl.DataFrame:
         """Lazy load schedules."""
         if self._schedules is None:
-            print(f'Loading schedules for {self.season}...')
+            print(f"Loading schedules for {self.season}...")
             schedules = nfl.load_schedules(seasons=self.season)
-            self._schedules = schedules.filter(pl.col('week') == self.week)
+            self._schedules = schedules.filter(pl.col("week") == self.week)
         return self._schedules
 
     @property
     def pbp(self) -> pl.DataFrame:
         """Lazy load play-by-play data."""
         if self._pbp is None:
-            print(f'Loading play-by-play for {self.season} week {self.week}...')
+            print(f"Loading play-by-play for {self.season} week {self.week}...")
             pbp = nfl.load_pbp(seasons=self.season)
-            self._pbp = pbp.filter(pl.col('week') == self.week)
+            self._pbp = pbp.filter(pl.col("week") == self.week)
         return self._pbp
 
     @property
@@ -134,16 +134,16 @@ class NFLDataFetcher:
             return team
         return TEAM_ABBREV_NORMALIZE.get(team.upper(), team.upper())
 
-    def _get_all_player_names(self, team: str = None) -> list[str]:
+    def _get_all_player_names(self, team: str | None = None) -> list[str]:
         """Get all player display names, optionally filtered by team."""
         stats = self.player_stats
 
         if team:
             normalized_team = self._normalize_team(team)
-            stats = stats.filter(pl.col('team') == normalized_team)
+            stats = stats.filter(pl.col("team") == normalized_team)
 
-        if 'player_display_name' in stats.columns:
-            names = stats['player_display_name'].drop_nulls().to_list()
+        if "player_display_name" in stats.columns:
+            names = stats["player_display_name"].drop_nulls().to_list()
             return [str(n) for n in names]
         return []
 
@@ -181,34 +181,37 @@ class NFLDataFetcher:
             if cached_name is None:
                 return None
             # Look up by cached name
-            matches = stats.filter(pl.col('player_display_name') == cached_name)
+            matches = stats.filter(pl.col("player_display_name") == cached_name)
             if matches.height > 0:
                 return matches.row(0, named=True)
 
         # Filter by team first if provided (but also search all teams for fuzzy)
-        team_stats = stats.filter(pl.col('team') == normalized_team) if normalized_team else stats
+        if normalized_team:
+            team_stats = stats.filter(pl.col("team") == normalized_team)
+        else:
+            team_stats = stats
 
         # Try exact match on display name (case insensitive, remove periods for comparison)
         # This handles cases like "A.J. Brown" vs "AJ Brown"
         matches = team_stats.filter(
-            pl.col('player_display_name').str.to_lowercase().str.replace_all(r'\.', '')
+            pl.col("player_display_name").str.to_lowercase().str.replace_all(r"\.", "")
             == clean_name
         )
         if matches.height > 0:
             result = matches.row(0, named=True)
-            self._player_name_cache[cache_key] = result.get('player_display_name')
+            self._player_name_cache[cache_key] = result.get("player_display_name")
             return result
 
         # Try contains match (also remove periods) - use literal=True to avoid regex issues
         matches = team_stats.filter(
-            pl.col('player_display_name')
+            pl.col("player_display_name")
             .str.to_lowercase()
-            .str.replace_all(r'\.', '')
+            .str.replace_all(r"\.", "")
             .str.contains(clean_name, literal=True)
         )
         if matches.height > 0:
             result = matches.row(0, named=True)
-            self._player_name_cache[cache_key] = result.get('player_display_name')
+            self._player_name_cache[cache_key] = result.get("player_display_name")
             return result
 
         # Try matching just last name
@@ -216,14 +219,14 @@ class NFLDataFetcher:
         if len(name_parts) >= 2:
             last_name = name_parts[-1].lower()
             matches = team_stats.filter(
-                pl.col('player_display_name')
+                pl.col("player_display_name")
                 .str.to_lowercase()
-                .str.replace_all(r'\.', '')
+                .str.replace_all(r"\.", "")
                 .str.contains(last_name, literal=True)
             )
             if matches.height == 1:
                 result = matches.row(0, named=True)
-                self._player_name_cache[cache_key] = result.get('player_display_name')
+                self._player_name_cache[cache_key] = result.get("player_display_name")
                 return result
 
         # Use fuzzy matching if enabled and available
@@ -237,10 +240,10 @@ class NFLDataFetcher:
                 best_match = fuzzy_match_name(name, candidates, threshold=fuzzy_threshold)
 
                 if best_match:
-                    matches = stats.filter(pl.col('player_display_name') == best_match)
+                    matches = stats.filter(pl.col("player_display_name") == best_match)
                     if matches.height > 0:
                         result = matches.row(0, named=True)
-                        self._player_name_cache[cache_key] = result.get('player_display_name')
+                        self._player_name_cache[cache_key] = result.get("player_display_name")
                         return result
 
             # If team filter didn't work, try all players (OPFL often has wrong team)
@@ -250,10 +253,10 @@ class NFLDataFetcher:
                     best_match = fuzzy_match_name(name, all_candidates, threshold=fuzzy_threshold)
 
                     if best_match:
-                        matches = stats.filter(pl.col('player_display_name') == best_match)
+                        matches = stats.filter(pl.col("player_display_name") == best_match)
                         if matches.height > 0:
                             result = matches.row(0, named=True)
-                            self._player_name_cache[cache_key] = result.get('player_display_name')
+                            self._player_name_cache[cache_key] = result.get("player_display_name")
                             # Note: We found the player but on a different team
                             return result
 
@@ -264,7 +267,7 @@ class NFLDataFetcher:
     def get_team_stats(self, team: str) -> dict | None:
         """Get team stats for D/ST scoring."""
         normalized_team = self._normalize_team(team)
-        team_data = self.team_stats.filter(pl.col('team') == normalized_team)
+        team_data = self.team_stats.filter(pl.col("team") == normalized_team)
 
         if team_data.height > 0:
             return team_data.row(0, named=True)
@@ -276,7 +279,7 @@ class NFLDataFetcher:
         if not game:
             return None
 
-        opponent = game.get('opponent')
+        opponent = game.get("opponent")
         if not opponent:
             return None
 
@@ -288,38 +291,38 @@ class NFLDataFetcher:
         schedules = self.schedules
 
         # Check if home team
-        home_game = schedules.filter(pl.col('home_team') == normalized_team)
+        home_game = schedules.filter(pl.col("home_team") == normalized_team)
         if home_game.height > 0:
             row = home_game.row(0, named=True)
-            if row.get('home_score') is None:
+            if row.get("home_score") is None:
                 return None  # Game hasn't been played yet
             return {
-                'team_score': row.get('home_score', 0),
-                'opponent_score': row.get('away_score', 0),
-                'points_allowed': row.get('away_score', 0),
-                'opponent': row.get('away_team'),
-                'coach': row.get('home_coach'),
-                'is_home': True,
-                'spread': row.get('spread_line'),  # Home team spread
+                "team_score": row.get("home_score", 0),
+                "opponent_score": row.get("away_score", 0),
+                "points_allowed": row.get("away_score", 0),
+                "opponent": row.get("away_team"),
+                "coach": row.get("home_coach"),
+                "is_home": True,
+                "spread": row.get("spread_line"),  # Home team spread
             }
 
         # Check if away team
-        away_game = schedules.filter(pl.col('away_team') == normalized_team)
+        away_game = schedules.filter(pl.col("away_team") == normalized_team)
         if away_game.height > 0:
             row = away_game.row(0, named=True)
-            if row.get('away_score') is None:
+            if row.get("away_score") is None:
                 return None  # Game hasn't been played yet
             # For away team, spread is the negative of home spread
-            home_spread = row.get('spread_line')
+            home_spread = row.get("spread_line")
             away_spread = -home_spread if home_spread is not None else None
             return {
-                'team_score': row.get('away_score', 0),
-                'opponent_score': row.get('home_score', 0),
-                'points_allowed': row.get('home_score', 0),
-                'opponent': row.get('home_team'),
-                'coach': row.get('away_coach'),
-                'is_home': False,
-                'spread': away_spread,
+                "team_score": row.get("away_score", 0),
+                "opponent_score": row.get("home_score", 0),
+                "points_allowed": row.get("home_score", 0),
+                "opponent": row.get("home_team"),
+                "coach": row.get("away_coach"),
+                "is_home": False,
+                "spread": away_spread,
             }
 
         return None
@@ -339,14 +342,14 @@ class NFLDataFetcher:
         if not game:
             return None
 
-        spread = game.get('spread')
+        spread = game.get("spread")
         if spread is None:
             return None
 
         return {
-            'spread': spread,
-            'is_favorite': spread > 0,
-            'is_underdog': spread < 0,
+            "spread": spread,
+            "is_favorite": spread > 0,
+            "is_underdog": spread < 0,
         }
 
     def get_turnovers_returned_for_td(self, player_id: str) -> dict:
@@ -361,21 +364,21 @@ class NFLDataFetcher:
 
         # Pick sixes (interceptions returned for TD where this player threw the INT)
         pick_sixes = pbp.filter(
-            (pl.col('interception') == 1)
-            & (pl.col('return_touchdown') == 1)
-            & (pl.col('passer_player_id') == player_id)
+            (pl.col("interception") == 1)
+            & (pl.col("return_touchdown") == 1)
+            & (pl.col("passer_player_id") == player_id)
         ).height
 
         # Fumble sixes (fumbles returned for TD where this player fumbled)
         fumble_sixes = pbp.filter(
-            (pl.col('fumble_lost') == 1)
-            & (pl.col('return_touchdown') == 1)
-            & (pl.col('fumbled_1_player_id') == player_id)
+            (pl.col("fumble_lost") == 1)
+            & (pl.col("return_touchdown") == 1)
+            & (pl.col("fumbled_1_player_id") == player_id)
         ).height
 
         return {
-            'pick_sixes': pick_sixes,
-            'fumble_sixes': fumble_sixes,
+            "pick_sixes": pick_sixes,
+            "fumble_sixes": fumble_sixes,
         }
 
     def get_extra_fumbles_lost(self, player_id: str, player_stats: dict) -> int:
@@ -396,14 +399,14 @@ class NFLDataFetcher:
 
         # Count fumbles lost where this player fumbled (from PBP)
         pbp_fumbles = pbp.filter(
-            (pl.col('fumble_lost') == 1) & (pl.col('fumbled_1_player_id') == player_id)
+            (pl.col("fumble_lost") == 1) & (pl.col("fumbled_1_player_id") == player_id)
         ).height
 
         # Count fumbles in player stats
         stats_fumbles = (
-            (player_stats.get('sack_fumbles_lost', 0) or 0)
-            + (player_stats.get('rushing_fumbles_lost', 0) or 0)
-            + (player_stats.get('receiving_fumbles_lost', 0) or 0)
+            (player_stats.get("sack_fumbles_lost", 0) or 0)
+            + (player_stats.get("rushing_fumbles_lost", 0) or 0)
+            + (player_stats.get("receiving_fumbles_lost", 0) or 0)
         )
 
         # Extra fumbles = PBP fumbles not in stats
@@ -426,23 +429,23 @@ class NFLDataFetcher:
         normalized_team = self._normalize_team(team)
 
         # Get aggregated stats sacks
-        team_data = self.team_stats.filter(pl.col('team') == normalized_team)
-        agg_sacks = int(team_data['def_sacks'][0]) if team_data.height > 0 else 0
+        team_data = self.team_stats.filter(pl.col("team") == normalized_team)
+        agg_sacks = int(team_data["def_sacks"][0]) if team_data.height > 0 else 0
 
         # Count from PBP
         pbp = self.pbp
         pbp_sacks = pbp.filter(
-            (pl.col('defteam') == normalized_team) & (pl.col('sack') == 1)
+            (pl.col("defteam") == normalized_team) & (pl.col("sack") == 1)
         ).height
 
         # Use PBP if different (more accurate)
         discrepancy = agg_sacks != pbp_sacks
 
         return {
-            'aggregated': agg_sacks,
-            'pbp': pbp_sacks,
-            'value': pbp_sacks if discrepancy else agg_sacks,
-            'discrepancy': discrepancy,
+            "aggregated": agg_sacks,
+            "pbp": pbp_sacks,
+            "value": pbp_sacks if discrepancy else agg_sacks,
+            "discrepancy": discrepancy,
         }
 
     def get_blocked_punts(self, team: str) -> int:
@@ -460,7 +463,7 @@ class NFLDataFetcher:
 
         # Count plays where punt was blocked and this team was on defense
         blocked_punts = pbp.filter(
-            (pl.col('defteam') == normalized_team) & (pl.col('punt_blocked') == 1)
+            (pl.col("defteam") == normalized_team) & (pl.col("punt_blocked") == 1)
         ).height
 
         return blocked_punts
@@ -484,24 +487,24 @@ class NFLDataFetcher:
 
         # Count blocked punt TDs where this team scored
         blocked_punt_tds = pbp.filter(
-            (pl.col('punt_blocked') == 1)
-            & (pl.col('touchdown') == 1)
-            & (pl.col('td_team') == normalized_team)
+            (pl.col("punt_blocked") == 1)
+            & (pl.col("touchdown") == 1)
+            & (pl.col("td_team") == normalized_team)
         ).height
 
         # Count blocked FG TDs where this team scored (rare but possible)
         # Note: nflverse uses 'field_goal_attempt' and we check if it was blocked
         # A blocked FG returned for TD would have the scoring team as td_team
         blocked_fg_tds = pbp.filter(
-            (pl.col('field_goal_attempt') == 1)
-            & (pl.col('touchdown') == 1)
-            & (pl.col('td_team') == normalized_team)
-            & (pl.col('defteam') == normalized_team)  # Defense scored, so FG was blocked
+            (pl.col("field_goal_attempt") == 1)
+            & (pl.col("touchdown") == 1)
+            & (pl.col("td_team") == normalized_team)
+            & (pl.col("defteam") == normalized_team)  # Defense scored, so FG was blocked
         ).height
 
         return blocked_punt_tds + blocked_fg_tds
 
-    def find_coach(self, coach_name: str, team: str = None) -> dict | None:
+    def find_coach(self, coach_name: str, team: str | None = None) -> dict | None:
         """
         Find a coach's team from the schedule data.
 
@@ -517,25 +520,25 @@ class NFLDataFetcher:
 
         # Check home coaches
         for row in schedules.iter_rows(named=True):
-            home_coach = row.get('home_coach', '') or ''
+            home_coach = row.get("home_coach", "") or ""
             if clean_name in home_coach.lower():
                 return {
-                    'team': row.get('home_team'),
-                    'team_score': row.get('home_score', 0),
-                    'opponent_score': row.get('away_score', 0),
-                    'is_home': True,
-                    'spread': row.get('spread_line'),
+                    "team": row.get("home_team"),
+                    "team_score": row.get("home_score", 0),
+                    "opponent_score": row.get("away_score", 0),
+                    "is_home": True,
+                    "spread": row.get("spread_line"),
                 }
 
-            away_coach = row.get('away_coach', '') or ''
+            away_coach = row.get("away_coach", "") or ""
             if clean_name in away_coach.lower():
-                home_spread = row.get('spread_line')
+                home_spread = row.get("spread_line")
                 return {
-                    'team': row.get('away_team'),
-                    'team_score': row.get('away_score', 0),
-                    'opponent_score': row.get('home_score', 0),
-                    'is_home': False,
-                    'spread': -home_spread if home_spread is not None else None,
+                    "team": row.get("away_team"),
+                    "team_score": row.get("away_score", 0),
+                    "opponent_score": row.get("home_score", 0),
+                    "is_home": False,
+                    "spread": -home_spread if home_spread is not None else None,
                 }
 
         return None

@@ -11,10 +11,10 @@ class PlayerScore:
     position: str
     team: str
     total_points: float = 0.0
-    breakdown: dict[str, float] = field(default_factory=dict)
+    breakdown: dict[str, float | bool] = field(default_factory=dict)
     found_in_stats: bool = False
     data_notes: list[str] = field(default_factory=list)  # Flags for data discrepancies
-    matched_name: str = ''  # The name that was actually matched in stats (for fuzzy matches)
+    matched_name: str = ""  # The name that was actually matched in stats (for fuzzy matches)
     is_starter: bool = True  # Whether this player is a starter
 
 

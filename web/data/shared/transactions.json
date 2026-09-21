@@ -1,0 +1,606 @@
+{
+  "trades": [
+    {
+      "date": "2025-10-29",
+      "teams": [
+        "Greg/Griffin",
+        "Kevin"
+      ],
+      "team_a": "Greg/Griffin",
+      "team_a_receives": [
+        "Seattle D",
+        "TE Cade Otten",
+        "Kevin's 2026 #2 Pick"
+      ],
+      "team_b": "Kevin",
+      "team_b_receives": [
+        "TE Travis Kelce",
+        "NY Jets D",
+        "Greg/Griff's 2026 #3 Pick"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2025-10-29",
+      "teams": [
+        "Eric/Jeff",
+        "J/Matt"
+      ],
+      "team_a": "Eric/Jeff",
+      "team_a_receives": [
+        "2025 Waiver Pick 8",
+        "J/Matt's 2026 #4 Pick"
+      ],
+      "team_b": "J/Matt",
+      "team_b_receives": [
+        "The later of Wes' and Eric/Jeff's 2026 #3 Picks"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2025-10-24",
+      "teams": [
+        "Danny/Joey",
+        "Kemp/A/M"
+      ],
+      "team_a": "Danny/Joey",
+      "team_a_receives": [
+        "RB JK Dobbins",
+        "QB Anthony Richardson"
+      ],
+      "team_b": "Kemp/A/M",
+      "team_b_receives": [
+        "QB Michael Penix",
+        "RB James Conner",
+        "Danny/Joey's 2025 #1 Waiver Pick",
+        "Danny/Joey's 2026 #2 Pick"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2025-10-24",
+      "teams": [
+        "Danny/Joey",
+        "Steve L."
+      ],
+      "team_a": "Danny/Joey",
+      "team_a_receives": [
+        "WR Jaydin Higgins"
+      ],
+      "team_b": "Steve L.",
+      "team_b_receives": [
+        "Option to switch 2026 #3 picks with Danny/Joey"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2025-09-01",
+      "teams": [
+        "Danny/Joey",
+        "Kemp/A/M"
+      ],
+      "team_a": "Danny/Joey",
+      "team_a_receives": [
+        "2025 Pick 33",
+        "Kemp/A/M's 2027 #4 Pick"
+      ],
+      "team_b": "Kemp/A/M",
+      "team_b_receives": [
+        "2025 Pick 47",
+        "Danny/Joey's 2027 #3 Pick"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2025-09-01",
+      "teams": [
+        "John",
+        "Kemp/A/M"
+      ],
+      "team_a": "John",
+      "team_a_receives": [
+        "RB Nick Chubb",
+        "Kemp/A/M's 2026 #5 Pick"
+      ],
+      "team_b": "Kemp/A/M",
+      "team_b_receives": [
+        "2025 Pick 33",
+        "John's 2026 #4 Pick"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2025-09-01",
+      "teams": [
+        "Wes/Bill",
+        "Adam"
+      ],
+      "team_a": "Wes/Bill",
+      "team_a_receives": [
+        "2025 Pick 13"
+      ],
+      "team_b": "Adam",
+      "team_b_receives": [
+        "2025 Pick 20",
+        "Better of Wes/Bill and Eric/Jeff's 2026 #3"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2025-09-01",
+      "teams": [
+        "Danny/Joey",
+        "J/Matt"
+      ],
+      "team_a": "Danny/Joey",
+      "team_a_receives": [
+        "WR Tyreek Hill",
+        "2025 Pick 22"
+      ],
+      "team_b": "J/Matt",
+      "team_b_receives": [
+        "2025 Pick 15",
+        "2025 Pick 27"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2025-08-26",
+      "teams": [
+        "Danny/Joey",
+        "Andrew"
+      ],
+      "team_a": "Danny/Joey",
+      "team_a_receives": [
+        "QB Josh Allen",
+        "2025 Pick 40"
+      ],
+      "team_b": "Andrew",
+      "team_b_receives": [
+        "QB Trevor Lawrence",
+        "RB Kenneth Walker III",
+        "WR Ladd McConkey",
+        "K Younghoe Koo",
+        "Green Bay D",
+        "HC Jim Harbaugh",
+        "Danny/Joey's 2026 #1 pick"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2025-08-25",
+      "teams": [
+        "Kemp/A/M",
+        "Wes/Bill"
+      ],
+      "team_a": "Kemp/A/M",
+      "team_a_receives": [
+        "RB Aaron Jones",
+        "2025 Pick 35",
+        "Wes/Bill's 2025 #3 Taxi Pick"
+      ],
+      "team_b": "Wes/Bill",
+      "team_b_receives": [
+        "2025 Pick 23",
+        "2025 Pick 29",
+        "Kemp/A/M's 2025 #3 Taxi Pick"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2025-08-23",
+      "teams": [
+        "J/Matt",
+        "Wes/Bill"
+      ],
+      "team_a": "J/Matt",
+      "team_a_receives": [
+        "RB Chase Brown"
+      ],
+      "team_b": "Wes/Bill",
+      "team_b_receives": [
+        "2025 Pick 20",
+        "J/Matt's 2026 #1 pick*"
+      ],
+      "notes": "* If J/Matt make the playoffs in 2025, Wes/Bill receive J/Matt's 2026 #2 pick and have the option to defer the 2026 #1 to a 2027 #1. Sunday before Labor Day 2026 is the deferral decision deadline."
+    },
+    {
+      "date": "2025-08-21",
+      "teams": [
+        "Eric/Jeff",
+        "Wes/Bill"
+      ],
+      "team_a": "Eric/Jeff",
+      "team_a_receives": [
+        "WR Nico Collins",
+        "2025 Pick 3",
+        "2025 Pick 11"
+      ],
+      "team_b": "Wes/Bill",
+      "team_b_receives": [
+        "RB Bijan Robinson",
+        "Option to switch 2026 #3 picks with Eric/Jeff"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-11-06",
+      "teams": [
+        "Greg/Griffin",
+        "Kemp/A/M"
+      ],
+      "team_a": "Greg/Griffin",
+      "team_a_receives": [
+        "WR Rashee Rice",
+        "Kemp/A/M's 2025 #2 pick"
+      ],
+      "team_b": "Kemp/A/M",
+      "team_b_receives": [
+        "WR Mike Evans",
+        "K Jason Sanders",
+        "Greg/Griffin's 2025 #3"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-10-30",
+      "teams": [
+        "Kevin",
+        "Wes/Bill"
+      ],
+      "team_a": "Kevin",
+      "team_a_receives": [
+        "2024 Waiver Pick 1",
+        "Kemp/A/M's 2026 #2 pick",
+        "Wes/Bill's 2024 #1 taxi waiver"
+      ],
+      "team_b": "Wes/Bill",
+      "team_b_receives": [
+        "Kevin's 2026 #1 pick",
+        "Kevin's 2024 #1 taxi waiver"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-10-30",
+      "teams": [
+        "Wes/Bill",
+        "Adam"
+      ],
+      "team_a": "Wes/Bill",
+      "team_a_receives": [
+        "RB Aaron Jones",
+        "Adam's 2024 #1 waiver pick",
+        "Adam's 2024 #1 waiver taxi pick"
+      ],
+      "team_b": "Adam",
+      "team_b_receives": [
+        "RB Javonte Williams",
+        "Kemp/A/M's 2025 #1 pick",
+        "Wes/Bill's 2024 #1 waiver taxi pick"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-09-21",
+      "teams": [
+        "Wes/Bill",
+        "Danny/Joey"
+      ],
+      "team_a": "Wes/Bill",
+      "team_a_receives": [
+        "RB Chase Brown"
+      ],
+      "team_b": "Danny/Joey",
+      "team_b_receives": [
+        "Wes/Bill's 2025 #4 pick"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-09-14",
+      "teams": [
+        "Andrew",
+        "Kirk/David"
+      ],
+      "team_a": "Andrew",
+      "team_a_receives": [
+        "RB Zamir White"
+      ],
+      "team_b": "Kirk/David",
+      "team_b_receives": [
+        "Andrew's 2025 #2 pick"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-09-12",
+      "teams": [
+        "Danny/Joey",
+        "Kemp/A/M"
+      ],
+      "team_a": "Danny/Joey",
+      "team_a_receives": [
+        "TE Evan Engram",
+        "Kemp/A/M's 2025 #3 pick"
+      ],
+      "team_b": "Kemp/A/M",
+      "team_b_receives": [
+        "TE David Njoku",
+        "Kemp/A/M's 2025 #2 pick"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-09-02",
+      "teams": [
+        "Andrew",
+        "Greg/Griffin"
+      ],
+      "team_a": "Andrew",
+      "team_a_receives": [
+        "Greg/Griffin's 2026 #4 pick"
+      ],
+      "team_b": "Greg/Griffin",
+      "team_b_receives": [
+        "2024 Pick 38"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-09-02",
+      "teams": [
+        "Kevin",
+        "Wes/Bill"
+      ],
+      "team_a": "Kevin",
+      "team_a_receives": [
+        "TE Cade Otton",
+        "Wes/Bill's 2027 #3 pick"
+      ],
+      "team_b": "Wes/Bill",
+      "team_b_receives": [
+        "2024 Pick 32",
+        "2024 Pick 33",
+        "Kevin's 2027 #2 pick"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-09-02",
+      "teams": [
+        "Steve L.",
+        "Wes/Bill"
+      ],
+      "team_a": "Steve L.",
+      "team_a_receives": [
+        "Wes/Bill's 2024 #2 Waiver Pick"
+      ],
+      "team_b": "Wes/Bill",
+      "team_b_receives": [
+        "TE Cade Otton"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-09-02",
+      "teams": [
+        "Andrew",
+        "Danny/Joey"
+      ],
+      "team_a": "Andrew",
+      "team_a_receives": [
+        "QB JJ McCarthy"
+      ],
+      "team_b": "Danny/Joey",
+      "team_b_receives": [
+        "2024 Pick 17",
+        "2024 Pick 26",
+        "2024 Pick 27",
+        "2024 Pick 35",
+        "Andrew's 2025 #1 Waiver Pick"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-09-02",
+      "teams": [
+        "John",
+        "Kemp/A/M"
+      ],
+      "team_a": "John",
+      "team_a_receives": [
+        "2024 Pick 12",
+        "2024 Pick 15",
+        "2024 Pick 39"
+      ],
+      "team_b": "Kemp/A/M",
+      "team_b_receives": [
+        "2024 Pick 10",
+        "2024 Pick 29"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-09-02",
+      "teams": [
+        "Andrew",
+        "Danny/Joey"
+      ],
+      "team_a": "Andrew",
+      "team_a_receives": [
+        "WR Stefon Diggs",
+        "2024 Pick 17"
+      ],
+      "team_b": "Danny/Joey",
+      "team_b_receives": [
+        "TE TJ Hockenson",
+        "2024 Pick 24"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-08-31",
+      "teams": [
+        "Wes/Bill",
+        "Kemp/A/M"
+      ],
+      "team_a": "Wes/Bill",
+      "team_a_receives": [
+        "2024 Pick 22"
+      ],
+      "team_b": "Kemp/A/M",
+      "team_b_receives": [
+        "RB Nick Chubb",
+        "2024 Pick 39"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-08-31",
+      "teams": [
+        "Kevin",
+        "Kemp/A/M"
+      ],
+      "team_a": "Kevin",
+      "team_a_receives": [
+        "TE Jonnu Smith",
+        "2024 Pick 32"
+      ],
+      "team_b": "Kemp/A/M",
+      "team_b_receives": [
+        "2024 Pick 22"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-08-30",
+      "teams": [
+        "John",
+        "Wes/Bill"
+      ],
+      "team_a": "John",
+      "team_a_receives": [
+        "WR Tee Higgins",
+        "2024 Pick 10",
+        "Wes/Bill's 2024 Taxi Rounds Picks"
+      ],
+      "team_b": "Wes/Bill",
+      "team_b_receives": [
+        "2024 Pick 5",
+        "John's 2024 Taxi Round Picks"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-08-29",
+      "teams": [
+        "Eric/Jeff",
+        "Danny/Joey"
+      ],
+      "team_a": "Eric/Jeff",
+      "team_a_receives": [
+        "QB DeShaun Watson",
+        "WR Tank Dell"
+      ],
+      "team_b": "Danny/Joey",
+      "team_b_receives": [
+        "Eric/Jeff's 2025 #1 pick",
+        "HC Robert Saleh"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-08-29",
+      "teams": [
+        "Wes/Bill",
+        "Kemp/A/M"
+      ],
+      "team_a": "Wes/Bill",
+      "team_a_receives": [
+        "RB James Cook"
+      ],
+      "team_b": "Kemp/A/M",
+      "team_b_receives": [
+        "TE George Kittle",
+        "RB JK Dobbins"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-08-28",
+      "teams": [
+        "J/Matt",
+        "Kevin"
+      ],
+      "team_a": "J/Matt",
+      "team_a_receives": [
+        "Option to switch 2025 #1 picks with Kevin*"
+      ],
+      "team_b": "Kevin",
+      "team_b_receives": [
+        "WR Zay Flowers"
+      ],
+      "notes": "*If the option is not exercised, J/Matt receive Kevin's 2026 #2 instead"
+    },
+    {
+      "date": "2024-08-27",
+      "teams": [
+        "J/Matt",
+        "Kemp/A/M"
+      ],
+      "team_a": "J/Matt",
+      "team_a_receives": [
+        "2024 Pick 8"
+      ],
+      "team_b": "Kemp/A/M",
+      "team_b_receives": [
+        "TE Pat Freiermuth",
+        "2024 Pick 12"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-08-18",
+      "teams": [
+        "J/Matt",
+        "Wes/Bill"
+      ],
+      "team_a": "J/Matt",
+      "team_a_receives": [
+        "QB Bryce Young",
+        "2024 Pick 3",
+        "2024 Pick 12"
+      ],
+      "team_b": "Wes/Bill",
+      "team_b_receives": [
+        "QB Anthony Richardson",
+        "2024 Pick 9",
+        "2024 Pick 10"
+      ],
+      "notes": ""
+    },
+    {
+      "date": "2024-08-04",
+      "teams": [
+        "Andrew",
+        "Kemp/A/M"
+      ],
+      "team_a": "Andrew",
+      "team_a_receives": [
+        "QB Josh Allen",
+        "TE TJ Hockenson",
+        "2024 Pick 24"
+      ],
+      "team_b": "Kemp/A/M",
+      "team_b_receives": [
+        "QB Lamar Jackson",
+        "2024 Pick 8",
+        "2024 Pick 32",
+        "Andrew's 2024 #1 waiver pick",
+        "Andrew's 2025 #3 pick"
+      ],
+      "notes": ""
+    }
+  ]
+}

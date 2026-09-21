@@ -1,0 +1,59 @@
+{
+  "title": "OPFL Scoring Rules",
+  "sections": [
+    {
+      "title": "General",
+      "rules": [
+        "Touchdowns and touchdown passes are 6 points; two-point conversions are 2.",
+        "Individual player scores cannot be less than zero.",
+        "Special-teams touchdowns count for the individual player."
+      ]
+    },
+    {
+      "title": "Passing",
+      "rules": [
+        "200 yards earns 2 points, plus 1 for each additional 50 yards.",
+        "Interceptions and fumbles lost are -1; a turnover returned for a touchdown is -3 total."
+      ]
+    },
+    {
+      "title": "Rushing and receiving",
+      "rules": [
+        "RB/WR: 75 yards in either category earns 2 points, plus 1 per additional 25 yards.",
+        "RB/WR alternate: 100 combined yards earns 2 points, plus 1 per additional 25 yards.",
+        "TE: 50 yards in either category earns 2 points, plus 1 per additional 25 yards.",
+        "TE alternate: 75 combined yards earns 2 points, plus 1 per additional 25 yards.",
+        "The combined bonus is an alternative; use whichever yardage method scores more."
+      ]
+    },
+    {
+      "title": "Kicker",
+      "rules": [
+        "PAT 1; field goals 1–29 yards 1, 30–39 yards 2, 40–49 yards 3, 50+ yards 4.",
+        "Missed or blocked field goals are -2; missed or blocked PATs are -1."
+      ]
+    },
+    {
+      "title": "Defense",
+      "rules": [
+        "Interceptions, fumble recoveries, safeties, blocked punts, and blocked field goals are 2; sacks and blocked PATs are 1; eligible defensive touchdowns are 4.",
+        "Points allowed: 0=8, 2–9=6, 10–13=4, 14–17=2, 18–27=0, 28–31=-2, 32–35=-4, 36+=-6.",
+        "Punt- and kickoff-return touchdowns do not count for DF scoring."
+      ]
+    },
+    {
+      "title": "Head coach",
+      "rules": [
+        "Using the ESPN spread: home favorite win 4, home underdog win 5, road favorite win 6, road underdog win 7; loss or tie 0."
+      ]
+    },
+    {
+      "title": "League format",
+      "rules": [
+        "Rank Points = matchup wins + Top-6 points + 0.5 × matchup ties.",
+        "A tie crossing the weekly sixth-place cutoff splits the available Top-6 points evenly.",
+        "Four teams reach the playoffs; the other eight play a two-week Jamboree in Weeks 16–17."
+      ]
+    }
+  ]
+}

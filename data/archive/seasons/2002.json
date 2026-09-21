@@ -1,0 +1,150 @@
+{
+  "year": 2002,
+  "detail_level": "summary",
+  "standings": [
+    {
+      "name": "Adam",
+      "owner": "Adam",
+      "wins": 11.0,
+      "losses": 3.0,
+      "ties": 1.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 879.0,
+      "rank": 1
+    },
+    {
+      "name": "John",
+      "owner": "John",
+      "wins": 10.0,
+      "losses": 5.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 886.0,
+      "rank": 2
+    },
+    {
+      "name": "Greg/Griffin",
+      "owner": "Greg/Griffin",
+      "wins": 10.0,
+      "losses": 5.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 818.0,
+      "rank": 3
+    },
+    {
+      "name": "Eric/Jeff",
+      "owner": "Eric/Jeff",
+      "wins": 10.0,
+      "losses": 5.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 734.0,
+      "rank": 4
+    },
+    {
+      "name": "Steve M.",
+      "owner": "Steve M.",
+      "wins": 9.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 764.0,
+      "rank": 5
+    },
+    {
+      "name": "Kirk/David",
+      "owner": "Kirk/David",
+      "wins": 7.0,
+      "losses": 7.0,
+      "ties": 1.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 713.0,
+      "rank": 6
+    },
+    {
+      "name": "Jarrett/Matt",
+      "owner": "Jarrett/Matt",
+      "wins": 7.0,
+      "losses": 8.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 717.0,
+      "rank": 7
+    },
+    {
+      "name": "Eric/Bret/Joe",
+      "owner": "Eric/Bret/Joe",
+      "wins": 6.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 735.0,
+      "rank": 8
+    },
+    {
+      "name": "Kemp",
+      "owner": "Kemp",
+      "wins": 5.0,
+      "losses": 10.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 668.0,
+      "rank": 9
+    },
+    {
+      "name": "Kreg",
+      "owner": "Kreg",
+      "wins": 5.0,
+      "losses": 10.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 667.0,
+      "rank": 10
+    },
+    {
+      "name": "Steve L.",
+      "owner": "Steve L.",
+      "wins": 5.0,
+      "losses": 10.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 659.0,
+      "rank": 11
+    },
+    {
+      "name": "Bill",
+      "owner": "Bill",
+      "wins": 4.0,
+      "losses": 11.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 615.0,
+      "rank": 12
+    }
+  ],
+  "finish": {
+    "year": 2002,
+    "first": "Adam/Nick",
+    "second": "Greg",
+    "third": "Eric S.",
+    "fourth": "John",
+    "championship_score": "28-28*",
+    "toilet_bowl_score": "66-54",
+    "jamboree": "Kemp/Rams (115)",
+    "comments": "* Adam wins on better record w/ championship in first year. Expanded from 10 to 12 teams.",
+    "team_count": 12
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "banners": [
+    {
+      "year": 2024,
+      "image": "images/banners/2024.png",
+      "champion": "Kemp/Ad/Miles"
+    },
+    {
+      "year": 2023,
+      "image": "images/banners/2023.png",
+      "champion": "Kemp/Ad/Miles"
+    },
+    {
+      "year": 2022,
+      "image": "images/banners/2022.png",
+      "champion": "Jarrett/Matt & Wes"
+    },
+    {
+      "year": 2021,
+      "image": "images/banners/2021.png",
+      "champion": "Kemp/Ad/Miles"
+    },
+    {
+      "year": 2020,
+      "image": "images/banners/2020.png",
+      "champion": "Kemp/Ad/Miles"
+    },
+    {
+      "year": 2019,
+      "image": "images/banners/2019.png",
+      "champion": "Andrew"
+    },
+    {
+      "year": 2018,
+      "image": "images/banners/2018.png",
+      "champion": "Adam"
+    },
+    {
+      "year": 2017,
+      "image": "images/banners/2017.png",
+      "champion": "Kirk/David"
+    },
+    {
+      "year": 2016,
+      "image": "images/banners/2016.png",
+      "champion": "Kemp/Ad/Miles"
+    },
+    {
+      "year": 2015,
+      "image": "images/banners/2015.png",
+      "champion": "Steve L."
+    },
+    {
+      "year": 2014,
+      "image": "images/banners/2014.png",
+      "champion": "Steve L."
+    },
+    {
+      "year": 2013,
+      "image": "images/banners/2013.png",
+      "champion": "Jarrett"
+    },
+    {
+      "year": 2012,
+      "image": "images/banners/2012.png",
+      "champion": "Kevin"
+    },
+    {
+      "year": 2011,
+      "image": "images/banners/2011.png",
+      "champion": "Bill/Jill"
+    },
+    {
+      "year": 2010,
+      "image": "images/banners/2010.png",
+      "champion": "Kirk/David"
+    },
+    {
+      "year": 2009,
+      "image": "images/banners/2009.png",
+      "champion": "Steve L."
+    },
+    {
+      "year": 2008,
+      "image": "images/banners/2008.png",
+      "champion": "Steve L."
+    },
+    {
+      "year": 2007,
+      "image": "images/banners/2007.png",
+      "champion": "Eric S."
+    },
+    {
+      "year": 2006,
+      "image": "images/banners/2006.png",
+      "champion": "Kirk"
+    },
+    {
+      "year": 2005,
+      "image": "images/banners/2005.png",
+      "champion": "Jarrett"
+    },
+    {
+      "year": 2004,
+      "image": "images/banners/2004.png",
+      "champion": "Kreg"
+    },
+    {
+      "year": 2003,
+      "image": "images/banners/2003.png",
+      "champion": "Kirk"
+    },
+    {
+      "year": 2002,
+      "image": "images/banners/2002.png",
+      "champion": "Adam/Nick"
+    },
+    {
+      "year": 2001,
+      "image": "images/banners/2001.png",
+      "champion": "Kemp/Rams"
+    },
+    {
+      "year": 2000,
+      "image": "images/banners/2000.png",
+      "champion": "John"
+    },
+    {
+      "year": 1999,
+      "image": "images/banners/1999.png",
+      "champion": "Eric S."
+    },
+    {
+      "year": 1998,
+      "image": "images/banners/1998.png",
+      "champion": "Eric S."
+    },
+    {
+      "year": 1997,
+      "image": "images/banners/1997.png",
+      "champion": "Kemp"
+    },
+    {
+      "year": 1996,
+      "image": "images/banners/1996.png",
+      "champion": "Steve/J"
+    },
+    {
+      "year": 1995,
+      "image": "images/banners/1995.png",
+      "champion": "Chris"
+    },
+    {
+      "year": 1994,
+      "image": "images/banners/1994.png",
+      "champion": "Bill"
+    },
+    {
+      "year": 1993,
+      "image": "images/banners/1993.png",
+      "champion": "Bill"
+    },
+    {
+      "year": 1992,
+      "image": "images/banners/1992.png",
+      "champion": "Steve L."
+    },
+    {
+      "year": 1991,
+      "image": "images/banners/1991.png",
+      "champion": "Steve M."
+    },
+    {
+      "year": 1990,
+      "image": "images/banners/1990.png",
+      "champion": "Bill"
+    },
+    {
+      "year": 1989,
+      "image": "images/banners/1989.png",
+      "champion": "Chris"
+    },
+    {
+      "year": 1988,
+      "image": "images/banners/1988.png",
+      "champion": "Bill"
+    }
+  ]
+}

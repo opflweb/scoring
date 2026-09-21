@@ -1,0 +1,150 @@
+{
+  "season": 2009,
+  "detail_level": "summary",
+  "standings": [
+    {
+      "name": "Greg/Griffin",
+      "owner": "Greg/Griffin",
+      "wins": 12.0,
+      "losses": 2.0,
+      "ties": 0.0,
+      "top_six": 11.0,
+      "rank_points": 23.0,
+      "points_for": 805.0,
+      "rank": 1
+    },
+    {
+      "name": "Steve L.",
+      "owner": "Steve L.",
+      "wins": 11.0,
+      "losses": 3.0,
+      "ties": 0.0,
+      "top_six": 9.0,
+      "rank_points": 20.0,
+      "points_for": 844.0,
+      "rank": 2
+    },
+    {
+      "name": "John",
+      "owner": "John",
+      "wins": 10.0,
+      "losses": 4.0,
+      "ties": 0.0,
+      "top_six": 10.0,
+      "rank_points": 20.0,
+      "points_for": 835.0,
+      "rank": 3
+    },
+    {
+      "name": "Bill",
+      "owner": "Bill",
+      "wins": 10.0,
+      "losses": 4.0,
+      "ties": 0.0,
+      "top_six": 7.5,
+      "rank_points": 17.5,
+      "points_for": 715.0,
+      "rank": 4
+    },
+    {
+      "name": "Andrew",
+      "owner": "Andrew",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 7.0,
+      "rank_points": 15.0,
+      "points_for": 723.0,
+      "rank": 5
+    },
+    {
+      "name": "Kevin",
+      "owner": "Kevin",
+      "wins": 6.0,
+      "losses": 8.0,
+      "ties": 0.0,
+      "top_six": 8.5,
+      "rank_points": 14.5,
+      "points_for": 791.0,
+      "rank": 6
+    },
+    {
+      "name": "Jarrett/Matt",
+      "owner": "Jarrett/Matt",
+      "wins": 6.0,
+      "losses": 8.0,
+      "ties": 0.0,
+      "top_six": 8.0,
+      "rank_points": 14.0,
+      "points_for": 698.0,
+      "rank": 7
+    },
+    {
+      "name": "Steve M.",
+      "owner": "Steve M.",
+      "wins": 6.0,
+      "losses": 8.0,
+      "ties": 0.0,
+      "top_six": 7.0,
+      "rank_points": 13.0,
+      "points_for": 725.0,
+      "rank": 8
+    },
+    {
+      "name": "Kirk/David",
+      "owner": "Kirk/David",
+      "wins": 5.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": 6.0,
+      "rank_points": 11.0,
+      "points_for": 719.0,
+      "rank": 9
+    },
+    {
+      "name": "Kemp",
+      "owner": "Kemp",
+      "wins": 6.0,
+      "losses": 8.0,
+      "ties": 0.0,
+      "top_six": 3.0,
+      "rank_points": 9.0,
+      "points_for": 626.0,
+      "rank": 10
+    },
+    {
+      "name": "Eric/Jeff",
+      "owner": "Eric/Jeff",
+      "wins": 2.0,
+      "losses": 12.0,
+      "ties": 0.0,
+      "top_six": 4.5,
+      "rank_points": 6.5,
+      "points_for": 604.0,
+      "rank": 11
+    },
+    {
+      "name": "Adam",
+      "owner": "Adam",
+      "wins": 2.0,
+      "losses": 12.0,
+      "ties": 0.0,
+      "top_six": 2.5,
+      "rank_points": 4.5,
+      "points_for": 540.0,
+      "rank": 12
+    }
+  ],
+  "finish": {
+    "year": 2009,
+    "first": "Steve L.",
+    "second": "Bill",
+    "third": "Greg",
+    "fourth": "John",
+    "championship_score": "57-57*",
+    "toilet_bowl_score": "62-31",
+    "jamboree": "Jarrett (129)",
+    "comments": "*Steve L wins repeat championship on better record for third ring. Changed to W-L & Top-6 format.",
+    "team_count": 12
+  }
+}

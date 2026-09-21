@@ -24,47 +24,47 @@ class OPFLScorer:
         """Score a single player using OPFL rules."""
         result = PlayerScore(name=name, position=position, team=team)
 
-        if position == 'QB':
+        if position == "QB":
             stats = self.data.find_player(name, team, position)
             if stats:
                 result.found_in_stats = True
-                result.matched_name = stats.get('player_display_name', name)
-                player_id = stats.get('player_id')
+                result.matched_name = stats.get("player_display_name", name)
+                player_id = stats.get("player_id")
                 turnover_tds = {}
                 if player_id:
                     turnover_tds = self.data.get_turnovers_returned_for_td(player_id)
                 result.total_points, result.breakdown = score_qb(stats, turnover_tds)
 
-        elif position in ('RB', 'WR'):
+        elif position in ("RB", "WR"):
             stats = self.data.find_player(name, team, position)
             if stats:
                 result.found_in_stats = True
-                result.matched_name = stats.get('player_display_name', name)
-                player_id = stats.get('player_id')
+                result.matched_name = stats.get("player_display_name", name)
+                player_id = stats.get("player_id")
                 turnover_tds = {}
                 if player_id:
                     turnover_tds = self.data.get_turnovers_returned_for_td(player_id)
                 result.total_points, result.breakdown = score_rb_wr(stats, turnover_tds)
 
-        elif position == 'TE':
+        elif position == "TE":
             stats = self.data.find_player(name, team, position)
             if stats:
                 result.found_in_stats = True
-                result.matched_name = stats.get('player_display_name', name)
-                player_id = stats.get('player_id')
+                result.matched_name = stats.get("player_display_name", name)
+                player_id = stats.get("player_id")
                 turnover_tds = {}
                 if player_id:
                     turnover_tds = self.data.get_turnovers_returned_for_td(player_id)
                 result.total_points, result.breakdown = score_te(stats, turnover_tds)
 
-        elif position == 'K':
+        elif position == "K":
             stats = self.data.find_player(name, team, position)
             if stats:
                 result.found_in_stats = True
-                result.matched_name = stats.get('player_display_name', name)
+                result.matched_name = stats.get("player_display_name", name)
                 result.total_points, result.breakdown = score_kicker(stats)
 
-        elif position == 'DF':  # Defense (OPFL uses DF, not D/ST)
+        elif position == "DF":  # Defense (OPFL uses DF, not D/ST)
             team_stats = self.data.get_team_stats(team)
             opponent_stats = self.data.get_opponent_stats(team) or {}
             game_info = self.data.get_game_info(team)
@@ -73,23 +73,23 @@ class OPFLScorer:
                 result.found_in_stats = True
                 # Get sack counts from both sources
                 sack_info = self.data.get_defensive_sacks(team)
-                if sack_info['discrepancy']:
+                if sack_info["discrepancy"]:
                     result.data_notes.append(
-                        f'Sack discrepancy: aggregated={sack_info["aggregated"]}, PBP={sack_info["pbp"]} (using PBP)'
+                        f"Sack discrepancy: aggregated={sack_info['aggregated']}, PBP={sack_info['pbp']} (using PBP)"
                     )
                 # Get blocked punts from PBP
                 blocked_punts = self.data.get_blocked_punts(team)
-                opponent_stats['_blocked_punts'] = blocked_punts
+                opponent_stats["_blocked_punts"] = blocked_punts
 
                 # Get blocked kick TDs from PBP (special teams TDs on blocked punts/FGs)
                 blocked_kick_tds = self.data.get_blocked_kick_tds(team)
-                opponent_stats['_blocked_kick_tds'] = blocked_kick_tds
+                opponent_stats["_blocked_kick_tds"] = blocked_kick_tds
 
                 result.total_points, result.breakdown = score_defense(
-                    team_stats, opponent_stats, game_info, sack_info['value']
+                    team_stats, opponent_stats, game_info, sack_info["value"]
                 )
 
-        elif position == 'HC':
+        elif position == "HC":
             # For HC, we need to find the coach's team
             # The name might be just the coach name, or coach name (team)
             game_info = self.data.get_game_info(team) if team else None
@@ -100,12 +100,12 @@ class OPFLScorer:
                 coach_info = self.data.find_coach(name, team)
                 if coach_info:
                     game_info = {
-                        'team_score': coach_info.get('team_score', 0),
-                        'opponent_score': coach_info.get('opponent_score', 0),
-                        'is_home': coach_info.get('is_home', True),
+                        "team_score": coach_info.get("team_score", 0),
+                        "opponent_score": coach_info.get("opponent_score", 0),
+                        "is_home": coach_info.get("is_home", True),
                     }
                     spread_info = {
-                        'spread': coach_info.get('spread', 0),
+                        "spread": coach_info.get("spread", 0),
                     }
             else:
                 spread_info = self.data.get_spread_info(team)
@@ -125,7 +125,7 @@ class OPFLScorer:
             team: The fantasy team to score
             starters_only: If True, only score started players. If False, score all players.
         """
-        results = {}
+        results: dict[str, list[PlayerScore]] = {}
 
         for position, players in team.players.items():
             results[position] = []
@@ -158,71 +158,6 @@ class OPFLScorer:
         return total
 
 
-def build_matchup_week(
-    excel_path: str,
-    rosters_sheet: str = 'Rosters',
-    matchups_sheet: str = 'Matchups',
-) -> tuple[dict[str, FantasyTeam], list[dict]]:
-    """
-    Build fantasy teams for a week from the Rosters + Matchups tabs.
-
-    The Rosters tab is the official roster (starters and bench); the weekly
-    Matchups tab is the authority on who actually started, so the star markers
-    carried over on the Rosters tab are ignored in favour of it.
-
-    Returns:
-        (teams_by_code, matchups) where matchups is the parsed matchup list with
-        each side's 'code' pointing into teams_by_code.
-    """
-    from .constants import resolve_team_code
-    from .excel_parser import parse_matchups_sheet, parse_roster_from_excel
-
-    rosters = parse_roster_from_excel(excel_path, rosters_sheet)
-    matchups = parse_matchups_sheet(excel_path, matchups_sheet)
-
-    teams_by_code = {}
-    for team in rosters:
-        code = resolve_team_code(team.name)
-        if code:
-            teams_by_code[code] = team
-
-    # The workbook derives the Matchups tab from the Rosters stars, so the two
-    # should always agree. Warn loudly if they drift apart rather than silently
-    # scoring a lineup nobody set.
-    starred_by_code = {
-        code: {name for players in team.players.values() for name, _, started in players if started}
-        for code, team in teams_by_code.items()
-    }
-
-    # Reset every star, then re-flag from the matchup lineups.
-    for team in teams_by_code.values():
-        for position, players in team.players.items():
-            team.players[position] = [(n, t, False) for n, t, _ in players]
-
-    for matchup in matchups:
-        for side in matchup['teams']:
-            team = teams_by_code.get(side['code'])
-            if team is None:
-                print(f"  WARNING: matchup team '{side['raw_name']}' has no roster entry")
-                continue
-            started_names = {name for _, name, _ in side['lineup']}
-
-            starred = starred_by_code.get(side['code'], set())
-            if starred and starred != started_names:
-                only_matchups = started_names - starred
-                only_starred = starred - started_names
-                print(f'  WARNING: {side["code"]} lineup differs from the Rosters stars')
-                if only_matchups:
-                    print(f'           started per Matchups only: {sorted(only_matchups)}')
-                if only_starred:
-                    print(f'           starred on Rosters only:   {sorted(only_starred)}')
-
-            for position, players in team.players.items():
-                team.players[position] = [(n, t, n in started_names) for n, t, _ in players]
-
-    return teams_by_code, matchups
-
-
 def score_week(
     excel_path: str,
     sheet_name: str,
@@ -241,21 +176,21 @@ def score_week(
     teams = parse_roster_from_excel(excel_path, sheet_name)
 
     if verbose:
-        print(f'\nFound {len(teams)} fantasy teams')
+        print(f"\nFound {len(teams)} fantasy teams")
         for team in teams:
             started_count = sum(
                 1 for players in team.players.values() for _, _, is_started in players if is_started
             )
-            print(f'  - {team.name}: {started_count} started players')
+            print(f"  - {team.name}: {started_count} started players")
 
     scorer = OPFLScorer(season, week)
     results = {}
 
     for team in teams:
         if verbose:
-            print(f'\n{"=" * 60}')
-            print(f'Scoring: {team.name}')
-            print('=' * 60)
+            print(f"\n{'=' * 60}")
+            print(f"Scoring: {team.name}")
+            print("=" * 60)
 
         scores = scorer.score_fantasy_team(team)
         total = scorer.calculate_team_total(scores)
@@ -263,27 +198,27 @@ def score_week(
         if verbose:
             for position, player_scores in scores.items():
                 for ps in player_scores:
-                    status = '✓' if ps.found_in_stats else '✗'
-                    starter_marker = '*' if ps.is_starter else ' '
+                    status = "✓" if ps.found_in_stats else "✗"
+                    starter_marker = "*" if ps.is_starter else " "
                     matched = (
-                        f' -> {ps.matched_name}'
+                        f" -> {ps.matched_name}"
                         if ps.matched_name and ps.matched_name != ps.name
-                        else ''
+                        else ""
                     )
                     print(
-                        f'  {starter_marker} {position} {ps.name} ({ps.team}){matched}: {ps.total_points:.1f} pts {status}'
+                        f"  {starter_marker} {position} {ps.name} ({ps.team}){matched}: {ps.total_points:.1f} pts {status}"
                     )
                     if ps.breakdown:
                         for key, val in ps.breakdown.items():
-                            if key != 'floor_applied':
-                                print(f'        {key}: {val}')
+                            if key != "floor_applied":
+                                print(f"        {key}: {val}")
                             else:
-                                print('        (floor applied - points capped at 0)')
+                                print("        (floor applied - points capped at 0)")
                     if ps.data_notes:
                         for note in ps.data_notes:
-                            print(f'        ⚠️  {note}')
+                            print(f"        ⚠️  {note}")
 
-            print(f'\n  TOTAL: {total:.1f} points')
+            print(f"\n  TOTAL: {total:.1f} points")
 
         results[team.name] = (total, scores)
 

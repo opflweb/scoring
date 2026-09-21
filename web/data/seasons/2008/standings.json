@@ -1,0 +1,150 @@
+{
+  "season": 2008,
+  "detail_level": "summary",
+  "standings": [
+    {
+      "name": "Steve L.",
+      "owner": "Steve L.",
+      "wins": 11.0,
+      "losses": 3.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 822.0,
+      "rank": 1
+    },
+    {
+      "name": "John",
+      "owner": "John",
+      "wins": 11.0,
+      "losses": 3.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 704.0,
+      "rank": 2
+    },
+    {
+      "name": "Greg/Griffin",
+      "owner": "Greg/Griffin",
+      "wins": 10.0,
+      "losses": 4.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 725.0,
+      "rank": 3
+    },
+    {
+      "name": "Jarrett/Matt",
+      "owner": "Jarrett/Matt",
+      "wins": 10.0,
+      "losses": 4.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 711.0,
+      "rank": 4
+    },
+    {
+      "name": "Kevin",
+      "owner": "Kevin",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 788.0,
+      "rank": 5
+    },
+    {
+      "name": "Steve M.",
+      "owner": "Steve M.",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 678.0,
+      "rank": 6
+    },
+    {
+      "name": "Mike",
+      "owner": "Mike",
+      "wins": 7.0,
+      "losses": 7.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 770.0,
+      "rank": 7
+    },
+    {
+      "name": "Eric/Bret/Joe",
+      "owner": "Eric/Bret/Joe",
+      "wins": 5.0,
+      "losses": 8.0,
+      "ties": 1.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 640.0,
+      "rank": 8
+    },
+    {
+      "name": "Eric/Jeff",
+      "owner": "Eric/Jeff",
+      "wins": 5.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 725.0,
+      "rank": 9
+    },
+    {
+      "name": "Kirk/David",
+      "owner": "Kirk/David",
+      "wins": 5.0,
+      "losses": 9.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 671.0,
+      "rank": 10
+    },
+    {
+      "name": "Adam",
+      "owner": "Adam",
+      "wins": 2.0,
+      "losses": 12.0,
+      "ties": 0.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 530.0,
+      "rank": 11
+    },
+    {
+      "name": "Kemp",
+      "owner": "Kemp",
+      "wins": 1.0,
+      "losses": 12.0,
+      "ties": 1.0,
+      "top_six": null,
+      "rank_points": null,
+      "points_for": 455.0,
+      "rank": 12
+    }
+  ],
+  "finish": {
+    "year": 2008,
+    "first": "Steve L.",
+    "second": "Greg",
+    "third": "John",
+    "fourth": "Jarrett",
+    "championship_score": "67-28",
+    "toilet_bowl_score": "67-30",
+    "jamboree": "Eric S. (109)",
+    "comments": "Steve L's second championship.",
+    "team_count": 12
+  }
+}

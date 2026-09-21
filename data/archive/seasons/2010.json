@@ -1,0 +1,150 @@
+{
+  "year": 2010,
+  "detail_level": "summary",
+  "standings": [
+    {
+      "name": "Kirk/David",
+      "owner": "Kirk/David",
+      "wins": 10.0,
+      "losses": 3.0,
+      "ties": 1.0,
+      "top_six": 9.7,
+      "rank_points": 20.2,
+      "points_for": 864.0,
+      "rank": 1
+    },
+    {
+      "name": "Steve L.",
+      "owner": "Steve L.",
+      "wins": 10.0,
+      "losses": 4.0,
+      "ties": 0.0,
+      "top_six": 9.7,
+      "rank_points": 19.7,
+      "points_for": 802.0,
+      "rank": 2
+    },
+    {
+      "name": "John",
+      "owner": "John",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 10.0,
+      "rank_points": 18.0,
+      "points_for": 808.0,
+      "rank": 3
+    },
+    {
+      "name": "Kevin",
+      "owner": "Kevin",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 8.0,
+      "rank_points": 16.0,
+      "points_for": 695.0,
+      "rank": 4
+    },
+    {
+      "name": "Jarrett/Matt",
+      "owner": "Jarrett/Matt",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 8.0,
+      "rank_points": 16.0,
+      "points_for": 689.0,
+      "rank": 5
+    },
+    {
+      "name": "Andrew",
+      "owner": "Andrew",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 7.0,
+      "rank_points": 15.0,
+      "points_for": 717.0,
+      "rank": 6
+    },
+    {
+      "name": "Bill",
+      "owner": "Bill",
+      "wins": 7.0,
+      "losses": 6.0,
+      "ties": 1.0,
+      "top_six": 7.0,
+      "rank_points": 14.5,
+      "points_for": 665.0,
+      "rank": 7
+    },
+    {
+      "name": "Greg/Griffin",
+      "owner": "Greg/Griffin",
+      "wins": 8.0,
+      "losses": 6.0,
+      "ties": 0.0,
+      "top_six": 3.0,
+      "rank_points": 11.0,
+      "points_for": 606.0,
+      "rank": 8
+    },
+    {
+      "name": "Eric/Jeff",
+      "owner": "Eric/Jeff",
+      "wins": 4.0,
+      "losses": 8.0,
+      "ties": 2.0,
+      "top_six": 5.7,
+      "rank_points": 10.7,
+      "points_for": 585.0,
+      "rank": 9
+    },
+    {
+      "name": "Steve M.",
+      "owner": "Steve M.",
+      "wins": 4.0,
+      "losses": 10.0,
+      "ties": 0.0,
+      "top_six": 5.0,
+      "rank_points": 9.0,
+      "points_for": 659.0,
+      "rank": 10
+    },
+    {
+      "name": "Kemp",
+      "owner": "Kemp",
+      "wins": 3.0,
+      "losses": 11.0,
+      "ties": 0.0,
+      "top_six": 6.0,
+      "rank_points": 9.0,
+      "points_for": 674.0,
+      "rank": 11
+    },
+    {
+      "name": "Adam",
+      "owner": "Adam",
+      "wins": 3.0,
+      "losses": 9.0,
+      "ties": 2.0,
+      "top_six": 5.0,
+      "rank_points": 9.0,
+      "points_for": 620.0,
+      "rank": 12
+    }
+  ],
+  "finish": {
+    "year": 2010,
+    "first": "Kirk/David",
+    "second": "John",
+    "third": "Steve L.",
+    "fourth": "Kevin",
+    "championship_score": "62-43",
+    "toilet_bowl_score": "37-26",
+    "jamboree": "Jarrett (145)",
+    "comments": "Kirk/David's third championship. John 1-7 in Oakland Bowl. Ouch!",
+    "team_count": 12
+  }
+}
