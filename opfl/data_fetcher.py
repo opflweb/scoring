@@ -40,6 +40,33 @@ def normalize_name(name: str) -> str:
     return name.lower().strip()
 
 
+def _is_nickname_pair(first_a: str, first_b: str) -> bool:
+    """
+    Check whether two first names look like a nickname/diminutive of each other
+    (e.g. "Gabe" / "Gabriel", "Cam" / "Cameron"), as opposed to two genuinely
+    different names that merely share a similar spelling (e.g. "Kyren" / "Kyle").
+
+    Diminutives are almost always a near-prefix of the full name, so we require
+    the shorter name to share at least 70% of its leading characters with the
+    longer one.
+    """
+    first_a, first_b = first_a.lower(), first_b.lower()
+    if first_a == first_b:
+        return True
+
+    shorter, longer = sorted((first_a, first_b), key=len)
+    if len(shorter) < 3:
+        return False
+
+    prefix_len = 0
+    for char_a, char_b in zip(shorter, longer):
+        if char_a != char_b:
+            break
+        prefix_len += 1
+
+    return (prefix_len / len(shorter)) >= 0.7
+
+
 def fuzzy_match_name(
     query: str,
     candidates: list[str],
@@ -66,10 +93,26 @@ def fuzzy_match_name(
         scorer=fuzz.token_sort_ratio,
     )
 
-    if result and result[1] >= threshold:
-        return result[0]
+    if not result or result[1] < threshold:
+        return None
 
-    return None
+    best_match = result[0]
+
+    # Guard against matching two different players who happen to share a last
+    # name (e.g. "Kyler Murray" -> "Eric Murray", "Kyren Williams" -> "Kyle
+    # Williams"). token_sort_ratio scores these highly because the shared last
+    # name dominates the comparison, even though the first names are unrelated.
+    # Only accept a first-name mismatch when it looks like a nickname/diminutive.
+    query_parts = query.lower().split()
+    match_parts = best_match.lower().split()
+    if len(query_parts) >= 2 and len(match_parts) >= 2:
+        query_first, query_last = query_parts[0], query_parts[-1]
+        match_first, match_last = match_parts[0], match_parts[-1]
+        if query_last == match_last and query_first != match_first:
+            if not _is_nickname_pair(query_first, match_first):
+                return None
+
+    return best_match
 
 
 class NFLDataFetcher:
