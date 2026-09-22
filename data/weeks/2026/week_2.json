@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "week": 2,
-  "final": false,
-  "scored_at": "2026-09-21T22:20:12.485653Z",
+  "final": true,
+  "scored_at": "2026-09-22T03:33:14.374679Z",
   "has_scores": true,
   "pairings": [
     [
@@ -236,11 +236,11 @@
           "name": "Sean McVay",
           "nfl_team": "LA",
           "position": "HC",
-          "score": 0.0,
+          "score": 4,
           "starter": true,
           "found": true,
           "breakdown": {
-            "loss": 0
+            "home_favorite_win": 4
           }
         },
         {
@@ -255,8 +255,8 @@
           }
         }
       ],
-      "total_score": 33.0,
-      "score_rank": 11
+      "total_score": 37.0,
+      "score_rank": 9
     },
     {
       "name": "STEVE L.",
@@ -528,7 +528,7 @@
           "position": "QB",
           "score": 0.0,
           "starter": false,
-          "found": true,
+          "found": false,
           "breakdown": {}
         },
         {
@@ -537,7 +537,7 @@
           "position": "RB",
           "score": 0.0,
           "starter": true,
-          "found": true,
+          "found": false,
           "breakdown": {}
         },
         {
@@ -870,7 +870,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": false,
-          "found": true,
+          "found": false,
           "breakdown": {}
         },
         {
@@ -1339,7 +1339,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": false,
-          "found": true,
+          "found": false,
           "breakdown": {}
         },
         {
@@ -1874,7 +1874,7 @@
         }
       ],
       "total_score": 37.0,
-      "score_rank": 9
+      "score_rank": 10
     },
     {
       "name": "WES/BILL",
@@ -1991,12 +1991,10 @@
           "name": "Omar Cooper",
           "nfl_team": "NYJ",
           "position": "WR",
-          "score": 6.0,
+          "score": 0.0,
           "starter": false,
-          "found": true,
-          "breakdown": {
-            "touchdowns": 6
-          }
+          "found": false,
+          "breakdown": {}
         },
         {
           "name": "Brock Bowers",
@@ -2811,7 +2809,7 @@
         }
       ],
       "total_score": 35.0,
-      "score_rank": 10
+      "score_rank": 11
     }
   ]
 }

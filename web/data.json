@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-09-21T22:20:12.540113Z",
+  "updated_at": "2026-09-22T03:33:14.379280Z",
   "season": 2026,
-  "current_week": 2,
+  "current_week": 3,
   "regular_season_weeks": 15,
   "weeks": [
     {
@@ -1901,8 +1901,7 @@
               "breakdown": {
                 "interceptions": -1,
                 "floor_applied": true
-              },
-              "projected_points": 12.5
+              }
             },
             {
               "name": "Jordan Love",
@@ -1913,8 +1912,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 12
-              },
-              "projected_points": 13.9
+              }
             },
             {
               "name": "Brock Purdy",
@@ -1926,8 +1924,7 @@
               "breakdown": {
                 "passing_yards": 3,
                 "touchdowns": 18
-              },
-              "projected_points": 15.0
+              }
             },
             {
               "name": "Josh Jacobs",
@@ -1936,8 +1933,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 6.8
+              "breakdown": {}
             },
             {
               "name": "Travis Etienne",
@@ -1948,8 +1944,7 @@
               "found": true,
               "breakdown": {
                 "two_point_conversions": 2
-              },
-              "projected_points": 5.0
+              }
             },
             {
               "name": "Jordan Mason",
@@ -1958,8 +1953,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 5.3
+              "breakdown": {}
             },
             {
               "name": "RJ Harvey",
@@ -1968,8 +1962,7 @@
               "score": 0.0,
               "starter": true,
               "found": false,
-              "breakdown": {},
-              "projected_points": 5.1
+              "breakdown": {}
             },
             {
               "name": "Puka Nacua",
@@ -1978,8 +1971,7 @@
               "score": 0.0,
               "starter": true,
               "found": false,
-              "breakdown": {},
-              "projected_points": 4.6
+              "breakdown": {}
             },
             {
               "name": "Justin Jefferson",
@@ -1988,8 +1980,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.0
+              "breakdown": {}
             },
             {
               "name": "Davante Adams",
@@ -1998,8 +1989,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 4.4
+              "breakdown": {}
             },
             {
               "name": "Mike Evans",
@@ -2008,8 +1998,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.1
+              "breakdown": {}
             },
             {
               "name": "Alec Pierce",
@@ -2018,8 +2007,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.3
+              "breakdown": {}
             },
             {
               "name": "Dalton Schultz",
@@ -2030,8 +2018,7 @@
               "found": true,
               "breakdown": {
                 "receiving_yards": 5
-              },
-              "projected_points": 3.0
+              }
             },
             {
               "name": "Colby Parkinson",
@@ -2040,8 +2027,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 2.6
+              "breakdown": {}
             },
             {
               "name": "Pat Freiermuth",
@@ -2050,8 +2036,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.1
+              "breakdown": {}
             },
             {
               "name": "Will Reichard",
@@ -2063,8 +2048,7 @@
               "breakdown": {
                 "fg_30_39": 4,
                 "fg_40_49": 3
-              },
-              "projected_points": 6.4
+              }
             },
             {
               "name": "Jake Elliott",
@@ -2076,8 +2060,7 @@
               "breakdown": {
                 "pat_made": 3,
                 "fg_50+": 4
-              },
-              "projected_points": 5.0
+              }
             },
             {
               "name": "Denver",
@@ -2090,8 +2073,7 @@
                 "points_allowed": 4,
                 "interceptions": 2,
                 "sacks": 2
-              },
-              "projected_points": 6.3
+              }
             },
             {
               "name": "Baltimore",
@@ -2103,20 +2085,18 @@
               "breakdown": {
                 "points_allowed": 0,
                 "sacks": 3
-              },
-              "projected_points": 6.7
+              }
             },
             {
               "name": "Sean McVay",
               "nfl_team": "LA",
               "position": "HC",
-              "score": 0.0,
+              "score": 4,
               "starter": true,
               "found": true,
               "breakdown": {
-                "loss": 0
-              },
-              "projected_points": 3.2
+                "home_favorite_win": 4
+              }
             },
             {
               "name": "Ben Johnson",
@@ -2127,12 +2107,11 @@
               "found": true,
               "breakdown": {
                 "loss": 0
-              },
-              "projected_points": 3.4
+              }
             }
           ],
-          "total_score": 33.0,
-          "score_rank": 11
+          "total_score": 37.0,
+          "score_rank": 9
         },
         {
           "name": "STEVE L.",
@@ -2148,8 +2127,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 12.3
+              }
             },
             {
               "name": "Ty Simpson",
@@ -2158,8 +2136,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 13.3
+              "breakdown": {}
             },
             {
               "name": "Mac Jones",
@@ -2168,8 +2145,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 13.9
+              "breakdown": {}
             },
             {
               "name": "Jahmyr Gibbs",
@@ -2181,8 +2157,7 @@
               "breakdown": {
                 "combined_rush_rec_yards": 2,
                 "touchdowns": 6
-              },
-              "projected_points": 7.8
+              }
             },
             {
               "name": "Dylan Sampson",
@@ -2191,8 +2166,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 5.5
+              "breakdown": {}
             },
             {
               "name": "Kaleb Johnson",
@@ -2201,8 +2175,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 5.0
+              "breakdown": {}
             },
             {
               "name": "Kenny Gainwell",
@@ -2211,8 +2184,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.6
+              "breakdown": {}
             },
             {
               "name": "Tet McMillan",
@@ -2223,8 +2195,7 @@
               "found": true,
               "breakdown": {
                 "receiving_yards": 3
-              },
-              "projected_points": 2.6
+              }
             },
             {
               "name": "Jameson Williams",
@@ -2233,8 +2204,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.3
+              "breakdown": {}
             },
             {
               "name": "Christian Watson",
@@ -2245,8 +2215,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 5.9
+              }
             },
             {
               "name": "KC Concepcion",
@@ -2255,8 +2224,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.2
+              "breakdown": {}
             },
             {
               "name": "Denzel Boston",
@@ -2268,8 +2236,7 @@
               "breakdown": {
                 "receiving_yards": 2,
                 "touchdowns": 6
-              },
-              "projected_points": 3.2
+              }
             },
             {
               "name": "Tyler Warren",
@@ -2280,8 +2247,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 3.4
+              }
             },
             {
               "name": "Eli Stowars",
@@ -2290,8 +2256,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 3.1
+              "breakdown": {}
             },
             {
               "name": "Eli Reardon",
@@ -2300,8 +2265,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.1
+              "breakdown": {}
             },
             {
               "name": "Brandon Aubrey",
@@ -2315,8 +2279,7 @@
                 "fg_1_29": 1,
                 "fg_40_49": 3,
                 "fg_50+": 4
-              },
-              "projected_points": 6.8
+              }
             },
             {
               "name": "Chase McLaughlin",
@@ -2330,8 +2293,7 @@
                 "fg_30_39": 4,
                 "fg_40_49": 3,
                 "fg_50+": 4
-              },
-              "projected_points": 5.8
+              }
             },
             {
               "name": "Houston",
@@ -2343,8 +2305,7 @@
               "breakdown": {
                 "points_allowed": 0,
                 "sacks": 5
-              },
-              "projected_points": 7.3
+              }
             },
             {
               "name": "New Orleans",
@@ -2358,8 +2319,7 @@
                 "interceptions": 2,
                 "sacks": 3,
                 "blocked_kicks": 2
-              },
-              "projected_points": 6.6
+              }
             },
             {
               "name": "Dan Campbell",
@@ -2370,8 +2330,7 @@
               "found": true,
               "breakdown": {
                 "loss": 0
-              },
-              "projected_points": 2.8
+              }
             },
             {
               "name": "DeMeco Ryans",
@@ -2382,8 +2341,7 @@
               "found": true,
               "breakdown": {
                 "loss": 0
-              },
-              "projected_points": 3.4
+              }
             }
           ],
           "total_score": 46.0,
@@ -2405,8 +2363,7 @@
                 "passing_yards": 3,
                 "touchdowns": 6,
                 "interceptions": -1
-              },
-              "projected_points": 13.3
+              }
             },
             {
               "name": "Dak Prescott",
@@ -2418,8 +2375,7 @@
               "breakdown": {
                 "passing_yards": 3,
                 "touchdowns": 24
-              },
-              "projected_points": 15.1
+              }
             },
             {
               "name": "Kyler Murray",
@@ -2427,9 +2383,8 @@
               "position": "QB",
               "score": 0.0,
               "starter": false,
-              "found": true,
-              "breakdown": {},
-              "projected_points": 13.6
+              "found": false,
+              "breakdown": {}
             },
             {
               "name": "Kyren Williams",
@@ -2437,9 +2392,8 @@
               "position": "RB",
               "score": 0.0,
               "starter": true,
-              "found": true,
-              "breakdown": {},
-              "projected_points": 6.0
+              "found": false,
+              "breakdown": {}
             },
             {
               "name": "D'Andre Swift",
@@ -2451,8 +2405,7 @@
               "breakdown": {
                 "fumbles_lost": -1,
                 "floor_applied": true
-              },
-              "projected_points": 6.1
+              }
             },
             {
               "name": "Blake Corum",
@@ -2461,8 +2414,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 5.2
+              "breakdown": {}
             },
             {
               "name": "Kaelon Black",
@@ -2471,8 +2423,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 5.5
+              "breakdown": {}
             },
             {
               "name": "Ja'Marr Chase",
@@ -2484,8 +2435,7 @@
               "breakdown": {
                 "receiving_yards": 2,
                 "touchdowns": 12
-              },
-              "projected_points": 3.7
+              }
             },
             {
               "name": "Tee Higgins",
@@ -2496,8 +2446,7 @@
               "found": true,
               "breakdown": {
                 "receiving_yards": 2
-              },
-              "projected_points": 2.8
+              }
             },
             {
               "name": "Jordyn Tyson",
@@ -2506,8 +2455,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 3.3
+              "breakdown": {}
             },
             {
               "name": "Michael Pittman",
@@ -2516,8 +2464,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 3.2
+              "breakdown": {}
             },
             {
               "name": "DK Metcalf",
@@ -2526,8 +2473,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.4
+              "breakdown": {}
             },
             {
               "name": "Tucker Kraft",
@@ -2536,8 +2482,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.1
+              "breakdown": {}
             },
             {
               "name": "Sam LaPorta",
@@ -2549,8 +2494,7 @@
               "breakdown": {
                 "receiving_yards": 2,
                 "touchdowns": 6
-              },
-              "projected_points": 3.2
+              }
             },
             {
               "name": "Dallas Goedert",
@@ -2559,8 +2503,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.2
+              "breakdown": {}
             },
             {
               "name": "Cameron Dicker",
@@ -2572,8 +2515,7 @@
               "breakdown": {
                 "pat_made": 2,
                 "fg_missed": -2
-              },
-              "projected_points": 6.9
+              }
             },
             {
               "name": "Matt Gay",
@@ -2585,8 +2527,7 @@
               "breakdown": {
                 "pat_made": 3,
                 "fg_50+": 4
-              },
-              "projected_points": 5.9
+              }
             },
             {
               "name": "San Francisco",
@@ -2598,8 +2539,7 @@
               "breakdown": {
                 "points_allowed": 4,
                 "sacks": 4
-              },
-              "projected_points": 5.5
+              }
             },
             {
               "name": "Chicago",
@@ -2611,8 +2551,7 @@
               "breakdown": {
                 "points_allowed": 6,
                 "sacks": 3
-              },
-              "projected_points": 5.9
+              }
             },
             {
               "name": "John Harbaugh",
@@ -2623,8 +2562,7 @@
               "found": true,
               "breakdown": {
                 "loss": 0
-              },
-              "projected_points": 3.3
+              }
             },
             {
               "name": "Shane Steichen",
@@ -2635,8 +2573,7 @@
               "found": true,
               "breakdown": {
                 "loss": 0
-              },
-              "projected_points": 3.3
+              }
             }
           ],
           "total_score": 51.0,
@@ -2658,8 +2595,7 @@
                 "passing_yards": 3,
                 "touchdowns": 12,
                 "interceptions": -2
-              },
-              "projected_points": 14.7
+              }
             },
             {
               "name": "Matthew Stafford",
@@ -2668,8 +2604,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 14.5
+              "breakdown": {}
             },
             {
               "name": "Drew Allar",
@@ -2678,8 +2613,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 13.2
+              "breakdown": {}
             },
             {
               "name": "De'Von Achane",
@@ -2688,8 +2622,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 5.8
+              "breakdown": {}
             },
             {
               "name": "Chris Rodriguez",
@@ -2698,8 +2631,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 5.5
+              "breakdown": {}
             },
             {
               "name": "Rachaad White",
@@ -2708,8 +2640,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.8
+              "breakdown": {}
             },
             {
               "name": "Woody Marks",
@@ -2718,8 +2649,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.7
+              "breakdown": {}
             },
             {
               "name": "Zay Flowers",
@@ -2728,8 +2658,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 4.3
+              "breakdown": {}
             },
             {
               "name": "Emeka Egbuka",
@@ -2740,8 +2669,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 3.1
+              }
             },
             {
               "name": "Jordan Addison",
@@ -2750,8 +2678,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.2
+              "breakdown": {}
             },
             {
               "name": "Deebo Samuel",
@@ -2760,8 +2687,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.7
+              "breakdown": {}
             },
             {
               "name": "Michael Wilson",
@@ -2770,8 +2696,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.6
+              "breakdown": {}
             },
             {
               "name": "Travis Kelce",
@@ -2783,8 +2708,7 @@
               "breakdown": {
                 "receiving_yards": 4,
                 "touchdowns": 6
-              },
-              "projected_points": 2.8
+              }
             },
             {
               "name": "Brenton Strange",
@@ -2793,8 +2717,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.4
+              "breakdown": {}
             },
             {
               "name": "Theo Johnson",
@@ -2802,9 +2725,8 @@
               "position": "TE",
               "score": 0.0,
               "starter": false,
-              "found": true,
-              "breakdown": {},
-              "projected_points": 3.5
+              "found": false,
+              "breakdown": {}
             },
             {
               "name": "Chris Boswell",
@@ -2816,8 +2738,7 @@
               "breakdown": {
                 "fg_50+": 4,
                 "fg_missed": -2
-              },
-              "projected_points": 5.7
+              }
             },
             {
               "name": "Will Lutz",
@@ -2830,8 +2751,7 @@
                 "pat_made": 2,
                 "fg_1_29": 1,
                 "fg_40_49": 3
-              },
-              "projected_points": 5.9
+              }
             },
             {
               "name": "LA Rams",
@@ -2840,8 +2760,7 @@
               "score": 0.0,
               "starter": true,
               "found": false,
-              "breakdown": {},
-              "projected_points": 7.1
+              "breakdown": {}
             },
             {
               "name": "Jacksonville",
@@ -2853,8 +2772,7 @@
               "breakdown": {
                 "points_allowed": 0,
                 "interceptions": 2
-              },
-              "projected_points": 6.9
+              }
             },
             {
               "name": "Kyle Shanahan",
@@ -2865,8 +2783,7 @@
               "found": true,
               "breakdown": {
                 "home_favorite_win": 4
-              },
-              "projected_points": 3.6
+              }
             },
             {
               "name": "Kevin Stefanski",
@@ -2877,8 +2794,7 @@
               "found": true,
               "breakdown": {
                 "loss": 0
-              },
-              "projected_points": 2.7
+              }
             }
           ],
           "total_score": 39.0,
@@ -2899,8 +2815,7 @@
               "breakdown": {
                 "passing_yards": 2,
                 "touchdowns": 30
-              },
-              "projected_points": 16.3
+              }
             },
             {
               "name": "Malik Willis",
@@ -2911,8 +2826,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 13.3
+              }
             },
             {
               "name": "Jacoby Brissett",
@@ -2924,8 +2838,7 @@
               "breakdown": {
                 "touchdowns": 6,
                 "interceptions": -1
-              },
-              "projected_points": 13.3
+              }
             },
             {
               "name": "Omarion Hampton",
@@ -2938,8 +2851,7 @@
                 "rushing_yards": 2,
                 "touchdowns": 6,
                 "fumbles_lost": -1
-              },
-              "projected_points": 4.6
+              }
             },
             {
               "name": "James Cook",
@@ -2951,8 +2863,7 @@
               "breakdown": {
                 "rushing_yards": 4,
                 "touchdowns": 6
-              },
-              "projected_points": 5.1
+              }
             },
             {
               "name": "JK Dobbins",
@@ -2961,8 +2872,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.2
+              "breakdown": {}
             },
             {
               "name": "Rhamondre Stevenson",
@@ -2974,8 +2884,7 @@
               "breakdown": {
                 "fumbles_lost": -1,
                 "floor_applied": true
-              },
-              "projected_points": 4.5
+              }
             },
             {
               "name": "Amon-Ra St. Brown",
@@ -2987,8 +2896,7 @@
               "breakdown": {
                 "receiving_yards": 4,
                 "touchdowns": 12
-              },
-              "projected_points": 5.5
+              }
             },
             {
               "name": "Matthew Golden",
@@ -2997,8 +2905,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.3
+              "breakdown": {}
             },
             {
               "name": "Luther Burden",
@@ -3007,8 +2914,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.9
+              "breakdown": {}
             },
             {
               "name": "Quentin Johnston",
@@ -3017,8 +2923,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.0
+              "breakdown": {}
             },
             {
               "name": "Courtland Sutton",
@@ -3027,8 +2932,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.2
+              "breakdown": {}
             },
             {
               "name": "TJ Hockenson",
@@ -3037,8 +2941,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.2
+              "breakdown": {}
             },
             {
               "name": "Juwan Johnson",
@@ -3049,8 +2952,7 @@
               "found": true,
               "breakdown": {
                 "receiving_yards": 2
-              },
-              "projected_points": 3.6
+              }
             },
             {
               "name": "Chig Okonkwo",
@@ -3059,8 +2961,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 3.0
+              "breakdown": {}
             },
             {
               "name": "Eddie Pineiro",
@@ -3071,8 +2972,7 @@
               "found": true,
               "breakdown": {
                 "pat_made": 5
-              },
-              "projected_points": 6.2
+              }
             },
             {
               "name": "Tyler Loop",
@@ -3085,8 +2985,7 @@
                 "pat_made": 2,
                 "fg_40_49": 3,
                 "fg_missed": -2
-              },
-              "projected_points": 5.9
+              }
             },
             {
               "name": "New England",
@@ -3101,8 +3000,7 @@
                 "fumble_recoveries": 2,
                 "sacks": 4,
                 "defensive_tds": 4
-              },
-              "projected_points": 5.9
+              }
             },
             {
               "name": "Kansas City",
@@ -3114,8 +3012,7 @@
               "breakdown": {
                 "points_allowed": -2,
                 "interceptions": 2
-              },
-              "projected_points": 6.9
+              }
             },
             {
               "name": "Mike Vrabel",
@@ -3126,8 +3023,7 @@
               "found": true,
               "breakdown": {
                 "home_favorite_win": 4
-              },
-              "projected_points": 3.6
+              }
             },
             {
               "name": "Sean Payton",
@@ -3138,8 +3034,7 @@
               "found": true,
               "breakdown": {
                 "home_favorite_win": 4
-              },
-              "projected_points": 3.0
+              }
             }
           ],
           "total_score": 74.0,
@@ -3160,8 +3055,7 @@
               "breakdown": {
                 "touchdowns": 6,
                 "interceptions": -1
-              },
-              "projected_points": 11.6
+              }
             },
             {
               "name": "Tyler Shough",
@@ -3173,8 +3067,7 @@
               "breakdown": {
                 "passing_yards": 3,
                 "touchdowns": 12
-              },
-              "projected_points": 13.0
+              }
             },
             {
               "name": "Shedeur Sanders",
@@ -3183,8 +3076,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 13.8
+              "breakdown": {}
             },
             {
               "name": "Quinshon Judkins",
@@ -3193,8 +3085,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.4
+              "breakdown": {}
             },
             {
               "name": "Jaylen Warren",
@@ -3203,8 +3094,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.0
+              "breakdown": {}
             },
             {
               "name": "Chuba Hubbard",
@@ -3215,8 +3105,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 3.7
+              }
             },
             {
               "name": "Jonah Coleman",
@@ -3227,8 +3116,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 5.0
+              }
             },
             {
               "name": "Jaxon Smith-Njigba",
@@ -3240,8 +3128,7 @@
               "breakdown": {
                 "receiving_yards": 5,
                 "touchdowns": 18
-              },
-              "projected_points": 5.7
+              }
             },
             {
               "name": "Rashee Rice",
@@ -3252,8 +3139,7 @@
               "found": true,
               "breakdown": {
                 "receiving_yards": 2
-              },
-              "projected_points": 4.8
+              }
             },
             {
               "name": "DJ Moore",
@@ -3262,8 +3148,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.9
+              "breakdown": {}
             },
             {
               "name": "Ja'Kobi Lane",
@@ -3272,8 +3157,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 3.6
+              "breakdown": {}
             },
             {
               "name": "Wan'Dale Robinson",
@@ -3282,8 +3166,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.4
+              "breakdown": {}
             },
             {
               "name": "Jake Ferguson",
@@ -3294,8 +3177,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 12
-              },
-              "projected_points": 3.5
+              }
             },
             {
               "name": "Cade Otton",
@@ -3304,8 +3186,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.1
+              "breakdown": {}
             },
             {
               "name": "Mason Taylor",
@@ -3313,9 +3194,8 @@
               "position": "TE",
               "score": 0.0,
               "starter": false,
-              "found": true,
-              "breakdown": {},
-              "projected_points": 3.3
+              "found": false,
+              "breakdown": {}
             },
             {
               "name": "Jason Myers",
@@ -3327,8 +3207,7 @@
               "breakdown": {
                 "pat_made": 4,
                 "fg_30_39": 2
-              },
-              "projected_points": 7.6
+              }
             },
             {
               "name": "Cairo Santos",
@@ -3340,8 +3219,7 @@
               "breakdown": {
                 "fg_50+": 4,
                 "fg_missed": -2
-              },
-              "projected_points": 6.2
+              }
             },
             {
               "name": "Seattle",
@@ -3354,8 +3232,7 @@
                 "points_allowed": 6,
                 "interceptions": 2,
                 "sacks": 2
-              },
-              "projected_points": 8.5
+              }
             },
             {
               "name": "Tampa Bay",
@@ -3367,8 +3244,7 @@
               "breakdown": {
                 "points_allowed": 0,
                 "sacks": 2
-              },
-              "projected_points": 7.4
+              }
             },
             {
               "name": "Todd Bowles",
@@ -3379,8 +3255,7 @@
               "found": true,
               "breakdown": {
                 "loss": 0
-              },
-              "projected_points": 3.1
+              }
             },
             {
               "name": "Jesse Minter",
@@ -3391,8 +3266,7 @@
               "found": true,
               "breakdown": {
                 "loss": 0
-              },
-              "projected_points": 3.4
+              }
             }
           ],
           "total_score": 62.0,
@@ -3413,8 +3287,7 @@
               "breakdown": {
                 "touchdowns": 6,
                 "interceptions": -2
-              },
-              "projected_points": 12.6
+              }
             },
             {
               "name": "Aaron Rodgers",
@@ -3427,8 +3300,7 @@
                 "interceptions": -1,
                 "fumble_sixes": -3,
                 "floor_applied": true
-              },
-              "projected_points": 13.4
+              }
             },
             {
               "name": "Jameis Winston",
@@ -3437,8 +3309,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 13.7
+              "breakdown": {}
             },
             {
               "name": "TreVeyon Henderson",
@@ -3450,8 +3321,7 @@
               "breakdown": {
                 "rushing_yards": 2,
                 "touchdowns": 6
-              },
-              "projected_points": 4.2
+              }
             },
             {
               "name": "Javonte Williams",
@@ -3460,8 +3330,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 5.4
+              "breakdown": {}
             },
             {
               "name": "Jacory Croskey-Merritt",
@@ -3470,8 +3339,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.7
+              "breakdown": {}
             },
             {
               "name": "Jadarian Price",
@@ -3483,8 +3351,7 @@
               "breakdown": {
                 "fumbles_lost": -1,
                 "floor_applied": true
-              },
-              "projected_points": 4.8
+              }
             },
             {
               "name": "Nico Collins",
@@ -3493,8 +3360,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 3.9
+              "breakdown": {}
             },
             {
               "name": "Khalil Shakir",
@@ -3503,8 +3369,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.6
+              "breakdown": {}
             },
             {
               "name": "Kayshon Boutte",
@@ -3513,8 +3378,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.6
+              "breakdown": {}
             },
             {
               "name": "Stefon Diggs",
@@ -3525,8 +3389,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 12
-              },
-              "projected_points": 3.9
+              }
             },
             {
               "name": "Antonio Williams",
@@ -3535,8 +3398,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.7
+              "breakdown": {}
             },
             {
               "name": "Colston Loveland",
@@ -3545,8 +3407,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.4
+              "breakdown": {}
             },
             {
               "name": "Hunter Henry",
@@ -3555,8 +3416,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.9
+              "breakdown": {}
             },
             {
               "name": "Zach Ertz ()",
@@ -3565,8 +3425,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 0.0
+              "breakdown": {}
             },
             {
               "name": "Evan McPherson",
@@ -3578,8 +3437,7 @@
               "breakdown": {
                 "pat_made": 2,
                 "fg_50+": 8
-              },
-              "projected_points": 6.5
+              }
             },
             {
               "name": "Dominic Zvada",
@@ -3588,8 +3446,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 5.9
+              "breakdown": {}
             },
             {
               "name": "NY Giants",
@@ -3598,8 +3455,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 5.1
+              "breakdown": {}
             },
             {
               "name": "Tennessee",
@@ -3612,8 +3468,7 @@
                 "points_allowed": 0,
                 "interceptions": 4,
                 "sacks": 3
-              },
-              "projected_points": 5.6
+              }
             },
             {
               "name": "Mike Macdonald",
@@ -3624,8 +3479,7 @@
               "found": true,
               "breakdown": {
                 "road_favorite_win": 5
-              },
-              "projected_points": 3.3
+              }
             },
             {
               "name": "Matt LaFleur",
@@ -3636,8 +3490,7 @@
               "found": true,
               "breakdown": {
                 "road_favorite_win": 5
-              },
-              "projected_points": 2.9
+              }
             }
           ],
           "total_score": 38.0,
@@ -3658,8 +3511,7 @@
               "breakdown": {
                 "interceptions": -1,
                 "floor_applied": true
-              },
-              "projected_points": 15.4
+              }
             },
             {
               "name": "Sam Darnold",
@@ -3668,8 +3520,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 12.5
+              "breakdown": {}
             },
             {
               "name": "Cam Ward",
@@ -3680,8 +3531,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 12
-              },
-              "projected_points": 12.8
+              }
             },
             {
               "name": "Christian McCaffrey",
@@ -3692,8 +3542,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 12
-              },
-              "projected_points": 7.3
+              }
             },
             {
               "name": "Kenneth Walker III",
@@ -3704,8 +3553,7 @@
               "found": true,
               "breakdown": {
                 "combined_rush_rec_yards": 5
-              },
-              "projected_points": 5.0
+              }
             },
             {
               "name": "David Montgomery",
@@ -3714,8 +3562,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 5.1
+              "breakdown": {}
             },
             {
               "name": "Mike Washington",
@@ -3724,8 +3571,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 5.4
+              "breakdown": {}
             },
             {
               "name": "Ladd McConkey",
@@ -3734,8 +3580,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.2
+              "breakdown": {}
             },
             {
               "name": "Jaylen Waddle",
@@ -3746,8 +3591,7 @@
               "found": true,
               "breakdown": {
                 "receiving_yards": 4
-              },
-              "projected_points": 3.1
+              }
             },
             {
               "name": "Makai Lemon",
@@ -3756,8 +3600,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.6
+              "breakdown": {}
             },
             {
               "name": "Cooper Kupp",
@@ -3766,8 +3609,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.7
+              "breakdown": {}
             },
             {
               "name": "De'Zhaun Striblng",
@@ -3776,8 +3618,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 3.3
+              "breakdown": {}
             },
             {
               "name": "Trey McBride",
@@ -3788,8 +3629,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 5.5
+              }
             },
             {
               "name": "Dalton Kincaid",
@@ -3801,8 +3641,7 @@
               "breakdown": {
                 "receiving_yards": 3,
                 "touchdowns": 6
-              },
-              "projected_points": 2.9
+              }
             },
             {
               "name": "Tyler Higbee",
@@ -3811,8 +3650,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 3.1
+              "breakdown": {}
             },
             {
               "name": "Daniel Carlson",
@@ -3826,8 +3664,7 @@
                 "fg_1_29": 1,
                 "fg_40_49": 3,
                 "fg_50+": 4
-              },
-              "projected_points": 4.4
+              }
             },
             {
               "name": "Tyler Bass",
@@ -3839,8 +3676,7 @@
               "breakdown": {
                 "pat_made": 5,
                 "pat_missed": -1
-              },
-              "projected_points": 5.8
+              }
             },
             {
               "name": "Minnesota",
@@ -3855,8 +3691,7 @@
                 "fumble_recoveries": 2,
                 "sacks": 4,
                 "blocked_kicks": 2
-              },
-              "projected_points": 6.2
+              }
             },
             {
               "name": "Green Bay",
@@ -3868,8 +3703,7 @@
               "breakdown": {
                 "points_allowed": 2,
                 "sacks": 4
-              },
-              "projected_points": 5.4
+              }
             },
             {
               "name": "Andy Reid",
@@ -3880,8 +3714,7 @@
               "found": true,
               "breakdown": {
                 "home_favorite_win": 4
-              },
-              "projected_points": 2.5
+              }
             },
             {
               "name": "Jim Harbaugh",
@@ -3892,12 +3725,11 @@
               "found": true,
               "breakdown": {
                 "loss": 0
-              },
-              "projected_points": 2.4
+              }
             }
           ],
           "total_score": 37.0,
-          "score_rank": 9
+          "score_rank": 10
         },
         {
           "name": "WES/BILL",
@@ -3914,8 +3746,7 @@
               "breakdown": {
                 "passing_yards": 2,
                 "touchdowns": 12
-              },
-              "projected_points": 12.4
+              }
             },
             {
               "name": "Jaxson Dart",
@@ -3924,8 +3755,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 13.1
+              "breakdown": {}
             },
             {
               "name": "Fernando Mendoza",
@@ -3934,8 +3764,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 13.3
+              "breakdown": {}
             },
             {
               "name": "Bijan Robinson",
@@ -3944,8 +3773,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 7.1
+              "breakdown": {}
             },
             {
               "name": "Jeremiah Love",
@@ -3954,8 +3782,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 5.0
+              "breakdown": {}
             },
             {
               "name": "Bucky Irving",
@@ -3966,8 +3793,7 @@
               "found": true,
               "breakdown": {
                 "rushing_yards": 2
-              },
-              "projected_points": 4.9
+              }
             },
             {
               "name": "Bhayshul Tuten",
@@ -3978,8 +3804,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 4.7
+              }
             },
             {
               "name": "Drake London",
@@ -3988,8 +3813,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.3
+              "breakdown": {}
             },
             {
               "name": "AJ Brown",
@@ -3998,8 +3822,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 2.8
+              "breakdown": {}
             },
             {
               "name": "Brian Thomas",
@@ -4008,8 +3831,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.6
+              "breakdown": {}
             },
             {
               "name": "Marvin Harrison",
@@ -4018,20 +3840,16 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.0
+              "breakdown": {}
             },
             {
               "name": "Omar Cooper",
               "nfl_team": "NYJ",
               "position": "WR",
-              "score": 6.0,
+              "score": 0.0,
               "starter": false,
-              "found": true,
-              "breakdown": {
-                "touchdowns": 6
-              },
-              "projected_points": 3.5
+              "found": false,
+              "breakdown": {}
             },
             {
               "name": "Brock Bowers",
@@ -4040,8 +3858,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 4.2
+              "breakdown": {}
             },
             {
               "name": "Harold Fannin",
@@ -4052,8 +3869,7 @@
               "found": true,
               "breakdown": {
                 "receiving_yards": 2
-              },
-              "projected_points": 2.8
+              }
             },
             {
               "name": "Kenyon Sadiq",
@@ -4062,8 +3878,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.3
+              "breakdown": {}
             },
             {
               "name": "Jake Bates",
@@ -4075,8 +3890,7 @@
               "breakdown": {
                 "pat_made": 4,
                 "fg_30_39": 2
-              },
-              "projected_points": 6.0
+              }
             },
             {
               "name": "Trey Smack",
@@ -4089,8 +3903,7 @@
                 "pat_made": 2,
                 "fg_1_29": 1,
                 "fg_30_39": 2
-              },
-              "projected_points": 6.0
+              }
             },
             {
               "name": "Philadelphia",
@@ -4102,8 +3915,7 @@
               "breakdown": {
                 "points_allowed": 0,
                 "sacks": 2
-              },
-              "projected_points": 6.9
+              }
             },
             {
               "name": "Indianapolis",
@@ -4116,8 +3928,7 @@
                 "points_allowed": -4,
                 "sacks": 2,
                 "floor_applied": true
-              },
-              "projected_points": 6.6
+              }
             },
             {
               "name": "Nick Sirianni",
@@ -4128,8 +3939,7 @@
               "found": true,
               "breakdown": {
                 "road_favorite_win": 5
-              },
-              "projected_points": 3.2
+              }
             },
             {
               "name": "Liam Coen",
@@ -4140,8 +3950,7 @@
               "found": true,
               "breakdown": {
                 "loss": 0
-              },
-              "projected_points": 3.2
+              }
             }
           ],
           "total_score": 31.0,
@@ -4163,8 +3972,7 @@
                 "passing_yards": 2,
                 "touchdowns": 6,
                 "interceptions": -1
-              },
-              "projected_points": 12.8
+              }
             },
             {
               "name": "Drake Maye",
@@ -4176,8 +3984,7 @@
               "breakdown": {
                 "passing_yards": 2,
                 "interceptions": -1
-              },
-              "projected_points": 14.0
+              }
             },
             {
               "name": "Michael Penix",
@@ -4186,8 +3993,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 13.0
+              "breakdown": {}
             },
             {
               "name": "Jonathan Taylor",
@@ -4199,8 +4005,7 @@
               "breakdown": {
                 "combined_rush_rec_yards": 3,
                 "touchdowns": 12
-              },
-              "projected_points": 7.7
+              }
             },
             {
               "name": "Derrick Henry",
@@ -4211,8 +4016,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 8.3
+              }
             },
             {
               "name": "Rico Dowdle",
@@ -4221,8 +4025,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.8
+              "breakdown": {}
             },
             {
               "name": "MarShawn Lloyd",
@@ -4234,8 +4037,7 @@
               "breakdown": {
                 "touchdowns": 6,
                 "fumbles_lost": -1
-              },
-              "projected_points": 5.5
+              }
             },
             {
               "name": "George Pickens",
@@ -4244,8 +4046,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.2
+              "breakdown": {}
             },
             {
               "name": "DeVonta Smith",
@@ -4257,8 +4058,7 @@
               "breakdown": {
                 "receiving_yards": 3,
                 "touchdowns": 6
-              },
-              "projected_points": 2.9
+              }
             },
             {
               "name": "Terry McLaurin",
@@ -4267,8 +4067,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.4
+              "breakdown": {}
             },
             {
               "name": "Chris Godwin",
@@ -4277,8 +4076,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.3
+              "breakdown": {}
             },
             {
               "name": "Parker Washington",
@@ -4289,8 +4087,7 @@
               "found": true,
               "breakdown": {
                 "receiving_yards": 2
-              },
-              "projected_points": 3.3
+              }
             },
             {
               "name": "George Kittle",
@@ -4302,8 +4099,7 @@
               "breakdown": {
                 "receiving_yards": 3,
                 "touchdowns": 6
-              },
-              "projected_points": 3.7
+              }
             },
             {
               "name": "Oronde Gadsden",
@@ -4314,8 +4110,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 2.8
+              }
             },
             {
               "name": "Evan Engram",
@@ -4324,8 +4119,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.4
+              "breakdown": {}
             },
             {
               "name": "Cam Little",
@@ -4339,8 +4133,7 @@
                 "fg_1_29": 1,
                 "fg_40_49": 3,
                 "fg_missed": -2
-              },
-              "projected_points": 6.6
+              }
             },
             {
               "name": "Spencer Shrader",
@@ -4353,8 +4146,7 @@
                 "pat_made": 3,
                 "fg_30_39": 2,
                 "fg_40_49": 6
-              },
-              "projected_points": 6.0
+              }
             },
             {
               "name": "Pittsburgh",
@@ -4368,8 +4160,7 @@
                 "interceptions": 2,
                 "fumble_recoveries": 2,
                 "sacks": 3
-              },
-              "projected_points": 7.6
+              }
             },
             {
               "name": "LA Chargers",
@@ -4382,8 +4173,7 @@
                 "points_allowed": 0,
                 "interceptions": 2,
                 "sacks": 2
-              },
-              "projected_points": 6.8
+              }
             },
             {
               "name": "Joe Brady",
@@ -4394,8 +4184,7 @@
               "found": true,
               "breakdown": {
                 "home_favorite_win": 4
-              },
-              "projected_points": 3.0
+              }
             },
             {
               "name": "Mike McCarthy",
@@ -4406,8 +4195,7 @@
               "found": true,
               "breakdown": {
                 "loss": 0
-              },
-              "projected_points": 3.1
+              }
             }
           ],
           "total_score": 57.0,
@@ -4428,8 +4216,7 @@
               "breakdown": {
                 "passing_yards": 5,
                 "touchdowns": 18
-              },
-              "projected_points": 14.1
+              }
             },
             {
               "name": "Bryce Young",
@@ -4441,8 +4228,7 @@
               "breakdown": {
                 "passing_yards": 3,
                 "touchdowns": 18
-              },
-              "projected_points": 12.1
+              }
             },
             {
               "name": "Deshaun Watson",
@@ -4454,8 +4240,7 @@
               "breakdown": {
                 "passing_yards": 2,
                 "touchdowns": 12
-              },
-              "projected_points": 13.8
+              }
             },
             {
               "name": "Chase Brown",
@@ -4466,8 +4251,7 @@
               "found": true,
               "breakdown": {
                 "rushing_yards": 2
-              },
-              "projected_points": 5.4
+              }
             },
             {
               "name": "Jonathan Brooks",
@@ -4476,8 +4260,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.9
+              "breakdown": {}
             },
             {
               "name": "Tony Pollard",
@@ -4486,8 +4269,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.1
+              "breakdown": {}
             },
             {
               "name": "Cam Skattebo",
@@ -4496,8 +4278,7 @@
               "score": 0.0,
               "starter": true,
               "found": false,
-              "breakdown": {},
-              "projected_points": 5.7
+              "breakdown": {}
             },
             {
               "name": "CeeDee Lamb",
@@ -4509,8 +4290,7 @@
               "breakdown": {
                 "receiving_yards": 5,
                 "touchdowns": 12
-              },
-              "projected_points": 3.3
+              }
             },
             {
               "name": "Malik Nabers",
@@ -4519,8 +4299,7 @@
               "score": 0.0,
               "starter": true,
               "found": false,
-              "breakdown": {},
-              "projected_points": 3.2
+              "breakdown": {}
             },
             {
               "name": "Rome Odunze",
@@ -4529,8 +4308,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.5
+              "breakdown": {}
             },
             {
               "name": "Travis Hunter",
@@ -4539,8 +4317,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.6
+              "breakdown": {}
             },
             {
               "name": "Jayden Reed",
@@ -4549,8 +4326,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.6
+              "breakdown": {}
             },
             {
               "name": "Mark Andrews",
@@ -4559,8 +4335,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 2.6
+              "breakdown": {}
             },
             {
               "name": "Isaiah Likely",
@@ -4569,8 +4344,7 @@
               "score": 0.0,
               "starter": true,
               "found": false,
-              "breakdown": {},
-              "projected_points": 2.8
+              "breakdown": {}
             },
             {
               "name": "Elijah Arroyo",
@@ -4579,8 +4353,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.0
+              "breakdown": {}
             },
             {
               "name": "Ka'imi Fairbairn",
@@ -4593,8 +4366,7 @@
                 "fg_30_39": 2,
                 "fg_40_49": 3,
                 "fg_missed": -2
-              },
-              "projected_points": 7.1
+              }
             },
             {
               "name": "Harrison Mevis",
@@ -4603,8 +4375,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 6.0
+              "breakdown": {}
             },
             {
               "name": "Buffalo",
@@ -4616,8 +4387,7 @@
               "breakdown": {
                 "points_allowed": -2,
                 "sacks": 4
-              },
-              "projected_points": 7.1
+              }
             },
             {
               "name": "Cleveland",
@@ -4630,8 +4400,7 @@
                 "points_allowed": 0,
                 "interceptions": 2,
                 "sacks": 3
-              },
-              "projected_points": 7.0
+              }
             },
             {
               "name": "Zac Taylor",
@@ -4642,8 +4411,7 @@
               "found": true,
               "breakdown": {
                 "road_underdog_win": 7
-              },
-              "projected_points": 2.5
+              }
             },
             {
               "name": "Kevin O'Connell",
@@ -4654,8 +4422,7 @@
               "found": true,
               "breakdown": {
                 "road_underdog_win": 7
-              },
-              "projected_points": 2.6
+              }
             }
           ],
           "total_score": 54.0,
@@ -4675,8 +4442,7 @@
               "found": true,
               "breakdown": {
                 "passing_yards": 5
-              },
-              "projected_points": 13.2
+              }
             },
             {
               "name": "Jared Goff",
@@ -4688,8 +4454,7 @@
               "breakdown": {
                 "passing_yards": 4,
                 "touchdowns": 24
-              },
-              "projected_points": 13.8
+              }
             },
             {
               "name": "Daniel Jones",
@@ -4702,8 +4467,7 @@
                 "passing_yards": 2,
                 "touchdowns": 6,
                 "interceptions": -1
-              },
-              "projected_points": 13.7
+              }
             },
             {
               "name": "Saquon Barkley",
@@ -4712,8 +4476,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 4.9
+              "breakdown": {}
             },
             {
               "name": "Ashton Jeanty",
@@ -4722,8 +4485,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 5.7
+              "breakdown": {}
             },
             {
               "name": "Breece Hall",
@@ -4732,8 +4494,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 6.2
+              "breakdown": {}
             },
             {
               "name": "Kyle Monangai",
@@ -4742,8 +4503,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 5.0
+              "breakdown": {}
             },
             {
               "name": "Chris Olave",
@@ -4755,8 +4515,7 @@
               "breakdown": {
                 "receiving_yards": 2,
                 "touchdowns": 6
-              },
-              "projected_points": 4.6
+              }
             },
             {
               "name": "Garrett Wilson",
@@ -4767,8 +4526,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 3.2
+              }
             },
             {
               "name": "Xavier Worthy",
@@ -4779,8 +4537,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 2.0
+              }
             },
             {
               "name": "Carnell Tate",
@@ -4789,8 +4546,7 @@
               "score": 0.0,
               "starter": false,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.3
+              "breakdown": {}
             },
             {
               "name": "Ricky Pearsall",
@@ -4799,8 +4555,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 2.7
+              "breakdown": {}
             },
             {
               "name": "Kyle Pitts",
@@ -4809,8 +4564,7 @@
               "score": 0.0,
               "starter": true,
               "found": true,
-              "breakdown": {},
-              "projected_points": 3.5
+              "breakdown": {}
             },
             {
               "name": "Terrance Ferguson",
@@ -4819,8 +4573,7 @@
               "score": 0.0,
               "starter": false,
               "found": false,
-              "breakdown": {},
-              "projected_points": 3.1
+              "breakdown": {}
             },
             {
               "name": "AJ Barner",
@@ -4831,8 +4584,7 @@
               "found": true,
               "breakdown": {
                 "touchdowns": 6
-              },
-              "projected_points": 3.2
+              }
             },
             {
               "name": "Harrison Butker",
@@ -4847,8 +4599,7 @@
                 "fg_30_39": 2,
                 "fg_40_49": 6,
                 "fg_missed": -2
-              },
-              "projected_points": 5.6
+              }
             },
             {
               "name": "Andy Borregales",
@@ -4862,8 +4613,7 @@
                 "fg_30_39": 2,
                 "fg_40_49": 3,
                 "fg_missed": -2
-              },
-              "projected_points": 5.9
+              }
             },
             {
               "name": "Detroit",
@@ -4876,8 +4626,7 @@
                 "points_allowed": -6,
                 "sacks": 2,
                 "floor_applied": true
-              },
-              "projected_points": 6.4
+              }
             },
             {
               "name": "Dallas",
@@ -4889,8 +4638,7 @@
               "breakdown": {
                 "points_allowed": 0,
                 "fumble_recoveries": 2
-              },
-              "projected_points": 6.3
+              }
             },
             {
               "name": "Brian Schottenheimer",
@@ -4901,8 +4649,7 @@
               "found": true,
               "breakdown": {
                 "home_favorite_win": 4
-              },
-              "projected_points": 2.8
+              }
             },
             {
               "name": "Dan Quinn",
@@ -4913,66 +4660,15 @@
               "found": true,
               "breakdown": {
                 "loss": 0
-              },
-              "projected_points": 2.5
+              }
             }
           ],
           "total_score": 35.0,
-          "score_rank": 10
+          "score_rank": 11
         }
       ],
       "has_scores": true,
-      "final": false,
-      "projections": {
-        "K/D": {
-          "projected_total": 40.8,
-          "win_probability": 0.01
-        },
-        "STL": {
-          "projected_total": 46.0,
-          "win_probability": 0.01160360227451318
-        },
-        "JOH": {
-          "projected_total": 57.0,
-          "win_probability": 0.9883963977254868
-        },
-        "KEV": {
-          "projected_total": 46.1,
-          "win_probability": 0.99
-        },
-        "D/J": {
-          "projected_total": 74.0,
-          "win_probability": 1.0
-        },
-        "G/G": {
-          "projected_total": 62.0,
-          "win_probability": 0.99
-        },
-        "E/J": {
-          "projected_total": 38.0,
-          "win_probability": 0.010000000000000009
-        },
-        "AND": {
-          "projected_total": 37.0,
-          "win_probability": 1.0
-        },
-        "W/B": {
-          "projected_total": 31.0,
-          "win_probability": 0.01
-        },
-        "KAM": {
-          "projected_total": 57.0,
-          "win_probability": 0.0
-        },
-        "J/M": {
-          "projected_total": 65.7,
-          "win_probability": 0.99
-        },
-        "ADA": {
-          "projected_total": 35.0,
-          "win_probability": 0.0
-        }
-      }
+      "final": true
     }
   ],
   "schedule": {
@@ -5383,88 +5079,100 @@
   },
   "standings": [
     {
-      "name": "KEMP/A/M",
-      "owner": "KEMP/A/M",
-      "abbrev": "KAM",
-      "rank_points": 2.0,
-      "wins": 1,
-      "losses": 0,
-      "ties": 0,
-      "top_half": 1,
-      "points_for": 80.0,
-      "points_against": 70.0
-    },
-    {
       "name": "DANNY/JOEY",
       "owner": "DANNY/JOEY",
       "abbrev": "D/J",
-      "rank_points": 2.0,
-      "wins": 1,
+      "rank_points": 4.0,
+      "wins": 2,
       "losses": 0,
       "ties": 0,
-      "top_half": 1,
-      "points_for": 77.0,
-      "points_against": 56.0
+      "top_half": 2,
+      "points_for": 151.0,
+      "points_against": 113.0
     },
     {
-      "name": "ANDREW",
-      "owner": "ANDREW",
-      "abbrev": "AND",
-      "rank_points": 2.0,
+      "name": "KEMP/A/M",
+      "owner": "KEMP/A/M",
+      "abbrev": "KAM",
+      "rank_points": 3.0,
       "wins": 1,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
-      "top_half": 1,
-      "points_for": 70.0,
-      "points_against": 32.0
-    },
-    {
-      "name": "KEVIN",
-      "owner": "KEVIN",
-      "abbrev": "KEV",
-      "rank_points": 2.0,
-      "wins": 1,
-      "losses": 0,
-      "ties": 0,
-      "top_half": 1,
-      "points_for": 57.0,
-      "points_against": 53.0
+      "top_half": 2,
+      "points_for": 137.0,
+      "points_against": 144.0
     },
     {
       "name": "JOHN",
       "owner": "JOHN",
       "abbrev": "JOH",
-      "rank_points": 1.0,
-      "wins": 0,
+      "rank_points": 3.0,
+      "wins": 1,
       "losses": 1,
       "ties": 0,
-      "top_half": 1,
-      "points_for": 70.0,
-      "points_against": 80.0
-    },
-    {
-      "name": "STEVE L.",
-      "owner": "STEVE L.",
-      "abbrev": "STL",
-      "rank_points": 1.0,
-      "wins": 0,
-      "losses": 1,
-      "ties": 0,
-      "top_half": 1,
-      "points_for": 56.0,
-      "points_against": 77.0
+      "top_half": 2,
+      "points_for": 121.0,
+      "points_against": 126.0
     },
     {
       "name": "JARRETT/MATT",
       "owner": "JARRETT/MATT",
       "abbrev": "J/M",
-      "rank_points": 1.0,
-      "wins": 1,
+      "rank_points": 3.0,
+      "wins": 2,
       "losses": 0,
       "ties": 0,
-      "top_half": 0,
-      "points_for": 54.0,
-      "points_against": 46.0
+      "top_half": 1,
+      "points_for": 108.0,
+      "points_against": 84.0
+    },
+    {
+      "name": "ANDREW",
+      "owner": "ANDREW",
+      "abbrev": "AND",
+      "rank_points": 3.0,
+      "wins": 2,
+      "losses": 0,
+      "ties": 0,
+      "top_half": 1,
+      "points_for": 107.0,
+      "points_against": 67.0
+    },
+    {
+      "name": "KEVIN",
+      "owner": "KEVIN",
+      "abbrev": "KEV",
+      "rank_points": 3.0,
+      "wins": 2,
+      "losses": 0,
+      "ties": 0,
+      "top_half": 1,
+      "points_for": 96.0,
+      "points_against": 84.0
+    },
+    {
+      "name": "STEVE L.",
+      "owner": "STEVE L.",
+      "abbrev": "STL",
+      "rank_points": 2.0,
+      "wins": 0,
+      "losses": 2,
+      "ties": 0,
+      "top_half": 2,
+      "points_for": 102.0,
+      "points_against": 128.0
+    },
+    {
+      "name": "GREG/GRIFFIN",
+      "owner": "GREG/GRIFFIN",
+      "abbrev": "G/G",
+      "rank_points": 2.0,
+      "wins": 1,
+      "losses": 1,
+      "ties": 0,
+      "top_half": 1,
+      "points_for": 102.0,
+      "points_against": 88.0
     },
     {
       "name": "ERIC/JEFF",
@@ -5472,11 +5180,11 @@
       "abbrev": "E/J",
       "rank_points": 1.0,
       "wins": 1,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
       "top_half": 0,
-      "points_for": 51.0,
-      "points_against": 40.0
+      "points_for": 89.0,
+      "points_against": 94.0
     },
     {
       "name": "ADAM",
@@ -5484,11 +5192,11 @@
       "abbrev": "ADA",
       "rank_points": 0.0,
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "ties": 0,
       "top_half": 0,
-      "points_for": 53.0,
-      "points_against": 57.0
+      "points_for": 88.0,
+      "points_against": 94.0
     },
     {
       "name": "KIRK/DAVID",
@@ -5496,23 +5204,11 @@
       "abbrev": "K/D",
       "rank_points": 0.0,
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "ties": 0,
       "top_half": 0,
-      "points_for": 46.0,
-      "points_against": 54.0
-    },
-    {
-      "name": "GREG/GRIFFIN",
-      "owner": "GREG/GRIFFIN",
-      "abbrev": "G/G",
-      "rank_points": 0.0,
-      "wins": 0,
-      "losses": 1,
-      "ties": 0,
-      "top_half": 0,
-      "points_for": 40.0,
-      "points_against": 51.0
+      "points_for": 83.0,
+      "points_against": 116.0
     },
     {
       "name": "WES/BILL",
@@ -5520,459 +5216,459 @@
       "abbrev": "W/B",
       "rank_points": 0.0,
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "ties": 0,
       "top_half": 0,
-      "points_for": 32.0,
-      "points_against": 70.0
+      "points_for": 63.0,
+      "points_against": 109.0
     }
   ],
-  "standings_through_week": 1,
-  "standings_in_progress": true,
+  "standings_through_week": 2,
+  "standings_in_progress": false,
   "team_stats": {
+    "D/J": {
+      "abbrev": "D/J",
+      "name": "DANNY/JOEY",
+      "wins": 2,
+      "losses": 0,
+      "ties": 0,
+      "streak": {
+        "type": "W",
+        "count": 2
+      },
+      "lineup_actual_points": 151.0,
+      "lineup_optimal_points": 173.0,
+      "points_left_on_table": 22.0,
+      "lineup_weeks": 2,
+      "total_points_for": 151.0,
+      "total_points_against": 113.0,
+      "point_differential": 38.0,
+      "ppg": 75.5,
+      "ppg_against": 56.5,
+      "avg_margin": 19.0,
+      "avg_rank": 1.5,
+      "std_dev": 2.12,
+      "best_week": 77.0,
+      "worst_week": 74.0,
+      "best_week_num": 1,
+      "worst_week_num": 2,
+      "largest_win": 21.0,
+      "largest_loss": 17.0,
+      "win_pct": 1.0,
+      "games_above_500": 2,
+      "record": "2-0",
+      "opr": 97.95,
+      "owner_success_rate": 87.3,
+      "points_left_on_table_pct": 12.7,
+      "adjusted_opr": 1.586,
+      "league_avg_opr": 61.76
+    },
     "KAM": {
       "abbrev": "KAM",
       "name": "KEMP/A/M",
       "wins": 1,
-      "losses": 0,
-      "ties": 0,
-      "streak": {
-        "type": "W",
-        "count": 1
-      },
-      "lineup_actual_points": 80.0,
-      "lineup_optimal_points": 95.0,
-      "points_left_on_table": 15.0,
-      "lineup_weeks": 1,
-      "total_points_for": 80.0,
-      "total_points_against": 70.0,
-      "point_differential": 10.0,
-      "ppg": 80.0,
-      "ppg_against": 70.0,
-      "avg_margin": 10.0,
-      "avg_rank": 1.0,
-      "std_dev": 0,
-      "best_week": 80.0,
-      "worst_week": 80.0,
-      "best_week_num": 1,
-      "worst_week_num": 1,
-      "largest_win": 10.0,
-      "largest_loss": 10.0,
-      "win_pct": 1.0,
-      "games_above_500": 1,
-      "record": "1-0",
-      "opr": 102.0,
-      "owner_success_rate": 84.2,
-      "points_left_on_table_pct": 15.8,
-      "adjusted_opr": 1.535,
-      "league_avg_opr": 66.45
-    },
-    "D/J": {
-      "abbrev": "D/J",
-      "name": "DANNY/JOEY",
-      "wins": 1,
-      "losses": 0,
-      "ties": 0,
-      "streak": {
-        "type": "W",
-        "count": 1
-      },
-      "lineup_actual_points": 77.0,
-      "lineup_optimal_points": 79.0,
-      "points_left_on_table": 2.0,
-      "lineup_weeks": 1,
-      "total_points_for": 77.0,
-      "total_points_against": 56.0,
-      "point_differential": 21.0,
-      "ppg": 77.0,
-      "ppg_against": 56.0,
-      "avg_margin": 21.0,
-      "avg_rank": 2.0,
-      "std_dev": 0,
-      "best_week": 77.0,
-      "worst_week": 77.0,
-      "best_week_num": 1,
-      "worst_week_num": 1,
-      "largest_win": 21.0,
-      "largest_loss": 21.0,
-      "win_pct": 1.0,
-      "games_above_500": 1,
-      "record": "1-0",
-      "opr": 99.3,
-      "owner_success_rate": 97.5,
-      "points_left_on_table_pct": 2.5,
-      "adjusted_opr": 1.494,
-      "league_avg_opr": 66.45
-    },
-    "AND": {
-      "abbrev": "AND",
-      "name": "ANDREW",
-      "wins": 1,
-      "losses": 0,
-      "ties": 0,
-      "streak": {
-        "type": "W",
-        "count": 1
-      },
-      "lineup_actual_points": 70.0,
-      "lineup_optimal_points": 100.0,
-      "points_left_on_table": 30.0,
-      "lineup_weeks": 1,
-      "total_points_for": 70.0,
-      "total_points_against": 32.0,
-      "point_differential": 38.0,
-      "ppg": 70.0,
-      "ppg_against": 32.0,
-      "avg_margin": 38.0,
-      "avg_rank": 4.0,
-      "std_dev": 0,
-      "best_week": 70.0,
-      "worst_week": 70.0,
-      "best_week_num": 1,
-      "worst_week_num": 1,
-      "largest_win": 38.0,
-      "largest_loss": 38.0,
-      "win_pct": 1.0,
-      "games_above_500": 1,
-      "record": "1-0",
-      "opr": 93.0,
-      "owner_success_rate": 70.0,
-      "points_left_on_table_pct": 30.0,
-      "adjusted_opr": 1.4,
-      "league_avg_opr": 66.45
-    },
-    "KEV": {
-      "abbrev": "KEV",
-      "name": "KEVIN",
-      "wins": 1,
-      "losses": 0,
-      "ties": 0,
-      "streak": {
-        "type": "W",
-        "count": 1
-      },
-      "lineup_actual_points": 57.0,
-      "lineup_optimal_points": 67.0,
-      "points_left_on_table": 10.0,
-      "lineup_weeks": 1,
-      "total_points_for": 57.0,
-      "total_points_against": 53.0,
-      "point_differential": 4.0,
-      "ppg": 57.0,
-      "ppg_against": 53.0,
-      "avg_margin": 4.0,
-      "avg_rank": 5.0,
-      "std_dev": 0,
-      "best_week": 57.0,
-      "worst_week": 57.0,
-      "best_week_num": 1,
-      "worst_week_num": 1,
-      "largest_win": 4.0,
-      "largest_loss": 4.0,
-      "win_pct": 1.0,
-      "games_above_500": 1,
-      "record": "1-0",
-      "opr": 81.3,
-      "owner_success_rate": 85.1,
-      "points_left_on_table_pct": 14.9,
-      "adjusted_opr": 1.223,
-      "league_avg_opr": 66.45
-    },
-    "JOH": {
-      "abbrev": "JOH",
-      "name": "JOHN",
-      "wins": 0,
       "losses": 1,
       "ties": 0,
       "streak": {
         "type": "L",
         "count": 1
       },
-      "lineup_actual_points": 70.0,
-      "lineup_optimal_points": 77.0,
-      "points_left_on_table": 7.0,
-      "lineup_weeks": 1,
-      "total_points_for": 70.0,
-      "total_points_against": 80.0,
-      "point_differential": -10.0,
-      "ppg": 70.0,
-      "ppg_against": 80.0,
-      "avg_margin": -10.0,
-      "avg_rank": 3.0,
-      "std_dev": 0,
+      "lineup_actual_points": 137.0,
+      "lineup_optimal_points": 165.0,
+      "points_left_on_table": 28.0,
+      "lineup_weeks": 2,
+      "total_points_for": 137.0,
+      "total_points_against": 144.0,
+      "point_differential": -7.0,
+      "ppg": 68.5,
+      "ppg_against": 72.0,
+      "avg_margin": -3.5,
+      "avg_rank": 2.0,
+      "std_dev": 16.26,
+      "best_week": 80.0,
+      "worst_week": 57.0,
+      "best_week_num": 1,
+      "worst_week_num": 2,
+      "largest_win": 10.0,
+      "largest_loss": -17.0,
+      "win_pct": 0.5,
+      "games_above_500": 0,
+      "record": "1-1",
+      "opr": 76.65,
+      "owner_success_rate": 83.0,
+      "points_left_on_table_pct": 17.0,
+      "adjusted_opr": 1.241,
+      "league_avg_opr": 61.76
+    },
+    "JOH": {
+      "abbrev": "JOH",
+      "name": "JOHN",
+      "wins": 1,
+      "losses": 1,
+      "ties": 0,
+      "streak": {
+        "type": "W",
+        "count": 1
+      },
+      "lineup_actual_points": 121.0,
+      "lineup_optimal_points": 144.0,
+      "points_left_on_table": 23.0,
+      "lineup_weeks": 2,
+      "total_points_for": 121.0,
+      "total_points_against": 126.0,
+      "point_differential": -5.0,
+      "ppg": 60.5,
+      "ppg_against": 63.0,
+      "avg_margin": -2.5,
+      "avg_rank": 4.0,
+      "std_dev": 13.44,
       "best_week": 70.0,
-      "worst_week": 70.0,
+      "worst_week": 51.0,
+      "best_week_num": 1,
+      "worst_week_num": 2,
+      "largest_win": 5.0,
+      "largest_loss": -10.0,
+      "win_pct": 0.5,
+      "games_above_500": 0,
+      "record": "1-1",
+      "opr": 69.45,
+      "owner_success_rate": 84.0,
+      "points_left_on_table_pct": 16.0,
+      "adjusted_opr": 1.124,
+      "league_avg_opr": 61.76
+    },
+    "J/M": {
+      "abbrev": "J/M",
+      "name": "JARRETT/MATT",
+      "wins": 2,
+      "losses": 0,
+      "ties": 0,
+      "streak": {
+        "type": "W",
+        "count": 2
+      },
+      "lineup_actual_points": 108.0,
+      "lineup_optimal_points": 137.0,
+      "points_left_on_table": 29.0,
+      "lineup_weeks": 2,
+      "total_points_for": 108.0,
+      "total_points_against": 84.0,
+      "point_differential": 24.0,
+      "ppg": 54.0,
+      "ppg_against": 42.0,
+      "avg_margin": 12.0,
+      "avg_rank": 5.5,
+      "std_dev": 0.0,
+      "best_week": 54.0,
+      "worst_week": 54.0,
       "best_week_num": 1,
       "worst_week_num": 1,
-      "largest_win": -10.0,
-      "largest_loss": -10.0,
-      "win_pct": 0.0,
-      "games_above_500": -1,
-      "record": "0-1",
-      "opr": 63.0,
-      "owner_success_rate": 90.9,
-      "points_left_on_table_pct": 9.1,
-      "adjusted_opr": 0.948,
-      "league_avg_opr": 66.45
+      "largest_win": 16.0,
+      "largest_loss": 8.0,
+      "win_pct": 1.0,
+      "games_above_500": 2,
+      "record": "2-0",
+      "opr": 78.6,
+      "owner_success_rate": 78.8,
+      "points_left_on_table_pct": 21.2,
+      "adjusted_opr": 1.273,
+      "league_avg_opr": 61.76
+    },
+    "AND": {
+      "abbrev": "AND",
+      "name": "ANDREW",
+      "wins": 2,
+      "losses": 0,
+      "ties": 0,
+      "streak": {
+        "type": "W",
+        "count": 2
+      },
+      "lineup_actual_points": 107.0,
+      "lineup_optimal_points": 171.0,
+      "points_left_on_table": 64.0,
+      "lineup_weeks": 2,
+      "total_points_for": 107.0,
+      "total_points_against": 67.0,
+      "point_differential": 40.0,
+      "ppg": 53.5,
+      "ppg_against": 33.5,
+      "avg_margin": 20.0,
+      "avg_rank": 7.0,
+      "std_dev": 23.33,
+      "best_week": 70.0,
+      "worst_week": 37.0,
+      "best_week_num": 1,
+      "worst_week_num": 2,
+      "largest_win": 38.0,
+      "largest_loss": 2.0,
+      "win_pct": 1.0,
+      "games_above_500": 2,
+      "record": "2-0",
+      "opr": 78.15,
+      "owner_success_rate": 62.6,
+      "points_left_on_table_pct": 37.4,
+      "adjusted_opr": 1.265,
+      "league_avg_opr": 61.76
+    },
+    "KEV": {
+      "abbrev": "KEV",
+      "name": "KEVIN",
+      "wins": 2,
+      "losses": 0,
+      "ties": 0,
+      "streak": {
+        "type": "W",
+        "count": 2
+      },
+      "lineup_actual_points": 96.0,
+      "lineup_optimal_points": 108.0,
+      "points_left_on_table": 12.0,
+      "lineup_weeks": 2,
+      "total_points_for": 96.0,
+      "total_points_against": 84.0,
+      "point_differential": 12.0,
+      "ppg": 48.0,
+      "ppg_against": 42.0,
+      "avg_margin": 6.0,
+      "avg_rank": 6.0,
+      "std_dev": 12.73,
+      "best_week": 57.0,
+      "worst_week": 39.0,
+      "best_week_num": 1,
+      "worst_week_num": 2,
+      "largest_win": 8.0,
+      "largest_loss": 4.0,
+      "win_pct": 1.0,
+      "games_above_500": 2,
+      "record": "2-0",
+      "opr": 73.2,
+      "owner_success_rate": 88.9,
+      "points_left_on_table_pct": 11.1,
+      "adjusted_opr": 1.185,
+      "league_avg_opr": 61.76
     },
     "STL": {
       "abbrev": "STL",
       "name": "STEVE L.",
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "ties": 0,
       "streak": {
         "type": "L",
-        "count": 1
+        "count": 2
       },
-      "lineup_actual_points": 56.0,
-      "lineup_optimal_points": 70.0,
-      "points_left_on_table": 14.0,
-      "lineup_weeks": 1,
-      "total_points_for": 56.0,
-      "total_points_against": 77.0,
-      "point_differential": -21.0,
-      "ppg": 56.0,
-      "ppg_against": 77.0,
-      "avg_margin": -21.0,
+      "lineup_actual_points": 102.0,
+      "lineup_optimal_points": 125.0,
+      "points_left_on_table": 23.0,
+      "lineup_weeks": 2,
+      "total_points_for": 102.0,
+      "total_points_against": 128.0,
+      "point_differential": -26.0,
+      "ppg": 51.0,
+      "ppg_against": 64.0,
+      "avg_margin": -13.0,
       "avg_rank": 6.0,
-      "std_dev": 0,
+      "std_dev": 7.07,
       "best_week": 56.0,
-      "worst_week": 56.0,
+      "worst_week": 46.0,
       "best_week_num": 1,
-      "worst_week_num": 1,
-      "largest_win": -21.0,
+      "worst_week_num": 2,
+      "largest_win": -5.0,
       "largest_loss": -21.0,
       "win_pct": 0.0,
-      "games_above_500": -1,
-      "record": "0-1",
-      "opr": 50.4,
-      "owner_success_rate": 80.0,
-      "points_left_on_table_pct": 20.0,
-      "adjusted_opr": 0.758,
-      "league_avg_opr": 66.45
+      "games_above_500": -2,
+      "record": "0-2",
+      "opr": 45.9,
+      "owner_success_rate": 81.6,
+      "points_left_on_table_pct": 18.4,
+      "adjusted_opr": 0.743,
+      "league_avg_opr": 61.76
     },
-    "J/M": {
-      "abbrev": "J/M",
-      "name": "JARRETT/MATT",
+    "G/G": {
+      "abbrev": "G/G",
+      "name": "GREG/GRIFFIN",
       "wins": 1,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
       "streak": {
         "type": "W",
         "count": 1
       },
-      "lineup_actual_points": 54.0,
-      "lineup_optimal_points": 80.0,
-      "points_left_on_table": 26.0,
-      "lineup_weeks": 1,
-      "total_points_for": 54.0,
-      "total_points_against": 46.0,
-      "point_differential": 8.0,
-      "ppg": 54.0,
-      "ppg_against": 46.0,
-      "avg_margin": 8.0,
-      "avg_rank": 7.0,
-      "std_dev": 0,
-      "best_week": 54.0,
-      "worst_week": 54.0,
-      "best_week_num": 1,
+      "lineup_actual_points": 102.0,
+      "lineup_optimal_points": 160.0,
+      "points_left_on_table": 58.0,
+      "lineup_weeks": 2,
+      "total_points_for": 102.0,
+      "total_points_against": 88.0,
+      "point_differential": 14.0,
+      "ppg": 51.0,
+      "ppg_against": 44.0,
+      "avg_margin": 7.0,
+      "avg_rank": 6.5,
+      "std_dev": 15.56,
+      "best_week": 62.0,
+      "worst_week": 40.0,
+      "best_week_num": 2,
       "worst_week_num": 1,
-      "largest_win": 8.0,
-      "largest_loss": 8.0,
-      "win_pct": 1.0,
-      "games_above_500": 1,
-      "record": "1-0",
-      "opr": 78.6,
-      "owner_success_rate": 67.5,
-      "points_left_on_table_pct": 32.5,
-      "adjusted_opr": 1.183,
-      "league_avg_opr": 66.45
+      "largest_win": 25.0,
+      "largest_loss": -11.0,
+      "win_pct": 0.5,
+      "games_above_500": 0,
+      "record": "1-1",
+      "opr": 60.9,
+      "owner_success_rate": 63.7,
+      "points_left_on_table_pct": 36.2,
+      "adjusted_opr": 0.986,
+      "league_avg_opr": 61.76
     },
     "E/J": {
       "abbrev": "E/J",
       "name": "ERIC/JEFF",
       "wins": 1,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
       "streak": {
-        "type": "W",
+        "type": "L",
         "count": 1
       },
-      "lineup_actual_points": 51.0,
-      "lineup_optimal_points": 60.0,
-      "points_left_on_table": 9.0,
-      "lineup_weeks": 1,
-      "total_points_for": 51.0,
-      "total_points_against": 40.0,
-      "point_differential": 11.0,
-      "ppg": 51.0,
-      "ppg_against": 40.0,
-      "avg_margin": 11.0,
-      "avg_rank": 9.0,
-      "std_dev": 0,
+      "lineup_actual_points": 89.0,
+      "lineup_optimal_points": 106.0,
+      "points_left_on_table": 17.0,
+      "lineup_weeks": 2,
+      "total_points_for": 89.0,
+      "total_points_against": 94.0,
+      "point_differential": -5.0,
+      "ppg": 44.5,
+      "ppg_against": 47.0,
+      "avg_margin": -2.5,
+      "avg_rank": 8.5,
+      "std_dev": 9.19,
       "best_week": 51.0,
-      "worst_week": 51.0,
+      "worst_week": 38.0,
       "best_week_num": 1,
-      "worst_week_num": 1,
+      "worst_week_num": 2,
       "largest_win": 11.0,
-      "largest_loss": 11.0,
-      "win_pct": 1.0,
-      "games_above_500": 1,
-      "record": "1-0",
-      "opr": 75.9,
-      "owner_success_rate": 85.0,
-      "points_left_on_table_pct": 15.0,
-      "adjusted_opr": 1.142,
-      "league_avg_opr": 66.45
+      "largest_loss": -16.0,
+      "win_pct": 0.5,
+      "games_above_500": 0,
+      "record": "1-1",
+      "opr": 55.05,
+      "owner_success_rate": 84.0,
+      "points_left_on_table_pct": 16.0,
+      "adjusted_opr": 0.891,
+      "league_avg_opr": 61.76
     },
     "ADA": {
       "abbrev": "ADA",
       "name": "ADAM",
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "ties": 0,
       "streak": {
         "type": "L",
-        "count": 1
+        "count": 2
       },
-      "lineup_actual_points": 53.0,
-      "lineup_optimal_points": 60.0,
-      "points_left_on_table": 7.0,
-      "lineup_weeks": 1,
-      "total_points_for": 53.0,
-      "total_points_against": 57.0,
-      "point_differential": -4.0,
-      "ppg": 53.0,
-      "ppg_against": 57.0,
-      "avg_margin": -4.0,
-      "avg_rank": 8.0,
-      "std_dev": 0,
+      "lineup_actual_points": 88.0,
+      "lineup_optimal_points": 124.0,
+      "points_left_on_table": 36.0,
+      "lineup_weeks": 2,
+      "total_points_for": 88.0,
+      "total_points_against": 94.0,
+      "point_differential": -6.0,
+      "ppg": 44.0,
+      "ppg_against": 47.0,
+      "avg_margin": -3.0,
+      "avg_rank": 9.5,
+      "std_dev": 12.73,
       "best_week": 53.0,
-      "worst_week": 53.0,
+      "worst_week": 35.0,
       "best_week_num": 1,
-      "worst_week_num": 1,
-      "largest_win": -4.0,
+      "worst_week_num": 2,
+      "largest_win": -2.0,
       "largest_loss": -4.0,
       "win_pct": 0.0,
-      "games_above_500": -1,
-      "record": "0-1",
-      "opr": 47.7,
-      "owner_success_rate": 88.3,
-      "points_left_on_table_pct": 11.7,
-      "adjusted_opr": 0.718,
-      "league_avg_opr": 66.45
+      "games_above_500": -2,
+      "record": "0-2",
+      "opr": 39.6,
+      "owner_success_rate": 71.0,
+      "points_left_on_table_pct": 29.0,
+      "adjusted_opr": 0.641,
+      "league_avg_opr": 61.76
     },
     "K/D": {
       "abbrev": "K/D",
       "name": "KIRK/DAVID",
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "ties": 0,
       "streak": {
         "type": "L",
-        "count": 1
+        "count": 2
       },
-      "lineup_actual_points": 46.0,
-      "lineup_optimal_points": 78.0,
-      "points_left_on_table": 32.0,
-      "lineup_weeks": 1,
-      "total_points_for": 46.0,
-      "total_points_against": 54.0,
-      "point_differential": -8.0,
-      "ppg": 46.0,
-      "ppg_against": 54.0,
-      "avg_margin": -8.0,
-      "avg_rank": 10.0,
-      "std_dev": 0,
+      "lineup_actual_points": 83.0,
+      "lineup_optimal_points": 125.0,
+      "points_left_on_table": 42.0,
+      "lineup_weeks": 2,
+      "total_points_for": 83.0,
+      "total_points_against": 116.0,
+      "point_differential": -33.0,
+      "ppg": 41.5,
+      "ppg_against": 58.0,
+      "avg_margin": -16.5,
+      "avg_rank": 9.5,
+      "std_dev": 6.36,
       "best_week": 46.0,
-      "worst_week": 46.0,
+      "worst_week": 37.0,
       "best_week_num": 1,
-      "worst_week_num": 1,
+      "worst_week_num": 2,
       "largest_win": -8.0,
-      "largest_loss": -8.0,
+      "largest_loss": -25.0,
       "win_pct": 0.0,
-      "games_above_500": -1,
-      "record": "0-1",
-      "opr": 41.4,
-      "owner_success_rate": 59.0,
-      "points_left_on_table_pct": 41.0,
-      "adjusted_opr": 0.623,
-      "league_avg_opr": 66.45
-    },
-    "G/G": {
-      "abbrev": "G/G",
-      "name": "GREG/GRIFFIN",
-      "wins": 0,
-      "losses": 1,
-      "ties": 0,
-      "streak": {
-        "type": "L",
-        "count": 1
-      },
-      "lineup_actual_points": 40.0,
-      "lineup_optimal_points": 80.0,
-      "points_left_on_table": 40.0,
-      "lineup_weeks": 1,
-      "total_points_for": 40.0,
-      "total_points_against": 51.0,
-      "point_differential": -11.0,
-      "ppg": 40.0,
-      "ppg_against": 51.0,
-      "avg_margin": -11.0,
-      "avg_rank": 11.0,
-      "std_dev": 0,
-      "best_week": 40.0,
-      "worst_week": 40.0,
-      "best_week_num": 1,
-      "worst_week_num": 1,
-      "largest_win": -11.0,
-      "largest_loss": -11.0,
-      "win_pct": 0.0,
-      "games_above_500": -1,
-      "record": "0-1",
-      "opr": 36.0,
-      "owner_success_rate": 50.0,
-      "points_left_on_table_pct": 50.0,
-      "adjusted_opr": 0.542,
-      "league_avg_opr": 66.45
+      "games_above_500": -2,
+      "record": "0-2",
+      "opr": 37.35,
+      "owner_success_rate": 66.4,
+      "points_left_on_table_pct": 33.6,
+      "adjusted_opr": 0.605,
+      "league_avg_opr": 61.76
     },
     "W/B": {
       "abbrev": "W/B",
       "name": "WES/BILL",
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "ties": 0,
       "streak": {
         "type": "L",
-        "count": 1
+        "count": 2
       },
-      "lineup_actual_points": 32.0,
-      "lineup_optimal_points": 56.0,
-      "points_left_on_table": 24.0,
-      "lineup_weeks": 1,
-      "total_points_for": 32.0,
-      "total_points_against": 70.0,
-      "point_differential": -38.0,
-      "ppg": 32.0,
-      "ppg_against": 70.0,
-      "avg_margin": -38.0,
+      "lineup_actual_points": 63.0,
+      "lineup_optimal_points": 93.0,
+      "points_left_on_table": 30.0,
+      "lineup_weeks": 2,
+      "total_points_for": 63.0,
+      "total_points_against": 109.0,
+      "point_differential": -46.0,
+      "ppg": 31.5,
+      "ppg_against": 54.5,
+      "avg_margin": -23.0,
       "avg_rank": 12.0,
-      "std_dev": 0,
+      "std_dev": 0.71,
       "best_week": 32.0,
-      "worst_week": 32.0,
+      "worst_week": 31.0,
       "best_week_num": 1,
-      "worst_week_num": 1,
-      "largest_win": -38.0,
+      "worst_week_num": 2,
+      "largest_win": -8.0,
       "largest_loss": -38.0,
       "win_pct": 0.0,
-      "games_above_500": -1,
-      "record": "0-1",
-      "opr": 28.8,
-      "owner_success_rate": 57.1,
-      "points_left_on_table_pct": 42.9,
-      "adjusted_opr": 0.433,
-      "league_avg_opr": 66.45
+      "games_above_500": -2,
+      "record": "0-2",
+      "opr": 28.35,
+      "owner_success_rate": 67.7,
+      "points_left_on_table_pct": 32.3,
+      "adjusted_opr": 0.459,
+      "league_avg_opr": 61.76
     }
   },
   "playoffs": null,
@@ -5989,7 +5685,7 @@
       "2023": 15,
       "2024": 15,
       "2025": 17,
-      "2026": 1
+      "2026": 2
     },
     "player_records": {
       "most_points": [
@@ -6074,6 +5770,17 @@
     ],
     "head_to_head": [
       {
+        "team1": "KEV",
+        "team2": "W/B",
+        "team1_wins": 6,
+        "team2_wins": 2,
+        "ties": 0,
+        "team1_pf": 378.0,
+        "team2_pf": 320.0,
+        "games": 8,
+        "leader": "KEV"
+      },
+      {
         "team1": "AND",
         "team2": "W/B",
         "team1_wins": 2,
@@ -6105,6 +5812,17 @@
         "team2_pf": 361.0,
         "games": 7,
         "leader": "STL"
+      },
+      {
+        "team1": "E/J",
+        "team2": "J/M",
+        "team1_wins": 2,
+        "team2_wins": 5,
+        "ties": 0,
+        "team1_pf": 246.0,
+        "team2_pf": 334.0,
+        "games": 7,
+        "leader": "J/M"
       },
       {
         "team1": "D/J",
@@ -6162,15 +5880,15 @@
         "leader": "KAM"
       },
       {
-        "team1": "KEV",
-        "team2": "W/B",
-        "team1_wins": 5,
-        "team2_wins": 2,
-        "ties": 0,
-        "team1_pf": 339.0,
-        "team2_pf": 289.0,
+        "team1": "D/J",
+        "team2": "KAM",
+        "team1_wins": 2,
+        "team2_wins": 4,
+        "ties": 1,
+        "team1_pf": 342.0,
+        "team2_pf": 394.0,
         "games": 7,
-        "leader": "KEV"
+        "leader": "KAM"
       },
       {
         "team1": "JOH",
@@ -6215,17 +5933,6 @@
         "team2_pf": 319.0,
         "games": 6,
         "leader": "K/D"
-      },
-      {
-        "team1": "E/J",
-        "team2": "J/M",
-        "team1_wins": 2,
-        "team2_wins": 4,
-        "ties": 0,
-        "team1_pf": 208.0,
-        "team2_pf": 280.0,
-        "games": 6,
-        "leader": "J/M"
       },
       {
         "team1": "G/G",
@@ -6316,6 +6023,17 @@
         "leader": "G/G"
       },
       {
+        "team1": "ADA",
+        "team2": "AND",
+        "team1_wins": 1,
+        "team2_wins": 5,
+        "ties": 0,
+        "team1_pf": 229.0,
+        "team2_pf": 291.0,
+        "games": 6,
+        "leader": "AND"
+      },
+      {
         "team1": "KAM",
         "team2": "STL",
         "team1_wins": 4,
@@ -6336,17 +6054,6 @@
         "team2_pf": 262.0,
         "games": 6,
         "leader": "D/J"
-      },
-      {
-        "team1": "D/J",
-        "team2": "KAM",
-        "team1_wins": 1,
-        "team2_wins": 4,
-        "ties": 1,
-        "team1_pf": 268.0,
-        "team2_pf": 337.0,
-        "games": 6,
-        "leader": "KAM"
       },
       {
         "team1": "G/G",
@@ -6391,6 +6098,17 @@
         "team2_pf": 385.0,
         "games": 6,
         "leader": "K/D"
+      },
+      {
+        "team1": "JOH",
+        "team2": "STL",
+        "team1_wins": 2,
+        "team2_wins": 4,
+        "ties": 0,
+        "team1_pf": 217.0,
+        "team2_pf": 305.0,
+        "games": 6,
+        "leader": "STL"
       },
       {
         "team1": "K/D",
@@ -6492,17 +6210,6 @@
         "leader": "JOH"
       },
       {
-        "team1": "ADA",
-        "team2": "AND",
-        "team1_wins": 1,
-        "team2_wins": 4,
-        "ties": 0,
-        "team1_pf": 194.0,
-        "team2_pf": 254.0,
-        "games": 5,
-        "leader": "AND"
-      },
-      {
         "team1": "E/J",
         "team2": "KEV",
         "team1_wins": 3,
@@ -6534,6 +6241,17 @@
         "team2_pf": 248.0,
         "games": 5,
         "leader": "JOH"
+      },
+      {
+        "team1": "G/G",
+        "team2": "K/D",
+        "team1_wins": 2,
+        "team2_wins": 3,
+        "ties": 0,
+        "team1_pf": 223.0,
+        "team2_pf": 231.0,
+        "games": 5,
+        "leader": "K/D"
       },
       {
         "team1": "AND",
@@ -6668,17 +6386,6 @@
         "leader": "KAM"
       },
       {
-        "team1": "JOH",
-        "team2": "STL",
-        "team1_wins": 1,
-        "team2_wins": 4,
-        "ties": 0,
-        "team1_pf": 166.0,
-        "team2_pf": 259.0,
-        "games": 5,
-        "leader": "STL"
-      },
-      {
         "team1": "D/J",
         "team2": "G/G",
         "team1_wins": 2,
@@ -6754,17 +6461,6 @@
         "team2_pf": 203.0,
         "games": 4,
         "leader": "KEV"
-      },
-      {
-        "team1": "G/G",
-        "team2": "K/D",
-        "team1_wins": 1,
-        "team2_wins": 3,
-        "ties": 0,
-        "team1_pf": 161.0,
-        "team2_pf": 194.0,
-        "games": 4,
-        "leader": "K/D"
       },
       {
         "team1": "AND",
@@ -7700,12 +7396,12 @@
       "LA": {
         "opponent": "NYG",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "NYG": {
         "opponent": "LA",
         "is_home": false,
-        "final": false
+        "final": true
       }
     },
     "3": {
