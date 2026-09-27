@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T17:18:19.768351Z",
+  "updated_at": "2026-09-27T20:11:42.874190Z",
   "season": 2026,
   "current_week": 3,
   "regular_season_weeks": 15,
@@ -7472,12 +7472,12 @@
       "DET": {
         "opponent": "NYJ",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "NYJ": {
         "opponent": "DET",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "IND": {
         "opponent": "HOU",
@@ -7492,32 +7492,32 @@
       "JAX": {
         "opponent": "NE",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "NE": {
         "opponent": "JAX",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "MIA": {
         "opponent": "KC",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "KC": {
         "opponent": "MIA",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "NYG": {
         "opponent": "TEN",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "TEN": {
         "opponent": "NYG",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "PIT": {
         "opponent": "CIN",
