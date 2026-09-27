@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T20:11:42.874190Z",
+  "updated_at": "2026-09-27T23:02:35.764532Z",
   "season": 2026,
   "current_week": 3,
   "regular_season_weeks": 15,
@@ -7452,22 +7452,22 @@
       "BUF": {
         "opponent": "LAC",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "LAC": {
         "opponent": "BUF",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "CLE": {
         "opponent": "CAR",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "CAR": {
         "opponent": "CLE",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "DET": {
         "opponent": "NYJ",
@@ -7482,12 +7482,12 @@
       "IND": {
         "opponent": "HOU",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "HOU": {
         "opponent": "IND",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "JAX": {
         "opponent": "NE",
@@ -7522,22 +7522,22 @@
       "PIT": {
         "opponent": "CIN",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "CIN": {
         "opponent": "PIT",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "WAS": {
         "opponent": "SEA",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "SEA": {
         "opponent": "WAS",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "SF": {
         "opponent": "ARI",
