@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T23:02:35.764532Z",
+  "updated_at": "2026-09-28T01:02:51.171622Z",
   "season": 2026,
   "current_week": 3,
   "regular_season_weeks": 15,
@@ -7542,42 +7542,42 @@
       "SF": {
         "opponent": "ARI",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "ARI": {
         "opponent": "SF",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "TB": {
         "opponent": "MIN",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "MIN": {
         "opponent": "TB",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "DAL": {
         "opponent": "BAL",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "BAL": {
         "opponent": "DAL",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "NO": {
         "opponent": "LV",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "LV": {
         "opponent": "NO",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "DEN": {
         "opponent": "LA",
