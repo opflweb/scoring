@@ -48,6 +48,8 @@ def score_matchups(args):
             print('=' * 60)
             for position in ['QB', 'RB', 'WR', 'TE', 'K', 'DF', 'HC']:
                 for ps in scores.get(position, []):
+                    if getattr(args, 'starters_only', False) and not ps.is_starter:
+                        continue
                     status = '✓' if ps.found_in_stats else '✗'
                     bench = '' if ps.is_starter else ' [BENCH]'
                     matched = (
@@ -173,6 +175,11 @@ def main():
         '-q',
         action='store_true',
         help='Suppress per-player output',
+    )
+    parser.add_argument(
+        '--starters-only',
+        action='store_true',
+        help='Exclude bench players from the per-player breakdown output',
     )
 
     args = parser.parse_args()

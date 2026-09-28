@@ -116,11 +116,21 @@ jobs:
             bash scripts/git_push_with_retry.sh origin main 5
           fi
 
-      - name: Email score breakdown
+      - name: Run autoscorer (starters only, for email)
         # Only the three runs timed for right after Thursday, Sunday, and
         # Monday night games finish (see the cron comments above) - not the
         # daily catch-all or the mid-Sunday windows, so this doesn't spam an
         # email every time the workflow ticks.
+        if: >-
+          steps.check_window.outputs.in_window == 'true' &&
+          (github.event.schedule == '0 6 * 1,2,9-12 5' ||
+           github.event.schedule == '0 6 * 1,2,9-12 1' ||
+           github.event.schedule == '0 6 * 1,2,9-12 2')
+        run: |
+          WEEK=${{ steps.week.outputs.week }}
+          uv run --frozen python autoscorer.py --excel "${{ env.WORKBOOK }}" --week $WEEK --season ${{ env.SEASON }} --starters-only | tee starters_output.txt
+
+      - name: Email score breakdown
         if: >-
           steps.check_window.outputs.in_window == 'true' &&
           (github.event.schedule == '0 6 * 1,2,9-12 5' ||
@@ -136,7 +146,7 @@ jobs:
           subject: "OPFL Week ${{ steps.week.outputs.week }} Score Breakdown"
           to: griffin.ansel@gmail.com
           from: OPFL Autoscorer <${{ secrets.GMAIL_USERNAME }}>
-          body: file://scoring_output.txt
+          body: file://starters_output.txt
 
       - name: Setup Pages
         if: steps.check_window.outputs.in_window == 'true'
