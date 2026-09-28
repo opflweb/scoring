@@ -70,6 +70,20 @@ week's matchups as read from the workbook, standings, taxi squads, and draft pic
 > starred players from `Rosters`. openpyxl cannot evaluate formulas, so saving the
 > file would strip every cached value. Scores are published to `web/data.json` only.
 
+### Score breakdown emails
+
+`.github/workflows/score.yml` emails `autoscorer.py`'s full per-player breakdown
+right after each night's games wrap up - the runs timed for after TNF, SNF, and
+MNF (not the daily catch-all or the mid-Sunday windows). Sending uses Gmail SMTP
+via [`dawidd6/action-send-mail`](https://github.com/dawidd6/action-send-mail) and
+needs two repo secrets:
+
+- `GMAIL_USERNAME` - the sending Gmail address
+- `GMAIL_APP_PASSWORD` - an [app password](https://myaccount.google.com/apppasswords)
+  for that account (requires 2-Step Verification to be enabled)
+
+Add them under Settings → Secrets and variables → Actions.
+
 ### Validating Scores
 
 Compare calculated scores against manually entered scores:
