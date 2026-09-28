@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-28T14:55:56.537811Z",
+  "updated_at": "2026-09-28T15:10:43.489707Z",
   "season": 2026,
   "current_week": 3,
   "regular_season_weeks": 15,
@@ -4721,7 +4721,7 @@
               "position": "RB",
               "score": 0.0,
               "starter": false,
-              "found": false,
+              "found": true,
               "breakdown": {},
               "projected_points": 6.0
             },
@@ -4741,7 +4741,7 @@
               "position": "RB",
               "score": 0.0,
               "starter": false,
-              "found": false,
+              "found": true,
               "breakdown": {},
               "projected_points": 5.2
             },
@@ -7326,7 +7326,7 @@
               "position": "RB",
               "score": 0.0,
               "starter": false,
-              "found": false,
+              "found": true,
               "breakdown": {},
               "projected_points": 3.8
             },
@@ -7634,7 +7634,7 @@
               "position": "WR",
               "score": 0.0,
               "starter": false,
-              "found": false,
+              "found": true,
               "breakdown": {},
               "projected_points": 3.9
             },

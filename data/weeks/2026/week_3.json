@@ -2,7 +2,7 @@
   "season": 2026,
   "week": 3,
   "final": false,
-  "scored_at": "2026-09-28T14:55:56.519270Z",
+  "scored_at": "2026-09-28T15:10:43.465795Z",
   "has_scores": true,
   "pairings": [
     [
@@ -76,7 +76,7 @@
           "position": "RB",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -94,7 +94,7 @@
           "position": "RB",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2469,7 +2469,7 @@
           "position": "RB",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2751,7 +2751,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
