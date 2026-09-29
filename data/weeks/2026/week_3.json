@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "week": 3,
-  "final": false,
-  "scored_at": "2026-09-28T17:47:12.516551Z",
+  "final": true,
+  "scored_at": "2026-09-29T06:54:15.645426Z",
   "has_scores": true,
   "pairings": [
     [
@@ -199,10 +199,12 @@
           "name": "Jake Elliott",
           "nfl_team": "PHI",
           "position": "K",
-          "score": 0.0,
+          "score": 1.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 1
+          }
         },
         {
           "name": "Denver",
@@ -247,15 +249,15 @@
           "name": "Ben Johnson",
           "nfl_team": "CHI",
           "position": "HC",
-          "score": 0.0,
+          "score": 6,
           "starter": false,
           "found": true,
           "breakdown": {
-            "loss": 0
+            "home_underdog_win": 6
           }
         }
       ],
-      "total_score": 34.0,
+      "total_score": 35.0,
       "score_rank": 10
     },
     {
@@ -547,10 +549,12 @@
           "name": "D'Andre Swift",
           "nfl_team": "CHI",
           "position": "RB",
-          "score": 0.0,
+          "score": 2.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "rushing_yards": 2
+          }
         },
         {
           "name": "Blake Corum",
@@ -694,10 +698,15 @@
           "name": "Chicago",
           "nfl_team": "CHI",
           "position": "DF",
-          "score": 0.0,
+          "score": 14.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": 6,
+            "interceptions": 4,
+            "fumble_recoveries": 2,
+            "sacks": 2
+          }
         },
         {
           "name": "John Harbaugh",
@@ -722,8 +731,8 @@
           }
         }
       ],
-      "total_score": 43.0,
-      "score_rank": 8
+      "total_score": 45.0,
+      "score_rank": 7
     },
     {
       "name": "KEVIN",
@@ -734,10 +743,13 @@
           "name": "Jalen Hurts",
           "nfl_team": "PHI",
           "position": "QB",
-          "score": 0.0,
+          "score": 5.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6,
+            "interceptions": -1
+          }
         },
         {
           "name": "Matthew Stafford",
@@ -966,7 +978,7 @@
         }
       ],
       "total_score": 44.0,
-      "score_rank": 7
+      "score_rank": 8
     },
     {
       "name": "DANNY/JOEY",
@@ -1079,10 +1091,12 @@
           "name": "Luther Burden",
           "nfl_team": "CHI",
           "position": "WR",
-          "score": 0.0,
+          "score": 6.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "Quentin Johnston",
@@ -1393,10 +1407,14 @@
           "name": "Cairo Santos",
           "nfl_team": "CHI",
           "position": "K",
-          "score": 0.0,
+          "score": 7.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 3,
+            "fg_1_29": 1,
+            "fg_40_49": 3
+          }
         },
         {
           "name": "Seattle",
@@ -1583,7 +1601,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -1601,7 +1619,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -1792,7 +1810,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2119,8 +2137,10 @@
           "position": "DF",
           "score": 0.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": 0
+          }
         },
         {
           "name": "Indianapolis",
@@ -2259,7 +2279,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2510,7 +2530,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2681,10 +2701,12 @@
           "name": "Saquon Barkley",
           "nfl_team": "PHI",
           "position": "RB",
-          "score": 0.0,
+          "score": 2.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "rushing_yards": 2
+          }
         },
         {
           "name": "Ashton Jeanty",
@@ -2710,7 +2732,7 @@
           "position": "RB",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
