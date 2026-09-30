@@ -29,7 +29,7 @@ from opfl.constants import (
 )
 from opfl.projections import calculate_week_projections
 from opfl.week_archive import load_all_weeks, load_week, save_week
-from opfl.week_status import week_games_are_final
+from opfl.week_status import teams_missing_stats, week_games_are_final
 
 # Single source of truth for these is data/league_config.json - a season
 # rollover or roster-shape change only needs to touch that file.
@@ -200,10 +200,17 @@ def export_matchup_week(excel_path, week_num, season=SEASON):
 
     print(f'  Week {week_num}: scored {len(teams_data)} teams across {len(pairings)} matchups')
 
+    # NFL teams present in both stats feeds - export_season uses this to hold
+    # off on archiving the week as final until every game's stats are in.
+    stat_teams = set(scorer.data.player_stats['team'].to_list()) & set(
+        scorer.data.team_stats['team'].to_list()
+    )
+
     return {
         'week': week_num,
         'teams': teams_data,
         'has_scores': any(t['total_score'] > 0 for t in teams_data),
+        'stat_teams': stat_teams,
     }, pairings
 
 
@@ -379,14 +386,16 @@ def resolve_matchups_week(excel_path, requested_week, season, data_dir=None):
     lineups would silently score every player under the wrong week's NFL
     stats.
 
-    Compares the tab's current starters against the previously archived
-    week; if they're identical, the workbook hasn't been rolled over and this
-    is still that prior week.
+    Compares the tab's current starters and pairings against the previously
+    archived week; if either is identical, the workbook hasn't been rolled over
+    and this is still that prior week. Pairings matter on their own because an
+    archived week's lineup can be corrected after the fact (see
+    rescore_archived_week.py), which breaks the starters comparison alone.
     """
     if requested_week <= 1:
         return requested_week
 
-    teams_by_code, _ = build_matchup_week(
+    teams_by_code, matchups = build_matchup_week(
         excel_path, rosters_sheet=ROSTERS_SHEET, matchups_sheet=MATCHUPS_SHEET
     )
     current_starters = {
@@ -409,7 +418,10 @@ def resolve_matchups_week(excel_path, requested_week, season, data_dir=None):
         for t in previous['teams']
     }
 
-    if current_starters == previous_starters:
+    current_pairings = {frozenset(side['code'] for side in m['teams']) for m in matchups}
+    previous_pairings = {frozenset(pair) for pair in previous.get('pairings') or []}
+
+    if current_starters == previous_starters or current_pairings == previous_pairings:
         print(
             f"  Matchups tab still shows week {requested_week - 1}'s lineups "
             f'(nflreadpy says week {requested_week}) - scoring week {requested_week - 1} again'
@@ -437,8 +449,19 @@ def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False)
 
     # A week only counts once every NFL game in it has a final result. Mid-week,
     # a matchup where one manager's Thursday starter has played and the other's
-    # have not is an unfinished game, not a result.
+    # have not is an unfinished game, not a result. A final score is not
+    # enough on its own: nflverse posts stats a couple of hours after the
+    # schedule shows the result, and a week archived as final is never
+    # rescored, so it also has to wait for every team's stats.
+    stat_teams = week_data.pop('stat_teams', set())
     is_final = week_games_are_final(schedule_rows, week_num, season)
+    if is_final:
+        missing = teams_missing_stats(schedule_rows, week_num, season, stat_teams)
+        if missing:
+            print(
+                f'  Games are final but stats not yet published for: {", ".join(sorted(missing))}'
+            )
+            is_final = False
     week_data['final'] = is_final
 
     # Archive eagerly: the Matchups tab is overwritten each week, so a week not
@@ -459,11 +482,14 @@ def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False)
             print(f'  Could not build week projections: {e}')
 
     # The archive is the season; the live week we just scored overrides its own
-    # entry so an in-progress week still shows current scores.
+    # entry so an in-progress week still shows current scores. A week already
+    # archived as final (not rewritten above) keeps its archived result - the
+    # tab may disagree with it after a lineup correction.
     weeks, schedule = load_all_weeks(season)
-    weeks = [w for w in weeks if w['week'] != week_num] + [week_data]
+    if written:
+        weeks = [w for w in weeks if w['week'] != week_num] + [week_data]
+        schedule[str(week_num)] = pairings
     weeks.sort(key=lambda w: w['week'])
-    schedule[str(week_num)] = pairings
 
     # Weeks that haven't been played yet have no archived or live pairings -
     # show the printed schedule for those so the site doesn't say "not set".
@@ -531,7 +557,9 @@ def build_previous_seasons(current_season):
         if not completed:
             continue
 
-        standings = build_standings(completed, schedule)
+        # Finished seasons keep the points-only tiebreak they were published
+        # with, rather than reshuffling history (2024's K/A/M and W/B tie).
+        standings = build_standings(completed, schedule, wins_tiebreak=False)
         previous[str(season)] = {
             'season': season,
             'weeks': completed,
@@ -542,7 +570,7 @@ def build_previous_seasons(current_season):
     return previous
 
 
-def build_standings(weeks, schedule):
+def build_standings(weeks, schedule, wins_tiebreak=True):
     """
     Build standings from scored weeks using the pairings read from the workbook.
 
@@ -627,7 +655,8 @@ def build_standings(weeks, schedule):
 
     return sorted(
         standings.values(),
-        key=lambda x: (x['rank_points'], x['points_for']),
+        # Same tiebreak the commissioner's newsletter uses: wins before points.
+        key=lambda x: (x['rank_points'], x['wins'] if wins_tiebreak else 0, x['points_for']),
         reverse=True,
     )
 

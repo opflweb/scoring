@@ -30,6 +30,33 @@ def week_games_are_final(
     return bool(games) and all(game.get('result') not in (None, '') for game in games)
 
 
+def teams_missing_stats(
+    schedule_rows: Iterable[Mapping[str, Any]],
+    week: int,
+    season: int | None,
+    stat_teams: Iterable[str],
+) -> set[str]:
+    """NFL teams that played in `week` but have no rows in the stats feed yet.
+
+    The schedule's final score lands well before nflverse publishes that
+    game's player and team stats - Week 2 of 2026 was archived as final at
+    03:33 UTC, two hours before the NYG@LA Monday night stats existed, so
+    every Rams player was frozen at 0 and never rescored. A week is only
+    safe to archive as final once this is empty.
+    """
+    published = set(stat_teams)
+    playing = {
+        team
+        for row in schedule_rows
+        if row.get('game_type') == 'REG'
+        and row.get('week') == week
+        and (season is None or row.get('season') == season)
+        for team in (row.get('home_team'), row.get('away_team'))
+        if team
+    }
+    return playing - published
+
+
 def latest_completed_week(schedule_rows: Iterable[Mapping[str, Any]], max_week: int = 17) -> int:
     """Return the latest fantasy week whose NFL games all have final results."""
     games_by_week: dict[int, list[Mapping[str, Any]]] = {}

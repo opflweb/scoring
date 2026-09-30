@@ -2,7 +2,7 @@
   "season": 2026,
   "week": 3,
   "final": true,
-  "scored_at": "2026-09-29T06:54:15.645426Z",
+  "scored_at": "2026-09-30T21:10:47.301836Z",
   "has_scores": true,
   "pairings": [
     [
@@ -489,7 +489,7 @@
         }
       ],
       "total_score": 46.0,
-      "score_rank": 6
+      "score_rank": 7
     },
     {
       "name": "JOHN",
@@ -732,7 +732,7 @@
         }
       ],
       "total_score": 45.0,
-      "score_rank": 7
+      "score_rank": 8
     },
     {
       "name": "KEVIN",
@@ -821,7 +821,7 @@
           "nfl_team": "BAL",
           "position": "WR",
           "score": 2.0,
-          "starter": true,
+          "starter": false,
           "found": true,
           "breakdown": {
             "receiving_yards": 2
@@ -853,7 +853,7 @@
           "nfl_team": "SF",
           "position": "WR",
           "score": 8.0,
-          "starter": false,
+          "starter": true,
           "found": true,
           "breakdown": {
             "receiving_yards": 2,
@@ -977,8 +977,8 @@
           }
         }
       ],
-      "total_score": 44.0,
-      "score_rank": 8
+      "total_score": 50.0,
+      "score_rank": 6
     },
     {
       "name": "DANNY/JOEY",

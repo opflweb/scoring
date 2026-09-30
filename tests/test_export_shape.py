@@ -151,6 +151,13 @@ def test_standings_cover_every_team_with_the_expected_fields(data):
         assert not missing, f'{standing.get("abbrev")} missing {missing}'
 
 
+def test_standings_tiebreak_is_wins_then_points(data):
+    """Matches the commissioner's newsletter: tied rank points go to the team
+    with more wins, then more points for - playoff seeding reads this order."""
+    order = [(s['rank_points'], s['wins'], s['points_for']) for s in data['standings']]
+    assert order == sorted(order, reverse=True)
+
+
 def test_standings_only_count_completed_weeks(data):
     """The week-1-scored-before-Monday-night bug: an unfinished week must not
     post W/L records."""

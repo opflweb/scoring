@@ -69,6 +69,27 @@ def test_a_stale_tab_falls_back_to_the_prior_week(tmp_path):
     assert resolved == 1
 
 
+def test_a_stale_tab_is_caught_by_pairings_after_a_lineup_correction(tmp_path):
+    """Week 3 of 2026: Kevin's archived lineup was corrected to match the
+    commissioner, so its starters no longer equal the (stale) tab's. The
+    pairings still do, and must hold the tab to the prior week."""
+    from opfl import build_matchup_week
+
+    _, matchups = build_matchup_week(str(WORKBOOK), rosters_sheet=ROSTERS_SHEET)
+    pairings = [[side['code'] for side in m['teams']] for m in matchups]
+    archived_week = {
+        'week': 1,
+        'teams': [{'abbrev': 'K/D', 'roster': [{'name': 'Nobody Real', 'starter': True}]}],
+    }
+    save_week(2026, 1, archived_week, pairings, final=True, data_dir=tmp_path)
+
+    resolved = resolve_matchups_week(
+        str(WORKBOOK), requested_week=2, season=2026, data_dir=tmp_path
+    )
+
+    assert resolved == 1
+
+
 def test_a_genuinely_different_lineup_is_accepted_as_the_new_week(tmp_path):
     """If the archived 'previous week' has different starters than the tab
     shows now, the tab really has moved on - trust the requested week."""
@@ -132,3 +153,61 @@ def test_export_season_checks_the_tab_even_with_an_explicit_week(monkeypatch):
     export_for_web.export_season('irrelevant.xlsx', week_num=2, season=2026)
 
     assert calls == [2]
+
+
+def test_export_season_waits_for_stats_before_archiving_final(monkeypatch):
+    """A final schedule result is not enough - the week must stay open until
+    nflverse has stats for every team that played."""
+    saved = []
+
+    monkeypatch.setattr(
+        export_for_web, 'resolve_matchups_week', lambda excel_path, week, season: week
+    )
+    monkeypatch.setattr(
+        export_for_web,
+        'load_schedule_rows',
+        lambda season: [
+            {
+                'week': 2,
+                'season': 2026,
+                'game_type': 'REG',
+                'home_team': 'LA',
+                'away_team': 'NYG',
+                'result': 22,
+            }
+        ],
+    )
+    monkeypatch.setattr(export_for_web, 'get_current_nfl_week', lambda: 2)
+    monkeypatch.setattr(
+        export_for_web,
+        'export_matchup_week',
+        lambda excel_path, week_num, season: (
+            {'week': week_num, 'teams': [], 'stat_teams': {'NYG'}},
+            [],
+        ),
+    )
+    monkeypatch.setattr(
+        export_for_web,
+        'save_week',
+        lambda season, week, week_data, pairings, final, force=False: (
+            saved.append((final, dict(week_data))) or True
+        ),
+    )
+    monkeypatch.setattr(export_for_web, 'calculate_week_projections', lambda *a, **k: {})
+    monkeypatch.setattr(export_for_web, 'load_all_weeks', lambda season: ([], {}))
+    monkeypatch.setattr(export_for_web, 'load_season_schedule', lambda season: {})
+    monkeypatch.setattr(export_for_web, 'build_standings', lambda weeks, schedule: [])
+    monkeypatch.setattr(
+        export_for_web, 'calculate_team_stats', lambda weeks, schedule, standings: {}
+    )
+    monkeypatch.setattr(export_for_web, 'generate_hall_of_fame', lambda: {})
+    monkeypatch.setattr(export_for_web, 'build_game_times', lambda schedule_rows: {})
+    monkeypatch.setattr(export_for_web, 'parse_taxi_squads', lambda *a, **k: {})
+    monkeypatch.setattr(export_for_web, 'build_previous_seasons', lambda season: {})
+
+    export_for_web.export_season('irrelevant.xlsx', week_num=2, season=2026)
+
+    final, week_data = saved[0]
+    assert final is False
+    assert week_data['final'] is False
+    assert 'stat_teams' not in week_data

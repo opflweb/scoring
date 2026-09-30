@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30T19:38:43.851671Z",
+  "updated_at": "2026-09-30T21:14:55.710205Z",
   "season": 2026,
   "current_week": 4,
   "regular_season_weeks": 15,
@@ -1986,10 +1986,13 @@
               "name": "Davante Adams",
               "nfl_team": "LA",
               "position": "WR",
-              "score": 0.0,
+              "score": 18.0,
               "starter": false,
-              "found": false,
-              "breakdown": {}
+              "found": true,
+              "breakdown": {
+                "receiving_yards": 6,
+                "touchdowns": 12
+              }
             },
             {
               "name": "Mike Evans",
@@ -2026,7 +2029,7 @@
               "position": "TE",
               "score": 0.0,
               "starter": false,
-              "found": false,
+              "found": true,
               "breakdown": {}
             },
             {
@@ -2345,7 +2348,7 @@
             }
           ],
           "total_score": 46.0,
-          "score_rank": 6
+          "score_rank": 7
         },
         {
           "name": "JOHN",
@@ -2390,10 +2393,14 @@
               "name": "Kyren Williams",
               "nfl_team": "LA",
               "position": "RB",
-              "score": 0.0,
+              "score": 7.0,
               "starter": true,
-              "found": false,
-              "breakdown": {}
+              "found": true,
+              "breakdown": {
+                "rushing_yards": 2,
+                "touchdowns": 6,
+                "fumbles_lost": -1
+              }
             },
             {
               "name": "D'Andre Swift",
@@ -2411,10 +2418,12 @@
               "name": "Blake Corum",
               "nfl_team": "LA",
               "position": "RB",
-              "score": 0.0,
+              "score": 2.0,
               "starter": false,
-              "found": false,
-              "breakdown": {}
+              "found": true,
+              "breakdown": {
+                "rushing_yards": 2
+              }
             },
             {
               "name": "Kaelon Black",
@@ -2576,8 +2585,8 @@
               }
             }
           ],
-          "total_score": 51.0,
-          "score_rank": 5
+          "total_score": 58.0,
+          "score_rank": 3
         },
         {
           "name": "KEVIN",
@@ -2601,10 +2610,14 @@
               "name": "Matthew Stafford",
               "nfl_team": "LA",
               "position": "QB",
-              "score": 0.0,
+              "score": 27.0,
               "starter": false,
-              "found": false,
-              "breakdown": {}
+              "found": true,
+              "breakdown": {
+                "passing_yards": 4,
+                "touchdowns": 24,
+                "interceptions": -1
+              }
             },
             {
               "name": "Drew Allar",
@@ -2725,7 +2738,7 @@
               "position": "TE",
               "score": 0.0,
               "starter": false,
-              "found": false,
+              "found": true,
               "breakdown": {}
             },
             {
@@ -2757,10 +2770,14 @@
               "name": "LA Rams",
               "nfl_team": "LA",
               "position": "DF",
-              "score": 0.0,
+              "score": 10.0,
               "starter": true,
-              "found": false,
-              "breakdown": {}
+              "found": true,
+              "breakdown": {
+                "points_allowed": 6,
+                "interceptions": 2,
+                "sacks": 2
+              }
             },
             {
               "name": "Jacksonville",
@@ -2797,8 +2814,8 @@
               }
             }
           ],
-          "total_score": 39.0,
-          "score_rank": 7
+          "total_score": 49.0,
+          "score_rank": 6
         },
         {
           "name": "DANNY/JOEY",
@@ -3306,10 +3323,13 @@
               "name": "Jameis Winston",
               "nfl_team": "NYG",
               "position": "QB",
-              "score": 0.0,
+              "score": 0,
               "starter": false,
               "found": true,
-              "breakdown": {}
+              "breakdown": {
+                "interceptions": -1,
+                "floor_applied": true
+              }
             },
             {
               "name": "TreVeyon Henderson",
@@ -3443,19 +3463,27 @@
               "name": "Dominic Zvada",
               "nfl_team": "NYG",
               "position": "K",
-              "score": 0.0,
+              "score": 5.0,
               "starter": false,
-              "found": false,
-              "breakdown": {}
+              "found": true,
+              "breakdown": {
+                "fg_1_29": 1,
+                "fg_50+": 4
+              }
             },
             {
               "name": "NY Giants",
               "nfl_team": "NYG",
               "position": "DF",
-              "score": 0.0,
+              "score": 3.0,
               "starter": false,
-              "found": false,
-              "breakdown": {}
+              "found": true,
+              "breakdown": {
+                "points_allowed": -2,
+                "interceptions": 2,
+                "fumble_recoveries": 2,
+                "sacks": 1
+              }
             },
             {
               "name": "Tennessee",
@@ -3754,7 +3782,7 @@
               "position": "QB",
               "score": 0.0,
               "starter": false,
-              "found": false,
+              "found": true,
               "breakdown": {}
             },
             {
@@ -4199,7 +4227,7 @@
             }
           ],
           "total_score": 57.0,
-          "score_rank": 3
+          "score_rank": 4
         },
         {
           "name": "JARRETT/MATT",
@@ -4277,7 +4305,7 @@
               "position": "RB",
               "score": 0.0,
               "starter": true,
-              "found": false,
+              "found": true,
               "breakdown": {}
             },
             {
@@ -4298,7 +4326,7 @@
               "position": "WR",
               "score": 0.0,
               "starter": true,
-              "found": false,
+              "found": true,
               "breakdown": {}
             },
             {
@@ -4343,7 +4371,7 @@
               "position": "TE",
               "score": 0.0,
               "starter": true,
-              "found": false,
+              "found": true,
               "breakdown": {}
             },
             {
@@ -4372,10 +4400,13 @@
               "name": "Harrison Mevis",
               "nfl_team": "LA",
               "position": "K",
-              "score": 0.0,
+              "score": 2.0,
               "starter": false,
               "found": true,
-              "breakdown": {}
+              "breakdown": {
+                "pat_made": 4,
+                "fg_missed": -2
+              }
             },
             {
               "name": "Buffalo",
@@ -4426,7 +4457,7 @@
             }
           ],
           "total_score": 54.0,
-          "score_rank": 4
+          "score_rank": 5
         },
         {
           "name": "ADAM",
@@ -4570,10 +4601,13 @@
               "name": "Terrance Ferguson",
               "nfl_team": "LA",
               "position": "TE",
-              "score": 0.0,
+              "score": 8.0,
               "starter": false,
-              "found": false,
-              "breakdown": {}
+              "found": true,
+              "breakdown": {
+                "receiving_yards": 2,
+                "touchdowns": 6
+              }
             },
             {
               "name": "AJ Barner",
@@ -5131,7 +5165,7 @@
             }
           ],
           "total_score": 46.0,
-          "score_rank": 6
+          "score_rank": 7
         },
         {
           "name": "JOHN",
@@ -5374,7 +5408,7 @@
             }
           ],
           "total_score": 45.0,
-          "score_rank": 7
+          "score_rank": 8
         },
         {
           "name": "KEVIN",
@@ -5463,7 +5497,7 @@
               "nfl_team": "BAL",
               "position": "WR",
               "score": 2.0,
-              "starter": true,
+              "starter": false,
               "found": true,
               "breakdown": {
                 "receiving_yards": 2
@@ -5495,7 +5529,7 @@
               "nfl_team": "SF",
               "position": "WR",
               "score": 8.0,
-              "starter": false,
+              "starter": true,
               "found": true,
               "breakdown": {
                 "receiving_yards": 2,
@@ -5619,8 +5653,8 @@
               }
             }
           ],
-          "total_score": 44.0,
-          "score_rank": 8
+          "total_score": 50.0,
+          "score_rank": 6
         },
         {
           "name": "DANNY/JOEY",
@@ -7967,19 +8001,19 @@
       "ties": 0,
       "top_half": 2,
       "points_for": 170.0,
-      "points_against": 111.0
+      "points_against": 117.0
     },
     {
-      "name": "KEMP/A/M",
-      "owner": "KEMP/A/M",
-      "abbrev": "KAM",
-      "rank_points": 4.0,
-      "wins": 1,
-      "losses": 2,
+      "name": "KEVIN",
+      "owner": "KEVIN",
+      "abbrev": "KEV",
+      "rank_points": 5.0,
+      "wins": 2,
+      "losses": 1,
       "ties": 0,
       "top_half": 3,
-      "points_for": 192.0,
-      "points_against": 206.0
+      "points_for": 156.0,
+      "points_against": 147.0
     },
     {
       "name": "JOHN",
@@ -7990,7 +8024,7 @@
       "losses": 1,
       "ties": 0,
       "top_half": 2,
-      "points_for": 166.0,
+      "points_for": 173.0,
       "points_against": 160.0
     },
     {
@@ -8006,16 +8040,16 @@
       "points_against": 143.0
     },
     {
-      "name": "STEVE L.",
-      "owner": "STEVE L.",
-      "abbrev": "STL",
-      "rank_points": 3.0,
-      "wins": 0,
-      "losses": 3,
+      "name": "KEMP/A/M",
+      "owner": "KEMP/A/M",
+      "abbrev": "KAM",
+      "rank_points": 4.0,
+      "wins": 1,
+      "losses": 2,
       "ties": 0,
       "top_half": 3,
-      "points_for": 148.0,
-      "points_against": 194.0
+      "points_for": 192.0,
+      "points_against": 206.0
     },
     {
       "name": "JARRETT/MATT",
@@ -8030,18 +8064,6 @@
       "points_against": 129.0
     },
     {
-      "name": "KEVIN",
-      "owner": "KEVIN",
-      "abbrev": "KEV",
-      "rank_points": 3.0,
-      "wins": 2,
-      "losses": 1,
-      "ties": 0,
-      "top_half": 1,
-      "points_for": 140.0,
-      "points_against": 147.0
-    },
-    {
       "name": "WES/BILL",
       "owner": "WES/BILL",
       "abbrev": "W/B",
@@ -8051,7 +8073,7 @@
       "ties": 0,
       "top_half": 1,
       "points_for": 129.0,
-      "points_against": 155.0
+      "points_against": 165.0
     },
     {
       "name": "KIRK/DAVID",
@@ -8076,6 +8098,18 @@
       "top_half": 0,
       "points_for": 108.0,
       "points_against": 129.0
+    },
+    {
+      "name": "STEVE L.",
+      "owner": "STEVE L.",
+      "abbrev": "STL",
+      "rank_points": 1.0,
+      "wins": 0,
+      "losses": 3,
+      "ties": 0,
+      "top_half": 1,
+      "points_for": 148.0,
+      "points_against": 201.0
     },
     {
       "name": "ADAM",
@@ -8127,8 +8161,8 @@
       "opr": 94.77,
       "owner_success_rate": 85.8,
       "points_left_on_table_pct": 14.2,
-      "adjusted_opr": 1.562,
-      "league_avg_opr": 60.69
+      "adjusted_opr": 1.549,
+      "league_avg_opr": 61.18
     },
     "AND": {
       "abbrev": "AND",
@@ -8145,11 +8179,11 @@
       "points_left_on_table": 83.0,
       "lineup_weeks": 3,
       "total_points_for": 170.0,
-      "total_points_against": 111.0,
-      "point_differential": 59.0,
+      "total_points_against": 117.0,
+      "point_differential": 53.0,
       "ppg": 56.67,
-      "ppg_against": 37.0,
-      "avg_margin": 19.67,
+      "ppg_against": 39.0,
+      "avg_margin": 17.67,
       "avg_rank": 5.67,
       "std_dev": 17.39,
       "best_week": 70.0,
@@ -8164,45 +8198,45 @@
       "opr": 79.73,
       "owner_success_rate": 67.2,
       "points_left_on_table_pct": 32.8,
-      "adjusted_opr": 1.314,
-      "league_avg_opr": 60.69
+      "adjusted_opr": 1.303,
+      "league_avg_opr": 61.18
     },
-    "KAM": {
-      "abbrev": "KAM",
-      "name": "KEMP/A/M",
-      "wins": 1,
-      "losses": 2,
+    "KEV": {
+      "abbrev": "KEV",
+      "name": "KEVIN",
+      "wins": 2,
+      "losses": 1,
       "ties": 0,
       "streak": {
         "type": "L",
-        "count": 2
+        "count": 1
       },
-      "lineup_actual_points": 192.0,
-      "lineup_optimal_points": 253.0,
-      "points_left_on_table": 61.0,
+      "lineup_actual_points": 156.0,
+      "lineup_optimal_points": 211.0,
+      "points_left_on_table": 55.0,
       "lineup_weeks": 3,
-      "total_points_for": 192.0,
-      "total_points_against": 206.0,
-      "point_differential": -14.0,
-      "ppg": 64.0,
-      "ppg_against": 68.67,
-      "avg_margin": -4.67,
-      "avg_rank": 3.0,
-      "std_dev": 13.89,
-      "best_week": 80.0,
-      "worst_week": 55.0,
+      "total_points_for": 156.0,
+      "total_points_against": 147.0,
+      "point_differential": 9.0,
+      "ppg": 52.0,
+      "ppg_against": 49.0,
+      "avg_margin": 3.0,
+      "avg_rank": 5.67,
+      "std_dev": 4.36,
+      "best_week": 57.0,
+      "worst_week": 49.0,
       "best_week_num": 1,
-      "worst_week_num": 3,
-      "largest_win": 10.0,
-      "largest_loss": -17.0,
-      "win_pct": 0.333,
-      "games_above_500": -1,
-      "record": "1-2",
-      "opr": 68.99,
-      "owner_success_rate": 75.9,
-      "points_left_on_table_pct": 24.1,
-      "adjusted_opr": 1.137,
-      "league_avg_opr": 60.69
+      "worst_week_num": 2,
+      "largest_win": 18.0,
+      "largest_loss": -13.0,
+      "win_pct": 0.667,
+      "games_above_500": 1,
+      "record": "2-1",
+      "opr": 67.21,
+      "owner_success_rate": 73.9,
+      "points_left_on_table_pct": 26.1,
+      "adjusted_opr": 1.099,
+      "league_avg_opr": 61.18
     },
     "JOH": {
       "abbrev": "JOH",
@@ -8214,32 +8248,32 @@
         "type": "W",
         "count": 2
       },
-      "lineup_actual_points": 166.0,
-      "lineup_optimal_points": 215.0,
-      "points_left_on_table": 49.0,
+      "lineup_actual_points": 173.0,
+      "lineup_optimal_points": 224.0,
+      "points_left_on_table": 51.0,
       "lineup_weeks": 3,
-      "total_points_for": 166.0,
+      "total_points_for": 173.0,
       "total_points_against": 160.0,
-      "point_differential": 6.0,
-      "ppg": 55.33,
+      "point_differential": 13.0,
+      "ppg": 57.67,
       "ppg_against": 53.33,
-      "avg_margin": 2.0,
-      "avg_rank": 5.0,
-      "std_dev": 13.05,
+      "avg_margin": 4.33,
+      "avg_rank": 4.67,
+      "std_dev": 12.5,
       "best_week": 70.0,
       "worst_week": 45.0,
       "best_week_num": 1,
       "worst_week_num": 3,
-      "largest_win": 11.0,
+      "largest_win": 12.0,
       "largest_loss": -10.0,
       "win_pct": 0.667,
       "games_above_500": 1,
       "record": "2-1",
-      "opr": 70.67,
+      "opr": 71.84,
       "owner_success_rate": 77.2,
       "points_left_on_table_pct": 22.8,
-      "adjusted_opr": 1.164,
-      "league_avg_opr": 60.69
+      "adjusted_opr": 1.174,
+      "league_avg_opr": 61.18
     },
     "G/G": {
       "abbrev": "G/G",
@@ -8275,45 +8309,45 @@
       "opr": 67.75,
       "owner_success_rate": 69.5,
       "points_left_on_table_pct": 30.5,
-      "adjusted_opr": 1.116,
-      "league_avg_opr": 60.69
+      "adjusted_opr": 1.107,
+      "league_avg_opr": 61.18
     },
-    "STL": {
-      "abbrev": "STL",
-      "name": "STEVE L.",
-      "wins": 0,
-      "losses": 3,
+    "KAM": {
+      "abbrev": "KAM",
+      "name": "KEMP/A/M",
+      "wins": 1,
+      "losses": 2,
       "ties": 0,
       "streak": {
         "type": "L",
-        "count": 3
+        "count": 2
       },
-      "lineup_actual_points": 148.0,
-      "lineup_optimal_points": 181.0,
-      "points_left_on_table": 33.0,
+      "lineup_actual_points": 192.0,
+      "lineup_optimal_points": 253.0,
+      "points_left_on_table": 61.0,
       "lineup_weeks": 3,
-      "total_points_for": 148.0,
-      "total_points_against": 194.0,
-      "point_differential": -46.0,
-      "ppg": 49.33,
-      "ppg_against": 64.67,
-      "avg_margin": -15.33,
-      "avg_rank": 6.0,
-      "std_dev": 5.77,
-      "best_week": 56.0,
-      "worst_week": 46.0,
+      "total_points_for": 192.0,
+      "total_points_against": 206.0,
+      "point_differential": -14.0,
+      "ppg": 64.0,
+      "ppg_against": 68.67,
+      "avg_margin": -4.67,
+      "avg_rank": 3.33,
+      "std_dev": 13.89,
+      "best_week": 80.0,
+      "worst_week": 55.0,
       "best_week_num": 1,
-      "worst_week_num": 2,
-      "largest_win": -5.0,
-      "largest_loss": -21.0,
-      "win_pct": 0.0,
-      "games_above_500": -3,
-      "record": "0-3",
-      "opr": 45.06,
-      "owner_success_rate": 81.8,
-      "points_left_on_table_pct": 18.2,
-      "adjusted_opr": 0.742,
-      "league_avg_opr": 60.69
+      "worst_week_num": 3,
+      "largest_win": 10.0,
+      "largest_loss": -17.0,
+      "win_pct": 0.333,
+      "games_above_500": -1,
+      "record": "1-2",
+      "opr": 68.99,
+      "owner_success_rate": 75.9,
+      "points_left_on_table_pct": 24.1,
+      "adjusted_opr": 1.128,
+      "league_avg_opr": 61.18
     },
     "J/M": {
       "abbrev": "J/M",
@@ -8335,7 +8369,7 @@
       "ppg": 47.33,
       "ppg_against": 43.0,
       "avg_margin": 4.33,
-      "avg_rank": 7.33,
+      "avg_rank": 7.67,
       "std_dev": 11.55,
       "best_week": 54.0,
       "worst_week": 34.0,
@@ -8349,45 +8383,8 @@
       "opr": 61.27,
       "owner_success_rate": 78.5,
       "points_left_on_table_pct": 21.5,
-      "adjusted_opr": 1.01,
-      "league_avg_opr": 60.69
-    },
-    "KEV": {
-      "abbrev": "KEV",
-      "name": "KEVIN",
-      "wins": 2,
-      "losses": 1,
-      "ties": 0,
-      "streak": {
-        "type": "L",
-        "count": 1
-      },
-      "lineup_actual_points": 140.0,
-      "lineup_optimal_points": 189.0,
-      "points_left_on_table": 49.0,
-      "lineup_weeks": 3,
-      "total_points_for": 140.0,
-      "total_points_against": 147.0,
-      "point_differential": -7.0,
-      "ppg": 46.67,
-      "ppg_against": 49.0,
-      "avg_margin": -2.33,
-      "avg_rank": 6.67,
-      "std_dev": 9.29,
-      "best_week": 57.0,
-      "worst_week": 39.0,
-      "best_week_num": 1,
-      "worst_week_num": 2,
-      "largest_win": 8.0,
-      "largest_loss": -19.0,
-      "win_pct": 0.667,
-      "games_above_500": 1,
-      "record": "2-1",
-      "opr": 62.55,
-      "owner_success_rate": 74.1,
-      "points_left_on_table_pct": 25.9,
-      "adjusted_opr": 1.031,
-      "league_avg_opr": 60.69
+      "adjusted_opr": 1.002,
+      "league_avg_opr": 61.18
     },
     "W/B": {
       "abbrev": "W/B",
@@ -8404,11 +8401,11 @@
       "points_left_on_table": 45.0,
       "lineup_weeks": 3,
       "total_points_for": 129.0,
-      "total_points_against": 155.0,
-      "point_differential": -26.0,
+      "total_points_against": 165.0,
+      "point_differential": -36.0,
       "ppg": 43.0,
-      "ppg_against": 51.67,
-      "avg_margin": -8.67,
+      "ppg_against": 55.0,
+      "avg_margin": -12.0,
       "avg_rank": 8.67,
       "std_dev": 19.92,
       "best_week": 66.0,
@@ -8423,8 +8420,8 @@
       "opr": 50.89,
       "owner_success_rate": 74.1,
       "points_left_on_table_pct": 25.9,
-      "adjusted_opr": 0.839,
-      "league_avg_opr": 60.69
+      "adjusted_opr": 0.832,
+      "league_avg_opr": 61.18
     },
     "K/D": {
       "abbrev": "K/D",
@@ -8437,8 +8434,8 @@
         "count": 1
       },
       "lineup_actual_points": 118.0,
-      "lineup_optimal_points": 193.0,
-      "points_left_on_table": 75.0,
+      "lineup_optimal_points": 211.0,
+      "points_left_on_table": 93.0,
       "lineup_weeks": 3,
       "total_points_for": 118.0,
       "total_points_against": 135.0,
@@ -8458,10 +8455,10 @@
       "games_above_500": -1,
       "record": "1-2",
       "opr": 45.85,
-      "owner_success_rate": 61.1,
-      "points_left_on_table_pct": 38.9,
-      "adjusted_opr": 0.755,
-      "league_avg_opr": 60.69
+      "owner_success_rate": 55.9,
+      "points_left_on_table_pct": 44.1,
+      "adjusted_opr": 0.749,
+      "league_avg_opr": 61.18
     },
     "E/J": {
       "abbrev": "E/J",
@@ -8497,8 +8494,45 @@
       "opr": 41.99,
       "owner_success_rate": 70.6,
       "points_left_on_table_pct": 29.4,
-      "adjusted_opr": 0.692,
-      "league_avg_opr": 60.69
+      "adjusted_opr": 0.686,
+      "league_avg_opr": 61.18
+    },
+    "STL": {
+      "abbrev": "STL",
+      "name": "STEVE L.",
+      "wins": 0,
+      "losses": 3,
+      "ties": 0,
+      "streak": {
+        "type": "L",
+        "count": 3
+      },
+      "lineup_actual_points": 148.0,
+      "lineup_optimal_points": 181.0,
+      "points_left_on_table": 33.0,
+      "lineup_weeks": 3,
+      "total_points_for": 148.0,
+      "total_points_against": 201.0,
+      "point_differential": -53.0,
+      "ppg": 49.33,
+      "ppg_against": 67.0,
+      "avg_margin": -17.67,
+      "avg_rank": 6.67,
+      "std_dev": 5.77,
+      "best_week": 56.0,
+      "worst_week": 46.0,
+      "best_week_num": 1,
+      "worst_week_num": 2,
+      "largest_win": -12.0,
+      "largest_loss": -21.0,
+      "win_pct": 0.0,
+      "games_above_500": -3,
+      "record": "0-3",
+      "opr": 45.06,
+      "owner_success_rate": 81.8,
+      "points_left_on_table_pct": 18.2,
+      "adjusted_opr": 0.737,
+      "league_avg_opr": 61.18
     },
     "ADA": {
       "abbrev": "ADA",
@@ -8511,8 +8545,8 @@
         "count": 3
       },
       "lineup_actual_points": 127.0,
-      "lineup_optimal_points": 171.0,
-      "points_left_on_table": 44.0,
+      "lineup_optimal_points": 173.0,
+      "points_left_on_table": 46.0,
       "lineup_weeks": 3,
       "total_points_for": 127.0,
       "total_points_against": 160.0,
@@ -8532,10 +8566,10 @@
       "games_above_500": -3,
       "record": "0-3",
       "opr": 38.77,
-      "owner_success_rate": 74.3,
-      "points_left_on_table_pct": 25.7,
-      "adjusted_opr": 0.639,
-      "league_avg_opr": 60.69
+      "owner_success_rate": 73.4,
+      "points_left_on_table_pct": 26.6,
+      "adjusted_opr": 0.634,
+      "league_avg_opr": 61.18
     }
   },
   "playoffs": null,
@@ -8653,7 +8687,7 @@
         "team1_wins": 6,
         "team2_wins": 2,
         "ties": 0,
-        "team1_pf": 378.0,
+        "team1_pf": 388.0,
         "team2_pf": 320.0,
         "games": 8,
         "leader": "KEV"
@@ -8994,7 +9028,7 @@
         "team1_wins": 2,
         "team2_wins": 4,
         "ties": 0,
-        "team1_pf": 217.0,
+        "team1_pf": 224.0,
         "team2_pf": 305.0,
         "games": 6,
         "leader": "STL"
@@ -9006,7 +9040,7 @@
         "team2_wins": 5,
         "ties": 0,
         "team1_pf": 291.0,
-        "team2_pf": 313.0,
+        "team2_pf": 319.0,
         "games": 6,
         "leader": "KEV"
       },

@@ -2,7 +2,7 @@
   "season": 2026,
   "week": 2,
   "final": true,
-  "scored_at": "2026-09-22T03:33:14.374679Z",
+  "scored_at": "2026-09-30T21:10:45.807358Z",
   "has_scores": true,
   "pairings": [
     [
@@ -131,10 +131,13 @@
           "name": "Davante Adams",
           "nfl_team": "LA",
           "position": "WR",
-          "score": 0.0,
+          "score": 18.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 6,
+            "touchdowns": 12
+          }
         },
         {
           "name": "Mike Evans",
@@ -171,7 +174,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -490,7 +493,7 @@
         }
       ],
       "total_score": 46.0,
-      "score_rank": 6
+      "score_rank": 7
     },
     {
       "name": "JOHN",
@@ -535,10 +538,14 @@
           "name": "Kyren Williams",
           "nfl_team": "LA",
           "position": "RB",
-          "score": 0.0,
+          "score": 7.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "rushing_yards": 2,
+            "touchdowns": 6,
+            "fumbles_lost": -1
+          }
         },
         {
           "name": "D'Andre Swift",
@@ -556,10 +563,12 @@
           "name": "Blake Corum",
           "nfl_team": "LA",
           "position": "RB",
-          "score": 0.0,
+          "score": 2.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "rushing_yards": 2
+          }
         },
         {
           "name": "Kaelon Black",
@@ -721,8 +730,8 @@
           }
         }
       ],
-      "total_score": 51.0,
-      "score_rank": 5
+      "total_score": 58.0,
+      "score_rank": 3
     },
     {
       "name": "KEVIN",
@@ -746,10 +755,14 @@
           "name": "Matthew Stafford",
           "nfl_team": "LA",
           "position": "QB",
-          "score": 0.0,
+          "score": 27.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 4,
+            "touchdowns": 24,
+            "interceptions": -1
+          }
         },
         {
           "name": "Drew Allar",
@@ -870,7 +883,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -902,10 +915,14 @@
           "name": "LA Rams",
           "nfl_team": "LA",
           "position": "DF",
-          "score": 0.0,
+          "score": 10.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": 6,
+            "interceptions": 2,
+            "sacks": 2
+          }
         },
         {
           "name": "Jacksonville",
@@ -942,8 +959,8 @@
           }
         }
       ],
-      "total_score": 39.0,
-      "score_rank": 7
+      "total_score": 49.0,
+      "score_rank": 6
     },
     {
       "name": "DANNY/JOEY",
@@ -1451,10 +1468,13 @@
           "name": "Jameis Winston",
           "nfl_team": "NYG",
           "position": "QB",
-          "score": 0.0,
+          "score": 0,
           "starter": false,
           "found": true,
-          "breakdown": {}
+          "breakdown": {
+            "interceptions": -1,
+            "floor_applied": true
+          }
         },
         {
           "name": "TreVeyon Henderson",
@@ -1588,19 +1608,27 @@
           "name": "Dominic Zvada",
           "nfl_team": "NYG",
           "position": "K",
-          "score": 0.0,
+          "score": 5.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "fg_1_29": 1,
+            "fg_50+": 4
+          }
         },
         {
           "name": "NY Giants",
           "nfl_team": "NYG",
           "position": "DF",
-          "score": 0.0,
+          "score": 3.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": -2,
+            "interceptions": 2,
+            "fumble_recoveries": 2,
+            "sacks": 1
+          }
         },
         {
           "name": "Tennessee",
@@ -1899,7 +1927,7 @@
           "position": "QB",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2344,7 +2372,7 @@
         }
       ],
       "total_score": 57.0,
-      "score_rank": 3
+      "score_rank": 4
     },
     {
       "name": "JARRETT/MATT",
@@ -2422,7 +2450,7 @@
           "position": "RB",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2443,7 +2471,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2488,7 +2516,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2517,10 +2545,13 @@
           "name": "Harrison Mevis",
           "nfl_team": "LA",
           "position": "K",
-          "score": 0.0,
+          "score": 2.0,
           "starter": false,
           "found": true,
-          "breakdown": {}
+          "breakdown": {
+            "pat_made": 4,
+            "fg_missed": -2
+          }
         },
         {
           "name": "Buffalo",
@@ -2571,7 +2602,7 @@
         }
       ],
       "total_score": 54.0,
-      "score_rank": 4
+      "score_rank": 5
     },
     {
       "name": "ADAM",
@@ -2715,10 +2746,13 @@
           "name": "Terrance Ferguson",
           "nfl_team": "LA",
           "position": "TE",
-          "score": 0.0,
+          "score": 8.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 2,
+            "touchdowns": 6
+          }
         },
         {
           "name": "AJ Barner",

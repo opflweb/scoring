@@ -5,7 +5,7 @@ the Monday night game has not kicked off — the bug that shipped Week 1 of 2026
 into the standings with DEN@KC unplayed.
 """
 
-from opfl.week_status import latest_completed_week, week_games_are_final
+from opfl.week_status import latest_completed_week, teams_missing_stats, week_games_are_final
 
 
 def game(week, result=None, game_type='REG', season=2026):
@@ -66,3 +66,35 @@ class TestLatestCompletedWeek:
         rows = [game(1, result=7), game(2, result=None), game(3, result=7)]
         assert latest_completed_week(rows) == 3
         assert not week_games_are_final(rows, 2, 2026)
+
+
+def matchup(week, home, away, season=2026, game_type='REG'):
+    return {
+        'week': week,
+        'home_team': home,
+        'away_team': away,
+        'result': 3,
+        'game_type': game_type,
+        'season': season,
+    }
+
+
+class TestTeamsMissingStats:
+    """Week 2 of 2026: NYG@LA was final on the schedule two hours before its
+    stats were published, and the week was frozen with every Rams player at 0."""
+
+    def test_monday_night_game_without_stats_is_missing(self):
+        rows = [matchup(2, 'BUF', 'DET'), matchup(2, 'LA', 'NYG')]
+        assert teams_missing_stats(rows, 2, 2026, {'BUF', 'DET'}) == {'LA', 'NYG'}
+
+    def test_all_teams_published(self):
+        rows = [matchup(2, 'BUF', 'DET'), matchup(2, 'LA', 'NYG')]
+        assert teams_missing_stats(rows, 2, 2026, ['BUF', 'DET', 'LA', 'NYG', 'KC']) == set()
+
+    def test_ignores_other_weeks_seasons_and_game_types(self):
+        rows = [
+            matchup(3, 'LA', 'DEN'),
+            matchup(2, 'LA', 'NYG', season=2025),
+            matchup(2, 'LA', 'NYG', game_type='PRE'),
+        ]
+        assert teams_missing_stats(rows, 2, 2026, set()) == set()

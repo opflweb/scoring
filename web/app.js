@@ -1070,9 +1070,10 @@
             }
             const remainingWeekNums = Object.keys(weeksRemaining).map(Number).sort((a, b) => a - b);
 
-            const initialRP = {}, initialPF = {}, teamLabel = {};
+            const initialRP = {}, initialWins = {}, initialPF = {}, teamLabel = {};
             for (const t of standings) {
                 initialRP[t.abbrev] = t.rank_points || 0;
+                initialWins[t.abbrev] = t.wins || 0;
                 initialPF[t.abbrev] = t.points_for || 0;
                 teamLabel[t.abbrev] = t.name || t.abbrev;
             }
@@ -1084,6 +1085,7 @@
 
             for (let trial = 0; trial < PLAYOFF_TRIALS; trial++) {
                 const rp = { ...initialRP };
+                const wins = { ...initialWins };
                 const pf = { ...initialPF };
 
                 for (const wk of remainingWeekNums) {
@@ -1101,8 +1103,8 @@
                     for (const m of matchups) {
                         const s1 = weekScores[m.team1];
                         const s2 = weekScores[m.team2];
-                        if (s1 > s2) rp[m.team1] += 1;
-                        else if (s2 > s1) rp[m.team2] += 1;
+                        if (s1 > s2) { rp[m.team1] += 1; wins[m.team1] += 1; }
+                        else if (s2 > s1) { rp[m.team2] += 1; wins[m.team2] += 1; }
                         else { rp[m.team1] += 0.5; rp[m.team2] += 0.5; }
                     }
                     // Top-6 scoring bonus, matching build_standings' rule.
@@ -1113,9 +1115,10 @@
                     for (let i = 0; i < topHalfCount; i++) rp[sortedThisWeek[i]] += 0.5;
                 }
 
-                // Final order follows the real tiebreak: rank_points, then points_for.
+                // Final order follows the real tiebreak: rank_points, then wins, then points_for.
                 const finalOrder = standings.map(t => t.abbrev).sort((a, b) => {
                     if (rp[b] !== rp[a]) return rp[b] - rp[a];
+                    if (wins[b] !== wins[a]) return wins[b] - wins[a];
                     return pf[b] - pf[a];
                 });
                 for (let i = 0; i < PLAYOFF_SLOTS && i < finalOrder.length; i++) {
