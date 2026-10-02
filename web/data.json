@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-02T00:15:51.543390Z",
+  "updated_at": "2026-10-02T05:39:55.549381Z",
   "season": 2026,
   "current_week": 4,
   "regular_season_weeks": 15,
@@ -10471,12 +10471,12 @@
       "CLE": {
         "opponent": "PIT",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "PIT": {
         "opponent": "CLE",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "WAS": {
         "opponent": "IND",
