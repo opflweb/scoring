@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T19:00:10.616068Z",
+  "updated_at": "2026-10-04T22:13:47.820821Z",
   "season": 2026,
   "current_week": 4,
   "regular_season_weeks": 15,
@@ -10491,82 +10491,82 @@
       "BAL": {
         "opponent": "TEN",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "TEN": {
         "opponent": "BAL",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "BUF": {
         "opponent": "NE",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "NE": {
         "opponent": "BUF",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "CHI": {
         "opponent": "NYJ",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "NYJ": {
         "opponent": "CHI",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "CIN": {
         "opponent": "JAX",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "JAX": {
         "opponent": "CIN",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "HOU": {
         "opponent": "DAL",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "DAL": {
         "opponent": "HOU",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "NYG": {
         "opponent": "ARI",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "ARI": {
         "opponent": "NYG",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "PHI": {
         "opponent": "LA",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "LA": {
         "opponent": "PHI",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "TB": {
         "opponent": "GB",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "GB": {
         "opponent": "TB",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "MIN": {
         "opponent": "MIA",
