@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T15:49:46.825238Z",
+  "updated_at": "2026-10-04T19:00:10.616068Z",
   "season": 2026,
   "current_week": 4,
   "regular_season_weeks": 15,
@@ -10481,12 +10481,12 @@
       "WAS": {
         "opponent": "IND",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "IND": {
         "opponent": "WAS",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "BAL": {
         "opponent": "TEN",
