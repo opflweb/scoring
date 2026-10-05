@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-05T01:08:18.674537Z",
+  "updated_at": "2026-10-05T06:04:01.273487Z",
   "season": 2026,
   "current_week": 4,
   "regular_season_weeks": 15,
@@ -7825,7 +7825,7 @@
             }
           ],
           "total_score": 31.0,
-          "score_rank": 8
+          "score_rank": 10
         },
         {
           "name": "STEVE L.",
@@ -7866,10 +7866,12 @@
               "name": "Jahmyr Gibbs",
               "nfl_team": "DET",
               "position": "RB",
-              "score": 0.0,
+              "score": 6.0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "touchdowns": 6
+              },
               "projected_points": 8.9
             },
             {
@@ -7911,20 +7913,25 @@
               "name": "Tet McMillan",
               "nfl_team": "CAR",
               "position": "WR",
-              "score": 0.0,
+              "score": 18.0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "receiving_yards": 6,
+                "touchdowns": 12
+              },
               "projected_points": 2.6
             },
             {
               "name": "Jameson Williams",
               "nfl_team": "DET",
               "position": "WR",
-              "score": 0.0,
+              "score": 3.0,
               "starter": false,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "receiving_yards": 3
+              },
               "projected_points": 3.2
             },
             {
@@ -8065,8 +8072,8 @@
               "projected_points": 3.0
             }
           ],
-          "total_score": 13.0,
-          "score_rank": 12
+          "total_score": 37.0,
+          "score_rank": 9
         },
         {
           "name": "JOHN",
@@ -8227,10 +8234,13 @@
               "name": "Sam LaPorta",
               "nfl_team": "DET",
               "position": "TE",
-              "score": 0.0,
+              "score": 9.0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "receiving_yards": 3,
+                "touchdowns": 6
+              },
               "projected_points": 3.0
             },
             {
@@ -8322,8 +8332,8 @@
               "projected_points": 3.1
             }
           ],
-          "total_score": 55.0,
-          "score_rank": 5
+          "total_score": 64.0,
+          "score_rank": 2
         },
         {
           "name": "KEVIN",
@@ -8579,7 +8589,7 @@
             }
           ],
           "total_score": 28.0,
-          "score_rank": 9
+          "score_rank": 11
         },
         {
           "name": "DANNY/JOEY",
@@ -8679,10 +8689,12 @@
               "name": "Amon-Ra St. Brown",
               "nfl_team": "DET",
               "position": "WR",
-              "score": 0.0,
+              "score": 2.0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "receiving_yards": 2
+              },
               "projected_points": 5.9
             },
             {
@@ -8841,7 +8853,7 @@
               "projected_points": 3.0
             }
           ],
-          "total_score": 50.0,
+          "total_score": 52.0,
           "score_rank": 6
         },
         {
@@ -8907,10 +8919,13 @@
               "name": "Chuba Hubbard",
               "nfl_team": "CAR",
               "position": "RB",
-              "score": 0.0,
+              "score": 15.0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "rushing_yards": 3,
+                "touchdowns": 12
+              },
               "projected_points": 3.8
             },
             {
@@ -9089,8 +9104,8 @@
               "projected_points": 3.6
             }
           ],
-          "total_score": 25.0,
-          "score_rank": 10
+          "total_score": 40.0,
+          "score_rank": 8
         },
         {
           "name": "ERIC/JEFF",
@@ -9608,7 +9623,7 @@
             }
           ],
           "total_score": 56.0,
-          "score_rank": 4
+          "score_rank": 5
         },
         {
           "name": "WES/BILL",
@@ -9782,10 +9797,15 @@
               "name": "Jake Bates",
               "nfl_team": "DET",
               "position": "K",
-              "score": 0.0,
+              "score": 13.0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "pat_made": 2,
+                "fg_1_29": 1,
+                "fg_40_49": 6,
+                "fg_50+": 4
+              },
               "projected_points": 6.0
             },
             {
@@ -9854,7 +9874,7 @@
               "projected_points": 3.3
             }
           ],
-          "total_score": 36.0,
+          "total_score": 49.0,
           "score_rank": 7
         },
         {
@@ -10114,7 +10134,7 @@
             }
           ],
           "total_score": 60.0,
-          "score_rank": 3
+          "score_rank": 4
         },
         {
           "name": "JARRETT/MATT",
@@ -10138,10 +10158,13 @@
               "name": "Bryce Young",
               "nfl_team": "CAR",
               "position": "QB",
-              "score": 0.0,
+              "score": 16.0,
               "starter": false,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "passing_yards": 4,
+                "touchdowns": 12
+              },
               "projected_points": 12.4
             },
             {
@@ -10376,7 +10399,7 @@
             }
           ],
           "total_score": 61.0,
-          "score_rank": 2
+          "score_rank": 3
         },
         {
           "name": "ADAM",
@@ -10400,10 +10423,13 @@
               "name": "Jared Goff",
               "nfl_team": "DET",
               "position": "QB",
-              "score": 0.0,
+              "score": 12.0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "passing_yards": 6,
+                "touchdowns": 6
+              },
               "projected_points": 14.2
             },
             {
@@ -10577,10 +10603,14 @@
               "name": "Detroit",
               "nfl_team": "DET",
               "position": "DF",
-              "score": 0.0,
+              "score": 0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "points_allowed": -4,
+                "sacks": 3,
+                "floor_applied": true
+              },
               "projected_points": 6.1
             },
             {
@@ -10621,8 +10651,8 @@
               "projected_points": 2.5
             }
           ],
-          "total_score": 14.0,
-          "score_rank": 11
+          "total_score": 26.0,
+          "score_rank": 12
         }
       ],
       "has_scores": true,
@@ -10633,11 +10663,11 @@
           "win_probability": 0.01
         },
         "STL": {
-          "projected_total": 24.5,
-          "win_probability": 0.09093397697345118
+          "projected_total": 37.0,
+          "win_probability": 0.035287573774621994
         },
         "JOH": {
-          "projected_total": 58.0,
+          "projected_total": 64.0,
           "win_probability": 0.99
         },
         "KEV": {
@@ -10645,12 +10675,12 @@
           "win_probability": 0.010000000000000009
         },
         "D/J": {
-          "projected_total": 60.2,
+          "projected_total": 56.3,
           "win_probability": 0.99
         },
         "G/G": {
-          "projected_total": 43.3,
-          "win_probability": 0.9090660230265488
+          "projected_total": 54.5,
+          "win_probability": 0.964712426225378
         },
         "E/J": {
           "projected_total": 75.0,
@@ -10661,8 +10691,8 @@
           "win_probability": 0.0
         },
         "W/B": {
-          "projected_total": 53.4,
-          "win_probability": 0.8398283649659258
+          "projected_total": 60.3,
+          "win_probability": 0.99
         },
         "KAM": {
           "projected_total": 60.0,
@@ -10673,8 +10703,8 @@
           "win_probability": 1.0
         },
         "ADA": {
-          "projected_total": 39.6,
-          "win_probability": 0.16017163503407417
+          "projected_total": 31.3,
+          "win_probability": 0.010000000000000009
         }
       }
     }
@@ -13718,12 +13748,12 @@
       "CAR": {
         "opponent": "DET",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "DET": {
         "opponent": "CAR",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "NO": {
         "opponent": "ATL",
