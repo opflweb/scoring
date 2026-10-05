@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-05T14:19:55.003775Z",
+  "updated_at": "2026-10-05T17:36:39.953386Z",
   "season": 2026,
   "current_week": 4,
   "regular_season_weeks": 15,
@@ -7660,7 +7660,7 @@
               "nfl_team": "LA",
               "position": "WR",
               "score": 10.0,
-              "starter": false,
+              "starter": true,
               "found": true,
               "breakdown": {
                 "receiving_yards": 4,
@@ -7673,7 +7673,7 @@
               "nfl_team": "MIN",
               "position": "WR",
               "score": 0.0,
-              "starter": true,
+              "starter": false,
               "found": false,
               "breakdown": {},
               "projected_points": 2.4
@@ -7747,7 +7747,7 @@
               "nfl_team": "MIN",
               "position": "K",
               "score": 13.0,
-              "starter": false,
+              "starter": true,
               "found": true,
               "breakdown": {
                 "fg_1_29": 1,
@@ -7762,7 +7762,7 @@
               "nfl_team": "PHI",
               "position": "K",
               "score": 7.0,
-              "starter": true,
+              "starter": false,
               "found": true,
               "breakdown": {
                 "pat_made": 2,
@@ -7824,8 +7824,8 @@
               "projected_points": 3.6
             }
           ],
-          "total_score": 31.0,
-          "score_rank": 10
+          "total_score": 47.0,
+          "score_rank": 7
         },
         {
           "name": "STEVE L.",
@@ -7837,7 +7837,7 @@
               "nfl_team": "WAS",
               "position": "QB",
               "score": 0.0,
-              "starter": true,
+              "starter": false,
               "found": false,
               "breakdown": {},
               "projected_points": 11.8
@@ -7857,7 +7857,7 @@
               "nfl_team": "SF",
               "position": "QB",
               "score": 0.0,
-              "starter": false,
+              "starter": true,
               "found": false,
               "breakdown": {},
               "projected_points": 11.2
@@ -8073,7 +8073,7 @@
             }
           ],
           "total_score": 37.0,
-          "score_rank": 9
+          "score_rank": 10
         },
         {
           "name": "JOHN",
@@ -8390,7 +8390,7 @@
               "nfl_team": "JAX",
               "position": "RB",
               "score": 6.0,
-              "starter": false,
+              "starter": true,
               "found": true,
               "breakdown": {
                 "touchdowns": 6
@@ -8402,7 +8402,7 @@
               "nfl_team": "WAS",
               "position": "RB",
               "score": 0.0,
-              "starter": true,
+              "starter": false,
               "found": false,
               "breakdown": {},
               "projected_points": 3.7
@@ -8447,7 +8447,7 @@
               "nfl_team": "MIN",
               "position": "WR",
               "score": 0.0,
-              "starter": false,
+              "starter": true,
               "found": true,
               "breakdown": {},
               "projected_points": 3.0
@@ -8469,7 +8469,7 @@
               "nfl_team": "ARI",
               "position": "WR",
               "score": 2.0,
-              "starter": true,
+              "starter": false,
               "found": true,
               "breakdown": {
                 "receiving_yards": 2
@@ -8588,7 +8588,7 @@
               "projected_points": 2.8
             }
           ],
-          "total_score": 28.0,
+          "total_score": 32.0,
           "score_rank": 11
         },
         {
@@ -8833,7 +8833,7 @@
               "nfl_team": "NE",
               "position": "HC",
               "score": 7,
-              "starter": true,
+              "starter": false,
               "found": true,
               "breakdown": {
                 "road_underdog_win": 7
@@ -8845,7 +8845,7 @@
               "nfl_team": "DEN",
               "position": "HC",
               "score": 0.0,
-              "starter": false,
+              "starter": true,
               "found": true,
               "breakdown": {
                 "loss": 0
@@ -8853,8 +8853,8 @@
               "projected_points": 3.0
             }
           ],
-          "total_score": 52.0,
-          "score_rank": 6
+          "total_score": 45.0,
+          "score_rank": 8
         },
         {
           "name": "GREG/GRIFFIN",
@@ -9105,7 +9105,7 @@
             }
           ],
           "total_score": 40.0,
-          "score_rank": 8
+          "score_rank": 9
         },
         {
           "name": "ERIC/JEFF",
@@ -9875,7 +9875,7 @@
             }
           ],
           "total_score": 49.0,
-          "score_rank": 7
+          "score_rank": 6
         },
         {
           "name": "KEMP/A/M",
@@ -10659,7 +10659,7 @@
       "final": false,
       "projections": {
         "K/D": {
-          "projected_total": 35.1,
+          "projected_total": 51.1,
           "win_probability": 0.01
         },
         "STL": {
@@ -10671,11 +10671,11 @@
           "win_probability": 0.99
         },
         "KEV": {
-          "projected_total": 28.0,
+          "projected_total": 32.0,
           "win_probability": 0.010000000000000009
         },
         "D/J": {
-          "projected_total": 56.3,
+          "projected_total": 49.3,
           "win_probability": 0.99
         },
         "G/G": {
@@ -15881,10 +15881,6 @@
       {
         "position": "RB",
         "name": "Aaron Jones"
-      },
-      {
-        "position": "WR",
-        "name": "Ted Hurst"
       }
     ],
     "STL": [
@@ -15903,17 +15899,9 @@
       {
         "position": "QB",
         "name": "Kirk Cousins"
-      },
-      {
-        "position": "WR",
-        "name": "Romeo Doubs"
       }
     ],
     "D/J": [
-      {
-        "position": "RB",
-        "name": "Tyler Allgeier"
-      },
       {
         "position": "QB",
         "name": "Geno Smith"

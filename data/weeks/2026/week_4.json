@@ -2,7 +2,7 @@
   "season": 2026,
   "week": 4,
   "final": false,
-  "scored_at": "2026-10-05T14:19:54.982654Z",
+  "scored_at": "2026-10-05T17:36:39.920730Z",
   "has_scores": true,
   "pairings": [
     [
@@ -110,7 +110,7 @@
           "nfl_team": "LA",
           "position": "WR",
           "score": 10.0,
-          "starter": false,
+          "starter": true,
           "found": true,
           "breakdown": {
             "receiving_yards": 4,
@@ -122,7 +122,7 @@
           "nfl_team": "MIN",
           "position": "WR",
           "score": 0.0,
-          "starter": true,
+          "starter": false,
           "found": false,
           "breakdown": {}
         },
@@ -189,7 +189,7 @@
           "nfl_team": "MIN",
           "position": "K",
           "score": 13.0,
-          "starter": false,
+          "starter": true,
           "found": true,
           "breakdown": {
             "fg_1_29": 1,
@@ -203,7 +203,7 @@
           "nfl_team": "PHI",
           "position": "K",
           "score": 7.0,
-          "starter": true,
+          "starter": false,
           "found": true,
           "breakdown": {
             "pat_made": 2,
@@ -260,8 +260,8 @@
           }
         }
       ],
-      "total_score": 31.0,
-      "score_rank": 10
+      "total_score": 47.0,
+      "score_rank": 7
     },
     {
       "name": "STEVE L.",
@@ -273,7 +273,7 @@
           "nfl_team": "WAS",
           "position": "QB",
           "score": 0.0,
-          "starter": true,
+          "starter": false,
           "found": false,
           "breakdown": {}
         },
@@ -291,7 +291,7 @@
           "nfl_team": "SF",
           "position": "QB",
           "score": 0.0,
-          "starter": false,
+          "starter": true,
           "found": false,
           "breakdown": {}
         },
@@ -488,7 +488,7 @@
         }
       ],
       "total_score": 37.0,
-      "score_rank": 9
+      "score_rank": 10
     },
     {
       "name": "JOHN",
@@ -780,7 +780,7 @@
           "nfl_team": "JAX",
           "position": "RB",
           "score": 6.0,
-          "starter": false,
+          "starter": true,
           "found": true,
           "breakdown": {
             "touchdowns": 6
@@ -791,7 +791,7 @@
           "nfl_team": "WAS",
           "position": "RB",
           "score": 0.0,
-          "starter": true,
+          "starter": false,
           "found": false,
           "breakdown": {}
         },
@@ -832,7 +832,7 @@
           "nfl_team": "MIN",
           "position": "WR",
           "score": 0.0,
-          "starter": false,
+          "starter": true,
           "found": true,
           "breakdown": {}
         },
@@ -852,7 +852,7 @@
           "nfl_team": "ARI",
           "position": "WR",
           "score": 2.0,
-          "starter": true,
+          "starter": false,
           "found": true,
           "breakdown": {
             "receiving_yards": 2
@@ -961,7 +961,7 @@
           "breakdown": {}
         }
       ],
-      "total_score": 28.0,
+      "total_score": 32.0,
       "score_rank": 11
     },
     {
@@ -1187,7 +1187,7 @@
           "nfl_team": "NE",
           "position": "HC",
           "score": 7,
-          "starter": true,
+          "starter": false,
           "found": true,
           "breakdown": {
             "road_underdog_win": 7
@@ -1198,15 +1198,15 @@
           "nfl_team": "DEN",
           "position": "HC",
           "score": 0.0,
-          "starter": false,
+          "starter": true,
           "found": true,
           "breakdown": {
             "loss": 0
           }
         }
       ],
-      "total_score": 52.0,
-      "score_rank": 6
+      "total_score": 45.0,
+      "score_rank": 8
     },
     {
       "name": "GREG/GRIFFIN",
@@ -1436,7 +1436,7 @@
         }
       ],
       "total_score": 40.0,
-      "score_rank": 8
+      "score_rank": 9
     },
     {
       "name": "ERIC/JEFF",
@@ -2143,7 +2143,7 @@
         }
       ],
       "total_score": 49.0,
-      "score_rank": 7
+      "score_rank": 6
     },
     {
       "name": "KEMP/A/M",
