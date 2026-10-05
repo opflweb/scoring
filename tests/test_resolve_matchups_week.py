@@ -1,4 +1,4 @@
-"""resolve_matchups_week: catching a stale Matchups tab.
+"""resolve_matchups_week: catching stale Rosters-tab lineups.
 
 Found live: nflreadpy's calendar-based nfl.get_current_week() advanced to
 week 2 a full day before the commissioner rolled the workbook's Matchups tab
@@ -34,13 +34,13 @@ def test_week_1_is_never_second_guessed():
 
 
 def _real_workbook_starters(tmp_path):
-    """The actual starters currently on the real Matchups tab, in the shape
+    """The actual starters currently on the real Rosters tab, in the shape
     resolve_matchups_week and the archive both use."""
     from opfl import build_matchup_week
 
     workbook = tmp_path / 'workbook.xlsx'
     shutil.copy(WORKBOOK, workbook)
-    teams_by_code, _ = build_matchup_week(str(workbook), rosters_sheet=ROSTERS_SHEET)
+    teams_by_code, _ = build_matchup_week(str(workbook), 2, 2026, rosters_sheet=ROSTERS_SHEET)
     return {
         code: sorted(
             name for players in team.players.values() for name, _t, started in players if started
@@ -51,7 +51,7 @@ def _real_workbook_starters(tmp_path):
 
 def test_a_stale_tab_falls_back_to_the_prior_week(tmp_path):
     """The exact scenario that happened: the requested week's lineups on the
-    tab are identical to what we already archived for week N-1."""
+    Rosters tab are identical to what we already archived for week N-1."""
     starters = _real_workbook_starters(tmp_path)
     archived_week = {
         'week': 1,
@@ -61,27 +61,6 @@ def test_a_stale_tab_falls_back_to_the_prior_week(tmp_path):
         ],
     }
     save_week(2026, 1, archived_week, [], final=True, data_dir=tmp_path)
-
-    resolved = resolve_matchups_week(
-        str(WORKBOOK), requested_week=2, season=2026, data_dir=tmp_path
-    )
-
-    assert resolved == 1
-
-
-def test_a_stale_tab_is_caught_by_pairings_after_a_lineup_correction(tmp_path):
-    """Week 3 of 2026: Kevin's archived lineup was corrected to match the
-    commissioner, so its starters no longer equal the (stale) tab's. The
-    pairings still do, and must hold the tab to the prior week."""
-    from opfl import build_matchup_week
-
-    _, matchups = build_matchup_week(str(WORKBOOK), rosters_sheet=ROSTERS_SHEET)
-    pairings = [[side['code'] for side in m['teams']] for m in matchups]
-    archived_week = {
-        'week': 1,
-        'teams': [{'abbrev': 'K/D', 'roster': [{'name': 'Nobody Real', 'starter': True}]}],
-    }
-    save_week(2026, 1, archived_week, pairings, final=True, data_dir=tmp_path)
 
     resolved = resolve_matchups_week(
         str(WORKBOOK), requested_week=2, season=2026, data_dir=tmp_path
@@ -211,3 +190,16 @@ def test_export_season_waits_for_stats_before_archiving_final(monkeypatch):
     assert final is False
     assert week_data['final'] is False
     assert 'stat_teams' not in week_data
+
+
+def test_pairings_come_from_the_schedule_not_the_matchups_tab():
+    """The Matchups tab's pairing numbers aren't kept current (in 2026 week 4
+    it still showed week 3's games); data/schedules/{season}.json is the source."""
+    import json
+
+    from opfl import build_matchup_week
+
+    _, matchups = build_matchup_week(str(WORKBOOK), 4, 2026, rosters_sheet=ROSTERS_SHEET)
+    schedule = json.loads((PROJECT_ROOT / 'data' / 'schedules' / '2026.json').read_text())
+
+    assert [[side['code'] for side in m['teams']] for m in matchups] == schedule['weeks']['4']

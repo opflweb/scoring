@@ -52,7 +52,7 @@ DEFAULT_WAIVER_ROUNDS = list(range(1, 4))
 DRAFT_PICK_SEASONS = ['2026', '2027', '2028']
 
 # 2026 schedule team numbers, taken from the "Key" column on the Matchups tab.
-# Weekly pairings are read from the workbook rather than hardcoded here.
+# Weekly pairings come from data/schedules/{season}.json, not from here.
 TEAM_NUMBER_MAP = {
     1: 'AND',
     2: 'JOH',
@@ -141,16 +141,20 @@ def extract_team_name(header_value):
 
 def export_matchup_week(excel_path, week_num, season=SEASON):
     """
-    Build a week of web data from the Rosters + Matchups tabs.
+    Build a week of web data from the Rosters tab and the season schedule.
 
-    The Rosters tab supplies each team's full roster; the Matchups tab supplies
-    both the week's head-to-head pairings and which players actually started.
+    The Rosters tab supplies each team's full roster and its starters (`*`);
+    data/schedules/{season}.json supplies the week's head-to-head pairings.
 
     Returns:
         (week_dict, pairings) where pairings is a list of [abbrev1, abbrev2].
     """
     teams_by_code, matchups = build_matchup_week(
-        excel_path, rosters_sheet=ROSTERS_SHEET, matchups_sheet=MATCHUPS_SHEET
+        excel_path,
+        week_num,
+        season,
+        rosters_sheet=ROSTERS_SHEET,
+        matchups_sheet=MATCHUPS_SHEET,
     )
     scorer = OPFLScorer(season, week_num)
 
@@ -377,26 +381,28 @@ def get_existing_banners(banners_dir):
 def resolve_matchups_week(excel_path, requested_week, season, data_dir=None):
     """Detect when the workbook hasn't caught up to nflreadpy's current week yet.
 
-    The Matchups tab carries no explicit week marker, so when no --week is
+    The Rosters tab carries no explicit week marker, so when no --week is
     given we default to nfl.get_current_week() - a calendar-based guess, not
     a read of the workbook. That guess can outrun the commissioner: nflreadpy
     advances the moment the calendar crosses into the next week, which can be
-    a day or more before the Matchups tab is actually updated. Scoring
-    requested_week against a tab that still shows requested_week - 1's
-    lineups would silently score every player under the wrong week's NFL
-    stats.
+    a day or more before the Rosters stars are actually updated. Scoring
+    requested_week against stars that are still requested_week - 1's lineups
+    would silently score every player under the wrong week's NFL stats.
 
-    Compares the tab's current starters and pairings against the previously
-    archived week; if either is identical, the workbook hasn't been rolled over
-    and this is still that prior week. Pairings matter on their own because an
-    archived week's lineup can be corrected after the fact (see
-    rescore_archived_week.py), which breaks the starters comparison alone.
+    Compares the current starters against the previously archived week; if
+    they're identical, the workbook hasn't been rolled over and this is still
+    that prior week. (Pairings come from the schedule file, so they always
+    match the requested week and can't signal staleness.)
     """
     if requested_week <= 1:
         return requested_week
 
-    teams_by_code, matchups = build_matchup_week(
-        excel_path, rosters_sheet=ROSTERS_SHEET, matchups_sheet=MATCHUPS_SHEET
+    teams_by_code, _ = build_matchup_week(
+        excel_path,
+        requested_week,
+        season,
+        rosters_sheet=ROSTERS_SHEET,
+        matchups_sheet=MATCHUPS_SHEET,
     )
     current_starters = {
         code: sorted(
@@ -418,12 +424,9 @@ def resolve_matchups_week(excel_path, requested_week, season, data_dir=None):
         for t in previous['teams']
     }
 
-    current_pairings = {frozenset(side['code'] for side in m['teams']) for m in matchups}
-    previous_pairings = {frozenset(pair) for pair in previous.get('pairings') or []}
-
-    if current_starters == previous_starters or current_pairings == previous_pairings:
+    if current_starters == previous_starters:
         print(
-            f"  Matchups tab still shows week {requested_week - 1}'s lineups "
+            f"  Rosters tab still shows week {requested_week - 1}'s lineups "
             f'(nflreadpy says week {requested_week}) - scoring week {requested_week - 1} again'
         )
         return requested_week - 1
@@ -444,7 +447,7 @@ def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False)
     requested_week = week_num if week_num is not None else current_nfl_week
     week_num = resolve_matchups_week(excel_path, requested_week, season)
 
-    print(f'Scoring week {week_num} from the {MATCHUPS_SHEET} tab...')
+    print(f'Scoring week {week_num} from the {ROSTERS_SHEET} tab...')
     week_data, pairings = export_matchup_week(excel_path, week_num, season)
 
     # A week only counts once every NFL game in it has a final result. Mid-week,
@@ -464,7 +467,7 @@ def export_season(excel_path, week_num=None, season=SEASON, force_rescore=False)
             is_final = False
     week_data['final'] = is_final
 
-    # Archive eagerly: the Matchups tab is overwritten each week, so a week not
+    # Archive eagerly: the Rosters stars are overwritten each week, so a week not
     # captured before then is only recoverable from its W-sheet.
     written = save_week(season, week_num, week_data, pairings, is_final, force=force_rescore)
     state = 'final' if is_final else 'in progress'

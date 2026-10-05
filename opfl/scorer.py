@@ -1,5 +1,8 @@
 """Main scoring engine that ties everything together for OPFL."""
 
+import json
+from pathlib import Path
+
 from .data_fetcher import NFLDataFetcher
 from .models import FantasyTeam, PlayerScore
 from .scoring import (
@@ -158,27 +161,47 @@ class OPFLScorer:
         return total
 
 
+SCHEDULES_DIR = Path(__file__).parent.parent / 'data' / 'schedules'
+
+
+def load_schedule_pairings(season: int, week: int, schedules_dir: Path = SCHEDULES_DIR):
+    """Return the week's [[code, code], ...] pairings from data/schedules/{season}.json.
+
+    None when the file or week isn't there (the playoffs aren't in the printed
+    schedule).
+    """
+    path = Path(schedules_dir) / f'{season}.json'
+    if not path.exists():
+        return None
+    return json.loads(path.read_text()).get('weeks', {}).get(str(week))
+
+
 def build_matchup_week(
     excel_path: str,
+    week: int,
+    season: int,
     rosters_sheet: str = 'Rosters',
     matchups_sheet: str = 'Matchups',
 ) -> tuple[dict[str, FantasyTeam], list[dict]]:
     """
-    Build fantasy teams for a week from the Rosters + Matchups tabs.
+    Build fantasy teams for a week from the Rosters tab and the season schedule.
 
-    The Rosters tab is the official roster (starters and bench); the weekly
-    Matchups tab is the authority on who actually started, so the star markers
-    carried over on the Rosters tab are ignored in favour of it.
+    The Rosters tab is the authority on rosters and starters (the `*` column).
+    Pairings come from data/schedules/{season}.json, not the Matchups tab: the
+    commissioner doesn't keep that tab's pairing numbers current, so it can show
+    a past week's games. The Matchups tab is only read for weeks the schedule
+    doesn't cover (the playoffs).
 
     Returns:
-        (teams_by_code, matchups) where matchups is the parsed matchup list with
-        each side's 'code' pointing into teams_by_code.
+        (teams_by_code, matchups) where matchups is a list of
+        {'teams': [{'code': ...}, {'code': ...}]} with each code pointing into
+        teams_by_code.
     """
+    from .config import get_starter_slots
     from .constants import resolve_team_code
     from .excel_parser import parse_matchups_sheet, parse_roster_from_excel
 
     rosters = parse_roster_from_excel(excel_path, rosters_sheet)
-    matchups = parse_matchups_sheet(excel_path, matchups_sheet)
 
     teams_by_code = {}
     for team in rosters:
@@ -186,39 +209,36 @@ def build_matchup_week(
         if code:
             teams_by_code[code] = team
 
-    # The workbook derives the Matchups tab from the Rosters stars, so the two
-    # should always agree. Warn loudly if they drift apart rather than silently
-    # scoring a lineup nobody set.
-    starred_by_code = {
-        code: {name for players in team.players.values() for name, _, started in players if started}
-        for code, team in teams_by_code.items()
-    }
+    # A team with missing or extra stars would silently score a short or
+    # padded lineup - flag it.
+    starter_slots = get_starter_slots()
+    for code, team in teams_by_code.items():
+        starred = {
+            position: sum(1 for _, _, started in players if started)
+            for position, players in team.players.items()
+        }
+        wrong = [
+            f'{position} {starred.get(position, 0)}/{count}'
+            for position, count in starter_slots.items()
+            if starred.get(position, 0) != count
+        ]
+        if wrong:
+            print(f'  WARNING: {code} starters on the Rosters tab: {", ".join(wrong)}')
 
-    # Reset every star, then re-flag from the matchup lineups.
-    for team in teams_by_code.values():
-        for position, players in team.players.items():
-            team.players[position] = [(n, t, False) for n, t, _ in players]
+    pairings = load_schedule_pairings(season, week)
+    if pairings is None:
+        print(f'  Week {week} is not in data/schedules/{season}.json - using the Matchups tab')
+        pairings = [
+            [side['code'] for side in m['teams']]
+            for m in parse_matchups_sheet(excel_path, matchups_sheet)
+        ]
 
-    for matchup in matchups:
-        for side in matchup['teams']:
-            team = teams_by_code.get(side['code'])
-            if team is None:
-                print(f"  WARNING: matchup team '{side['raw_name']}' has no roster entry")
-                continue
-            started_names = {name for _, name, _ in side['lineup']}
-
-            starred = starred_by_code.get(side['code'], set())
-            if starred and starred != started_names:
-                only_matchups = started_names - starred
-                only_starred = starred - started_names
-                print(f'  WARNING: {side["code"]} lineup differs from the Rosters stars')
-                if only_matchups:
-                    print(f'           started per Matchups only: {sorted(only_matchups)}')
-                if only_starred:
-                    print(f'           starred on Rosters only:   {sorted(only_starred)}')
-
-            for position, players in team.players.items():
-                team.players[position] = [(n, t, n in started_names) for n, t, _ in players]
+    matchups = []
+    for pair in pairings:
+        for code in pair:
+            if code not in teams_by_code:
+                print(f"  WARNING: scheduled team '{code}' has no roster entry")
+        matchups.append({'teams': [{'code': code} for code in pair]})
 
     return teams_by_code, matchups
 

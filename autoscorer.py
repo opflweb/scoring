@@ -4,8 +4,9 @@ OPFL Autoscorer CLI
 
 Automatically scores fantasy football lineups using nflreadpy for real-time NFL stats.
 
-The 2026 workbook keeps official rosters on the "Rosters" tab and the week's
-head-to-head lineups on the "Matchups" tab, so that is the default mode. Older
+The 2026 workbook keeps official rosters and starters (`*`) on the "Rosters"
+tab; the week's pairings come from data/schedules/{season}.json. That is the
+default mode. Older
 workbooks with per-week sheets (W1, W2, ...) are still supported via --sheet.
 
 Usage:
@@ -21,9 +22,13 @@ from opfl.constants import CODE_TO_OWNER
 
 
 def score_matchups(args):
-    """Score a week from the Rosters + Matchups tabs."""
+    """Score a week from the Rosters tab and the season schedule."""
     teams_by_code, matchups = build_matchup_week(
-        args.excel, rosters_sheet=args.rosters_sheet, matchups_sheet=args.matchups_sheet
+        args.excel,
+        args.week,
+        args.season,
+        rosters_sheet=args.rosters_sheet,
+        matchups_sheet=args.matchups_sheet,
     )
     scorer = OPFLScorer(args.season, args.week)
 
@@ -162,7 +167,7 @@ def main():
     parser.add_argument(
         '--matchups-sheet',
         default='Matchups',
-        help='Name of the weekly matchups sheet',
+        help='Matchups sheet, used only for weeks not in data/schedules (playoffs)',
     )
     parser.add_argument(
         '--update',

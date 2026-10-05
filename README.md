@@ -18,9 +18,10 @@ pip install -e .
 
 ### Basic Usage
 
-The 2026 workbook (`OPFL Scoring 2026.xlsx`) keeps the **official rosters** on the
-`Rosters` tab and each week's **head-to-head lineups and pairings** on the
-`Matchups` tab. That is the default mode:
+The 2026 workbook (`OPFL Scoring 2026.xlsx`) keeps the **official rosters and
+starters** (`*`) on the `Rosters` tab. Each week's **pairings** come from
+`data/schedules/2026.json`. The `Matchups` tab is read only for weeks the schedule
+doesn't cover (the playoffs). That is the default mode:
 
 ```bash
 python autoscorer.py --week 1
@@ -35,7 +36,7 @@ python autoscorer.py --week 1
 | `--season` | `-y` | `2026` | NFL season year |
 | `--sheet` | `-s` | - | Score a legacy per-week sheet (W1, W2, ...) instead |
 | `--rosters-sheet` | - | `Rosters` | Name of the official rosters sheet |
-| `--matchups-sheet` | - | `Matchups` | Name of the weekly matchups sheet |
+| `--matchups-sheet` | - | `Matchups` | Matchups sheet, used only for weeks not in `data/schedules` (playoffs) |
 | `--update` | `-u` | - | Write scores back to Excel (legacy W-sheets only) |
 | `--quiet` | `-q` | - | Suppress per-player output |
 
@@ -63,7 +64,7 @@ python scripts/export_for_web.py --week 1 --season 2026
 ```
 
 The export publishes each team's full roster (starters and bench points), the
-week's matchups as read from the workbook, standings, taxi squads, and draft picks.
+week's matchups from the schedule, standings, taxi squads, and draft picks.
 
 > **The 2026 workbook is formula-driven and is never written to.** The `Matchups`
 > tab pulls names and totals from the `Scoring` tab, which pulls each team's
@@ -214,7 +215,8 @@ rows 1 and 39):
 - A `PH` block (phone numbers) and `TS` block (taxi squad, written as
   `RB Aaron Jones`) follow each roster and are not part of the lineup
 
-**`Matchups` tab** - the week's six head-to-head games, stacked vertically:
+**`Matchups` tab** - the week's six head-to-head games, stacked vertically. Only
+read for playoff weeks; regular-season pairings come from `data/schedules/`:
 
 - Each block starts with the two owner names in columns A and D
 - The nine following rows are the starting lineup in

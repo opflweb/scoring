@@ -103,14 +103,20 @@ def fuzzy_match_name(
     # Williams"). token_sort_ratio scores these highly because the shared last
     # name dominates the comparison, even though the first names are unrelated.
     # Only accept a first-name mismatch when it looks like a nickname/diminutive.
-    query_parts = query.lower().split()
-    match_parts = best_match.lower().split()
+    query_parts = normalize_name(query).split()
+    match_parts = normalize_name(best_match).split()
     if len(query_parts) >= 2 and len(match_parts) >= 2:
         query_first, query_last = query_parts[0], query_parts[-1]
         match_first, match_last = match_parts[0], match_parts[-1]
         if query_last == match_last and query_first != match_first:
             if not _is_nickname_pair(query_first, match_first):
                 return None
+        # The reverse: a shared first name carries a different last name over
+        # the threshold (e.g. "Josh Jacobs" -> "Josh Jobe", "Jordan Mason" ->
+        # "Jordan Stout") when the real player has no stats that week. Last
+        # names may differ by a typo, never by being a different name.
+        if fuzz.ratio(query_last, match_last) < 80:
+            return None
 
     return best_match
 
@@ -264,7 +270,13 @@ class NFLDataFetcher:
                 .str.replace_all(r'\.', '')
                 .str.contains(last_name, literal=True)
             )
-            if matches.height == 1:
+            # A unique last name on the team isn't enough on its own: when the
+            # real player has no stats, a teammate who shares it is the only
+            # hit ("AJ Brown" -> "Mike Brown"). The first names must agree too.
+            if matches.height == 1 and _is_nickname_pair(
+                clean_name.split()[0],
+                normalize_name(matches.row(0, named=True)['player_display_name']).split()[0],
+            ):
                 result = matches.row(0, named=True)
                 self._player_name_cache[cache_key] = result.get('player_display_name')
                 return result

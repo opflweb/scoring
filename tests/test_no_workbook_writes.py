@@ -46,7 +46,7 @@ def test_parsing_the_workbook_never_modifies_it(tmp_path):
     parse_roster_from_excel(str(workbook), 'Rosters')
     parse_matchups_sheet(str(workbook), 'Matchups')
     parse_taxi_squads(str(workbook), 'Rosters')
-    build_matchup_week(str(workbook))
+    build_matchup_week(str(workbook), 4, 2026)
 
     assert _digest(workbook) == before, (
         'Parsing modified the workbook. openpyxl saves strip cached formula '
@@ -64,7 +64,7 @@ def test_cached_formula_values_survive_parsing(tmp_path):
 
     from opfl.scorer import build_matchup_week
 
-    build_matchup_week(str(workbook))
+    build_matchup_week(str(workbook), 4, 2026)
 
     wb = openpyxl.load_workbook(workbook, data_only=True)
     matchups = wb['Matchups']
