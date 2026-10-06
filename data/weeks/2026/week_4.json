@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "week": 4,
-  "final": false,
-  "scored_at": "2026-10-05T18:46:13.181645Z",
+  "final": true,
+  "scored_at": "2026-10-06T08:58:13.277746Z",
   "has_scores": true,
   "pairings": [
     [
@@ -261,7 +261,7 @@
         }
       ],
       "total_score": 47.0,
-      "score_rank": 7
+      "score_rank": 8
     },
     {
       "name": "STEVE L.",
@@ -459,10 +459,14 @@
           "name": "New Orleans",
           "nfl_team": "NO",
           "position": "DF",
-          "score": 0.0,
+          "score": 0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": -6,
+            "sacks": 1,
+            "floor_applied": true
+          }
         },
         {
           "name": "Dan Campbell",
@@ -727,7 +731,7 @@
         }
       ],
       "total_score": 64.0,
-      "score_rank": 2
+      "score_rank": 3
     },
     {
       "name": "KEVIN",
@@ -955,10 +959,12 @@
           "name": "Kevin Stefanski",
           "nfl_team": "ATL",
           "position": "HC",
-          "score": 0.0,
+          "score": 7,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "road_underdog_win": 7
+          }
         }
       ],
       "total_score": 32.0,
@@ -1115,10 +1121,12 @@
           "name": "Juwan Johnson",
           "nfl_team": "NO",
           "position": "TE",
-          "score": 0.0,
+          "score": 2.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 2
+          }
         },
         {
           "name": "Chig Okonkwo",
@@ -1205,8 +1213,8 @@
           }
         }
       ],
-      "total_score": 45.0,
-      "score_rank": 8
+      "total_score": 47.0,
+      "score_rank": 9
     },
     {
       "name": "GREG/GRIFFIN",
@@ -1226,10 +1234,13 @@
           "name": "Tyler Shough",
           "nfl_team": "NO",
           "position": "QB",
-          "score": 0.0,
+          "score": 9.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 3,
+            "touchdowns": 6
+          }
         },
         {
           "name": "Shedeur Sanders",
@@ -1435,8 +1446,8 @@
           }
         }
       ],
-      "total_score": 40.0,
-      "score_rank": 9
+      "total_score": 49.0,
+      "score_rank": 7
     },
     {
       "name": "ERIC/JEFF",
@@ -1844,10 +1855,14 @@
           "name": "Daniel Carlson",
           "nfl_team": "NO",
           "position": "K",
-          "score": 0.0,
+          "score": 2.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 3,
+            "fg_1_29": 1,
+            "fg_missed": -2
+          }
         },
         {
           "name": "Tyler Bass",
@@ -1912,7 +1927,7 @@
         }
       ],
       "total_score": 56.0,
-      "score_rank": 5
+      "score_rank": 6
     },
     {
       "name": "WES/BILL",
@@ -1954,10 +1969,13 @@
           "name": "Bijan Robinson",
           "nfl_team": "ATL",
           "position": "RB",
-          "score": 0.0,
+          "score": 16.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "rushing_yards": 4,
+            "touchdowns": 12
+          }
         },
         {
           "name": "Jeremiyah Love",
@@ -1990,10 +2008,12 @@
           "name": "Drake London",
           "nfl_team": "ATL",
           "position": "WR",
-          "score": 0.0,
+          "score": 2.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 2
+          }
         },
         {
           "name": "AJ Brown",
@@ -2142,8 +2162,8 @@
           }
         }
       ],
-      "total_score": 49.0,
-      "score_rank": 6
+      "total_score": 67.0,
+      "score_rank": 2
     },
     {
       "name": "KEMP/A/M",
@@ -2181,10 +2201,13 @@
           "name": "Michael Penix",
           "nfl_team": "ATL",
           "position": "QB",
-          "score": 0.0,
+          "score": 8.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 2,
+            "touchdowns": 6
+          }
         },
         {
           "name": "Jonathan Taylor",
@@ -2381,7 +2404,7 @@
         }
       ],
       "total_score": 60.0,
-      "score_rank": 4
+      "score_rank": 5
     },
     {
       "name": "JARRETT/MATT",
@@ -2625,7 +2648,7 @@
         }
       ],
       "total_score": 61.0,
-      "score_rank": 3
+      "score_rank": 4
     },
     {
       "name": "ADAM",
@@ -2714,10 +2737,12 @@
           "name": "Chris Olave",
           "nfl_team": "NO",
           "position": "WR",
-          "score": 0.0,
+          "score": 3.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 3
+          }
         },
         {
           "name": "Garrett Wilson",
@@ -2764,7 +2789,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2856,7 +2881,7 @@
           }
         }
       ],
-      "total_score": 26.0,
+      "total_score": 29.0,
       "score_rank": 12
     }
   ]
