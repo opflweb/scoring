@@ -141,11 +141,11 @@ jobs:
           server_address: smtp.gmail.com
           server_port: 465
           secure: true
-          username: ${{ secrets.GMAIL_USERNAME }}
-          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
           subject: "OPFL Week ${{ steps.week.outputs.week }} Score Breakdown"
           to: griffin.ansel@gmail.com
-          from: OPFL Autoscorer <${{ secrets.GMAIL_USERNAME }}>
+          from: OPFL Autoscorer <${{ secrets.SMTP_USERNAME }}>
           body: file://starters_output.txt
 
       - name: Setup Pages
@@ -162,3 +162,28 @@ jobs:
         if: steps.check_window.outputs.in_window == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Alert commissioner on failure
+        if: failure()
+        env:
+          COMMISSIONER_EMAIL: ${{ secrets.COMMISSIONER_EMAIL }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        run: |
+          uv run --frozen python << 'EOF'
+          import os
+
+          from scripts.email_delivery import commissioner_recipients, send_email
+
+          run_url = f"{os.environ.get('GITHUB_SERVER_URL')}/{os.environ.get('GITHUB_REPOSITORY')}/actions/runs/{os.environ.get('GITHUB_RUN_ID')}"
+
+          body = (
+              'The OPFL Autoscorer workflow (score.yml) failed.\n\n'
+              f'Check the run for details: {run_url}\n\n'
+              'The site may show stale data until this is fixed and the workflow re-run.'
+          )
+          recipients = commissioner_recipients()
+          if not send_email('OPFL: score.yml workflow failed', body, recipients):
+              raise SystemExit('Failed to send score workflow failure alert')
+          print(f'Sent failure alert to {len(recipients)} recipient(s)')
+          EOF

@@ -77,11 +77,12 @@ week's matchups from the schedule, standings, taxi squads, and draft picks.
 right after each night's games wrap up - the runs timed for after TNF, SNF, and
 MNF (not the daily catch-all or the mid-Sunday windows). Sending uses Gmail SMTP
 via [`dawidd6/action-send-mail`](https://github.com/dawidd6/action-send-mail) and
-needs two repo secrets:
+needs these repo secrets:
 
-- `GMAIL_USERNAME` - the sending Gmail address
-- `GMAIL_APP_PASSWORD` - an [app password](https://myaccount.google.com/apppasswords)
+- `SMTP_USERNAME` - the sending Gmail address
+- `SMTP_PASSWORD` - an [app password](https://myaccount.google.com/apppasswords)
   for that account (requires 2-Step Verification to be enabled)
+- `COMMISSIONER_EMAIL` - where failure alerts go (comma-separated for several)
 
 Add them under Settings → Secrets and variables → Actions.
 
