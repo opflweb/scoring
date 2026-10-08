@@ -379,6 +379,23 @@
             color: var(--text-muted);
         }
 
+        .top-six-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-tertiary);
+        }
+
+        .top-six-badge.live {
+            opacity: 0.75;
+            font-weight: 500;
+        }
+
+        .score-rank-line {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
         .vs-container {
             display: flex;
             flex-direction: column;

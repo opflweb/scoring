@@ -568,6 +568,96 @@
             return html;
         }
 
+        const TOP_SCORERS_CUTOFF = 6;
+
+        // A team is done once every starter's NFL game is final (or on bye),
+        // so its score can no longer move. A finished week settles everyone.
+        function startersRemaining(team, weekData) {
+            if (weekData.final) return 0;
+            return (team.roster || []).filter(player => {
+                if (!player.starter) return false;
+                const opponent = getWeekOpponent(player.nfl_team, weekData.week);
+                return !(opponent?.final || opponent?.bye);
+            }).length;
+        }
+
+        function teamStartersDone(team, weekData) {
+            return startersRemaining(team, weekData) === 0;
+        }
+
+        function ordinalPlace(n) {
+            const mod100 = n % 100;
+            if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
+            return `${n}${{ 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th'}`;
+        }
+
+        // Mirrors the Top 6 bonus in export_for_web.py: teams tied on
+        // total_score share whichever top-6 slots their tie group spans, so a
+        // team counts as top 6 if its group claims any of them. Returns a Map
+        // of abbrev -> { rank, tied, total, topSix, secured }. `secured` means no remaining
+        // game can push the team out: its own score is final, and the teams
+        // above it plus every team at or below it that is still playing (each
+        // of which could pass it) don't fill the top 6.
+        function computeTopSixRanks(weekData) {
+            const teams = weekData.teams.map(team => ({
+                abbrev: team.abbrev,
+                score: team.total_score || 0,
+                done: teamStartersDone(team, weekData),
+            }));
+            teams.sort((a, b) => b.score - a.score);
+
+            const ranks = new Map();
+            let rank = 0;
+            let i = 0;
+            while (i < teams.length) {
+                const score = teams[i].score;
+                const group = [];
+                while (i < teams.length && teams[i].score === score) {
+                    group.push(teams[i]);
+                    i++;
+                }
+                const topSix = rank < TOP_SCORERS_CUTOFF;
+                group.forEach(t => {
+                    const canPass = teams.filter(other => other !== t && other.score <= t.score && !other.done).length;
+                    ranks.set(t.abbrev, {
+                        rank: rank + 1,
+                        tied: group.length > 1,
+                        total: teams.length,
+                        topSix,
+                        secured: topSix && t.done && rank + canPass < TOP_SCORERS_CUTOFF,
+                    });
+                });
+                rank += group.length;
+            }
+            return ranks;
+        }
+
+        // "Top 6" once the spot is locked in, "Currently Top 6" while games
+        // still to be played could knock the team out.
+        function renderTopSixBadge(abbrev, topSixRanks) {
+            const entry = topSixRanks?.get(abbrev);
+            if (!entry?.topSix) return '';
+            return `<div class="top-six-badge ${entry.secured ? 'final' : 'live'}">${entry.secured ? 'Top 6' : 'Currently Top 6'} - ${entry.rank}</div>`;
+        }
+
+        // Every team's scoring rank for the week ("T-5th of 12 in points") and,
+        // while the week is in progress, how many of its starters have yet to play.
+        function renderScoreRankLine(team, weekData, topSixRanks) {
+            const entry = topSixRanks?.get(team.abbrev);
+            const parts = [];
+            if (entry) {
+                parts.push(`${entry.tied ? 'T-' : ''}${ordinalPlace(entry.rank)} of ${entry.total} in points`);
+            }
+            if (!weekData.final) {
+                const remaining = startersRemaining(team, weekData);
+                parts.push(remaining === 0
+                    ? 'all starters done'
+                    : `${remaining} starter${remaining === 1 ? '' : 's'} left`);
+            }
+            if (!parts.length) return '';
+            return `<div class="score-rank-line">${parts.join(' · ')}</div>`;
+        }
+
         function renderMatchups() {
             const container = document.getElementById('matchups-container');
             const playoffContainer = document.getElementById('playoff-container');
@@ -613,6 +703,11 @@
 
             const projections = weekData.projections || null;
 
+            // Only tag Top 6 once someone has points on the board.
+            const topSixRanks = weekData.teams.some(t => (t.total_score || 0) > 0)
+                ? computeTopSixRanks(weekData)
+                : null;
+
             container.innerHTML = matchups.map((matchup, idx) => {
                 const t1 = matchup.team1;
                 const t2 = matchup.team2;
@@ -635,6 +730,8 @@
                             <div class="team">
                                 <div class="team-name">${t1.name}</div>
                                 <div class="team-owner">${t1.owner}</div>
+                                ${renderTopSixBadge(t1.abbrev, topSixRanks)}
+                                ${renderScoreRankLine(t1, weekData, topSixRanks)}
                             </div>
                             <div class="vs-container">
                                 <div class="score-display">
@@ -647,6 +744,8 @@
                             <div class="team right">
                                 <div class="team-name">${t2.name}</div>
                                 <div class="team-owner">${t2.owner}</div>
+                                ${renderTopSixBadge(t2.abbrev, topSixRanks)}
+                                ${renderScoreRankLine(t2, weekData, topSixRanks)}
                             </div>
                         </div>
                         <button class="expand-btn" onclick="toggleRoster(${idx})">View Rosters</button>
