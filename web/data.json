@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09T02:08:44.841005Z",
+  "updated_at": "2026-10-09T09:02:09.177957Z",
   "season": 2026,
   "current_week": 5,
   "regular_season_weeks": 15,
@@ -13493,12 +13493,12 @@
       "DAL": {
         "opponent": "TB",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "TB": {
         "opponent": "DAL",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "JAX": {
         "opponent": "PHI",
