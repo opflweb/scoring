@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-11T23:49:38.002819Z",
+  "updated_at": "2026-10-12T01:34:49.228736Z",
   "season": 2026,
   "current_week": 5,
   "regular_season_weeks": 15,
@@ -13613,12 +13613,12 @@
       "SEA": {
         "opponent": "SF",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "SF": {
         "opponent": "SEA",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "ATL": {
         "opponent": "BAL",
