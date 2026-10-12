@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T02:00:06.326226Z",
+  "updated_at": "2026-10-12T04:08:18.493784Z",
   "season": 2026,
   "current_week": 5,
   "regular_season_weeks": 15,
@@ -13623,12 +13623,12 @@
       "ATL": {
         "opponent": "BAL",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "BAL": {
         "opponent": "ATL",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "LA": {
         "opponent": "BUF",
