@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "week": 5,
-  "final": false,
-  "scored_at": "2026-10-12T19:15:35.819858Z",
+  "final": true,
+  "scored_at": "2026-10-13T09:38:37.013791Z",
   "has_scores": true,
   "pairings": [
     [
@@ -111,10 +111,13 @@
           "name": "Puka Nacua",
           "nfl_team": "LA",
           "position": "WR",
-          "score": 0.0,
+          "score": 10.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 4,
+            "touchdowns": 6
+          }
         },
         {
           "name": "Justin Jefferson",
@@ -132,10 +135,12 @@
           "name": "Davante Adams",
           "nfl_team": "LA",
           "position": "WR",
-          "score": 0.0,
+          "score": 12.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 12
+          }
         },
         {
           "name": "Mike Evans",
@@ -174,7 +179,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -263,8 +268,8 @@
           }
         }
       ],
-      "total_score": 51.0,
-      "score_rank": 5
+      "total_score": 73.0,
+      "score_rank": 3
     },
     {
       "name": "STEVE L.",
@@ -549,10 +554,12 @@
           "name": "Kyren Williams",
           "nfl_team": "LA",
           "position": "RB",
-          "score": 0.0,
+          "score": 6.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "D'Andre Swift",
@@ -569,10 +576,12 @@
           "name": "Blake Corum",
           "nfl_team": "LA",
           "position": "RB",
-          "score": 0.0,
+          "score": 6.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "Kaelon Black",
@@ -738,8 +747,8 @@
           }
         }
       ],
-      "total_score": 34.0,
-      "score_rank": 9
+      "total_score": 40.0,
+      "score_rank": 11
     },
     {
       "name": "KEVIN",
@@ -762,10 +771,13 @@
           "name": "Matthew Stafford",
           "nfl_team": "LA",
           "position": "QB",
-          "score": 0.0,
+          "score": 23.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 5,
+            "touchdowns": 18
+          }
         },
         {
           "name": "Drew Allar",
@@ -922,10 +934,16 @@
           "name": "LA Rams",
           "nfl_team": "LA",
           "position": "DF",
-          "score": 0.0,
+          "score": 0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": -6,
+            "interceptions": 2,
+            "fumble_recoveries": 2,
+            "sacks": 1,
+            "floor_applied": true
+          }
         },
         {
           "name": "Jacksonville",
@@ -962,8 +980,8 @@
           }
         }
       ],
-      "total_score": 23.0,
-      "score_rank": 12
+      "total_score": 46.0,
+      "score_rank": 9
     },
     {
       "name": "DANNY/JOEY",
@@ -974,10 +992,16 @@
           "name": "Josh Allen",
           "nfl_team": "BUF",
           "position": "QB",
-          "score": 0.0,
+          "score": 18.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 2,
+            "rushing_yards": 3,
+            "touchdowns": 12,
+            "two_point_conversions": 2,
+            "interceptions": -1
+          }
         },
         {
           "name": "Malik Willis",
@@ -1019,10 +1043,14 @@
           "name": "James Cook",
           "nfl_team": "BUF",
           "position": "RB",
-          "score": 0.0,
+          "score": 14.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "rushing_yards": 3,
+            "touchdowns": 12,
+            "fumbles_lost": -1
+          }
         },
         {
           "name": "JK Dobbins",
@@ -1196,8 +1224,8 @@
           }
         }
       ],
-      "total_score": 26.0,
-      "score_rank": 11
+      "total_score": 58.0,
+      "score_rank": 4
     },
     {
       "name": "GREG/GRIFFIN",
@@ -1426,7 +1454,7 @@
         }
       ],
       "total_score": 56.0,
-      "score_rank": 3
+      "score_rank": 5
     },
     {
       "name": "ERIC/JEFF",
@@ -1525,10 +1553,12 @@
           "name": "Khalil Shakir",
           "nfl_team": "BUF",
           "position": "WR",
-          "score": 0.0,
+          "score": 2.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 2
+          }
         },
         {
           "name": "Kayshon Boutte",
@@ -1659,7 +1689,7 @@
         }
       ],
       "total_score": 33.0,
-      "score_rank": 10
+      "score_rank": 12
     },
     {
       "name": "ANDREW",
@@ -1802,19 +1832,23 @@
           "name": "Dalton Kincaid",
           "nfl_team": "BUF",
           "position": "TE",
-          "score": 0.0,
+          "score": 2.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "two_point_conversions": 2
+          }
         },
         {
           "name": "Tyler Higbee",
           "nfl_team": "LA",
           "position": "TE",
-          "score": 0.0,
+          "score": 3.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 3
+          }
         },
         {
           "name": "Daniel Carlson",
@@ -1832,10 +1866,15 @@
           "name": "Tyler Bass",
           "nfl_team": "BUF",
           "position": "K",
-          "score": 0.0,
+          "score": 8.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 2,
+            "pat_missed": -1,
+            "fg_1_29": 1,
+            "fg_40_49": 6
+          }
         },
         {
           "name": "Minnesota",
@@ -1886,7 +1925,7 @@
           }
         }
       ],
-      "total_score": 40.0,
+      "total_score": 48.0,
       "score_rank": 8
     },
     {
@@ -2122,7 +2161,7 @@
         }
       ],
       "total_score": 51.0,
-      "score_rank": 6
+      "score_rank": 7
     },
     {
       "name": "KEMP/A/M",
@@ -2343,10 +2382,12 @@
           "name": "Joe Brady",
           "nfl_team": "BUF",
           "position": "HC",
-          "score": 0.0,
+          "score": 7,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "road_underdog_win": 7
+          }
         },
         {
           "name": "Mike McCarthy",
@@ -2545,17 +2586,25 @@
           "position": "K",
           "score": 0.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 4,
+            "fg_missed": -4
+          }
         },
         {
           "name": "Buffalo",
           "nfl_team": "BUF",
           "position": "DF",
-          "score": 0.0,
+          "score": 0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": -4,
+            "sacks": 1,
+            "blocked_kicks": 2,
+            "floor_applied": true
+          }
         },
         {
           "name": "Cleveland",
@@ -2594,7 +2643,7 @@
         }
       ],
       "total_score": 44.0,
-      "score_rank": 7
+      "score_rank": 10
     },
     {
       "name": "ADAM",
@@ -2819,7 +2868,7 @@
         }
       ],
       "total_score": 56.0,
-      "score_rank": 4
+      "score_rank": 6
     }
   ]
 }
