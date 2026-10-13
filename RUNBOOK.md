@@ -89,6 +89,7 @@ To score right away after pushing:
 ```bash
 gh workflow run score.yml            # auto-detects the week
 gh workflow run score.yml -f week=4  # or force a specific week
+gh workflow run score.yml -f send_email=true  # also email the breakdown
 gh run watch                         # follow it
 ```
 

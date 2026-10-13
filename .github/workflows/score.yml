@@ -8,6 +8,11 @@ on:
         description: 'NFL Week number'
         required: false
         type: number
+      send_email:
+        description: 'Email the score breakdown'
+        required: false
+        type: boolean
+        default: false
 
   # Scheduled runs - 30 minutes after nflverse data updates
   # Only runs during NFL season months (Jan, Feb, Sep-Dec)
@@ -120,10 +125,12 @@ jobs:
         # Only the three runs timed for right after Thursday, Sunday, and
         # Monday night games finish (see the cron comments above) - not the
         # daily catch-all or the mid-Sunday windows, so this doesn't spam an
-        # email every time the workflow ticks.
+        # email every time the workflow ticks. Manual runs email only when
+        # send_email is checked.
         if: >-
           steps.check_window.outputs.in_window == 'true' &&
-          (github.event.schedule == '0 6 * 1,2,9-12 5' ||
+          (inputs.send_email ||
+           github.event.schedule == '0 6 * 1,2,9-12 5' ||
            github.event.schedule == '0 6 * 1,2,9-12 1' ||
            github.event.schedule == '0 6 * 1,2,9-12 2')
         run: |
@@ -133,7 +140,8 @@ jobs:
       - name: Email score breakdown
         if: >-
           steps.check_window.outputs.in_window == 'true' &&
-          (github.event.schedule == '0 6 * 1,2,9-12 5' ||
+          (inputs.send_email ||
+           github.event.schedule == '0 6 * 1,2,9-12 5' ||
            github.event.schedule == '0 6 * 1,2,9-12 1' ||
            github.event.schedule == '0 6 * 1,2,9-12 2')
         uses: dawidd6/action-send-mail@2cea9617b09d79a095af21254fbcb7ae95903dde # v3.12.0
