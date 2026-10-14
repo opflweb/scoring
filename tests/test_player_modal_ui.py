@@ -79,17 +79,29 @@ def test_position_rank_counts_bench_and_skips_live_week():
     }
     data = {
         'weeks': [
-            {'week': 1, 'final': True, 'teams': [
-                {'abbrev': 'G/G', 'roster': [rb('Ace', 10), rb('Bench Guy', 30, False)]},
-                {'abbrev': 'K/D', 'roster': [rb('Cee', 20)]},
-            ]},
-            {'week': 2, 'final': True, 'teams': [
-                {'abbrev': 'G/G', 'roster': [rb('Ace', 10), rb('Bench Guy', 0, False)]},
-                {'abbrev': 'K/D', 'roster': [rb('Cee', 0)]},
-            ]},
-            {'week': 3, 'final': False, 'teams': [
-                {'abbrev': 'K/D', 'roster': [rb('Cee', 50)]},
-            ]},
+            {
+                'week': 1,
+                'final': True,
+                'teams': [
+                    {'abbrev': 'G/G', 'roster': [rb('Ace', 10), rb('Bench Guy', 30, False)]},
+                    {'abbrev': 'K/D', 'roster': [rb('Cee', 20)]},
+                ],
+            },
+            {
+                'week': 2,
+                'final': True,
+                'teams': [
+                    {'abbrev': 'G/G', 'roster': [rb('Ace', 10), rb('Bench Guy', 0, False)]},
+                    {'abbrev': 'K/D', 'roster': [rb('Cee', 0)]},
+                ],
+            },
+            {
+                'week': 3,
+                'final': False,
+                'teams': [
+                    {'abbrev': 'K/D', 'roster': [rb('Cee', 50)]},
+                ],
+            },
         ],
     }
     rendered = _run_node(

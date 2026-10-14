@@ -14,8 +14,12 @@ APP_JS = (ROOT / 'web' / 'app.js').read_text()
 INDEX_HTML = (ROOT / 'web' / 'index.html').read_text()
 DATA = json.loads((ROOT / 'web' / 'data.json').read_text())
 
-HELPERS = APP_JS[APP_JS.index('const NFL_TEAM_ALIASES') : APP_JS.index('// Historical championship data')]
-MY_TEAM_HELPERS = APP_JS[APP_JS.index('const DEFAULT_TEAM_NUMBER_MAP') : APP_JS.index('const NFL_TEAM_ALIASES')]
+HELPERS = APP_JS[
+    APP_JS.index('const NFL_TEAM_ALIASES') : APP_JS.index('// Historical championship data')
+]
+MY_TEAM_HELPERS = APP_JS[
+    APP_JS.index('const DEFAULT_TEAM_NUMBER_MAP') : APP_JS.index('const NFL_TEAM_ALIASES')
+]
 INSIGHTS = APP_JS[
     APP_JS.index('// Optimal lineup and bench mistakes') : APP_JS.index('const BREAKDOWN_LABELS')
 ]
@@ -36,15 +40,29 @@ let data = {json.dumps(data)};
 
 
 def _player(name, position, score, starter):
-    return {'name': name, 'position': position, 'nfl_team': 'XX', 'score': score, 'starter': starter}
+    return {
+        'name': name,
+        'position': position,
+        'nfl_team': 'XX',
+        'score': score,
+        'starter': starter,
+    }
 
 
 def test_matchup_cards_and_leaders_tab_render_the_new_pieces():
     body = APP_JS.split('function renderMatchups(')[1].split('\n        function ')[0]
-    for call in ('renderTopSixBadge(', 'renderScoreRankLine(', 'renderTeamOptimal(', 'renderOptimalSummary(', 'renderH2HBadge('):
+    for call in (
+        'renderTopSixBadge(',
+        'renderScoreRankLine(',
+        'renderTeamOptimal(',
+        'renderOptimalSummary(',
+        'renderH2HBadge(',
+    ):
         assert call in body, call
     assert 'id="team-stats-container"' in INDEX_HTML
-    assert 'renderTeamStats();' in APP_JS.split('function initApp(')[1].split('\n        function ')[0]
+    assert (
+        'renderTeamStats();' in APP_JS.split('function initApp(')[1].split('\n        function ')[0]
+    )
 
 
 def test_optimal_lineup_agrees_with_exporter_on_every_final_week():
@@ -60,7 +78,7 @@ process.stdout.write(JSON.stringify(teams.map(t => {{
 }})));
 """,
     )
-    for team, js in zip(teams, rendered):
+    for team, js in zip(teams, rendered, strict=True):
         py = calculate_lineup_efficiency(team)
         assert js['optimal'] == py['optimal_points'], team['abbrev']
         assert round(js['left'], 1) == py['points_left_on_table'], team['abbrev']
@@ -94,7 +112,11 @@ process.stdout.write(JSON.stringify({{
 
 def test_top_six_secured_only_when_nobody_can_pass():
     def team(abbrev, score, starter_team):
-        return {'abbrev': abbrev, 'total_score': score, 'roster': [_player(abbrev, 'QB', score, True) | {'nfl_team': starter_team}]}
+        return {
+            'abbrev': abbrev,
+            'total_score': score,
+            'roster': [_player(abbrev, 'QB', score, True) | {'nfl_team': starter_team}],
+        }
 
     # 12 teams; DONE plays in a final game, LIVE in one still going.
     teams = [team(f'T{i}', 100 - i * 5, 'DONE') for i in range(12)]
@@ -102,7 +124,12 @@ def test_top_six_secured_only_when_nobody_can_pass():
     teams[6] = team('T6', 70, 'LIVE')
     week = {'week': 4, 'final': False, 'teams': teams}
     data = {
-        'game_opponents': {'4': {'DONE': {'opponent': 'X', 'final': True}, 'LIVE': {'opponent': 'Y', 'final': False}}},
+        'game_opponents': {
+            '4': {
+                'DONE': {'opponent': 'X', 'final': True},
+                'LIVE': {'opponent': 'Y', 'final': False},
+            }
+        },
     }
     rendered = _run_node(
         data,
@@ -125,15 +152,33 @@ def test_h2h_is_from_first_teams_perspective():
         'season': 2026,
         'schedule': {'1': [['G/G', 'STL']], '2': [['STL', 'G/G']]},
         'weeks': [
-            {'week': 1, 'final': True, 'teams': [{'abbrev': 'G/G', 'total_score': 50}, {'abbrev': 'STL', 'total_score': 40}]},
-            {'week': 2, 'final': False, 'teams': [{'abbrev': 'G/G', 'total_score': 1}, {'abbrev': 'STL', 'total_score': 60}]},
+            {
+                'week': 1,
+                'final': True,
+                'teams': [
+                    {'abbrev': 'G/G', 'total_score': 50},
+                    {'abbrev': 'STL', 'total_score': 40},
+                ],
+            },
+            {
+                'week': 2,
+                'final': False,
+                'teams': [
+                    {'abbrev': 'G/G', 'total_score': 1},
+                    {'abbrev': 'STL', 'total_score': 60},
+                ],
+            },
         ],
         'hall_of_fame': {
             'seasons': [2022, 2026],
-            'head_to_head': [{'team1': 'STL', 'team2': 'G/G', 'team1_wins': 3, 'team2_wins': 5, 'ties': 1}],
+            'head_to_head': [
+                {'team1': 'STL', 'team2': 'G/G', 'team1_wins': 3, 'team2_wins': 5, 'ties': 1}
+            ],
         },
     }
-    rendered = _run_node(data, "process.stdout.write(JSON.stringify(renderH2HBadge('G/G', 'STL')));")
+    rendered = _run_node(
+        data, "process.stdout.write(JSON.stringify(renderH2HBadge('G/G', 'STL')));"
+    )
     assert 'Since 2022: 5–3–1' in rendered
     # Week 2 isn't final, so only week 1 counts this season.
     assert '2026: 1–0' in rendered
