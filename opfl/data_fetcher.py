@@ -59,7 +59,7 @@ def _is_nickname_pair(first_a: str, first_b: str) -> bool:
         return False
 
     prefix_len = 0
-    for char_a, char_b in zip(shorter, longer):
+    for char_a, char_b in zip(shorter, longer, strict=False):
         if char_a != char_b:
             break
         prefix_len += 1
@@ -108,9 +108,12 @@ def fuzzy_match_name(
     if len(query_parts) >= 2 and len(match_parts) >= 2:
         query_first, query_last = query_parts[0], query_parts[-1]
         match_first, match_last = match_parts[0], match_parts[-1]
-        if query_last == match_last and query_first != match_first:
-            if not _is_nickname_pair(query_first, match_first):
-                return None
+        if (
+            query_last == match_last
+            and query_first != match_first
+            and not _is_nickname_pair(query_first, match_first)
+        ):
+            return None
         # The reverse: a shared first name carries a different last name over
         # the threshold (e.g. "Josh Jacobs" -> "Josh Jobe", "Jordan Mason" ->
         # "Jordan Stout") when the real player has no stats that week. Last

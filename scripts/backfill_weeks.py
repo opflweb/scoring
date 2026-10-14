@@ -161,7 +161,7 @@ def main():
     parser.add_argument(
         '--rescore',
         action='store_true',
-        help='Re-derive points from nflreadpy stats instead of reading the sheet\'s own values',
+        help="Re-derive points from nflreadpy stats instead of reading the sheet's own values",
     )
     args = parser.parse_args()
 

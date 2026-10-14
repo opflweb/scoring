@@ -48,9 +48,7 @@ def test_scored_players_can_expand_their_breakdown():
 
 def test_game_context_and_breakdown_render_like_qpfl():
     helpers = APP_JS[
-        APP_JS.index('const NFL_TEAM_ALIASES') : APP_JS.index(
-            '// Historical championship data'
-        )
+        APP_JS.index('const NFL_TEAM_ALIASES') : APP_JS.index('// Historical championship data')
     ]
     breakdown_helpers = APP_JS[
         APP_JS.index('const BREAKDOWN_LABELS') : APP_JS.index('function toggleRoster')

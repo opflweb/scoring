@@ -128,7 +128,12 @@ def _load_history(
                     position = player.get('position')
                     name = player.get('name')
                     nfl_team = normalize_team(player.get('nfl_team'))
-                    if not isinstance(score, (int, float)) or not position or not nfl_team or not name:
+                    if (
+                        not isinstance(score, (int, float))
+                        or not position
+                        or not nfl_team
+                        or not name
+                    ):
                         continue
                     game = schedule_lookup.get((hist_season, week_entry['week'], nfl_team))
                     observations.append(
@@ -226,7 +231,9 @@ def calculate_week_projections(
             nfl_team = normalize_team(player.get('nfl_team'))
             game = schedule_lookup.get((season, week, nfl_team))
             on_bye = game is None
-            baseline, stdev = player_baseline(player_key(player.get('name', ''), position), position)
+            baseline, stdev = player_baseline(
+                player_key(player.get('name', ''), position), position
+            )
 
             if on_bye:
                 projected = 0.0

@@ -15,13 +15,25 @@ def archived_week(number, season, final=True):
             {
                 'abbrev': 'AAA',
                 'roster': [
-                    {'name': 'Big Thrower', 'nfl_team': 'KC', 'position': 'QB', 'score': 25.0, 'starter': True}
+                    {
+                        'name': 'Big Thrower',
+                        'nfl_team': 'KC',
+                        'position': 'QB',
+                        'score': 25.0,
+                        'starter': True,
+                    }
                 ],
             },
             {
                 'abbrev': 'BBB',
                 'roster': [
-                    {'name': 'Small Thrower', 'nfl_team': 'BUF', 'position': 'QB', 'score': 15.0, 'starter': True}
+                    {
+                        'name': 'Small Thrower',
+                        'nfl_team': 'BUF',
+                        'position': 'QB',
+                        'score': 15.0,
+                        'starter': True,
+                    }
                 ],
             },
         ],
@@ -36,14 +48,32 @@ def live_week(number):
             {
                 'abbrev': 'AAA',
                 'roster': [
-                    {'name': 'Big Thrower', 'nfl_team': 'KC', 'position': 'QB', 'score': 0.0, 'starter': True},
-                    {'name': 'Bench Thrower', 'nfl_team': 'KC', 'position': 'QB', 'score': 0.0, 'starter': False},
+                    {
+                        'name': 'Big Thrower',
+                        'nfl_team': 'KC',
+                        'position': 'QB',
+                        'score': 0.0,
+                        'starter': True,
+                    },
+                    {
+                        'name': 'Bench Thrower',
+                        'nfl_team': 'KC',
+                        'position': 'QB',
+                        'score': 0.0,
+                        'starter': False,
+                    },
                 ],
             },
             {
                 'abbrev': 'BBB',
                 'roster': [
-                    {'name': 'Small Thrower', 'nfl_team': 'BUF', 'position': 'QB', 'score': 0.0, 'starter': True}
+                    {
+                        'name': 'Small Thrower',
+                        'nfl_team': 'BUF',
+                        'position': 'QB',
+                        'score': 0.0,
+                        'starter': True,
+                    }
                 ],
             },
         ],
@@ -66,7 +96,14 @@ SCHEDULE_ROWS = [
 class TestCalculateWeekProjections:
     def test_projects_toward_players_own_history(self, tmp_path):
         for week_num in range(1, 3):
-            save_week(2026, week_num, archived_week(week_num, 2026), [['AAA', 'BBB']], True, data_dir=tmp_path)
+            save_week(
+                2026,
+                week_num,
+                archived_week(week_num, 2026),
+                [['AAA', 'BBB']],
+                True,
+                data_dir=tmp_path,
+            )
 
         week_data = live_week(3)
         result = calculate_week_projections(
@@ -89,7 +126,14 @@ class TestCalculateWeekProjections:
 
     def test_finished_game_uses_actual_score_not_projection(self, tmp_path):
         for week_num in range(1, 3):
-            save_week(2026, week_num, archived_week(week_num, 2026), [['AAA', 'BBB']], True, data_dir=tmp_path)
+            save_week(
+                2026,
+                week_num,
+                archived_week(week_num, 2026),
+                [['AAA', 'BBB']],
+                True,
+                data_dir=tmp_path,
+            )
 
         week_data = live_week(3)
         # Both games are final for week 3 in this schedule variant.
@@ -110,7 +154,9 @@ class TestCalculateWeekProjections:
     def test_bye_week_player_contributes_zero(self, tmp_path):
         week_data = live_week(3)
         # No schedule rows at all for week 3: both teams are treated as on bye.
-        result = calculate_week_projections(week_data, [['AAA', 'BBB']], 2026, 3, [], data_dir=tmp_path)
+        result = calculate_week_projections(
+            week_data, [['AAA', 'BBB']], 2026, 3, [], data_dir=tmp_path
+        )
 
         assert week_data['teams'][0]['roster'][0]['projected_points'] == 0.0
         assert result['AAA']['projected_total'] == 0.0
