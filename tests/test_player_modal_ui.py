@@ -15,7 +15,7 @@ def _function_body(name):
 
 
 def _run_node(script):
-    result = subprocess.run(['node', '-e', script], check=True, capture_output=True, text=True)
+    result = subprocess.run(['node', '-'], input=script, check=True, capture_output=True, text=True)
     return json.loads(result.stdout)
 
 

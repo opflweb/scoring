@@ -35,7 +35,7 @@ let data = {json.dumps(data)};
 {INSIGHTS}
 {body}
 """
-    result = subprocess.run(['node', '-e', script], check=True, capture_output=True, text=True)
+    result = subprocess.run(['node', '-'], input=script, check=True, capture_output=True, text=True)
     return json.loads(result.stdout)
 
 
