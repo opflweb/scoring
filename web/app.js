@@ -25,6 +25,35 @@
             return pairs.map(pair => pair.map(entry => numberMap[entry] || numberMap[String(entry)] || entry));
         }
 
+        // Greg/Griffin's team, given the sibling QPFL site's logged-in
+        // "my team" treatment: floated to the top of unranked lists (matchups,
+        // schedule, team picker) and highlighted everywhere else, while ranked
+        // lists (standings, leaders, odds) keep their real order.
+        const MY_TEAM = 'G/G';
+
+        function myTeamClass(abbrev) {
+            return abbrev === MY_TEAM ? 'is-my-team' : '';
+        }
+
+        function floatMyTeam(items, getAbbrev) {
+            const isMine = item => [].concat(getAbbrev(item)).includes(MY_TEAM);
+            const mine = items.filter(isMine);
+            if (!mine.length || mine.length === items.length) return items;
+            return [...mine, ...items.filter(item => !isMine(item))];
+        }
+
+        // Matchup pairs are [abbrev, abbrev]; MY_TEAM always takes the left side.
+        function myTeamFirstPairs(pairs) {
+            const ordered = pairs.map(([a, b]) => (b === MY_TEAM ? [b, a] : [a, b]));
+            return floatMyTeam(ordered, pair => pair);
+        }
+
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, ch => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            })[ch]);
+        }
+
         const NFL_TEAM_ALIASES = { LAR: 'LA', JAC: 'JAX', WSH: 'WAS' };
         const NFL_TEAM_REVERSE_ALIASES = { LA: 'LAR', JAX: 'JAC', WAS: 'WSH' };
 
@@ -217,12 +246,15 @@
                 });
             });
             
+            initPlayerModal();
+
             renderWeekSelector();
             renderMatchups();
             renderSchedule();
             renderStandings();
             renderPlayoffOdds();
             renderStatsLeaders();
+            renderTeamStats();
             renderTeamSelector();
             renderHistory();
             renderBanners();
@@ -331,7 +363,7 @@
                 }
 
                 // Build matchups HTML
-                const matchupsHtml = schedule.map(([abbrev1, abbrev2]) => {
+                const matchupsHtml = myTeamFirstPairs(schedule).map(([abbrev1, abbrev2]) => {
                     const team1 = teamsByAbbrev[abbrev1];
                     const team2 = teamsByAbbrev[abbrev2];
                     
@@ -349,7 +381,7 @@
                         return `
                             <div class="schedule-matchup">
                                 <div class="schedule-team ${team1Winning ? 'winner' : team2Winning ? 'loser' : ''}">
-                                    <span class="schedule-team-name">${team1Name}</span>
+                                    <span class="schedule-team-name ${myTeamClass(abbrev1)}">${team1Name}</span>
                                 </div>
                                 <div class="schedule-score-box">
                                     <span class="schedule-score ${team1Winning ? 'winning' : ''}">${score1}</span>
@@ -357,7 +389,7 @@
                                     <span class="schedule-score ${team2Winning ? 'winning' : ''}">${score2}</span>
                                 </div>
                                 <div class="schedule-team away ${team2Winning ? 'winner' : team1Winning ? 'loser' : ''}">
-                                    <span class="schedule-team-name">${team2Name}</span>
+                                    <span class="schedule-team-name ${myTeamClass(abbrev2)}">${team2Name}</span>
                                 </div>
                             </div>
                         `;
@@ -365,13 +397,13 @@
                         return `
                             <div class="schedule-matchup">
                                 <div class="schedule-team">
-                                    <span class="schedule-team-name">${team1Name}</span>
+                                    <span class="schedule-team-name ${myTeamClass(abbrev1)}">${team1Name}</span>
                                 </div>
                                 <div class="schedule-score-box">
                                     <span class="schedule-no-score">vs</span>
                                 </div>
                                 <div class="schedule-team away">
-                                    <span class="schedule-team-name">${team2Name}</span>
+                                    <span class="schedule-team-name ${myTeamClass(abbrev2)}">${team2Name}</span>
                                 </div>
                             </div>
                         `;
@@ -693,8 +725,8 @@
                 teamsByAbbrev[t.abbrev] = t;
             });
 
-            // Build matchups from schedule
-            const matchups = schedule.map(([abbrev1, abbrev2]) => {
+            // Build matchups from schedule, G/G's game first
+            const matchups = myTeamFirstPairs(schedule).map(([abbrev1, abbrev2]) => {
                 return {
                     team1: teamsByAbbrev[abbrev1],
                     team2: teamsByAbbrev[abbrev2]
@@ -727,11 +759,12 @@
                 return `
                     <div class="matchup-card">
                         <div class="matchup-header">
-                            <div class="team">
+                            <div class="team ${myTeamClass(t1.abbrev)}">
                                 <div class="team-name">${t1.name}</div>
                                 <div class="team-owner">${t1.owner}</div>
                                 ${renderTopSixBadge(t1.abbrev, topSixRanks)}
                                 ${renderScoreRankLine(t1, weekData, topSixRanks)}
+                                ${renderTeamOptimal(t1.roster)}
                             </div>
                             <div class="vs-container">
                                 <div class="score-display">
@@ -740,23 +773,27 @@
                                     <span class="score ${t2Winning ? 'winning' : t1Winning ? 'losing' : ''}">${t2.total_score}</span>
                                 </div>
                                 ${projectionHtml}
+                                ${renderH2HBadge(t1.abbrev, t2.abbrev)}
                             </div>
-                            <div class="team right">
+                            <div class="team right ${myTeamClass(t2.abbrev)}">
                                 <div class="team-name">${t2.name}</div>
                                 <div class="team-owner">${t2.owner}</div>
                                 ${renderTopSixBadge(t2.abbrev, topSixRanks)}
                                 ${renderScoreRankLine(t2, weekData, topSixRanks)}
+                                ${renderTeamOptimal(t2.roster)}
                             </div>
                         </div>
                         <button class="expand-btn" onclick="toggleRoster(${idx})">View Rosters</button>
                         <div class="roster-panel" id="roster-${idx}">
                             <div class="roster-grid">
-                                <div class="roster-column">
+                                <div class="roster-column ${myTeamClass(t1.abbrev)}">
                                     <h4>${t1.name}</h4>
+                                    ${renderOptimalSummary(t1.roster)}
                                     ${renderRosterList(t1.roster, currentWeek)}
                                 </div>
-                                <div class="roster-column">
+                                <div class="roster-column ${myTeamClass(t2.abbrev)}">
                                     <h4>${t2.name}</h4>
+                                    ${renderOptimalSummary(t2.roster)}
                                     ${renderRosterList(t2.roster, currentWeek)}
                                 </div>
                             </div>
@@ -764,6 +801,148 @@
                     </div>
                 `;
             }).join('');
+        }
+
+        // Optimal lineup and bench mistakes, ported from the sibling QPFL
+        // site's computeOptimalLineup. Slot counts come from the submitted
+        // lineup, same as the exporter's calculate_lineup_efficiency, so this
+        // agrees with team_stats.points_left_on_table.
+        function computeOptimalLineup(roster) {
+            if (!Array.isArray(roster)) return null;
+
+            const slotCounts = {};
+            const byPos = {};
+            for (const p of roster) {
+                if (!Number.isFinite(p.score)) continue;
+                if (!byPos[p.position]) byPos[p.position] = [];
+                byPos[p.position].push(p);
+                if (p.starter) slotCounts[p.position] = (slotCounts[p.position] || 0) + 1;
+            }
+            if (Object.keys(slotCounts).length === 0) return null;
+
+            let optimalTotal = 0;
+            let actualStarterTotal = 0;
+            const mistakes = [];
+
+            for (const [pos, count] of Object.entries(slotCounts)) {
+                const players = byPos[pos] || [];
+                const sorted = [...players].sort((a, b) => b.score - a.score);
+                // An empty slot scores 0, so a negative scorer never belongs
+                // in the optimal lineup.
+                const best = sorted.slice(0, count).filter(p => p.score >= 0);
+                for (const p of best) optimalTotal += p.score;
+
+                const starters = players.filter(p => p.starter);
+                for (const p of starters) actualStarterTotal += p.score;
+
+                // Pair each benched player who belonged in the lineup with the
+                // starter whose slot they'd have taken, best with best, so
+                // the margins add up to the points left at this position.
+                const bestPlayers = new Set(best);
+                const shouldHaveStarted = best.filter(p => !p.starter);
+                const shouldNotHaveStarted = starters
+                    .filter(p => !bestPlayers.has(p))
+                    .sort((a, b) => b.score - a.score);
+                shouldNotHaveStarted.forEach((started, i) => {
+                    const benched = shouldHaveStarted[i] || null;
+                    const margin = (benched ? benched.score : 0) - started.score;
+                    // Ties (e.g. both 0 before kickoff) aren't real mistakes.
+                    if (margin > 0) mistakes.push({ benched, started, margin });
+                });
+            }
+
+            return {
+                optimalTotal,
+                actualStarterTotal,
+                leftOnBench: Math.max(0, optimalTotal - actualStarterTotal),
+                mistakes: mistakes.sort((a, b) => b.margin - a.margin),
+            };
+        }
+
+        // Compact "Opt 61 +7" under the team name on a matchup card.
+        function renderTeamOptimal(roster) {
+            const opt = computeOptimalLineup(roster);
+            if (!opt || opt.optimalTotal <= 0) return '';
+            const leftPoints = opt.leftOnBench >= 0.5;
+            return `
+                <div class="team-optimal" title="Best possible lineup from this roster">
+                    <span>Opt ${opt.optimalTotal.toFixed(0)}</span>
+                    ${leftPoints
+                        ? `<span class="team-optimal-delta">+${opt.leftOnBench.toFixed(0)}</span>`
+                        : '<span class="team-optimal-delta perfect">✓</span>'}
+                </div>
+            `;
+        }
+
+        // Full version above the expanded roster: optimal total plus each
+        // bench player who should have started, and who they should have
+        // replaced.
+        function renderOptimalSummary(roster) {
+            const opt = computeOptimalLineup(roster);
+            if (!opt || opt.optimalTotal <= 0) return '';
+            const leftPoints = opt.leftOnBench >= 0.5;
+            const mistakeLines = !leftPoints ? '' : opt.mistakes.map(m => `
+                <span class="bench-mistake-item">${m.benched
+                    ? `${escapeHtml(m.benched.name)} (${m.benched.position})`
+                    : `Empty ${m.started.position} slot`} over ${escapeHtml(m.started.name)} <strong>+${m.margin.toFixed(0)}</strong></span>
+            `).join('');
+            return `
+                <div class="optimal-summary">
+                    <div class="optimal-row">
+                        <span class="optimal-label">Optimal</span>
+                        <span class="optimal-score">${opt.optimalTotal.toFixed(0)} pts</span>
+                        <span class="optimal-delta${leftPoints ? '' : ' perfect'}">${leftPoints
+                            ? `+${opt.leftOnBench.toFixed(0)} left on bench`
+                            : 'Perfect lineup'}</span>
+                    </div>
+                    ${mistakeLines ? `<div class="bench-mistakes-list">${mistakeLines}</div>` : ''}
+                </div>
+            `;
+        }
+
+        // Series record between two teams, from abbrev1's side. All-time comes
+        // from hall_of_fame.head_to_head (every archived season, this one's
+        // completed weeks included); this season is recounted from final weeks.
+        function getH2HRecord(abbrev1, abbrev2) {
+            const rec = (data.hall_of_fame?.head_to_head || []).find(r =>
+                (r.team1 === abbrev1 && r.team2 === abbrev2) || (r.team1 === abbrev2 && r.team2 === abbrev1));
+            if (!rec) return null;
+            const flipped = rec.team1 !== abbrev1;
+            return {
+                wins1: flipped ? rec.team2_wins : rec.team1_wins,
+                wins2: flipped ? rec.team1_wins : rec.team2_wins,
+                ties: rec.ties,
+            };
+        }
+
+        function getSeasonH2H(abbrev1, abbrev2) {
+            let wins1 = 0, wins2 = 0, ties = 0;
+            for (const week of data.weeks || []) {
+                if (!week.final) continue;
+                const pairs = getWeekMatchups(week.week) || [];
+                const met = pairs.some(([a, b]) => (a === abbrev1 && b === abbrev2) || (a === abbrev2 && b === abbrev1));
+                if (!met) continue;
+                const s1 = week.teams.find(t => t.abbrev === abbrev1)?.total_score || 0;
+                const s2 = week.teams.find(t => t.abbrev === abbrev2)?.total_score || 0;
+                if (s1 > s2) wins1++;
+                else if (s2 > s1) wins2++;
+                else ties++;
+            }
+            return { wins1, wins2, ties };
+        }
+
+        function renderH2HBadge(abbrev1, abbrev2) {
+            const allTime = getH2HRecord(abbrev1, abbrev2);
+            const season = getSeasonH2H(abbrev1, abbrev2);
+            const record = r => `${r.wins1}–${r.wins2}${r.ties ? `–${r.ties}` : ''}`;
+            const parts = [];
+            if (allTime) {
+                const firstSeason = Math.min(...(data.hall_of_fame?.seasons || [data.season]));
+                parts.push(`Since ${firstSeason}: ${record(allTime)}`);
+            }
+            if (season.wins1 + season.wins2 + season.ties > 0) parts.push(`${data.season}: ${record(season)}`);
+            if (!parts.length) return '';
+            return `<div class="h2h-badge">${parts.join('<span class="h2h-sep">·</span>')}</div>`;
         }
 
         const BREAKDOWN_LABELS = {
@@ -813,7 +992,7 @@
             return parts.length ? `<div class="breakdown-content">${parts.join('')}</div>` : '';
         }
 
-        function renderRosterList(roster, weekNum) {
+        function renderRosterList(roster, weekNum, season) {
             if (!roster) return '<div class="player-row">No roster data</div>';
             
             const starters = roster.filter(p => p.starter);
@@ -846,8 +1025,9 @@
                             <span class="position-tag">${p.position}</span>
                             <span class="player-identity">
                                 <span class="player-name-line">
-                                    <span class="player-name">${p.name}</span>
+                                    ${playerProfileButton(p, season)}
                                     <span class="player-team">${p.nfl_team}</span>
+                                    ${positionRankTag(p, season)}
                                 </span>
                                 ${gameContext}
                             </span>
@@ -890,7 +1070,7 @@
                 const seed = seeds[abbrev] || '?';
                 const winClass = isWinner ? 'winner' : (isLoser ? 'loser' : '');
                 return `
-                    <div class="bracket-team ${winClass}">
+                    <div class="bracket-team ${winClass} ${myTeamClass(abbrev)}">
                         <div class="bracket-team-info">
                             ${showSeed ? `<span class="bracket-seed">${seed}</span>` : ''}
                             <span class="bracket-team-name">${getTeamName(abbrev)}</span>
@@ -996,7 +1176,7 @@
                         ${standings.map((team, idx) => {
                             const isWinner = winner && team.abbrev === winner;
                             return `
-                                <tr class="${isWinner ? 'winner' : ''}">
+                                <tr class="${isWinner ? 'winner' : ''} ${myTeamClass(team.abbrev)}">
                                     <td><span class="jamboree-rank">${idx + 1}</span></td>
                                     <td>
                                         ${team.name}
@@ -1228,6 +1408,7 @@
             const byTeam = {};
             for (const t of standings) {
                 byTeam[t.abbrev] = {
+                    abbrev: t.abbrev,
                     name: teamLabel[t.abbrev],
                     odds: playoffCount[t.abbrev] / PLAYOFF_TRIALS,
                 };
@@ -1254,7 +1435,7 @@
                         <span class="playoff-odds-meta">${sim.weeksRemaining} week${sim.weeksRemaining === 1 ? '' : 's'} remaining &middot; ${PLAYOFF_TRIALS.toLocaleString()} simulations</span>
                     </div>
                     ${teams.map(t => `
-                        <div class="playoff-odds-row">
+                        <div class="playoff-odds-row ${myTeamClass(t.abbrev)}">
                             <span class="playoff-odds-name">${t.name}</span>
                             <div class="playoff-odds-bar-track">
                                 <div class="playoff-odds-bar" style="width: ${(t.odds * 100).toFixed(1)}%"></div>
@@ -1332,7 +1513,7 @@
                                 : (sos ? '<td class="num sos">—</td>' : '');
 
                             return `
-                                <tr>
+                                <tr class="${myTeamClass(team.abbrev)}">
                                     <td>
                                         <span class="rank ${isPlayoff ? 'playoffs' : isToilet ? 'toilet-bowl' : ''}">${rank}</span>
                                     </td>
@@ -1480,10 +1661,10 @@
                             const rank = idx + 1;
                             const rankClass = rank <= 3 ? `rank-${rank}` : '';
                             return `
-                                <div class="stats-leader-row ${rankClass}">
+                                <div class="stats-leader-row ${rankClass} ${myTeamClass(player.fantasy_team)}">
                                     <div class="stats-rank">${rank}</div>
                                     <div class="stats-player-info">
-                                        <span class="stats-player-name">${player.name}</span>
+                                        <span class="stats-player-name">${playerProfileButton(player)}</span>
                                         <div class="stats-player-meta">
                                             <span class="stats-nfl-team">${player.nfl_team}</span>
                                             <span class="stats-fantasy-team">• ${player.fantasy_team}</span>
@@ -1508,14 +1689,319 @@
             });
         }
 
+        // Player profiles and position ranks, ported from the sibling QPFL
+        // site's getPlayerSeasonMetrics/showPlayerModal. A rank (e.g. RB12) is
+        // by season points among every rostered player at that position -
+        // starters and bench - counting only final weeks, so it doesn't jump
+        // around mid-Sunday. `season` is a previous_seasons year, or empty for
+        // the current season.
+        const _playerMetricsCache = new Map();
+
+        function seasonWeeks(season) {
+            if (!season) return data?.weeks || [];
+            return data?.previous_seasons?.[season]?.weeks || [];
+        }
+
+        function playerKey(name, position) {
+            return `${position}|${name}`;
+        }
+
+        function getPlayerSeasonMetrics(season) {
+            const cacheKey = season || 'current';
+            const cached = _playerMetricsCache.get(cacheKey);
+            if (cached && cached.dataRef === data) return cached.value;
+
+            const metrics = {};
+            for (const week of seasonWeeks(season)) {
+                if (week.final === false) continue;
+                for (const team of week.teams || []) {
+                    for (const player of team.roster || []) {
+                        if (!player.name || !player.position) continue;
+                        const key = playerKey(player.name, player.position);
+                        if (!metrics[key]) {
+                            metrics[key] = { name: player.name, position: player.position, total_points: 0 };
+                        }
+                        metrics[key].total_points += player.score ?? 0;
+                    }
+                }
+            }
+
+            const byPosition = {};
+            for (const entry of Object.values(metrics)) {
+                if (!byPosition[entry.position]) byPosition[entry.position] = [];
+                byPosition[entry.position].push(entry);
+            }
+            for (const entries of Object.values(byPosition)) {
+                entries.sort((a, b) => b.total_points - a.total_points || a.name.localeCompare(b.name));
+                entries.forEach((entry, idx) => {
+                    entry.position_rank = idx + 1;
+                    entry.pool_size = entries.length;
+                });
+            }
+
+            _playerMetricsCache.set(cacheKey, { dataRef: data, value: metrics });
+            return metrics;
+        }
+
+        function getPositionRank(player, season) {
+            return getPlayerSeasonMetrics(season)[playerKey(player.name, player.position)] || null;
+        }
+
+        function positionRankTitle(player, rank) {
+            return `#${rank.position_rank} of ${rank.pool_size} rostered ${player.position}s by season points`;
+        }
+
+        function positionRankTag(player, season) {
+            const rank = getPositionRank(player, season);
+            if (!rank) return '';
+            return `<span class="player-pos-rank" title="${positionRankTitle(player, rank)}">${player.position}${rank.position_rank}</span>`;
+        }
+
+        function positionRankCell(player, season) {
+            const rank = getPositionRank(player, season);
+            if (!rank) return '<td class="pos-rank">-</td>';
+            return `<td class="pos-rank" title="${positionRankTitle(player, rank)}">${player.position}${rank.position_rank}</td>`;
+        }
+
+        function playerProfileButton(player, season) {
+            const seasonAttr = season ? ` data-season="${escapeHtml(season)}"` : '';
+            return `<button type="button" class="player-name player-profile-trigger" data-player-name="${escapeHtml(player.name)}" data-player-position="${escapeHtml(player.position)}"${seasonAttr}>${escapeHtml(player.name)}</button>`;
+        }
+
+        // One row per week of the season; weeks the player wasn't on any
+        // OPFL roster come back with team/player null.
+        function getPlayerGameLog(name, position, season) {
+            return [...seasonWeeks(season)]
+                .sort((a, b) => a.week - b.week)
+                .map(week => {
+                    for (const team of week.teams || []) {
+                        const player = (team.roster || []).find(p => p.name === name && p.position === position);
+                        if (player) return { week: week.week, final: week.final !== false, team, player };
+                    }
+                    return { week: week.week, final: week.final !== false, team: null, player: null };
+                });
+        }
+
+        function showPlayerModal(name, position, season) {
+            const isCurrentSeason = !season;
+            const log = getPlayerGameLog(name, position, season);
+            const rostered = log.filter(w => w.player);
+            const latest = rostered[rostered.length - 1];
+            const rank = getPositionRank({ name, position }, season);
+
+            const counted = rostered.filter(w => w.final);
+            const total = counted.reduce((sum, w) => sum + (w.player.score ?? 0), 0);
+            const games = counted.filter(w => (w.player.score ?? 0) !== 0).length;
+            const starts = counted.filter(w => w.player.starter).length;
+            const best = counted.reduce((top, w) => (!top || w.player.score > top.player.score ? w : top), null);
+
+            document.getElementById('player-modal-name').textContent = name;
+
+            const pills = [`<span class="pm-pill">${escapeHtml(position)}</span>`];
+            if (latest?.player.nfl_team) pills.push(`<span class="pm-pill">${escapeHtml(latest.player.nfl_team)}</span>`);
+            if (latest?.team) {
+                pills.push(`<span class="pm-pill ${myTeamClass(latest.team.abbrev)}">${escapeHtml(latest.team.name)}</span>`);
+            }
+            if (rank) {
+                pills.push(`<span class="pm-pill pm-rank" title="${positionRankTitle({ position }, rank)}">${escapeHtml(position)}${rank.position_rank} of ${rank.pool_size}</span>`);
+            }
+            if (season) pills.push(`<span class="pm-pill">${escapeHtml(season)} season</span>`);
+            document.getElementById('player-modal-meta').innerHTML = pills.join('');
+
+            const stat = (label, value) => `<div class="pm-stat"><div class="pm-stat-value">${value}</div><div class="pm-stat-label">${label}</div></div>`;
+            document.getElementById('player-modal-stats').innerHTML = `
+                <div class="pm-summary">
+                    ${stat('Season Pts', Number(total.toFixed(1)))}
+                    ${stat('PPG', games ? (total / games).toFixed(1) : '-')}
+                    ${stat('Starts / Wks', `${starts}/${counted.length}`)}
+                    ${stat('Best Week', best ? `${best.player.score} <span class="pm-stat-sub">W${best.week}</span>` : '-')}
+                </div>
+            `;
+
+            const columns = isCurrentSeason ? 5 : 4;
+            const rows = log.map(w => {
+                if (!w.player) {
+                    return `<tr class="pm-not-rostered"><td>W${w.week}</td><td colspan="${columns - 1}">Not rostered</td></tr>`;
+                }
+                const p = w.player;
+                const weekNum = isCurrentSeason ? w.week : undefined;
+                const score = playerScoreText(p, weekNum);
+                const breakdown = score === '-' ? '' : renderBreakdown(p.breakdown);
+                const scoreCell = breakdown
+                    ? `<details class="score-breakdown"><summary class="player-score has-breakdown">${score}</summary>${breakdown}</details>`
+                    : `<span class="player-score">${score}</span>`;
+                const opponentCell = isCurrentSeason
+                    ? `<td>${escapeHtml(getPlayerGameDetails(p, w.week).matchup)}</td>`
+                    : '';
+                return `
+                    <tr class="${myTeamClass(w.team.abbrev)}">
+                        <td>W${w.week}</td>
+                        <td>${escapeHtml(w.team.abbrev)}</td>
+                        ${opponentCell}
+                        <td class="num">${scoreCell}</td>
+                        <td class="num"><span class="${p.starter ? 'pm-starter' : 'pm-bench'}">${p.starter ? 'Start' : 'Bench'}</span></td>
+                    </tr>
+                `;
+            }).join('');
+
+            document.getElementById('player-modal-weeks').innerHTML = log.length ? `
+                <table class="pm-table">
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Team</th>
+                            ${isCurrentSeason ? '<th>Opp</th>' : ''}
+                            <th class="num">Score</th>
+                            <th class="num">Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            ` : '<div class="loading">No weeks scored yet</div>';
+
+            const overlay = document.getElementById('player-modal-overlay');
+            overlay.classList.add('active');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+            overlay.querySelector('.player-modal-close').focus();
+        }
+
+        function closePlayerModal() {
+            const overlay = document.getElementById('player-modal-overlay');
+            if (!overlay.classList.contains('active')) return;
+            overlay.classList.remove('active');
+            overlay.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+        }
+
+        function initPlayerModal() {
+            // Delegated, so every render path that uses playerProfileButton
+            // gets the click without wiring its own listener.
+            document.body.addEventListener('click', e => {
+                const trigger = e.target.closest('.player-profile-trigger');
+                if (trigger) {
+                    showPlayerModal(trigger.dataset.playerName, trigger.dataset.playerPosition, trigger.dataset.season);
+                    return;
+                }
+                if (e.target.id === 'player-modal-overlay' || e.target.closest('.player-modal-close')) {
+                    closePlayerModal();
+                }
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closePlayerModal();
+            });
+        }
+
+        // Team Stats, ported from the sibling QPFL site's renderTeamStats.
+        // data.team_stats has the same shape as QPFL's (see
+        // scripts/export_for_web.py); until now it only fed playoff odds.
+        // Rows follow standings order - a ranked list, so G/G is highlighted
+        // in place rather than floated.
+        function renderTeamStats() {
+            const container = document.getElementById('team-stats-container');
+            if (!container) return;
+
+            const teamStats = data.team_stats || {};
+            if (Object.keys(teamStats).length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            const standingsOrder = (data.standings || []).map(t => t.abbrev);
+            const teams = Object.values(teamStats).sort((a, b) => {
+                const ai = standingsOrder.indexOf(a.abbrev);
+                const bi = standingsOrder.indexOf(b.abbrev);
+                if (ai !== -1 && bi !== -1) return ai - bi;
+                if (ai !== -1) return -1;
+                if (bi !== -1) return 1;
+                return (b.total_points_for || 0) - (a.total_points_for || 0);
+            });
+
+            const fixed = (value, digits) => (Number.isFinite(value) ? value.toFixed(digits) : '—');
+            const rows = teams.map(team => {
+                const diff = team.point_differential || 0;
+                const streak = team.streak || {};
+                const streakClass = streak.type === 'W' ? 'streak-win' : streak.type === 'L' ? 'streak-loss' : '';
+                const leftTitle = `${fixed(team.points_left_on_table, 0)} pts (${fixed(team.points_left_on_table_pct, 1)}%) left on the bench`;
+                return `
+                    <tr class="${myTeamClass(team.abbrev)}">
+                        <td>
+                            <span class="team-name">${escapeHtml(team.name)}</span>
+                            <span class="team-code">${escapeHtml(team.abbrev)}</span>
+                        </td>
+                        <td class="num">${team.record || '-'}</td>
+                        <td class="num">${fixed(team.ppg, 1)}</td>
+                        <td class="num">${fixed(team.ppg_against, 1)}</td>
+                        <td class="num ${diff > 0 ? 'positive' : diff < 0 ? 'negative' : ''}">${diff > 0 ? '+' : ''}${fixed(diff, 0)}</td>
+                        <td class="num">${fixed(team.std_dev, 1)}</td>
+                        <td class="num">${fixed(team.avg_rank, 1)}</td>
+                        <td class="num">${fixed(team.best_week, 0)}<span class="week-ref">W${team.best_week_num || '—'}</span></td>
+                        <td class="num">${fixed(team.worst_week, 0)}<span class="week-ref">W${team.worst_week_num || '—'}</span></td>
+                        <td class="num ${streakClass}">${streak.count ? `${streak.count}${streak.type}` : '-'}</td>
+                        <td class="num">${fixed(team.opr, 1)}</td>
+                        <td class="num ${(team.adjusted_opr || 0) >= 1 ? 'positive' : 'negative'}">${fixed(team.adjusted_opr, 2)}</td>
+                        <td class="num" title="${leftTitle}">${Number.isFinite(team.owner_success_rate) ? `${team.owner_success_rate.toFixed(1)}%` : '—'}</td>
+                        <td class="num">${fixed(team.points_left_on_table, 0)}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            const leaderCard = (title, sorted, value, context = () => '') => `
+                <div class="stats-position-card">
+                    <div class="stats-position-header">${title}</div>
+                    ${sorted.slice(0, 5).map((t, idx) => `
+                        <div class="stats-leader-row ${myTeamClass(t.abbrev)}">
+                            <div class="stats-rank">${idx + 1}</div>
+                            <div class="stats-player-info"><span class="stats-player-name">${escapeHtml(t.name)}</span></div>
+                            <div class="stats-points">${value(t)}${context(t)}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            const by = (key, dir = -1) => teams.filter(t => Number.isFinite(t[key])).sort((a, b) => dir * (a[key] - b[key]));
+
+            container.innerHTML = `
+                <h2 class="team-stats-title">Team Stats</h2>
+                <div class="team-stats-wrapper">
+                    <table class="standings-table team-stats-table">
+                        <thead>
+                            <tr>
+                                <th>Team</th>
+                                <th class="num">W-L-T</th>
+                                <th class="num">PPG</th>
+                                <th class="num">PPG A</th>
+                                <th class="num">Diff</th>
+                                <th class="num" title="Week-to-week standard deviation of points scored">Std Dev</th>
+                                <th class="num" title="Average weekly points rank">Avg Rank</th>
+                                <th class="num">Best</th>
+                                <th class="num">Worst</th>
+                                <th class="num">Streak</th>
+                                <th class="num" title="Oberon Power Rating">OPR</th>
+                                <th class="num" title="OPR relative to the league average (1.00 = average)">Adj OPR</th>
+                                <th class="num" title="Starter points divided by optimal lineup points">Lineup %</th>
+                                <th class="num" title="Points left on the bench all season">Bench Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                </div>
+                <div class="team-stats-cards">
+                    ${leaderCard('Best Single Week', by('best_week'), t => fixed(t.best_week, 0), t => `<span class="week-ref">W${t.best_week_num}</span>`)}
+                    ${leaderCard('Most Consistent', by('std_dev', 1), t => fixed(t.std_dev, 1))}
+                    ${leaderCard('Best Lineup Setter', by('owner_success_rate'), t => `${fixed(t.owner_success_rate, 1)}%`)}
+                    ${leaderCard('Most Left on Bench', by('points_left_on_table'), t => fixed(t.points_left_on_table, 0))}
+                </div>
+            `;
+        }
+
         function renderTeamSelector() {
             const container = document.getElementById('team-selector');
-            const teams = data.standings || [];
+            const teams = floatMyTeam(data.standings || [], team => team.abbrev);
 
             if (teams.length === 0) return;
 
             container.innerHTML = teams.map(team => `
-                <button class="team-btn" data-abbrev="${team.abbrev}">${team.name}</button>
+                <button class="team-btn ${myTeamClass(team.abbrev)}" data-abbrev="${team.abbrev}">${team.name}</button>
             `).join('');
             
             container.querySelectorAll('.team-btn').forEach(btn => {
@@ -1579,7 +2065,7 @@
                 const playersInPos = Object.values(rosterByPlayer).filter(p => p.position === pos);
                 if (playersInPos.length === 0) return;
 
-                tableRows += `<tr class="position-group"><td colspan="${weekNums.length + 3}">${pos}</td></tr>`;
+                tableRows += `<tr class="position-group"><td colspan="${weekNums.length + 4}">${pos}</td></tr>`;
                 
                 playersInPos.forEach(player => {
                     // Calculate season total for this player (all weeks, regardless of starter status)
@@ -1587,8 +2073,9 @@
                     
                     tableRows += `
                         <tr>
-                            <td><span class="player-name">${player.name}</span></td>
+                            <td>${playerProfileButton(player)}</td>
                             <td><span class="player-team">${player.nfl_team}</span></td>
+                            ${positionRankCell(player)}
                             ${weekNums.map(w => {
                                 const weekData = player.weeks[w];
                                 if (!weekData) return '<td class="week-score">-</td>';
@@ -1612,7 +2099,7 @@
 
             tableRows += `
                 <tr class="total-row">
-                    <td colspan="2"><strong>TOTAL</strong></td>
+                    <td colspan="3"><strong>TOTAL</strong></td>
                     ${totals.map(t => `<td class="week-score">${t}</td>`).join('')}
                     <td class="week-score season-total">${seasonGrandTotal}</td>
                 </tr>
@@ -1629,7 +2116,7 @@
                             <div class="player-row">
                                 <div class="player-info">
                                     <span class="position-tag">${p.position}</span>
-                                    <span class="player-name">${p.name}</span>
+                                    ${playerProfileButton(p)}
                                     <span class="player-team">${p.nfl_team}</span>
                                     </div>
                             </div>
@@ -1684,6 +2171,7 @@
                             <tr>
                                 <th>Player</th>
                                 <th>Team</th>
+                                <th>Rank</th>
                                 ${weekNums.map(w => `<th class="week-col">W${w}</th>`).join('')}
                                 <th class="week-col total-col">Total</th>
                             </tr>
@@ -1799,7 +2287,7 @@
                     </thead>
                     <tbody>
                         ${standings.map((team, idx) => `
-                            <tr>
+                            <tr class="${myTeamClass(team.abbrev)}">
                                 <td><span class="rank ${idx < 4 ? 'playoffs' : ''}">${idx + 1}</span></td>
                                 <td>
                                     <span class="team-name">${team.name}</span>
@@ -1834,7 +2322,7 @@
             const teamsByAbbrev = {};
             weekData.teams.forEach(t => { teamsByAbbrev[t.abbrev] = t; });
 
-            const matchups = pairings
+            const matchups = myTeamFirstPairs(pairings)
                 .map(([a, b]) => ({ team1: teamsByAbbrev[a], team2: teamsByAbbrev[b] }))
                 .filter(m => m.team1 && m.team2);
 
@@ -1845,7 +2333,7 @@
                 return `
                     <div class="matchup-card">
                         <div class="matchup-header">
-                            <div class="team">
+                            <div class="team ${myTeamClass(t1.abbrev)}">
                                 <div class="team-name">${t1.name}</div>
                             </div>
                             <div class="vs-container">
@@ -1855,20 +2343,20 @@
                                     <span class="score ${t2Winning ? 'winning' : t1Winning ? 'losing' : ''}">${t2.total_score}</span>
                                 </div>
                             </div>
-                            <div class="team right">
+                            <div class="team right ${myTeamClass(t2.abbrev)}">
                                 <div class="team-name">${t2.name}</div>
                             </div>
                         </div>
                         <button class="expand-btn" onclick="togglePastRoster(${idx})">View Rosters</button>
                         <div class="roster-panel" id="past-roster-${idx}">
                             <div class="roster-grid">
-                                <div class="roster-column">
+                                <div class="roster-column ${myTeamClass(t1.abbrev)}">
                                     <h4>${t1.name}</h4>
-                                    ${renderRosterList(t1.roster)}
+                                    ${renderRosterList(t1.roster, undefined, year)}
                                 </div>
-                                <div class="roster-column">
+                                <div class="roster-column ${myTeamClass(t2.abbrev)}">
                                     <h4>${t2.name}</h4>
-                                    ${renderRosterList(t2.roster)}
+                                    ${renderRosterList(t2.roster, undefined, year)}
                                 </div>
                             </div>
                         </div>
@@ -1954,12 +2442,12 @@
                 return abbrev;
             };
 
-            const rows = h2h.map(rec => {
+            const rows = floatMyTeam(h2h, rec => [rec.team1, rec.team2]).map(rec => {
                 const leaderName = rec.leader ? teamName(rec.leader) : 'Tied';
                 return `
                     <tr>
-                        <td>${teamName(rec.team1)}</td>
-                        <td>${teamName(rec.team2)}</td>
+                        <td><span class="${myTeamClass(rec.team1)}">${teamName(rec.team1)}</span></td>
+                        <td><span class="${myTeamClass(rec.team2)}">${teamName(rec.team2)}</span></td>
                         <td class="num">${rec.team1_wins}-${rec.team2_wins}-${rec.ties}</td>
                         <td class="num">${rec.team1_pf.toFixed(1)}-${rec.team2_pf.toFixed(1)}</td>
                         <td>${leaderName}</td>

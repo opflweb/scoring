@@ -94,6 +94,7 @@
                         Loading...
                     </div>
                 </div>
+                <div id="team-stats-container"></div>
             </section>
 
             <!-- Teams Section -->
@@ -342,6 +343,20 @@
                     </div>
             </section>
         </main>
+    </div>
+
+    <div id="player-modal-overlay" class="modal-overlay" aria-hidden="true">
+        <div class="player-modal" role="dialog" aria-modal="true" aria-labelledby="player-modal-name">
+            <div class="player-modal-header">
+                <h2 id="player-modal-name"></h2>
+                <div id="player-modal-meta"></div>
+                <button type="button" class="player-modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="player-modal-body">
+                <div id="player-modal-stats"></div>
+                <div id="player-modal-weeks"></div>
+            </div>
+        </div>
     </div>
 
     <script src="app.js"></script>

@@ -1663,6 +1663,333 @@
         }
 
         /* Responsive */
+        /* Greg/Griffin highlighting, ported from QPFL's .is-my-team */
+        .is-my-team {
+            background: rgba(30, 144, 255, 0.1);
+            outline: 1px solid rgba(30, 144, 255, 0.45);
+            outline-offset: -1px;
+            border-radius: 0.375rem;
+        }
+
+        tr.is-my-team { background: none; outline: none; }
+        tr.is-my-team > td { background: rgba(30, 144, 255, 0.1); }
+        tr.is-my-team > td:first-child { box-shadow: inset 3px 0 0 var(--accent-primary); }
+
+        span.is-my-team {
+            padding: 0.1rem 0.3rem;
+            margin: -0.1rem -0.3rem;
+            border-radius: 0.25rem;
+        }
+
+        .roster-column.is-my-team,
+        .matchup-header .team.is-my-team { padding: 0.5rem; }
+
+        /* Player profile trigger: looks like the plain name it replaced */
+        .player-profile-trigger {
+            background: none;
+            border: none;
+            padding: 0;
+            color: inherit;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .player-profile-trigger:hover,
+        .player-profile-trigger:focus-visible {
+            color: var(--accent-tertiary);
+            text-decoration: underline;
+        }
+
+        .player-pos-rank {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.62rem;
+            color: var(--text-muted);
+        }
+
+        .roster-table .pos-rank {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        /* Matchup card extras: optimal lineup, H2H */
+        .team-optimal {
+            margin-top: 0.25rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .team-optimal {
+            display: flex;
+            gap: 0.35rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .team.right .team-optimal { justify-content: flex-end; }
+        .team-optimal-delta { color: var(--loss); }
+        .team-optimal-delta.perfect { color: var(--win); }
+
+        .h2h-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        .h2h-sep { color: var(--text-muted); }
+
+        .optimal-summary {
+            margin-bottom: 0.75rem;
+            padding: 0.5rem 0.65rem;
+            background: var(--bg-deep);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        .optimal-row {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .optimal-label {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.65rem;
+        }
+
+        .optimal-score { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+        .optimal-delta { margin-left: auto; color: var(--loss); }
+        .optimal-delta.perfect { color: var(--win); }
+
+        .bench-mistakes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            margin-top: 0.4rem;
+            color: var(--text-secondary);
+        }
+
+        .bench-mistake-item strong { color: var(--loss); font-weight: 600; }
+
+        /* Team Stats (Leaders tab) */
+        .team-stats-title {
+            margin: 2.5rem 0 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .team-stats-wrapper {
+            overflow-x: auto;
+            border-radius: 1rem;
+        }
+
+        .team-stats-table th,
+        .team-stats-table td {
+            padding: 0.65rem 0.6rem;
+            white-space: nowrap;
+        }
+
+        .team-stats-table td.num {
+            text-align: right;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .team-stats-table .positive,
+        .team-stats-table .streak-win { color: var(--win); }
+        .team-stats-table .negative,
+        .team-stats-table .streak-loss { color: var(--loss); }
+
+        .week-ref {
+            margin-left: 0.3rem;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        .team-stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Player modal */
+        body.modal-open { overflow: hidden; }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .player-modal {
+            width: 100%;
+            max-width: 640px;
+            max-height: min(90vh, 860px);
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            transform: translateY(12px) scale(0.98);
+            transition: transform 0.2s ease;
+        }
+
+        .modal-overlay.active .player-modal { transform: none; }
+
+        .player-modal-header {
+            position: relative;
+            padding: 1.25rem 3rem 1rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .player-modal-header h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        #player-modal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .pm-pill {
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+            background: var(--bg-hover);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .pm-pill.pm-rank { color: var(--accent-tertiary); }
+        .pm-pill.is-my-team { margin: 0; padding: 0.15rem 0.5rem; border-radius: 999px; color: var(--text-primary); }
+
+        .player-modal-close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            background: var(--bg-deep);
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .player-modal-close:hover { color: var(--text-primary); border-color: var(--accent-primary); }
+
+        .player-modal-body {
+            padding: 1rem 1.25rem 1.25rem;
+            overflow-y: auto;
+        }
+
+        .pm-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pm-stat {
+            padding: 0.6rem 0.5rem;
+            background: var(--bg-deep);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .pm-stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+
+        .pm-stat-sub { font-size: 0.7rem; color: var(--text-muted); }
+
+        .pm-stat-label {
+            margin-top: 0.15rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pm-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .pm-table th {
+            padding: 0.4rem 0.5rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pm-table td {
+            padding: 0.45rem 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            vertical-align: top;
+        }
+
+        .pm-table .num { text-align: right; }
+        .pm-table .score-breakdown { display: inline-block; text-align: left; }
+        .pm-not-rostered td { color: var(--text-muted); font-style: italic; }
+
+        .pm-starter {
+            color: var(--accent-primary);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .pm-bench {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 600px) {
+            .modal-overlay { padding: 0; align-items: flex-end; }
+            .player-modal { max-width: none; max-height: 92vh; border-radius: 0.75rem 0.75rem 0 0; }
+            .pm-summary { grid-template-columns: repeat(2, 1fr); }
+            .pm-table td, .pm-table th { padding: 0.4rem 0.3rem; }
+        }
+
         @media (max-width: 768px) {
             .container { padding: 1rem; }
             .logo { font-size: 2.5rem; }
