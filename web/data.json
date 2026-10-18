@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-18T21:30:26.729393Z",
+  "updated_at": "2026-10-18T23:32:57.010357Z",
   "season": 2026,
   "current_week": 6,
   "regular_season_weeks": 15,
@@ -16581,12 +16581,12 @@
       "LA": {
         "opponent": "ARI",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "ARI": {
         "opponent": "LA",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "KC": {
         "opponent": "LAC",
