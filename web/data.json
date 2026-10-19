@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-18T23:32:57.010357Z",
+  "updated_at": "2026-10-19T00:22:35.002987Z",
   "season": 2026,
   "current_week": 6,
   "regular_season_weeks": 15,
@@ -16591,22 +16591,22 @@
       "KC": {
         "opponent": "LAC",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "LAC": {
         "opponent": "KC",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "LV": {
         "opponent": "BUF",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "BUF": {
         "opponent": "LV",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "GB": {
         "opponent": "DAL",
