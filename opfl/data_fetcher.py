@@ -21,6 +21,19 @@ from .constants import TEAM_ABBREV_NORMALIZE
 # Offensive line positions
 OL_POSITIONS = {'T', 'G', 'C', 'OT', 'OG', 'OL', 'LT', 'RT', 'LG', 'RG'}
 
+# nflverse positions a fuzzy match may land on for each OPFL position. Skill
+# players move between QB/RB/WR/TE listings (Taysom Hill, gadget backs), so
+# those share one group; what matters is never matching an offensive player to
+# a defender or kicker ("Jameson Williams" WR -> "James Williams" LB).
+_SKILL_POSITIONS = {'QB', 'RB', 'FB', 'HB', 'WR', 'TE'}
+FUZZY_POSITIONS = {
+    'QB': _SKILL_POSITIONS,
+    'RB': _SKILL_POSITIONS,
+    'WR': _SKILL_POSITIONS,
+    'TE': _SKILL_POSITIONS,
+    'K': {'K', 'PK'},
+}
+
 
 def normalize_name(name: str) -> str:
     """
@@ -186,13 +199,17 @@ class NFLDataFetcher:
             return team
         return TEAM_ABBREV_NORMALIZE.get(team.upper(), team.upper())
 
-    def _get_all_player_names(self, team: str = None) -> list[str]:
-        """Get all player display names, optionally filtered by team."""
+    def _get_all_player_names(self, team: str = None, position: str = None) -> list[str]:
+        """Get all player display names, optionally filtered by team and position."""
         stats = self.player_stats
 
         if team:
             normalized_team = self._normalize_team(team)
             stats = stats.filter(pl.col('team') == normalized_team)
+
+        allowed_positions = FUZZY_POSITIONS.get(position)
+        if allowed_positions and 'position' in stats.columns:
+            stats = stats.filter(pl.col('position').is_in(list(allowed_positions)))
 
         if 'player_display_name' in stats.columns:
             names = stats['player_display_name'].drop_nulls().to_list()
@@ -288,7 +305,8 @@ class NFLDataFetcher:
         if use_fuzzy and FUZZY_AVAILABLE:
             # First try with team filter
             candidates = self._get_all_player_names(
-                team=normalized_team if normalized_team else None
+                team=normalized_team if normalized_team else None,
+                position=position,
             )
 
             if candidates:
@@ -303,7 +321,7 @@ class NFLDataFetcher:
 
             # If team filter didn't work, try all players (OPFL often has wrong team)
             if normalized_team:
-                all_candidates = self._get_all_player_names(team=None)
+                all_candidates = self._get_all_player_names(team=None, position=position)
                 if all_candidates:
                     best_match = fuzzy_match_name(name, all_candidates, threshold=fuzzy_threshold)
 
