@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T01:34:38.855065Z",
+  "updated_at": "2026-10-19T05:06:20.214445Z",
   "season": 2026,
   "current_week": 6,
   "regular_season_weeks": 15,
@@ -16611,12 +16611,12 @@
       "GB": {
         "opponent": "DAL",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "DAL": {
         "opponent": "GB",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "SF": {
         "opponent": "WAS",
