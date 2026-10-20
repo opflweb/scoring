@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "week": 6,
-  "final": false,
-  "scored_at": "2026-10-19T21:17:17.761346Z",
+  "final": true,
+  "scored_at": "2026-10-20T07:31:57.951003Z",
   "has_scores": true,
   "pairings": [
     [
@@ -65,10 +65,13 @@
           "name": "Brock Purdy",
           "nfl_team": "SF",
           "position": "QB",
-          "score": 0.0,
+          "score": 9.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 3,
+            "touchdowns": 6
+          }
         },
         {
           "name": "Josh Jacobs",
@@ -141,10 +144,12 @@
           "name": "Mike Evans",
           "nfl_team": "SF",
           "position": "WR",
-          "score": 0.0,
+          "score": 2.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 2
+          }
         },
         {
           "name": "Alec Pierce",
@@ -253,8 +258,8 @@
           }
         }
       ],
-      "total_score": 19.0,
-      "score_rank": 11
+      "total_score": 28.0,
+      "score_rank": 10
     },
     {
       "name": "STEVE L.",
@@ -265,10 +270,13 @@
           "name": "Jayden Daniels",
           "nfl_team": "WAS",
           "position": "QB",
-          "score": 0.0,
+          "score": 16.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 4,
+            "touchdowns": 12
+          }
         },
         {
           "name": "Ty Simpson",
@@ -470,8 +478,8 @@
           }
         }
       ],
-      "total_score": 10.0,
-      "score_rank": 12
+      "total_score": 26.0,
+      "score_rank": 11
     },
     {
       "name": "JOHN",
@@ -546,7 +554,7 @@
           "position": "RB",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -656,10 +664,13 @@
           "name": "San Francisco",
           "nfl_team": "SF",
           "position": "DF",
-          "score": 0.0,
+          "score": 6.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": 2,
+            "sacks": 4
+          }
         },
         {
           "name": "Chicago",
@@ -697,7 +708,7 @@
           }
         }
       ],
-      "total_score": 30.0,
+      "total_score": 36.0,
       "score_rank": 8
     },
     {
@@ -757,10 +768,12 @@
           "name": "Rachaad White",
           "nfl_team": "WAS",
           "position": "RB",
-          "score": 0.0,
+          "score": 6.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "Woody Marks",
@@ -903,11 +916,11 @@
           "name": "Kyle Shanahan",
           "nfl_team": "SF",
           "position": "HC",
-          "score": 0.0,
+          "score": 4,
           "starter": true,
           "found": true,
           "breakdown": {
-            "loss": 0
+            "home_favorite_win": 4
           }
         },
         {
@@ -922,8 +935,8 @@
           }
         }
       ],
-      "total_score": 29.0,
-      "score_rank": 9
+      "total_score": 39.0,
+      "score_rank": 5
     },
     {
       "name": "DANNY/JOEY",
@@ -1076,19 +1089,25 @@
           "name": "Chig Okonkwo",
           "nfl_team": "WAS",
           "position": "TE",
-          "score": 0.0,
+          "score": 2.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 2
+          }
         },
         {
           "name": "Eddie Pineiro",
           "nfl_team": "SF",
           "position": "K",
-          "score": 0.0,
+          "score": 3.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 2,
+            "pat_missed": -1,
+            "fg_30_39": 2
+          }
         },
         {
           "name": "Tyler Loop",
@@ -1153,7 +1172,7 @@
           }
         }
       ],
-      "total_score": 54.0,
+      "total_score": 57.0,
       "score_rank": 2
     },
     {
@@ -1496,10 +1515,12 @@
           "name": "Stefon Diggs",
           "nfl_team": "WAS",
           "position": "WR",
-          "score": 0.0,
+          "score": 6.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "Antonio Williams",
@@ -1507,7 +1528,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -1617,7 +1638,7 @@
         }
       ],
       "total_score": 38.0,
-      "score_rank": 5
+      "score_rank": 6
     },
     {
       "name": "ANDREW",
@@ -1666,10 +1687,14 @@
           "name": "Christian McCaffrey",
           "nfl_team": "SF",
           "position": "RB",
-          "score": 0.0,
+          "score": 13.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "combined_rush_rec_yards": 2,
+            "touchdowns": 12,
+            "fumbles_lost": -1
+          }
         },
         {
           "name": "Kenneth Walker III",
@@ -1850,7 +1875,7 @@
           }
         }
       ],
-      "total_score": 70.0,
+      "total_score": 83.0,
       "score_rank": 1
     },
     {
@@ -2072,7 +2097,7 @@
         }
       ],
       "total_score": 25.0,
-      "score_rank": 10
+      "score_rank": 12
     },
     {
       "name": "KEMP/A/M",
@@ -2184,7 +2209,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2209,10 +2234,13 @@
           "name": "George Kittle",
           "nfl_team": "SF",
           "position": "TE",
-          "score": 0.0,
+          "score": 8.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 2,
+            "touchdowns": 6
+          }
         },
         {
           "name": "Oronde Gadsden",
@@ -2306,7 +2334,7 @@
           }
         }
       ],
-      "total_score": 49.0,
+      "total_score": 57.0,
       "score_rank": 3
     },
     {
@@ -2532,7 +2560,7 @@
         }
       ],
       "total_score": 37.0,
-      "score_rank": 6
+      "score_rank": 7
     },
     {
       "name": "ADAM",
@@ -2767,7 +2795,7 @@
         }
       ],
       "total_score": 36.0,
-      "score_rank": 7
+      "score_rank": 9
     }
   ]
 }
