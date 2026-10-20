@@ -89,6 +89,13 @@ jobs:
           if [ -z "$WEEK" ]; then
             WEEK=$(uv run --frozen python scripts/nfl_week.py --season ${{ env.SEASON }})
           fi
+          # A `type: number` dispatch input can arrive as "6.0" (notably on a
+          # re-run), which argparse's int rejects. Normalise to a plain integer.
+          WEEK="${WEEK%.0}"
+          if ! [[ "$WEEK" =~ ^[0-9]+$ ]]; then
+            echo "::error::Week must be a whole number, got '$WEEK'"
+            exit 1
+          fi
           echo "week=$WEEK" >> $GITHUB_OUTPUT
           echo "Scoring NFL Week: $WEEK"
 
