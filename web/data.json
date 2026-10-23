@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23T00:32:27.959831Z",
+  "updated_at": "2026-10-23T05:14:39.691644Z",
   "season": 2026,
   "current_week": 7,
   "regular_season_weeks": 15,
@@ -19406,12 +19406,12 @@
       "CHI": {
         "opponent": "NE",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "NE": {
         "opponent": "CHI",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "NO": {
         "opponent": "PIT",
