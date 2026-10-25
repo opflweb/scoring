@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T16:40:15.822549Z",
+  "updated_at": "2026-10-25T19:16:37.179139Z",
   "season": 2026,
   "current_week": 7,
   "regular_season_weeks": 15,
@@ -19416,12 +19416,12 @@
       "NO": {
         "opponent": "PIT",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "PIT": {
         "opponent": "NO",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "ATL": {
         "opponent": "SF",
