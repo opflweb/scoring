@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T19:16:37.179139Z",
+  "updated_at": "2026-10-25T21:49:19.244874Z",
   "season": 2026,
   "current_week": 7,
   "regular_season_weeks": 15,
@@ -19426,72 +19426,72 @@
       "ATL": {
         "opponent": "SF",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "SF": {
         "opponent": "ATL",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "BAL": {
         "opponent": "CIN",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "CIN": {
         "opponent": "BAL",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "CAR": {
         "opponent": "TB",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "TB": {
         "opponent": "CAR",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "HOU": {
         "opponent": "NYG",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "NYG": {
         "opponent": "HOU",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "MIN": {
         "opponent": "IND",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "IND": {
         "opponent": "MIN",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "NYJ": {
         "opponent": "MIA",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "MIA": {
         "opponent": "NYJ",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "TEN": {
         "opponent": "CLE",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "CLE": {
         "opponent": "TEN",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "ARI": {
         "opponent": "DEN",
