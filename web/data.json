@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T01:45:58.234871Z",
+  "updated_at": "2026-10-26T05:09:25.381857Z",
   "season": 2026,
   "current_week": 7,
   "regular_season_weeks": 15,
@@ -19526,12 +19526,12 @@
       "SEA": {
         "opponent": "KC",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "KC": {
         "opponent": "SEA",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "PHI": {
         "opponent": "DAL",
