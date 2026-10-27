@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "week": 7,
-  "final": false,
-  "scored_at": "2026-10-26T19:34:46.923816Z",
+  "final": true,
+  "scored_at": "2026-10-27T07:55:13.848071Z",
   "has_scores": true,
   "pairings": [
     [
@@ -207,10 +207,12 @@
           "name": "Jake Elliott",
           "nfl_team": "PHI",
           "position": "K",
-          "score": 0.0,
+          "score": 3.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 3
+          }
         },
         {
           "name": "Denver",
@@ -261,7 +263,7 @@
         }
       ],
       "total_score": 36.0,
-      "score_rank": 8
+      "score_rank": 12
     },
     {
       "name": "STEVE L.",
@@ -398,7 +400,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -487,7 +489,7 @@
         }
       ],
       "total_score": 40.0,
-      "score_rank": 6
+      "score_rank": 8
     },
     {
       "name": "JOHN",
@@ -510,10 +512,14 @@
           "name": "Dak Prescott",
           "nfl_team": "DAL",
           "position": "QB",
-          "score": 0.0,
+          "score": 22.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 2,
+            "touchdowns": 18,
+            "two_point_conversions": 2
+          }
         },
         {
           "name": "Kyler Murray",
@@ -651,7 +657,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -724,8 +730,8 @@
           }
         }
       ],
-      "total_score": 34.0,
-      "score_rank": 9
+      "total_score": 56.0,
+      "score_rank": 2
     },
     {
       "name": "KEVIN",
@@ -894,10 +900,14 @@
           "name": "Brandon Aubrey",
           "nfl_team": "DAL",
           "position": "K",
-          "score": 0.0,
+          "score": 9.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 3,
+            "fg_1_29": 2,
+            "fg_50+": 4
+          }
         },
         {
           "name": "LA Rams",
@@ -943,8 +953,8 @@
           }
         }
       ],
-      "total_score": 31.0,
-      "score_rank": 10
+      "total_score": 40.0,
+      "score_rank": 9
     },
     {
       "name": "DANNY/JOEY",
@@ -1179,7 +1189,7 @@
         }
       ],
       "total_score": 52.0,
-      "score_rank": 2
+      "score_rank": 4
     },
     {
       "name": "GREG/GRIFFIN",
@@ -1314,7 +1324,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -1420,7 +1430,7 @@
         }
       ],
       "total_score": 43.0,
-      "score_rank": 5
+      "score_rank": 6
     },
     {
       "name": "ERIC/JEFF",
@@ -1472,10 +1482,13 @@
           "name": "Javonte Williams",
           "nfl_team": "DAL",
           "position": "RB",
-          "score": 0.0,
+          "score": 11.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "rushing_yards": 5,
+            "touchdowns": 6
+          }
         },
         {
           "name": "Jacory Croskey-Merritt",
@@ -1645,8 +1658,8 @@
           }
         }
       ],
-      "total_score": 26.0,
-      "score_rank": 12
+      "total_score": 37.0,
+      "score_rank": 10
     },
     {
       "name": "ANDREW",
@@ -1748,10 +1761,12 @@
           "name": "Makai Lemon",
           "nfl_team": "PHI",
           "position": "WR",
-          "score": 0.0,
+          "score": 6.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "Cooper Kupp",
@@ -1871,7 +1886,7 @@
         }
       ],
       "total_score": 37.0,
-      "score_rank": 7
+      "score_rank": 11
     },
     {
       "name": "WES/BILL",
@@ -2063,10 +2078,13 @@
           "name": "Philadelphia",
           "nfl_team": "PHI",
           "position": "DF",
-          "score": 0.0,
+          "score": 0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": -6,
+            "floor_applied": true
+          }
         },
         {
           "name": "Indianapolis",
@@ -2187,10 +2205,12 @@
           "name": "George Pickens",
           "nfl_team": "DAL",
           "position": "WR",
-          "score": 0.0,
+          "score": 6.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "DeVonta Smith",
@@ -2323,8 +2343,8 @@
           }
         }
       ],
-      "total_score": 44.0,
-      "score_rank": 3
+      "total_score": 50.0,
+      "score_rank": 5
     },
     {
       "name": "JARRETT/MATT",
@@ -2415,10 +2435,12 @@
           "name": "CeeDee Lamb",
           "nfl_team": "DAL",
           "position": "WR",
-          "score": 0.0,
+          "score": 12.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 12
+          }
         },
         {
           "name": "Malik Nabers",
@@ -2552,8 +2574,8 @@
           }
         }
       ],
-      "total_score": 44.0,
-      "score_rank": 4
+      "total_score": 56.0,
+      "score_rank": 3
     },
     {
       "name": "ADAM",
@@ -2601,10 +2623,12 @@
           "name": "Saquon Barkley",
           "nfl_team": "PHI",
           "position": "RB",
-          "score": 0.0,
+          "score": 6.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "Ashton Jeanty",
@@ -2754,20 +2778,24 @@
           "name": "Dallas",
           "nfl_team": "DAL",
           "position": "DF",
-          "score": 0.0,
+          "score": 4.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": 0,
+            "interceptions": 2,
+            "sacks": 2
+          }
         },
         {
           "name": "Brian Schottenheimer",
           "nfl_team": "DAL",
           "position": "HC",
-          "score": 0.0,
+          "score": 5,
           "starter": true,
           "found": true,
           "breakdown": {
-            "loss": 0
+            "road_favorite_win": 5
           }
         },
         {
@@ -2780,8 +2808,8 @@
           "breakdown": {}
         }
       ],
-      "total_score": 27.0,
-      "score_rank": 11
+      "total_score": 42.0,
+      "score_rank": 7
     }
   ]
 }
