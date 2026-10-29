@@ -61,4 +61,5 @@ jobs:
         if: steps.feed.outputs.updated == 'true' || inputs.force
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run score.yml --repo "${GITHUB_REPOSITORY}"
+        # send_email defaults to true for manual runs; automatic rescores stay quiet.
+        run: gh workflow run score.yml --repo "${GITHUB_REPOSITORY}" -f send_email=false

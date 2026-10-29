@@ -75,21 +75,24 @@ The Action only sees what's on `main`. Local edits do nothing until you push the
 
 It runs automatically during the season (all times ET):
 
-| When | Run | Email? |
-|------|-----|--------|
-| Daily 5:30 AM | catch-all | no |
-| Fri 1:00 AM | after TNF | yes |
-| Sun 5:30 PM | early games | no |
-| Sun 7:35 PM | late games | no |
-| Mon 1:00 AM | after SNF | yes |
-| Tue 1:00 AM | after MNF | yes |
+| When | Run |
+|------|-----|
+| Daily 5:30 AM | catch-all |
+| Fri 1:00 AM | after TNF |
+| Sun 5:30 PM | early games |
+| Sun 7:35 PM | late games |
+| Mon 1:00 AM | after SNF |
+| Tue 1:00 AM | after MNF |
+
+Scheduled runs (and the nflverse watcher's rescores) never email. Manual runs
+email the score breakdown by default.
 
 To score right away after pushing:
 
 ```bash
 gh workflow run score.yml            # auto-detects the week
 gh workflow run score.yml -f week=4  # or force a specific week
-gh workflow run score.yml -f send_email=true  # also email the breakdown
+gh workflow run score.yml -f send_email=false # skip the email
 gh run watch                         # follow it
 ```
 
@@ -101,7 +104,7 @@ every team that played has stats in nflverse.
 
 - Check the site at https://opflweb.github.io/scoring/ (hard-refresh if it looks
   stale).
-- The score breakdown email reaches griffin.ansel@gmail.com after TNF, SNF, and MNF.
+- The score breakdown email reaches griffin.ansel@gmail.com after each manual run.
 - If a run fails, the commissioner gets an alert email with the run link. Use
   `gh run view --log-failed` to see what broke, then re-run with
   `gh run rerun <id>`.
