@@ -152,6 +152,8 @@ jobs:
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: "OPFL Week ${{ steps.week.outputs.week }} Score Breakdown"
           to: griffin.ansel@gmail.com
+          cc: moyerjc@gmail.com
+          bcc: gansel@sbcglobal.net
           from: OPFL Autoscorer <${{ secrets.SMTP_USERNAME }}>
           body: file://starters_output.txt
 

@@ -104,7 +104,8 @@ every team that played has stats in nflverse.
 
 - Check the site at https://opflweb.github.io/scoring/ (hard-refresh if it looks
   stale).
-- The score breakdown email reaches griffin.ansel@gmail.com after each manual run.
+- The score breakdown email reaches griffin.ansel@gmail.com (cc moyerjc@gmail.com,
+  bcc gansel@sbcglobal.net) after each manual run.
 - If a run fails, the commissioner gets an alert email with the run link. Use
   `gh run view --log-failed` to see what broke, then re-run with
   `gh run rerun <id>`.
