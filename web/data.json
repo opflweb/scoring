@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T01:31:48.862865Z",
+  "updated_at": "2026-10-30T07:39:14.532209Z",
   "season": 2026,
   "current_week": 8,
   "regular_season_weeks": 15,
@@ -22335,12 +22335,12 @@
       "GB": {
         "opponent": "CAR",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "CAR": {
         "opponent": "GB",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "BUF": {
         "opponent": "BAL",
