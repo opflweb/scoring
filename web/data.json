@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T22:27:49.531065Z",
+  "updated_at": "2026-11-02T01:42:04.358299Z",
   "season": 2026,
   "current_week": 8,
   "regular_season_weeks": 15,
@@ -22425,32 +22425,32 @@
       "LA": {
         "opponent": "LAC",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "LAC": {
         "opponent": "LA",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "DEN": {
         "opponent": "KC",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "KC": {
         "opponent": "DEN",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "MIA": {
         "opponent": "NE",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "NE": {
         "opponent": "MIA",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "WAS": {
         "opponent": "PHI",
