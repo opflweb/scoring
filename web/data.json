@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02T01:42:58.319020Z",
+  "updated_at": "2026-11-02T06:37:47.808006Z",
   "season": 2026,
   "current_week": 8,
   "regular_season_weeks": 15,
@@ -22455,12 +22455,12 @@
       "WAS": {
         "opponent": "PHI",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "PHI": {
         "opponent": "WAS",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "SEA": {
         "opponent": "CHI",
