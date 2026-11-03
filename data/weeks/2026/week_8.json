@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "week": 8,
-  "final": false,
-  "scored_at": "2026-11-03T01:37:24.480672Z",
+  "final": true,
+  "scored_at": "2026-11-03T07:57:47.418486Z",
   "has_scores": true,
   "pairings": [
     [
@@ -40,10 +40,13 @@
           "name": "Caleb Williams",
           "nfl_team": "CHI",
           "position": "QB",
-          "score": 0.0,
+          "score": 8.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 2,
+            "touchdowns": 6
+          }
         },
         {
           "name": "Jordan Love",
@@ -252,11 +255,11 @@
           "name": "Ben Johnson",
           "nfl_team": "CHI",
           "position": "HC",
-          "score": 0.0,
+          "score": 7,
           "starter": false,
           "found": true,
           "breakdown": {
-            "loss": 0
+            "road_underdog_win": 7
           }
         }
       ],
@@ -474,7 +477,7 @@
         }
       ],
       "total_score": 29.0,
-      "score_rank": 9
+      "score_rank": 10
     },
     {
       "name": "JOHN",
@@ -534,10 +537,12 @@
           "name": "D'Andre Swift",
           "nfl_team": "CHI",
           "position": "RB",
-          "score": 0.0,
+          "score": 18.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 18
+          }
         },
         {
           "name": "Blake Corum",
@@ -679,10 +684,15 @@
           "name": "Chicago",
           "nfl_team": "CHI",
           "position": "DF",
-          "score": 0.0,
+          "score": 9.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": 2,
+            "interceptions": 2,
+            "sacks": 3,
+            "blocked_kicks": 2
+          }
         },
         {
           "name": "John Harbaugh",
@@ -705,8 +715,8 @@
           }
         }
       ],
-      "total_score": 62.0,
-      "score_rank": 2
+      "total_score": 89.0,
+      "score_rank": 1
     },
     {
       "name": "KEVIN",
@@ -1060,10 +1070,12 @@
           "name": "Luther Burden",
           "nfl_team": "CHI",
           "position": "WR",
-          "score": 0.0,
+          "score": 6.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "Quentin Johnston",
@@ -1271,10 +1283,13 @@
           "name": "Jaxon Smith-Njigba",
           "nfl_team": "SEA",
           "position": "WR",
-          "score": 0.0,
+          "score": 9.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 3,
+            "touchdowns": 6
+          }
         },
         {
           "name": "Rashee Rice",
@@ -1349,28 +1364,42 @@
           "name": "Jason Myers",
           "nfl_team": "SEA",
           "position": "K",
-          "score": 0.0,
+          "score": 0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_missed": -1,
+            "fg_1_29": 1,
+            "fg_missed": -2,
+            "floor_applied": true
+          }
         },
         {
           "name": "Cairo Santos",
           "nfl_team": "CHI",
           "position": "K",
-          "score": 0.0,
+          "score": 9.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 4,
+            "fg_30_39": 2,
+            "fg_40_49": 3
+          }
         },
         {
           "name": "Seattle",
           "nfl_team": "SEA",
           "position": "DF",
-          "score": 0.0,
+          "score": 0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": -4,
+            "fumble_recoveries": 2,
+            "sacks": 1,
+            "floor_applied": true
+          }
         },
         {
           "name": "Tampa Bay",
@@ -1407,8 +1436,8 @@
           }
         }
       ],
-      "total_score": 25.0,
-      "score_rank": 10
+      "total_score": 34.0,
+      "score_rank": 9
     },
     {
       "name": "ERIC/JEFF",
@@ -1481,7 +1510,7 @@
           "position": "RB",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -1535,10 +1564,13 @@
           "name": "Colston Loveland",
           "nfl_team": "CHI",
           "position": "TE",
-          "score": 0.0,
+          "score": 1.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 2,
+            "fumbles_lost": -1
+          }
         },
         {
           "name": "Hunter Henry",
@@ -1624,7 +1656,7 @@
           }
         }
       ],
-      "total_score": 20.0,
+      "total_score": 21.0,
       "score_rank": 12
     },
     {
@@ -1649,10 +1681,14 @@
           "name": "Sam Darnold",
           "nfl_team": "SEA",
           "position": "QB",
-          "score": 0.0,
+          "score": 13.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 12,
+            "two_point_conversions": 2,
+            "interceptions": -1
+          }
         },
         {
           "name": "Cam Ward",
@@ -1742,10 +1778,12 @@
           "name": "Cooper Kupp",
           "nfl_team": "SEA",
           "position": "WR",
-          "score": 0.0,
+          "score": 6.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "De'Zhaun Stribling",
@@ -2102,7 +2140,7 @@
         }
       ],
       "total_score": 83.0,
-      "score_rank": 1
+      "score_rank": 2
     },
     {
       "name": "KEMP/A/M",
@@ -2413,7 +2451,7 @@
           "position": "RB",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2447,10 +2485,12 @@
           "name": "Rome Odunze",
           "nfl_team": "CHI",
           "position": "WR",
-          "score": 0.0,
+          "score": 2.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 2
+          }
         },
         {
           "name": "Chris Bell",
@@ -2560,7 +2600,7 @@
           }
         }
       ],
-      "total_score": 38.0,
+      "total_score": 40.0,
       "score_rank": 8
     },
     {
@@ -2711,7 +2751,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
