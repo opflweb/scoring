@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-06T02:42:00.577029Z",
+  "updated_at": "2026-11-06T09:54:17.207123Z",
   "season": 2026,
   "current_week": 9,
   "regular_season_weeks": 15,
@@ -25287,12 +25287,12 @@
       "BAL": {
         "opponent": "JAX",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "JAX": {
         "opponent": "BAL",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "ATL": {
         "opponent": "CIN",
