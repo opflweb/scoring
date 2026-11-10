@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "week": 9,
-  "final": false,
-  "scored_at": "2026-11-09T22:19:32.060053Z",
+  "final": true,
+  "scored_at": "2026-11-10T11:47:27.578586Z",
   "has_scores": true,
   "pairings": [
     [
@@ -191,10 +191,13 @@
           "name": "Will Reichard",
           "nfl_team": "MIN",
           "position": "K",
-          "score": 0.0,
+          "score": 7.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "fg_40_49": 3,
+            "fg_50+": 4
+          }
         },
         {
           "name": "Brandon McManus",
@@ -259,7 +262,7 @@
           }
         }
       ],
-      "total_score": 41.0,
+      "total_score": 48.0,
       "score_rank": 8
     },
     {
@@ -728,7 +731,7 @@
         }
       ],
       "total_score": 61.0,
-      "score_rank": 3
+      "score_rank": 4
     },
     {
       "name": "KEVIN",
@@ -845,7 +848,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -964,7 +967,7 @@
         }
       ],
       "total_score": 52.0,
-      "score_rank": 4
+      "score_rank": 6
     },
     {
       "name": "DANNY/JOEY",
@@ -975,10 +978,14 @@
           "name": "Josh Allen",
           "nfl_team": "BUF",
           "position": "QB",
-          "score": 0.0,
+          "score": 7.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 2,
+            "touchdowns": 6,
+            "interceptions": -1
+          }
         },
         {
           "name": "Malik Willis",
@@ -1014,10 +1021,13 @@
           "name": "James Cook",
           "nfl_team": "BUF",
           "position": "RB",
-          "score": 0.0,
+          "score": 9.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "rushing_yards": 3,
+            "touchdowns": 6
+          }
         },
         {
           "name": "Ollie Gordon",
@@ -1100,7 +1110,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -1199,8 +1209,8 @@
           }
         }
       ],
-      "total_score": 41.0,
-      "score_rank": 9
+      "total_score": 57.0,
+      "score_rank": 5
     },
     {
       "name": "GREG/GRIFFIN",
@@ -1306,7 +1316,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -1324,7 +1334,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -1526,7 +1536,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -1661,7 +1671,7 @@
         }
       ],
       "total_score": 50.0,
-      "score_rank": 5
+      "score_rank": 7
     },
     {
       "name": "ANDREW",
@@ -1801,7 +1811,7 @@
           "position": "TE",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -1826,19 +1836,28 @@
           "name": "Tyler Bass",
           "nfl_team": "BUF",
           "position": "K",
-          "score": 0.0,
+          "score": 9.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 2,
+            "fg_1_29": 1,
+            "fg_30_39": 2,
+            "fg_50+": 4
+          }
         },
         {
           "name": "Minnesota",
           "nfl_team": "MIN",
           "position": "DF",
-          "score": 0.0,
+          "score": 6.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": 0,
+            "interceptions": 2,
+            "sacks": 4
+          }
         },
         {
           "name": "Green Bay",
@@ -1877,8 +1896,8 @@
           }
         }
       ],
-      "total_score": 47.0,
-      "score_rank": 6
+      "total_score": 62.0,
+      "score_rank": 2
     },
     {
       "name": "WES/BILL",
@@ -1976,7 +1995,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2326,10 +2345,12 @@
           "name": "Joe Brady",
           "nfl_team": "BUF",
           "position": "HC",
-          "score": 0.0,
+          "score": 5,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "road_favorite_win": 5
+          }
         },
         {
           "name": "Mike McCarthy",
@@ -2341,8 +2362,8 @@
           "breakdown": {}
         }
       ],
-      "total_score": 42.0,
-      "score_rank": 7
+      "total_score": 47.0,
+      "score_rank": 9
     },
     {
       "name": "JARRETT/MATT",
@@ -2535,10 +2556,15 @@
           "name": "Buffalo",
           "nfl_team": "BUF",
           "position": "DF",
-          "score": 0.0,
+          "score": 14.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": 6,
+            "interceptions": 4,
+            "fumble_recoveries": 2,
+            "sacks": 2
+          }
         },
         {
           "name": "Cleveland",
@@ -2577,7 +2603,7 @@
         }
       ],
       "total_score": 62.0,
-      "score_rank": 2
+      "score_rank": 3
     },
     {
       "name": "ADAM",
