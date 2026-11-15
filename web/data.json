@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15T16:30:46.079021Z",
+  "updated_at": "2026-11-15T20:07:23.577535Z",
   "season": 2026,
   "current_week": 10,
   "regular_season_weeks": 15,
@@ -28262,12 +28262,12 @@
       "DET": {
         "opponent": "NE",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "NE": {
         "opponent": "DET",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "ATL": {
         "opponent": "KC",
