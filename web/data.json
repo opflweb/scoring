@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16T02:20:07.048129Z",
+  "updated_at": "2026-11-16T04:35:03.431102Z",
   "season": 2026,
   "current_week": 10,
   "regular_season_weeks": 15,
@@ -28372,12 +28372,12 @@
       "CIN": {
         "opponent": "PIT",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "PIT": {
         "opponent": "CIN",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "BAL": {
         "opponent": "LAC",
