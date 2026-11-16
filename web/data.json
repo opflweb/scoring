@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15T23:57:59.127261Z",
+  "updated_at": "2026-11-16T02:20:07.048129Z",
   "season": 2026,
   "current_week": 10,
   "regular_season_weeks": 15,
@@ -28352,22 +28352,22 @@
       "LV": {
         "opponent": "SEA",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "SEA": {
         "opponent": "LV",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "DAL": {
         "opponent": "SF",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "SF": {
         "opponent": "DAL",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "CIN": {
         "opponent": "PIT",
