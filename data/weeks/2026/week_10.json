@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "week": 10,
-  "final": false,
-  "scored_at": "2026-11-16T19:46:58.743018Z",
+  "final": true,
+  "scored_at": "2026-11-17T14:04:48.766538Z",
   "has_scores": true,
   "pairings": [
     [
@@ -225,10 +225,13 @@
           "name": "Baltimore",
           "nfl_team": "BAL",
           "position": "DF",
-          "score": 0.0,
+          "score": 2.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": 0,
+            "sacks": 2
+          }
         },
         {
           "name": "Sean McVay",
@@ -251,8 +254,8 @@
           "breakdown": {}
         }
       ],
-      "total_score": 58.0,
-      "score_rank": 5
+      "total_score": 60.0,
+      "score_rank": 6
     },
     {
       "name": "STEVE L.",
@@ -413,10 +416,14 @@
           "name": "Riley Patterson",
           "nfl_team": "MIA",
           "position": "K",
-          "score": 0.0,
+          "score": 5.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 2,
+            "fg_1_29": 1,
+            "fg_30_39": 2
+          }
         },
         {
           "name": "Houston",
@@ -466,7 +473,7 @@
           }
         }
       ],
-      "total_score": 27.0,
+      "total_score": 32.0,
       "score_rank": 12
     },
     {
@@ -634,10 +641,13 @@
           "name": "Cameron Dicker",
           "nfl_team": "LAC",
           "position": "K",
-          "score": 0.0,
+          "score": 8.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 2,
+            "fg_30_39": 6
+          }
         },
         {
           "name": "Matt Gay",
@@ -699,8 +709,8 @@
           }
         }
       ],
-      "total_score": 52.0,
-      "score_rank": 8
+      "total_score": 60.0,
+      "score_rank": 7
     },
     {
       "name": "KEVIN",
@@ -785,10 +795,13 @@
           "name": "Zay Flowers",
           "nfl_team": "BAL",
           "position": "WR",
-          "score": 0.0,
+          "score": 0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "fumbles_lost": -1,
+            "floor_applied": true
+          }
         },
         {
           "name": "Emeka Egbuka",
@@ -930,7 +943,7 @@
         }
       ],
       "total_score": 56.0,
-      "score_rank": 7
+      "score_rank": 8
     },
     {
       "name": "DANNY/JOEY",
@@ -971,10 +984,13 @@
           "name": "Omarion Hampton",
           "nfl_team": "LAC",
           "position": "RB",
-          "score": 0.0,
+          "score": 9.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "rushing_yards": 3,
+            "touchdowns": 6
+          }
         },
         {
           "name": "James Cook",
@@ -1155,7 +1171,7 @@
         }
       ],
       "total_score": 61.0,
-      "score_rank": 4
+      "score_rank": 5
     },
     {
       "name": "GREG/GRIFFIN",
@@ -1276,7 +1292,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -1392,10 +1408,12 @@
           "name": "Justin Herbert",
           "nfl_team": "LAC",
           "position": "QB",
-          "score": 0.0,
+          "score": 6.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "Aaron Rodgers",
@@ -1830,16 +1848,16 @@
           "name": "Jim Harbaugh",
           "nfl_team": "LAC",
           "position": "HC",
-          "score": 0.0,
+          "score": 7,
           "starter": false,
           "found": true,
           "breakdown": {
-            "loss": 0
+            "road_underdog_win": 7
           }
         }
       ],
       "total_score": 62.0,
-      "score_rank": 3
+      "score_rank": 4
     },
     {
       "name": "WES/BILL",
@@ -2065,7 +2083,7 @@
         }
       ],
       "total_score": 68.0,
-      "score_rank": 2
+      "score_rank": 3
     },
     {
       "name": "KEMP/A/M",
@@ -2117,10 +2135,12 @@
           "name": "Derrick Henry",
           "nfl_team": "BAL",
           "position": "RB",
-          "score": 0.0,
+          "score": 12.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 12
+          }
         },
         {
           "name": "Chase Brown",
@@ -2305,8 +2325,8 @@
           }
         }
       ],
-      "total_score": 57.0,
-      "score_rank": 6
+      "total_score": 69.0,
+      "score_rank": 2
     },
     {
       "name": "JARRETT/MATT",
