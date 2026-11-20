@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-20T01:00:23.971596Z",
+  "updated_at": "2026-11-20T08:09:58.929991Z",
   "season": 2026,
   "current_week": 11,
   "regular_season_weeks": 15,
@@ -31171,12 +31171,12 @@
       "HOU": {
         "opponent": "IND",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "IND": {
         "opponent": "HOU",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "BUF": {
         "opponent": "MIA",
