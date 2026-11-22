@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T18:36:44.751532Z",
+  "updated_at": "2026-11-22T23:51:14.108616Z",
   "season": 2026,
   "current_week": 11,
   "regular_season_weeks": 15,
@@ -31181,62 +31181,62 @@
       "BUF": {
         "opponent": "MIA",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "MIA": {
         "opponent": "BUF",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "CAR": {
         "opponent": "BAL",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "BAL": {
         "opponent": "CAR",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "CHI": {
         "opponent": "NO",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "NO": {
         "opponent": "CHI",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "DAL": {
         "opponent": "TEN",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "TEN": {
         "opponent": "DAL",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "DET": {
         "opponent": "TB",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "TB": {
         "opponent": "DET",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "KC": {
         "opponent": "ARI",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "ARI": {
         "opponent": "KC",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "NYG": {
         "opponent": "JAX",
@@ -31271,12 +31271,12 @@
       "PHI": {
         "opponent": "PIT",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "PIT": {
         "opponent": "PHI",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "SF": {
         "opponent": "MIN",
