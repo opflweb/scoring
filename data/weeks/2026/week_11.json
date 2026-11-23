@@ -2,7 +2,7 @@
   "season": 2026,
   "week": 11,
   "final": false,
-  "scored_at": "2026-11-23T05:34:12.960956Z",
+  "scored_at": "2026-11-23T05:47:51.788185Z",
   "has_scores": true,
   "pairings": [
     [
@@ -61,10 +61,13 @@
           "name": "Brock Purdy",
           "nfl_team": "SF",
           "position": "QB",
-          "score": 0.0,
+          "score": 21.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 3,
+            "touchdowns": 18
+          }
         },
         {
           "name": "Jeremiyah Love",
@@ -126,10 +129,13 @@
           "name": "Mike Evans",
           "nfl_team": "SF",
           "position": "WR",
-          "score": 0.0,
+          "score": 9.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 3,
+            "touchdowns": 6
+          }
         },
         {
           "name": "Alec Pierce",
@@ -146,7 +152,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -182,8 +188,12 @@
           "position": "K",
           "score": 0.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 1,
+            "fg_40_49": 3,
+            "fg_missed": -4
+          }
         },
         {
           "name": "Brandon McManus",
@@ -243,8 +253,8 @@
           }
         }
       ],
-      "total_score": 24.0,
-      "score_rank": 12
+      "total_score": 33.0,
+      "score_rank": 10
     },
     {
       "name": "STEVE L.",
@@ -275,7 +285,7 @@
           "position": "QB",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -463,7 +473,7 @@
         }
       ],
       "total_score": 28.0,
-      "score_rank": 11
+      "score_rank": 12
     },
     {
       "name": "JOHN",
@@ -544,7 +554,7 @@
           "position": "RB",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -649,10 +659,16 @@
           "name": "San Francisco",
           "nfl_team": "SF",
           "position": "DF",
-          "score": 0.0,
+          "score": 13.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": 4,
+            "interceptions": 2,
+            "fumble_recoveries": 2,
+            "sacks": 1,
+            "defensive_tds": 4
+          }
         },
         {
           "name": "Chicago",
@@ -722,10 +738,14 @@
           "name": "Kirk Cousins",
           "nfl_team": "LV",
           "position": "QB",
-          "score": 0.0,
+          "score": 0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 2,
+            "pick_sixes": -3,
+            "floor_applied": true
+          }
         },
         {
           "name": "Jahmyr Gibbs",
@@ -913,7 +933,7 @@
         }
       ],
       "total_score": 46.0,
-      "score_rank": 5
+      "score_rank": 6
     },
     {
       "name": "DANNY/JOEY",
@@ -1045,10 +1065,12 @@
           "name": "TJ Hockenson",
           "nfl_team": "MIN",
           "position": "TE",
-          "score": 0.0,
+          "score": 2.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 2
+          }
         },
         {
           "name": "Juwan Johnson",
@@ -1072,10 +1094,12 @@
           "name": "Eddie Pineiro",
           "nfl_team": "SF",
           "position": "K",
-          "score": 0.0,
+          "score": 5.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 5
+          }
         },
         {
           "name": "Will Lutz",
@@ -1132,7 +1156,7 @@
         }
       ],
       "total_score": 42.0,
-      "score_rank": 6
+      "score_rank": 8
     },
     {
       "name": "GREG/GRIFFIN",
@@ -1357,7 +1381,7 @@
         }
       ],
       "total_score": 37.0,
-      "score_rank": 8
+      "score_rank": 9
     },
     {
       "name": "ERIC/JEFF",
@@ -1628,10 +1652,12 @@
           "name": "Christian McCaffrey",
           "nfl_team": "SF",
           "position": "RB",
-          "score": 0.0,
+          "score": 6.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "Kenneth Walker III",
@@ -1769,10 +1795,14 @@
           "name": "Minnesota",
           "nfl_team": "MIN",
           "position": "DF",
-          "score": 0.0,
+          "score": 0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": -4,
+            "sacks": 1,
+            "floor_applied": true
+          }
         },
         {
           "name": "Green Bay",
@@ -1806,7 +1836,7 @@
           }
         }
       ],
-      "total_score": 40.0,
+      "total_score": 46.0,
       "score_rank": 7
     },
     {
@@ -1900,10 +1930,13 @@
           "name": "Justin Jefferson",
           "nfl_team": "MIN",
           "position": "WR",
-          "score": 0.0,
+          "score": 1.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 2,
+            "fumbles_lost": -1
+          }
         },
         {
           "name": "Jameson Williams",
@@ -2028,8 +2061,8 @@
           }
         }
       ],
-      "total_score": 30.0,
-      "score_rank": 10
+      "total_score": 31.0,
+      "score_rank": 11
     },
     {
       "name": "KEMP/A/M",
@@ -2157,10 +2190,12 @@
           "name": "George Kittle",
           "nfl_team": "SF",
           "position": "TE",
-          "score": 0.0,
+          "score": 12.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 12
+          }
         },
         {
           "name": "Greg Dulcich",
@@ -2251,8 +2286,8 @@
           }
         }
       ],
-      "total_score": 36.0,
-      "score_rank": 9
+      "total_score": 48.0,
+      "score_rank": 5
     },
     {
       "name": "JARRETT/MATT",

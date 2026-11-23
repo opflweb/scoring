@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T05:34:12.991087Z",
+  "updated_at": "2026-11-23T05:47:51.825790Z",
   "season": 2026,
   "current_week": 11,
   "regular_season_weeks": 15,
@@ -27272,10 +27272,13 @@
               "name": "Brock Purdy",
               "nfl_team": "SF",
               "position": "QB",
-              "score": 0.0,
+              "score": 21.0,
               "starter": false,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "passing_yards": 3,
+                "touchdowns": 18
+              },
               "projected_points": 14.9
             },
             {
@@ -27344,10 +27347,13 @@
               "name": "Mike Evans",
               "nfl_team": "SF",
               "position": "WR",
-              "score": 0.0,
+              "score": 9.0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "receiving_yards": 3,
+                "touchdowns": 6
+              },
               "projected_points": 2.7
             },
             {
@@ -27366,7 +27372,7 @@
               "position": "WR",
               "score": 0.0,
               "starter": true,
-              "found": false,
+              "found": true,
               "breakdown": {},
               "projected_points": 3.6
             },
@@ -27406,8 +27412,12 @@
               "position": "K",
               "score": 0.0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "pat_made": 1,
+                "fg_40_49": 3,
+                "fg_missed": -4
+              },
               "projected_points": 7.4
             },
             {
@@ -27473,8 +27483,8 @@
               "projected_points": 3.6
             }
           ],
-          "total_score": 24.0,
-          "score_rank": 12
+          "total_score": 33.0,
+          "score_rank": 10
         },
         {
           "name": "STEVE L.",
@@ -27507,7 +27517,7 @@
               "position": "QB",
               "score": 0.0,
               "starter": true,
-              "found": false,
+              "found": true,
               "breakdown": {},
               "projected_points": 8.6
             },
@@ -27714,7 +27724,7 @@
             }
           ],
           "total_score": 28.0,
-          "score_rank": 11
+          "score_rank": 12
         },
         {
           "name": "JOHN",
@@ -27801,7 +27811,7 @@
               "position": "RB",
               "score": 0.0,
               "starter": true,
-              "found": false,
+              "found": true,
               "breakdown": {},
               "projected_points": 4.5
             },
@@ -27917,10 +27927,16 @@
               "name": "San Francisco",
               "nfl_team": "SF",
               "position": "DF",
-              "score": 0.0,
+              "score": 13.0,
               "starter": false,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "points_allowed": 4,
+                "interceptions": 2,
+                "fumble_recoveries": 2,
+                "sacks": 1,
+                "defensive_tds": 4
+              },
               "projected_points": 4.7
             },
             {
@@ -27996,10 +28012,14 @@
               "name": "Kirk Cousins",
               "nfl_team": "LV",
               "position": "QB",
-              "score": 0.0,
+              "score": 0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "passing_yards": 2,
+                "pick_sixes": -3,
+                "floor_applied": true
+              },
               "projected_points": 12.9
             },
             {
@@ -28206,7 +28226,7 @@
             }
           ],
           "total_score": 46.0,
-          "score_rank": 5
+          "score_rank": 6
         },
         {
           "name": "DANNY/JOEY",
@@ -28350,10 +28370,12 @@
               "name": "TJ Hockenson",
               "nfl_team": "MIN",
               "position": "TE",
-              "score": 0.0,
+              "score": 2.0,
               "starter": false,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "receiving_yards": 2
+              },
               "projected_points": 2.8
             },
             {
@@ -28380,10 +28402,12 @@
               "name": "Eddie Pineiro",
               "nfl_team": "SF",
               "position": "K",
-              "score": 0.0,
+              "score": 5.0,
               "starter": false,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "pat_made": 5
+              },
               "projected_points": 5.8
             },
             {
@@ -28446,7 +28470,7 @@
             }
           ],
           "total_score": 42.0,
-          "score_rank": 6
+          "score_rank": 8
         },
         {
           "name": "GREG/GRIFFIN",
@@ -28692,7 +28716,7 @@
             }
           ],
           "total_score": 37.0,
-          "score_rank": 8
+          "score_rank": 9
         },
         {
           "name": "ERIC/JEFF",
@@ -28987,10 +29011,12 @@
               "name": "Christian McCaffrey",
               "nfl_team": "SF",
               "position": "RB",
-              "score": 0.0,
+              "score": 6.0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "touchdowns": 6
+              },
               "projected_points": 7.6
             },
             {
@@ -29142,10 +29168,14 @@
               "name": "Minnesota",
               "nfl_team": "MIN",
               "position": "DF",
-              "score": 0.0,
+              "score": 0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "points_allowed": -4,
+                "sacks": 1,
+                "floor_applied": true
+              },
               "projected_points": 7.2
             },
             {
@@ -29183,7 +29213,7 @@
               "projected_points": 2.1
             }
           ],
-          "total_score": 40.0,
+          "total_score": 46.0,
           "score_rank": 7
         },
         {
@@ -29285,10 +29315,13 @@
               "name": "Justin Jefferson",
               "nfl_team": "MIN",
               "position": "WR",
-              "score": 0.0,
+              "score": 1.0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "receiving_yards": 2,
+                "fumbles_lost": -1
+              },
               "projected_points": 2.5
             },
             {
@@ -29426,8 +29459,8 @@
               "projected_points": 3.5
             }
           ],
-          "total_score": 30.0,
-          "score_rank": 10
+          "total_score": 31.0,
+          "score_rank": 11
         },
         {
           "name": "KEMP/A/M",
@@ -29567,10 +29600,12 @@
               "name": "George Kittle",
               "nfl_team": "SF",
               "position": "TE",
-              "score": 0.0,
+              "score": 12.0,
               "starter": true,
-              "found": false,
-              "breakdown": {},
+              "found": true,
+              "breakdown": {
+                "touchdowns": 12
+              },
               "projected_points": 4.3
             },
             {
@@ -29670,8 +29705,8 @@
               "projected_points": 3.2
             }
           ],
-          "total_score": 36.0,
-          "score_rank": 9
+          "total_score": 48.0,
+          "score_rank": 5
         },
         {
           "name": "JARRETT/MATT",
@@ -30185,7 +30220,7 @@
       "final": false,
       "projections": {
         "K/D": {
-          "projected_total": 24.0,
+          "projected_total": 33.0,
           "win_probability": 0.01
         },
         "STL": {
@@ -30213,16 +30248,16 @@
           "win_probability": 0.9714232291134963
         },
         "AND": {
-          "projected_total": 40.0,
+          "projected_total": 46.0,
           "win_probability": 0.010000000000000009
         },
         "W/B": {
-          "projected_total": 49.1,
-          "win_probability": 0.5588343126439175
+          "projected_total": 50.1,
+          "win_probability": 0.22466927234745682
         },
         "KAM": {
-          "projected_total": 47.3,
-          "win_probability": 0.4411656873560825
+          "projected_total": 59.3,
+          "win_probability": 0.7753307276525432
         },
         "J/M": {
           "projected_total": 58.2,
