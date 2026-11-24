@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "week": 11,
-  "final": false,
-  "scored_at": "2026-11-23T21:37:40.430309Z",
+  "final": true,
+  "scored_at": "2026-11-24T05:55:56.328590Z",
   "has_scores": true,
   "pairings": [
     [
@@ -254,7 +254,7 @@
         }
       ],
       "total_score": 33.0,
-      "score_rank": 10
+      "score_rank": 11
     },
     {
       "name": "STEVE L.",
@@ -563,17 +563,19 @@
           "position": "WR",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
           "name": "Tee Higgins",
           "nfl_team": "CIN",
           "position": "WR",
-          "score": 0.0,
+          "score": 6.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "Jordyn Tyson",
@@ -708,7 +710,7 @@
           }
         }
       ],
-      "total_score": 68.0,
+      "total_score": 74.0,
       "score_rank": 1
     },
     {
@@ -774,7 +776,7 @@
           "position": "RB",
           "score": 0.0,
           "starter": true,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -933,7 +935,7 @@
         }
       ],
       "total_score": 46.0,
-      "score_rank": 6
+      "score_rank": 7
     },
     {
       "name": "DANNY/JOEY",
@@ -1085,10 +1087,12 @@
           "name": "Chig Okonkwo",
           "nfl_team": "WAS",
           "position": "TE",
-          "score": 0.0,
+          "score": 2.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 2
+          }
         },
         {
           "name": "Eddie Pineiro",
@@ -1155,8 +1159,8 @@
           }
         }
       ],
-      "total_score": 42.0,
-      "score_rank": 8
+      "total_score": 44.0,
+      "score_rank": 9
     },
     {
       "name": "GREG/GRIFFIN",
@@ -1300,10 +1304,12 @@
           "name": "Mike Gesicki",
           "nfl_team": "CIN",
           "position": "TE",
-          "score": 0.0,
+          "score": 3.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 3
+          }
         },
         {
           "name": "Mason Taylor",
@@ -1380,8 +1386,8 @@
           "breakdown": {}
         }
       ],
-      "total_score": 37.0,
-      "score_rank": 9
+      "total_score": 40.0,
+      "score_rank": 10
     },
     {
       "name": "ERIC/JEFF",
@@ -1446,10 +1452,12 @@
           "name": "Jacory Croskey-Merritt",
           "nfl_team": "WAS",
           "position": "RB",
-          "score": 0.0,
+          "score": 6.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "touchdowns": 6
+          }
         },
         {
           "name": "Jadarian Price",
@@ -1506,10 +1514,12 @@
           "name": "Antonio Williams",
           "nfl_team": "WAS",
           "position": "WR",
-          "score": 0.0,
+          "score": 3.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "receiving_yards": 3
+          }
         },
         {
           "name": "Colston Loveland",
@@ -1544,10 +1554,14 @@
           "name": "Evan McPherson",
           "nfl_team": "CIN",
           "position": "K",
-          "score": 0.0,
+          "score": 8.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "pat_made": 2,
+            "fg_30_39": 2,
+            "fg_50+": 4
+          }
         },
         {
           "name": "Dominic Zvada",
@@ -1607,8 +1621,8 @@
           "breakdown": {}
         }
       ],
-      "total_score": 49.0,
-      "score_rank": 4
+      "total_score": 66.0,
+      "score_rank": 2
     },
     {
       "name": "ANDREW",
@@ -1837,7 +1851,7 @@
         }
       ],
       "total_score": 46.0,
-      "score_rank": 7
+      "score_rank": 8
     },
     {
       "name": "WES/BILL",
@@ -1848,10 +1862,13 @@
           "name": "Joe Burrow",
           "nfl_team": "CIN",
           "position": "QB",
-          "score": 0.0,
+          "score": 16.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 4,
+            "touchdowns": 12
+          }
         },
         {
           "name": "Jaxson Dart",
@@ -2033,10 +2050,13 @@
           "name": "Cincinnati",
           "nfl_team": "CIN",
           "position": "DF",
-          "score": 0.0,
+          "score": 3.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": 0,
+            "sacks": 3
+          }
         },
         {
           "name": "Nick Sirianni",
@@ -2061,8 +2081,8 @@
           }
         }
       ],
-      "total_score": 31.0,
-      "score_rank": 11
+      "total_score": 47.0,
+      "score_rank": 6
     },
     {
       "name": "KEMP/A/M",
@@ -2082,10 +2102,12 @@
           "name": "Jayden Daniels",
           "nfl_team": "WAS",
           "position": "QB",
-          "score": 0.0,
+          "score": 3.0,
           "starter": true,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "passing_yards": 3
+          }
         },
         {
           "name": "Michael Penix",
@@ -2124,7 +2146,7 @@
           "position": "RB",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2165,7 +2187,7 @@
           "position": "WR",
           "score": 0.0,
           "starter": false,
-          "found": false,
+          "found": true,
           "breakdown": {}
         },
         {
@@ -2258,10 +2280,13 @@
           "name": "Washington",
           "nfl_team": "WAS",
           "position": "DF",
-          "score": 0.0,
+          "score": 3.0,
           "starter": false,
-          "found": false,
-          "breakdown": {}
+          "found": true,
+          "breakdown": {
+            "points_allowed": 0,
+            "sacks": 3
+          }
         },
         {
           "name": "Joe Brady",
@@ -2286,7 +2311,7 @@
           }
         }
       ],
-      "total_score": 48.0,
+      "total_score": 51.0,
       "score_rank": 5
     },
     {
@@ -2515,7 +2540,7 @@
         }
       ],
       "total_score": 55.0,
-      "score_rank": 3
+      "score_rank": 4
     },
     {
       "name": "ADAM",
@@ -2743,16 +2768,16 @@
           "name": "Dan Quinn",
           "nfl_team": "WAS",
           "position": "HC",
-          "score": 0.0,
+          "score": 6,
           "starter": false,
           "found": true,
           "breakdown": {
-            "loss": 0
+            "home_underdog_win": 6
           }
         }
       ],
       "total_score": 62.0,
-      "score_rank": 2
+      "score_rank": 3
     }
   ]
 }
