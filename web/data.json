@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25T23:58:15.511324Z",
+  "updated_at": "2026-11-26T06:41:13.414622Z",
   "season": 2026,
   "current_week": 12,
   "regular_season_weeks": 15,
@@ -34058,12 +34058,12 @@
       "LA": {
         "opponent": "GB",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "GB": {
         "opponent": "LA",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "DET": {
         "opponent": "CHI",
