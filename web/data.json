@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T01:06:11.145700Z",
+  "updated_at": "2026-11-27T09:40:03.196798Z",
   "season": 2026,
   "current_week": 12,
   "regular_season_weeks": 15,
@@ -34078,22 +34078,22 @@
       "DAL": {
         "opponent": "PHI",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "PHI": {
         "opponent": "DAL",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "BUF": {
         "opponent": "KC",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "KC": {
         "opponent": "BUF",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "PIT": {
         "opponent": "DEN",
