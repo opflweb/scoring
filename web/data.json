@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T19:11:14.450384Z",
+  "updated_at": "2026-11-28T01:58:04.528920Z",
   "season": 2026,
   "current_week": 12,
   "regular_season_weeks": 15,
@@ -34098,12 +34098,12 @@
       "PIT": {
         "opponent": "DEN",
         "is_home": true,
-        "final": false
+        "final": true
       },
       "DEN": {
         "opponent": "PIT",
         "is_home": false,
-        "final": false
+        "final": true
       },
       "CIN": {
         "opponent": "NO",
